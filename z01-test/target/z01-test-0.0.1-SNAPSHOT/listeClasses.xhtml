@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>Accueil</title>
+
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+
+	<h1>Classes</h1>
+
+	<h:form id="formtest">
+		<fieldset>
+			<p:dataTable id="dataTable" var="cla" value="#{ClasseMB.lClasses}">
+				<p:column headerText="Id">
+					<h:outputText value="#{cla.id}" />
+				</p:column>
+				<p:column headerText="Libellé">
+					<h:outputText value="#{cla.libelle}" />
+				</p:column>
+				<p:column headerText="Modifier">
+					<p:commandButton
+						action="#{ClasseMB.toModifierClasse(cla.id)}"
+						value="Modifier" update=":formtest dataTable" />
+				</p:column>
+
+				<p:column headerText="Supprimer">
+					<p:commandButton action="#{ClasseMB.delete(cla.id)}"
+						value="Supprimer" update=":formtest dataTable" />
+				</p:column>
+			</p:dataTable>
+		</fieldset>
+	</h:form>
+	<h:form>
+		<h:panelGrid columns="2" cellpaddings="5px">
+			<p:outputLabel value="Libellé" for="libelle" />
+			<p:inputText id="libelle" value="#{ClasseMB.classe.libelle}" />
+		</h:panelGrid>
+
+		<p:commandButton value="Ajouter" action="#{ClasseMB.create()}"
+			update=":formtest:dataTable" />
+	</h:form>
+</h:body>
+
+</html>

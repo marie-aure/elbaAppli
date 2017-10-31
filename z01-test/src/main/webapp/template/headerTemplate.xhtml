@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Header</title>
+</h:head>
+
+<body>
+	<ui:composition>
+		<h:form>
+			<p:growl id="messages" />
+			<p:menubar>
+				<p:menuitem value="Accueil" url="index.xhtml" />
+				<p:submenu label="Terrains">
+					<p:menuitem value="Liste des terrains" url="listeTerrains.xhtml" />
+					<p:menuitem value="Ajouter un terrain" url="ajouterTerrain.xhtml" />
+					<p:menuitem value="Etat de la construction"
+						url="avancementTerrain.xhtml" />
+				</p:submenu>
+				<p:menuitem value="Rabbit Holes" url="listeRabbitHoles.xhtml" />
+				<p:menuitem value="Quartiers" url="listeQuartiers.xhtml" />
+				<p:menuitem value="Classes" url="listeClasses.xhtml" />
+				<p:submenu label="Familles">
+					<p:menuitem value="Liste des familles" url="listeFamilles.xhtml" />
+					<p:menuitem value="Ajouter une famille" url="ajouterFamille.xhtml" />
+				</p:submenu>
+				
+			</p:menubar>
+		</h:form>
+	</ui:composition>
+</body>
+</html>

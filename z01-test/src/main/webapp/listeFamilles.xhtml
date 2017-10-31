@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>Accueil</title>
+
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+
+	<h1>Familles</h1>
+
+	<h:form id="formtest">
+		<fieldset>
+			<p:dataTable id="dataTable" var="fam" value="#{FamilleMB.lFamilles}">
+				<p:column headerText="Id">
+					<h:outputText value="#{fam.id}" />
+				</p:column>
+				<p:column headerText="Nom">
+					<h:outputText value="#{fam.nom}" />
+				</p:column>
+				<p:column headerText="Détails">
+					<p:commandButton action="#{FamilleMB.toDetailFamille(fam.id)}"
+						value="Détails" update=":formtest dataTable" />
+				</p:column>
+				<p:column headerText="Modifier">
+					<p:commandButton action="#{FamilleMB.toModifierFamille(fam.id)}"
+						value="Modifier" update=":formtest dataTable" />
+				</p:column>
+				<p:column headerText="Supprimer">
+					<p:commandButton action="#{FamilleMB.delete(fam.id)}"
+						value="Supprimer" update=":formtest dataTable" />
+				</p:column>
+			</p:dataTable>
+		</fieldset>
+	</h:form>
+</h:body>
+
+</html>

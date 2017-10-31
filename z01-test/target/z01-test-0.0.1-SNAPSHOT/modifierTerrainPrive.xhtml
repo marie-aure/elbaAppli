@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>Accueil</title>
+
+</h:head>
+<h:body>
+
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+
+	<h1>Modifier Terrain</h1>
+
+	<fieldset>
+		<h:form>
+			<h:panelGrid columns="2" cellpaddings="5px">
+				<p:outputLabel value="Libellé" for="libelle" />
+				<p:inputText id="libelle" value="#{PriveMB.prive.libelle}" />
+
+				<p:outputLabel value="Type" for="type" />
+				<p:selectOneMenu id="type" value="#{PriveMB.prive.type}"
+					style="width:125px">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItem itemLabel="Terrain" itemValue="Terrain" />
+					<f:selectItem itemLabel="Immeuble" itemValue="Immeuble" />
+					<f:selectItem itemLabel="Bateau" itemValue="Bateau" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Adresse" for="adresse" />
+				<p:inputText id="adresse" value="#{PriveMB.prive.adresse}" />
+
+				<p:outputLabel value="LieuDit" for="lieuDit" />
+				<p:inputText id="lieuDit" value="#{PriveMB.prive.lieuDit}" />
+
+				<p:outputLabel value="Quartier" for="quartier" />
+				<p:selectOneMenu id="quartier"
+					value="#{CommunautaireMB.selectedQuartier}" style="width:125px">
+					<f:selectItems value="#{QuartierMB.lLibelles}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Propriétaire" for="proprietaire" />
+				<p:selectOneMenu id="proprietaire"
+					value="#{PriveMB.selectedFamille}" style="width:125px">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItems value="#{FamilleMB.lNoms}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Classe" for="classe" />
+				<p:selectOneMenu id="classe" value="#{PriveMB.selectedClasse}"
+					style="width:125px">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItems value="#{ClasseMB.lLibelles}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Groupé" for="groupe" />
+				<p:selectOneMenu id="groupe" value="#{PriveMB.prive.groupe}"
+					style="width:125px">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItem itemLabel="Oui" itemValue="true" />
+					<f:selectItem itemLabel="Non" itemValue="false" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Pré-construit" for="preConstruit" />
+				<p:selectOneMenu id="preConstruit"
+					value="#{PriveMB.prive.preConstruit}" style="width:125px">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItem itemLabel="Oui" itemValue="true" />
+					<f:selectItem itemLabel="Non" itemValue="false" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Terrain" for="terrain" />
+				<p:selectOneMenu id="terrain" value="#{PriveMB.prive.terrain}"
+					style="width:125px">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItem itemLabel="Oui" itemValue="true" />
+					<f:selectItem itemLabel="Non" itemValue="false" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Bâtiment" for="batiment" />
+				<p:selectOneMenu id="batiment" value="#{PriveMB.prive.batiment}"
+					style="width:125px">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItem itemLabel="Oui" itemValue="true" />
+					<f:selectItem itemLabel="Non" itemValue="false" />
+				</p:selectOneMenu>
+			</h:panelGrid>
+			<p:commandButton value="Modifier" action="#{PriveMB.update()}" />
+		</h:form>
+	</fieldset>
+
+
+</h:body>
+
+</html>
