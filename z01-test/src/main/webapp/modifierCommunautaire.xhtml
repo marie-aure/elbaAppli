@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Modifier Terrain</title>
+</h:head>
+<h:body>
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+
+	</ui:insert>
+	<h1>Modifier le terrain</h1>
+
+	<fieldset>
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+
+
+				<p:outputLabel for="libelle" value="Libellé : " />
+				<p:inputText id="libelle"
+					value="#{CommunautaireMB.communautaire.libelle}" placeholder="#{CommunautaireMB.communautaire.libelle}" />
+
+				<p:outputLabel for="type" value="Type de terrain : " />
+				<p:selectOneMenu id="type"
+					value="#{CommunautaireMB.communautaire.type}">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItem itemLabel="Terrain" itemValue="Terrain" />
+					<f:selectItem itemLabel="Bâtiment" itemValue="Bâtiment" />
+					<f:selectItem itemLabel="Bateau" itemValue="Bateau" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="lieuDit" value="Lieu-dit : " />
+				<p:inputText id="lieuDit"
+					value="#{CommunautaireMB.communautaire.lieuDit}" />
+
+				<p:outputLabel for="adresse" value="Adresse : " />
+				<p:inputText id="adresse"
+					value="#{CommunautaireMB.communautaire.adresse}" />
+
+				<p:outputLabel for="fonction" value="Fonction : " />
+				<p:inputText id="fonction"
+					value="#{CommunautaireMB.communautaire.fonction}" />
+
+				<p:outputLabel for="terrain" value="Terrain placé : " />
+				<p:selectOneMenu id="terrain"
+					value="#{CommunautaireMB.communautaire.terrain}">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItem itemLabel="Oui" itemValue="true" />
+					<f:selectItem itemLabel="Non" itemValue="false" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="batiment" value="Terrain construit : " />
+				<p:selectOneMenu id="batiment"
+					value="#{CommunautaireMB.communautaire.batiment}">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItem itemLabel="Oui" itemValue="true" />
+					<f:selectItem itemLabel="Non" itemValue="false" />
+				</p:selectOneMenu>
+
+				<p:commandButton type="submit" value="Modifier"
+					action="#{CommunautaireMB.update()}" />
+			</h:panelGrid>
+		</h:form>
+	</fieldset>
+
+</h:body>
+</html>

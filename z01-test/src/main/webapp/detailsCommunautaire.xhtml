@@ -6,31 +6,78 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
-
-	<title>Terrain communautaire</title>
-
+	<title>Terrain Communautaire</title>
 </h:head>
 <h:body>
 
 	<ui:insert>
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+
 	</ui:insert>
 
-	detailsCommunautaire
-•	Id
-•	Libelle
-•	Type 
-•	Adresse
-•	Lieu-dit
-•	Quartier => L
-•	Terrain
-•	Bâtiment 
-•	Propriétaire => L
-Pour communautaire :
-•	Fonction
-•	Rabbit Hole => L
+	détailsCommunautaire
+	<p:fieldset legend="Informations">
+		<h:form id="form">
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="id" value="Id : " />
+				<h:outputText id="id" value="#{CommunautaireMB.communautaire.id}" />
+
+				<p:outputLabel for="libelle" value="Libellé : " />
+				<h:outputText id="libelle"
+					value="#{CommunautaireMB.communautaire.libelle}" />
+
+				<p:outputLabel for="type" value="Type : " />
+				<h:outputText id="type"
+					value="#{CommunautaireMB.communautaire.type}" />
+
+				<p:outputLabel for="adresse" value="Adresse : " />
+				<h:outputText id="adresse"
+					value="#{CommunautaireMB.communautaire.adresse}" />
+
+				<p:outputLabel for="lieuDit" value="Lieu-Dit : " />
+				<h:outputText id="lieuDit"
+					value="#{CommunautaireMB.communautaire.lieuDit}" />
+
+				<p:outputLabel for="quartier" value="Quartier : " />
+				<h:outputText id="quartier"
+					value="#{CommunautaireMB.communautaire.quartier.libelle}" />
+
+				<p:outputLabel for="proprietaire" value="Propriétaire : " />
+				<h:outputText id="proprietaire"
+					value="#{CommunautaireMB.communautaire.proprietaire.nom}" />
+
+				<p:outputLabel for="terrain" value="Terrain placé : " />
+							<h:panelGrid columns="2" cellpadding="5">
+				<h:outputText id="terrain"
+					value="#{CommunautaireMB.communautaire.terrain}" />
+					<p:commandButton value="Modifier Statut" action="#{CommunautaireMB.modifierTerrain()}" />
+					</h:panelGrid>
+
+				<p:outputLabel for="batiment" value="Terrain construit : " />
+						<h:panelGrid columns="2" cellpadding="5">
+				<h:outputText id="batiment"
+					value="#{CommunautaireMB.communautaire.batiment}" />
+<p:commandButton value="Modifier Statut" action="#{CommunautaireMB.modifierBatiment()}" />
+</h:panelGrid>
+
+				<p:outputLabel for="fonction" value="Fonction(s) : " />
+				<h:outputText id="fonction"
+					value="#{CommunautaireMB.communautaire.fonction}" />
+
+				<p:outputLabel for="rabbithole" value="RabbitHole(s) : " />
+				<p:dataList id="rabbithole"
+					value="#{CommunautaireMB.communautaire.lRabbitHoles}" var="rab">
+#{rab.libelle}
+</p:dataList>
+
+
+
+			</h:panelGrid>
+		</h:form>
+	</p:fieldset>
+
+
 
 </h:body>
 </html>

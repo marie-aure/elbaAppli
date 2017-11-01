@@ -6,55 +6,56 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
-
 	<title>Accueil</title>
-
 </h:head>
 <h:body>
 
 	<ui:insert>
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+
 	</ui:insert>
 
-	<h1>Rabbit Holes</h1>
+	<h1>Rabbit Holes!!</h1>
+	<br />
 
-	<h:form id="formtest">
-		<fieldset>
-			<p:dataTable id="dataTable" var="rho"
-				value="#{RabbitHoleMB.lRabbitHoles}">
-				<p:column headerText="Id">
-					<h:outputText value="#{rho.id}" />
-				</p:column>
-				<p:column headerText="Libellé">
-					<h:outputText value="#{rho.libelle}" />
-				</p:column>
-				<p:column headerText="Compte">
-					<h:outputText value="#{rho.lCommunautaires.size()}" />
-				</p:column>
-				<p:column headerText="Modifier">
-					<p:commandButton
-						action="#{RabbitHoleMB.toModifierRabbitHole(rho.id)}"
-						value="Modifier" update=":formtest dataTable" />
-				</p:column>
+<h:form id="formupdate">
+	<p:dataTable var="rho" value="#{RabbitHoleMB.lRabbitHoles}" id="dataRH">
+		<p:column headerText="Id">
+			<h:outputText value="#{rho.id}" />
+		</p:column>
 
-				<p:column headerText="Supprimer">
-					<p:commandButton action="#{RabbitHoleMB.delete(rho.id)}"
-						value="Supprimer" update=":formtest dataTable" />
-				</p:column>
-			</p:dataTable>
-		</fieldset>
+		<p:column headerText="Libellé">
+			<h:outputText value="#{rho.libelle}" />
+		</p:column>
+
+		<p:column headerText="Modifier">
+			<p:commandButton action="#{RabbitHoleMB.update(rho.id)}"
+				value="Modifier" />
+		</p:column>
+
+		<p:column headerText="Supprimer">
+			<p:commandButton action="#{RabbitHoleMB.delete(rho.id)}"
+				value="Supprimer" update=":formupdate:dataRH" />
+		</p:column>
+
+	</p:dataTable>
 	</h:form>
-	<h:form>
-		<h:panelGrid columns="2" cellpaddings="5px">
-			<p:outputLabel value="Libellé" for="libelle" />
-			<p:inputText id="libelle" value="#{RabbitHoleMB.rabbitHole.libelle}" />
-		</h:panelGrid>
 
-		<p:commandButton value="Ajouter" action="#{RabbitHoleMB.create()}"
-			update=":formtest:dataTable" />
-	</h:form>
+	<fieldset>
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<p:outputLabel for="libelle" value="Libellé : " />
+				<p:inputText id="libelle" value="#{RabbitHoleMB.rabbitHole.libelle}" />
+
+				<p:commandButton type="submit" value="Ajouter"
+					action="#{RabbitHoleMB.create()}" update=":formupdate:dataRH" />
+			</h:panelGrid>
+		</h:form>
+	</fieldset>
+
+
 </h:body>
 
 </html>

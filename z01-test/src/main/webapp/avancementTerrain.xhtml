@@ -6,47 +6,40 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
-
-	<title>Accueil</title>
-
+	<title>Modifier Terrain</title>
 </h:head>
 <h:body>
-
 	<ui:insert>
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+
 	</ui:insert>
-
-
-	<h1>Avancement Terrain</h1>
-
-
-	<fieldset>
+	<h1>Avancement des terrains</h1>
 	<h:form id="formtest">
-		<p:dataTable var="ter" value="#{TerrainMB.lTerrains}" id="dataTable">
+		<p:dataTable var="ter" value="#{TerrainMB.lTerrains}" id="dataT">
+			<p:column headerText="Id">
+				<h:outputText value="#{ter.id}" />
+			</p:column>
+
 			<p:column headerText="Libellé">
 				<h:outputText value="#{ter.libelle}" />
 			</p:column>
-			<p:column headerText="adresse">
-				<h:outputText value="#{ter.adresse}" />
-			</p:column>
-			<p:column headerText="Lieu dit">
-				<h:outputText value="#{ter.lieuDit}" />
-			</p:column>
-			<p:column headerText="Terrain">
-					<h:outputText value="#{ter.terrain}"/>
-					<p:commandButton value="OK/KO"
-						action="#{TerrainMB.terrainUpdate(ter.id)}" update="@form" />
-			</p:column>
-			<p:column headerText="Bâtiment">
-				<h:outputText value="#{ter.batiment}" />
-					<p:commandButton value="OK/KO"
-						action="#{TerrainMB.batimentUpdate(ter.id)}" update=":formtest dataTable"/>
-			</p:column>
-		</p:dataTable>
-		</h:form>
-	</fieldset>
-</h:body>
 
+			<p:column headerText="Terrain placé">
+				<h:outputText value="#{ter.terrain}" />
+				<br />
+				<p:commandButton action="#{TerrainMB.updateTerrain(ter.id)}"
+					value="OK / KO" update=":formtest:dataT" />
+			</p:column>
+
+			<p:column headerText="Terrain construit">
+				<h:outputText value="#{ter.batiment}" />
+				<br />
+				<p:commandButton action="#{TerrainMB.updateBatiment(ter.id)}"
+					value="OK / KO" update=":formtest:dataT" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+</h:body>
 </html>

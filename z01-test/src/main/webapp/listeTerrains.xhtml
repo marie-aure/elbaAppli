@@ -6,53 +6,49 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
-
-	<title>Synthèse des terrains</title>
-
+	<title>Tous les terrains</title>
 </h:head>
 <h:body>
 
 	<ui:insert>
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+
 	</ui:insert>
 
 	<h1>Tous les terrains</h1>
+	<h:form id="formupdate">
+		<p:dataTable var="ter" value="#{TerrainMB.lTerrains}" id="dataT">
+			<p:column headerText="Id">
+				<h:outputText value="#{ter.id}" />
+			</p:column>
 
-	<fieldset>
-		<h:form id="formtest">
-			<p:dataTable id="dataTable" var="ter" value="#{TerrainMB.lTerrains}">
+			<p:column headerText="Libellé">
+				<h:outputText value="#{ter.libelle}" />
+			</p:column>
 
-				<p:column headerText="Id">
-					<h:outputText value="#{ter.id}" />
-				</p:column>
+			<p:column headerText="Quartier">
+				<h:outputText value="#{ter.quartier.libelle}" />
+			</p:column>
 
-				<p:column headerText="Libellé">
-					<h:outputText value="#{ter.libelle}" />
-				</p:column>
+			<p:column headerText="Détails">
+				<p:commandButton
+					action="#{TerrainMB.toDetails(ter.id)}"
+					value="Voir" />
+			</p:column>
 
-				<p:column headerText="Quartier">
-					<h:outputText value="#{ter.quartier.libelle}" />
-				</p:column>
+			<p:column headerText="Modifier">
+				<p:commandButton
+					action="#{TerrainMB.toModifier(ter.id)}"
+					value="Modifier" />
+			</p:column>
 
-				<p:column headerText="Détails">
-					<p:commandButton value="Voir" action="#{TerrainMB.details(ter.id)}" />
-				</p:column>
+			<p:column headerText="Supprimer">
+				<p:commandButton action="#{TerrainMB.delete(ter.id)}"
+					value="Supprimer" update=":formupdate:dataT" />
+			</p:column>
 
-				<p:column headerText="Modifier">
-					<p:commandButton value="Modifier"
-						action="#{TerrainMB.toModifier(ter.id)}" />
-				</p:column>
-
-				<p:column headerText="Supprimer">
-					<p:commandButton value="Voir" action="#{TerrainMB.delete(ter.id)}" />
-				</p:column>
-
-			</p:dataTable>
-		</h:form>
-	</fieldset>
-
+		</p:dataTable>
+	</h:form>
 </h:body>
-
 </html>
