@@ -12,10 +12,12 @@ import javax.faces.context.FacesContext;
 
 import fr.elba.model.Classe;
 import fr.elba.model.Communautaire;
+import fr.elba.model.Famille;
 import fr.elba.model.Prive;
 import fr.elba.model.Quartier;
 import fr.elba.model.RabbitHole;
 import fr.elba.service.IClasseService;
+import fr.elba.service.IFamilleService;
 import fr.elba.service.IPriveService;
 import fr.elba.service.IQuartierService;
 
@@ -35,6 +37,9 @@ public class PriveManagedBean {
 	@ManagedProperty("#{ClasseService}")
 	private IClasseService clSer;
 
+	@ManagedProperty("#{FamilleService}")
+	private IFamilleService faSer;
+	
 	public void setPrSer(IPriveService prSer) {
 		this.prSer = prSer;
 	}
@@ -47,6 +52,10 @@ public class PriveManagedBean {
 		this.clSer = clSer;
 	}
 
+	public void setFaSer(IFamilleService faSer) {
+		this.faSer = faSer;
+	}
+
 	// +++++++++++++++++++
 	// ---- Variables ----
 	// +++++++++++++++++++
@@ -55,6 +64,7 @@ public class PriveManagedBean {
 	private List<Prive> lPrives;
 	private String selectedQuartier;
 	private String selectedClasse;
+	private String selectedProprietaire;
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -106,6 +116,14 @@ public class PriveManagedBean {
 		this.selectedClasse = selectedClasse;
 	}
 
+	public String getSelectedProprietaire() {
+		return selectedProprietaire;
+	}
+
+	public void setSelectedProprietaire(String selectedProprietaire) {
+		this.selectedProprietaire = selectedProprietaire;
+	}
+
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
@@ -136,6 +154,31 @@ public class PriveManagedBean {
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		int id = (int) sessionMap.get("idTerrain");
 		this.prive = prSer.getById(id);
+		if(this.prive.getQuartier()!=null) {
+			this.selectedQuartier = this.prive.getQuartier().getLibelle();
+		}
+		if(this.prive.getProprietaire()!=null) {
+			this.selectedProprietaire = this.prive.getProprietaire().getNom();
+		}
+		if(this.prive.getClasse()!=null) {
+			this.selectedClasse = this.prive.getClasse().getLibelle();
+		}
 	}
+	
+	public String update() {
+		Quartier quartier = quSer.getByName(this.selectedQuartier);
+		this.prive.setQuartier(quartier);
+		
+		Famille proprietaire = faSer.getByName(this.selectedProprietaire);
+		this.prive.setProprietaire(proprietaire);
+		
+		Classe classe = clSer.getByName(this.selectedClasse);
+		this.prive.setClasse(classe);
+		
+		prSer.update(this.prive);
+		this.prive = new Prive();
+		return "detailsPrive";
+	}
+
 	
 }

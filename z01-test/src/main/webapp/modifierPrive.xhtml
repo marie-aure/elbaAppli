@@ -19,49 +19,74 @@
 	<fieldset>
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
+•	Libelle
+•	Type 
+•	Adresse
+•	Lieu-dit
+•	Quartier => L
+•	Terrain
+•	Bâtiment 
+•	Propriétaire => L
+Pour prive : 
+•	Classe => L
+•	Groupe 
+•	Preconstruit
 
 
 				<p:outputLabel for="libelle" value="Libellé : " />
-				<p:inputText id="libelle"
-					value="#{PriveMB.prive.libelle}" placeholder="#{PriveMB.prive.libelle}" />
+				<p:inputText id="libelle" value="#{PriveMB.prive.libelle}"
+					placeholder="#{PriveMB.prive.libelle}" />
 
 				<p:outputLabel for="type" value="Type de terrain : " />
-				<p:selectOneMenu id="type"
-					value="#{PriveMB.prive.type}">
+				<p:selectOneMenu id="type" value="#{PriveMB.prive.type}">
 					<f:selectItem itemLabel="Selectionner" itemValue="" />
 					<f:selectItem itemLabel="Terrain" itemValue="Terrain" />
 					<f:selectItem itemLabel="Bâtiment" itemValue="Bâtiment" />
 					<f:selectItem itemLabel="Bateau" itemValue="Bateau" />
 				</p:selectOneMenu>
 
-				<p:outputLabel for="lieuDit" value="Lieu-dit : " />
-				<p:inputText id="lieuDit"
-					value="#{PriveMB.prive.lieuDit}" />
 
 				<p:outputLabel for="adresse" value="Adresse : " />
-				<p:inputText id="adresse"
-					value="#{PriveMB.prive.adresse}" />
+				<p:inputText id="adresse" value="#{PriveMB.prive.adresse}" />
 
+				<p:outputLabel for="lieuDit" value="Lieu-dit : " />
+				<p:inputText id="lieuDit" value="#{PriveMB.prive.lieuDit}" />
+
+				<p:outputLabel for="quartier" value="Quartier : " />
+				<p:selectOneMenu id="quartier" value="#{PriveMB.selectedQuartier}">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItems value="#{QuartierMB.lLibelles}" />
+				</p:selectOneMenu>
 
 				<p:outputLabel for="terrain" value="Terrain placé : " />
-				<p:selectOneMenu id="terrain"
-					value="#{PriveMB.prive.terrain}">
+				<p:selectOneMenu id="terrain" value="#{PriveMB.prive.terrain}">
 					<f:selectItem itemLabel="Selectionner" itemValue="" />
 					<f:selectItem itemLabel="Oui" itemValue="true" />
 					<f:selectItem itemLabel="Non" itemValue="false" />
 				</p:selectOneMenu>
 
 				<p:outputLabel for="batiment" value="Terrain construit : " />
-				<p:selectOneMenu id="batiment"
-					value="#{PriveMB.prive.batiment}">
+				<p:selectOneMenu id="batiment" value="#{PriveMB.prive.batiment}">
 					<f:selectItem itemLabel="Selectionner" itemValue="" />
 					<f:selectItem itemLabel="Oui" itemValue="true" />
 					<f:selectItem itemLabel="Non" itemValue="false" />
 				</p:selectOneMenu>
 
+				<p:outputLabel for="proprietaire" value="Propriétaire : " />
+				<p:selectOneMenu id="proprietaire"
+					value="#{PriveMB.selectedProprietaire}">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItems value="#{FamilleMB.lNoms}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="classe" value="Classe : " />
+				<p:selectOneMenu id="classe" value="#{PriveMB.selectedClasse}">
+					<f:selectItem itemLabel="Selectionner" itemValue="" />
+					<f:selectItems value="#{ClasseMB.lLibelles}" />
+				</p:selectOneMenu>
+
 				<p:outputLabel for="groupe" value="Groupé : " />
-				<p:selectOneMenu id="groupe"
-					value="#{PriveMB.prive.groupe}">
+				<p:selectOneMenu id="groupe" value="#{PriveMB.prive.groupe}">
 					<f:selectItem itemLabel="Selectionner" itemValue="" />
 					<f:selectItem itemLabel="Oui" itemValue="true" />
 					<f:selectItem itemLabel="Non" itemValue="false" />
@@ -74,8 +99,8 @@
 					<f:selectItem itemLabel="Oui" itemValue="true" />
 					<f:selectItem itemLabel="Non" itemValue="false" />
 				</p:selectOneMenu>
-				
-					<p:commandButton type="submit" value="Modifier"
+
+				<p:commandButton type="submit" value="Modifier"
 					action="#{PriveMB.update()}" />
 			</h:panelGrid>
 		</h:form>
