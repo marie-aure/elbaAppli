@@ -2,10 +2,13 @@ package fr.elba.managedBean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import fr.elba.model.Classe;
 import fr.elba.model.Communautaire;
@@ -121,4 +124,18 @@ public class PriveManagedBean {
 		return "detailsPrive";
 	}
 
+	public void details(){
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		int id = (int) sessionMap.get("idTerrain");
+		this.prive = prSer.getById(id);
+	}
+
+	public void modifier(){
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		int id = (int) sessionMap.get("idTerrain");
+		this.prive = prSer.getById(id);
+	}
+	
 }

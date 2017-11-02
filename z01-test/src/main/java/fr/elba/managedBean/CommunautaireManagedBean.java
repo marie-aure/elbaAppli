@@ -55,7 +55,8 @@ public class CommunautaireManagedBean {
 	private List<Communautaire> lCommunautaires;
 	private String selectedQuartier;
 	private List<String> selectedRabbitHoles;
-
+	private String selectedProprietaire;
+	
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
 	// ++++++++++++++++++++++
@@ -107,6 +108,14 @@ public class CommunautaireManagedBean {
 		this.selectedRabbitHoles = selectedRabbitHoles;
 	}
 
+	public String getSelectedProprietaire() {
+		return selectedProprietaire;
+	}
+
+	public void setSelectedProprietaire(String selectedProprietaire) {
+		this.selectedProprietaire = selectedProprietaire;
+	}
+
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
@@ -136,4 +145,22 @@ public class CommunautaireManagedBean {
 		this.communautaire = coSer.getById(id);
 	}
 
+	public void modifier(){
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		int id = (int) sessionMap.get("idTerrain");
+		this.communautaire = coSer.getById(id);
+		if(this.communautaire.getlRabbitHoles().size()>0) {
+			for (RabbitHole rabbitHole : this.communautaire.getlRabbitHoles()) {
+				this.selectedRabbitHoles.add(rabbitHole.getLibelle());
+			}
+		}
+		if(this.communautaire.getQuartier()!=null) {
+			this.selectedQuartier = this.communautaire.getQuartier().getLibelle();
+		}
+		if(this.communautaire.getProprietaire()!=null) {
+			this.selectedProprietaire = this.communautaire.getProprietaire().getNom();
+		}
+	}
+	
 }

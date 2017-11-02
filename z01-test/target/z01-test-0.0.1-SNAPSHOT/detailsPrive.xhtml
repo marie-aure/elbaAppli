@@ -6,19 +6,69 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
-
-	<title>Terrain communautaire</title>
-
+	<title>Terrain Privé</title>
 </h:head>
 <h:body>
 
 	<ui:insert>
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+
 	</ui:insert>
 
-	detailsPrive
+	<h1></h1>
+
+	<p:fieldset legend="Informations">
+		<h:form id="form">
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<p:outputLabel for="id" value="Id : " />
+				<h:outputText id="id" value="#{PriveMB.prive.id}" />
+
+				<p:outputLabel for="libelle" value="Libellé : " />
+				<h:outputText id="libelle" value="#{PriveMB.prive.libelle}" />
+
+				<p:outputLabel for="type" value="Type : " />
+				<h:outputText id="type" value="#{PriveMB.prive.type}" />
+
+				<p:outputLabel for="adresse" value="Adresse : " />
+				<h:outputText id="adresse" value="#{PriveMB.prive.adresse}" />
+
+				<p:outputLabel for="lieuDit" value="Lieu-Dit : " />
+				<h:outputText id="lieuDit" value="#{PriveMB.prive.lieuDit}" />
+
+				<p:outputLabel for="quartier" value="Quartier : " />
+				<h:outputText id="quartier" value="#{PriveMB.prive.quartier.libelle}" />
+
+				<p:outputLabel for="proprietaire" value="Propriétaire : " />
+				<h:outputText id="proprietaire" value="#{PriveMB.prive.proprietaire.nom}" />
+
+				<p:outputLabel for="terrain" value="Terrain placé : " />
+				<h:panelGrid columns="2" cellpadding="5">
+				<h:outputText id="terrain" value="#{PriveMB.prive.terrain}" />
+				<p:commandButton value="Modifier Statut" action="#{PriveMB.modifierTerrain()}"/>
+				</h:panelGrid>
+
+				<p:outputLabel for="batiment" value="Terrain construit : " />
+				<h:panelGrid columns="2" cellpadding="5">
+				<h:outputText id="batiment" value="#{PriveMB.prive.batiment}" />
+				<p:commandButton value="Modifier Statut" action="#{PriveMB.modifierBatiment()}"/>
+				</h:panelGrid>				
+
+				<p:outputLabel for="classe" value="Classe : " />
+				<h:outputText id="classe" value="#{PriveMB.prive.classe.libelle}" />
+
+				<p:outputLabel for="groupe" value="Groupé : " />
+				<h:outputText id="groupe" value="#{PriveMB.prive.groupe}" />
+
+				<p:outputLabel for="preConstruit" value="Terrain Pré-construit : " />
+				<h:outputText id="preConstruit" value="#{PriveMB.prive.preConstruit}" />
+
+			</h:panelGrid>
+		</h:form>
+	</p:fieldset>
+
+
 
 </h:body>
 </html>
