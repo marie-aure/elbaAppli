@@ -6,11 +6,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 import fr.elba.model.RabbitHole;
 import fr.elba.service.IRabbitHoleService;
 
 @ManagedBean(name = "RabbitHoleMB")
+@SessionScoped
 public class RabbitHoleManagedBean {
 
 	// ++++++++++++++++++

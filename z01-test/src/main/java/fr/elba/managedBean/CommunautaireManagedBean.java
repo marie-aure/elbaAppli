@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -22,6 +23,7 @@ import fr.elba.service.IQuartierService;
 import fr.elba.service.IRabbitHoleService;
 
 @ManagedBean(name = "CommunautaireMB")
+@SessionScoped
 public class CommunautaireManagedBean {
 
 	// ++++++++++++++++++
@@ -129,7 +131,7 @@ public class CommunautaireManagedBean {
 	// ---- Méthode ----
 	// +++++++++++++++++
 
-	public String create() {
+	public void create() {
 		Quartier quartier = quSer.getByName(this.selectedQuartier);
 		this.communautaire.setQuartier(quartier);
 		this.selectedQuartier = null;
@@ -143,8 +145,6 @@ public class CommunautaireManagedBean {
 		this.communautaire.setTerrain(false);
 		this.communautaire.setBatiment(false);
 		coSer.create(this.communautaire);
-		this.communautaire = new Communautaire();
-		return "detailsCommunautaire";
 	}
 
 	public void details() {
@@ -158,6 +158,7 @@ public class CommunautaireManagedBean {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		int id = (int) sessionMap.get("idTerrain");
+
 		this.communautaire = coSer.getById(id);
 		if (this.communautaire.getlRabbitHoles().size() > 0) {
 			for (RabbitHole rabbitHole : this.communautaire.getlRabbitHoles()) {
@@ -172,7 +173,8 @@ public class CommunautaireManagedBean {
 		}
 	}
 
-	public String update() {
+	public void update() {
+
 		Quartier quartier = quSer.getByName(this.selectedQuartier);
 		this.communautaire.setQuartier(quartier);
 
@@ -187,8 +189,20 @@ public class CommunautaireManagedBean {
 		this.communautaire.setlRabbitHoles(lRabbitHoles);
 
 		coSer.update(this.communautaire);
-		this.communautaire = new Communautaire();
-		return "detailsCommunautaire";
+
 	}
 
+	public void delete() {
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		int id = (int) sessionMap.get("idTerrain");
+		this.communautaire = coSer.getById(id);
+		this.communautaire.setQuartier(null);
+		this.communautaire.setProprietaire(null);
+		this.communautaire.setlRabbitHoles(null);
+		coSer.update(this.communautaire);
+		coSer.delete(id);
+		this.lCommunautaires = coSer.getAll();
+	}
+	
 }

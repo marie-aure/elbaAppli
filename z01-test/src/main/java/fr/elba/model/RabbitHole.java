@@ -2,6 +2,7 @@ package fr.elba.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "rabbitholes")
@@ -21,7 +25,8 @@ public class RabbitHole {
 	private String libelle;
 
 	// liaisons
-	@ManyToMany(mappedBy = "lRabbitHoles", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "lRabbitHoles",cascade=CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Communautaire> lCommunautaire;
 
 	public RabbitHole() {

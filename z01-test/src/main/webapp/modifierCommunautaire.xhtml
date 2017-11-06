@@ -19,7 +19,6 @@
 	<fieldset>
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
-
 				<p:outputLabel for="libelle" value="Libellé : " />
 				<p:inputText id="libelle"
 					value="#{CommunautaireMB.communautaire.libelle}"
@@ -84,7 +83,7 @@
 				</p:selectCheckboxMenu>
 
 				<p:commandButton type="submit" value="Modifier"
-					action="#{CommunautaireMB.update()}" />
+					action="#{TerrainMB.updateCommunautaire()}" />
 			</h:panelGrid>
 		</h:form>
 	</fieldset>

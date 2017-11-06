@@ -2,12 +2,17 @@ package fr.elba.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "classes")
@@ -20,7 +25,8 @@ public class Classe {
 	private String libelle;
 
 	// liaisons
-	@OneToMany(mappedBy = "classe")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "classe",cascade=CascadeType.ALL)
 	private List<Prive> lPrives;
 
 	public Classe() {

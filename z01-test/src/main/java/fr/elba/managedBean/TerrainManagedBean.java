@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -15,6 +16,7 @@ import fr.elba.model.Terrain;
 import fr.elba.service.ITerrainService;
 
 @ManagedBean(name = "TerrainMB")
+@SessionScoped
 public class TerrainManagedBean {
 
 	// ++++++++++++++++++
@@ -26,10 +28,10 @@ public class TerrainManagedBean {
 
 	@ManagedProperty("#{CommunautaireMB}")
 	private CommunautaireManagedBean communautaireMB;
-	
+
 	@ManagedProperty("#{PriveMB}")
 	private PriveManagedBean priveMB;
-	
+
 	public void setTeSer(ITerrainService teSer) {
 		this.teSer = teSer;
 	}
@@ -87,6 +89,24 @@ public class TerrainManagedBean {
 	// ---- Méthode ----
 	// +++++++++++++++++
 
+	public String toAjouter() {
+		communautaireMB.setCommunautaire(new Communautaire());
+		priveMB.setPrive(new Prive());
+		return "ajouterTerrain ";
+	}
+	
+	public String createCommunautaire() {
+		communautaireMB.create();
+		this.lTerrains = teSer.getAll();
+		return "detailsCommunautaire";
+	}
+	
+	public String createPrive() {
+		priveMB.create();
+		this.lTerrains = teSer.getAll();
+		return "detailsPrive";
+	}
+	
 	public String toDetails(int id) {
 		this.terrain = teSer.getById(id);
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -102,7 +122,7 @@ public class TerrainManagedBean {
 			return null;
 		}
 	}
-	
+
 	public String toModifier(int id) {
 		this.terrain = teSer.getById(id);
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -117,5 +137,31 @@ public class TerrainManagedBean {
 		} else {
 			return null;
 		}
+	}
+
+	public String updateCommunautaire() {
+		communautaireMB.update();
+		this.lTerrains = teSer.getAll();
+		return "detailsCommunautaire";
+	}
+	
+	public String updatePrive() {
+		priveMB.update();
+		this.lTerrains = teSer.getAll();
+		return "detailsPrive";
+	}
+	
+	public String toDelete(int id) {
+		this.terrain = teSer.getById(id);
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("idTerrain", id);
+		if (this.terrain instanceof Communautaire) {
+			communautaireMB.delete();
+		} else if (this.terrain instanceof Prive) {
+			priveMB.delete();
+		}
+		this.lTerrains = teSer.getAll();
+		return "listeTerrains";
 	}
 }

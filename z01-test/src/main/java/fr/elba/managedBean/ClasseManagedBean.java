@@ -6,11 +6,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 import fr.elba.model.Classe;
 import fr.elba.service.IClasseService;
 
 @ManagedBean(name = "ClasseMB")
+@SessionScoped
 public class ClasseManagedBean {
 
 	// ++++++++++++++++++

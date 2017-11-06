@@ -19,20 +19,6 @@
 	<fieldset>
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
-•	Libelle
-•	Type 
-•	Adresse
-•	Lieu-dit
-•	Quartier => L
-•	Terrain
-•	Bâtiment 
-•	Propriétaire => L
-Pour prive : 
-•	Classe => L
-•	Groupe 
-•	Preconstruit
-
-
 				<p:outputLabel for="libelle" value="Libellé : " />
 				<p:inputText id="libelle" value="#{PriveMB.prive.libelle}"
 					placeholder="#{PriveMB.prive.libelle}" />
@@ -101,7 +87,7 @@ Pour prive :
 				</p:selectOneMenu>
 
 				<p:commandButton type="submit" value="Modifier"
-					action="#{PriveMB.update()}" />
+					action="#{TerrainMB.updatePrive()}" />
 			</h:panelGrid>
 		</h:form>
 	</fieldset>

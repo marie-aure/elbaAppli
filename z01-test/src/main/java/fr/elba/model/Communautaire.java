@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @DiscriminatorValue("communautaire")
 public class Communautaire extends Terrain {
@@ -17,7 +20,8 @@ public class Communautaire extends Terrain {
 	private String fonction;
 
 	// liaisons
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name="l_communautaire_rabbithole",joinColumns={@JoinColumn(name="id_terrain")}, inverseJoinColumns = {@JoinColumn(name="id_rabbithole")})
 	private List<RabbitHole> lRabbitHoles;
 

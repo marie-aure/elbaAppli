@@ -6,11 +6,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 import fr.elba.model.Quartier;
 import fr.elba.service.IQuartierService;
 
 @ManagedBean(name = "QuartierMB")
+@SessionScoped
 public class QuartierManagedBean {
 
 	// ++++++++++++++++++
