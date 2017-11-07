@@ -205,4 +205,22 @@ public class CommunautaireManagedBean {
 		this.lCommunautaires = coSer.getAll();
 	}
 	
+	public void updateTerrain() {
+		if(this.communautaire.getTerrain()) {
+			this.communautaire.setTerrain(false);
+		} else if (!this.communautaire.getTerrain()) {
+			this.communautaire.setTerrain(true);
+		}
+		coSer.update(this.communautaire);
+	}
+	
+	public void updateBatiment() {
+		if(this.communautaire.getBatiment()) {
+			this.communautaire.setBatiment(false);
+		} else if (!this.communautaire.getBatiment()) {
+			this.communautaire.setBatiment(true);
+		}
+		coSer.update(this.communautaire);
+	}
+	
 }

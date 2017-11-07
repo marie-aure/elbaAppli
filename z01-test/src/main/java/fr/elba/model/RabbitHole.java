@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -24,6 +25,9 @@ public class RabbitHole {
 
 	private String libelle;
 
+	@Transient
+	private int compte;
+	
 	// liaisons
 	@ManyToMany(mappedBy = "lRabbitHoles",cascade=CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
@@ -66,6 +70,14 @@ public class RabbitHole {
 
 	public void setlCommunautaire(List<Communautaire> lCommunautaire) {
 		this.lCommunautaire = lCommunautaire;
+	}
+	
+	public int getCompte() {
+		return compte;
+	}
+
+	public void setCompte(int compte) {
+		this.compte = compte;
 	}
 
 	@Override

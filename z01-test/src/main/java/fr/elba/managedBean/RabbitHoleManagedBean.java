@@ -2,6 +2,7 @@ package fr.elba.managedBean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -34,6 +35,7 @@ public class RabbitHoleManagedBean {
 	private List<RabbitHole> lRabbitHoles;
 	private List<String> lLibelles;
 
+	
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
 	// ++++++++++++++++++++++
@@ -47,8 +49,11 @@ public class RabbitHoleManagedBean {
 	public void init() {
 		this.lRabbitHoles = rhSer.getAll();
 		this.lLibelles = new ArrayList<>();
-		for (RabbitHole rabLib : lRabbitHoles){
+		for (RabbitHole rabLib : this.lRabbitHoles) {
 			this.lLibelles.add(rabLib.getLibelle());
+		}
+		for (int i= 0; i<=this.lRabbitHoles.size();i++) {
+			this.lRabbitHoles.get(i).setCompte(this.lRabbitHoles.get(i).getlCommunautaire().size());
 		}
 	}
 
@@ -79,6 +84,7 @@ public class RabbitHoleManagedBean {
 	public void setlLibelles(List<String> lLibelles) {
 		this.lLibelles = lLibelles;
 	}
+
 
 	// +++++++++++++++++
 	// ---- Méthode ----

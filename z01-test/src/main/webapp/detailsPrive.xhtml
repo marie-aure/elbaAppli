@@ -19,7 +19,7 @@
 	<h1></h1>
 
 	<p:fieldset legend="Informations">
-		<h:form id="form">
+		<h:form id="formP">
 			<h:panelGrid columns="2" cellpadding="5">
 
 				<p:outputLabel for="id" value="Id : " />
@@ -46,13 +46,13 @@
 				<p:outputLabel for="terrain" value="Terrain placé : " />
 				<h:panelGrid columns="2" cellpadding="5">
 				<h:outputText id="terrain" value="#{PriveMB.prive.terrain}" />
-				<p:commandButton value="Modifier Statut" action="#{PriveMB.modifierTerrain()}"/>
+				<p:commandButton value="Modifier Statut" action="#{TerrainMB.updateTerrainPrive()}" update=":formP"/>
 				</h:panelGrid>
 
 				<p:outputLabel for="batiment" value="Terrain construit : " />
 				<h:panelGrid columns="2" cellpadding="5">
 				<h:outputText id="batiment" value="#{PriveMB.prive.batiment}" />
-				<p:commandButton value="Modifier Statut" action="#{PriveMB.modifierBatiment()}"/>
+				<p:commandButton value="Modifier Statut" action="#{TerrainMB.updateBatimentPrive()}" update=":formP"/>
 				</h:panelGrid>				
 
 				<p:outputLabel for="classe" value="Classe : " />

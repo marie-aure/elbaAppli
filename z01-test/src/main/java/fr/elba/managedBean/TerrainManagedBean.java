@@ -92,7 +92,7 @@ public class TerrainManagedBean {
 	public String toAjouter() {
 		communautaireMB.setCommunautaire(new Communautaire());
 		priveMB.setPrive(new Prive());
-		return "ajouterTerrain ";
+		return "ajouterTerrain";
 	}
 	
 	public String createCommunautaire() {
@@ -151,6 +151,30 @@ public class TerrainManagedBean {
 		return "detailsPrive";
 	}
 	
+	public String updateTerrainCommunautaire() {
+		communautaireMB.updateTerrain();
+		this.lTerrains = teSer.getAll();
+		return "detailsCommunautaire";
+	}
+	
+	public String updateTerrainPrive() {
+		priveMB.updateTerrain();
+		this.lTerrains = teSer.getAll();
+		return "detailsPrive";
+	}
+	
+	public String updateBatimentCommunautaire() {
+		communautaireMB.updateBatiment();
+		this.lTerrains = teSer.getAll();
+		return "detailsCommunautaire";
+	}
+	
+	public String updateBatimentPrive() {
+		priveMB.updateBatiment();
+		this.lTerrains = teSer.getAll();
+		return "detailsPrive";
+	}
+
 	public String toDelete(int id) {
 		this.terrain = teSer.getById(id);
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();

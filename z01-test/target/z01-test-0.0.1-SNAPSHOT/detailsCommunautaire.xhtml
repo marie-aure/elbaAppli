@@ -19,7 +19,7 @@
 <h1></h1>
 
 	<p:fieldset legend="Informations">
-		<h:form id="form">
+		<h:form id="formC">
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:outputLabel for="id" value="Id : " />
 				<h:outputText id="id" value="#{CommunautaireMB.communautaire.id}" />
@@ -52,14 +52,14 @@
 							<h:panelGrid columns="2" cellpadding="5">
 				<h:outputText id="terrain"
 					value="#{CommunautaireMB.communautaire.terrain}" />
-					<p:commandButton value="Modifier Statut" action="#{CommunautaireMB.modifierTerrain()}" />
+					<p:commandButton value="Modifier Statut" action="#{TerrainMB.updateTerrainCommunautaire()}" update=":formC"/>
 					</h:panelGrid>
 
 				<p:outputLabel for="batiment" value="Terrain construit : " />
 						<h:panelGrid columns="2" cellpadding="5">
 				<h:outputText id="batiment"
 					value="#{CommunautaireMB.communautaire.batiment}" />
-<p:commandButton value="Modifier Statut" action="#{CommunautaireMB.modifierBatiment()}" />
+<p:commandButton value="Modifier Statut" action="#{TerrainMB.updateBatimentCommunautaire()}" update=":formC"/>
 </h:panelGrid>
 
 				<p:outputLabel for="fonction" value="Fonction(s) : " />

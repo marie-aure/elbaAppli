@@ -193,5 +193,23 @@ public class PriveManagedBean {
 		prSer.delete(id);
 		this.lPrives = prSer.getAll();
 	}
+	
+	public void updateTerrain() {
+		if(this.prive.getTerrain()) {
+			this.prive.setTerrain(false);
+		} else if (!this.prive.getTerrain()) {
+			this.prive.setTerrain(true);
+		}
+		prSer.update(this.prive);
+	}
+	
+	public void updateBatiment() {
+		if(this.prive.getBatiment()) {
+			this.prive.setBatiment(false);
+		} else if (!this.prive.getBatiment()) {
+			this.prive.setBatiment(true);
+		}
+		prSer.update(this.prive);
+	}
 
 }
