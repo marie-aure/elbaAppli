@@ -52,9 +52,7 @@ public class RabbitHoleManagedBean {
 		for (RabbitHole rabLib : this.lRabbitHoles) {
 			this.lLibelles.add(rabLib.getLibelle());
 		}
-		for (int i= 0; i<=this.lRabbitHoles.size();i++) {
-			this.lRabbitHoles.get(i).setCompte(this.lRabbitHoles.get(i).getlCommunautaire().size());
-		}
+		compteAll();
 	}
 
 	// +++++++++++++++++++++++
@@ -90,4 +88,13 @@ public class RabbitHoleManagedBean {
 	// ---- Méthode ----
 	// +++++++++++++++++
 
+	public void compteAll(){
+		List<RabbitHole> lRH = new ArrayList<>();
+		for (RabbitHole rh : this.lRabbitHoles) {
+			rh.setCompte(rh.getlCommunautaire().size());
+			lRH.add(rh);
+		}
+		this.lRabbitHoles = lRH;
+	}
+	
 }
