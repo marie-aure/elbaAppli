@@ -39,10 +39,24 @@
 
 			<p:column headerText="Supprimer">
 				<p:commandButton value="Supprimer"
-					action="#{RabbitHoleMB.delete(rhs.id)}" />
+					action="#{RabbitHoleMB.delete(rhs.id)}" update=":formupdate" />
 			</p:column>
 
 		</p:dataTable>
+
+		<br />
+		<p:fieldset>
+			<h2>Ajouter un Rabbit hole</h2>
+
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<p:outputLabel for="libelle" value="Libellé : " />
+				<p:inputText id="libelle"
+					value="#{RabbitHoleMB.rabbitHole.libelle}" placeholder=""/>
+				<p:commandButton type="submit" value="Ajouter"
+					action="#{RabbitHoleMB.create()}" update=":formupdate" />
+			</h:panelGrid>
+		</p:fieldset>
 	</h:form>
 </h:body>
 </html>

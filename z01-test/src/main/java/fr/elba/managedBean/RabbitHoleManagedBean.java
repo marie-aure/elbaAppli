@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import fr.elba.model.RabbitHole;
 import fr.elba.service.IRabbitHoleService;
@@ -48,10 +50,7 @@ public class RabbitHoleManagedBean {
 	@PostConstruct
 	public void init() {
 		this.lRabbitHoles = rhSer.getAll();
-		this.lLibelles = new ArrayList<>();
-		for (RabbitHole rabLib : this.lRabbitHoles) {
-			this.lLibelles.add(rabLib.getLibelle());
-		}
+		updatelLibelles();
 		compteAll();
 	}
 
@@ -97,4 +96,47 @@ public class RabbitHoleManagedBean {
 		this.lRabbitHoles = lRH;
 	}
 	
+	public void updatelLibelles() {
+		this.lLibelles = new ArrayList<>();
+		for (RabbitHole rabLib : this.lRabbitHoles) {
+			this.lLibelles.add(rabLib.getLibelle());
+		}
+	}
+	
+	public String create() {
+		this.rabbitHole.setCompte(0);
+		this.rabbitHole.setlCommunautaire(null);
+		rhSer.create(this.rabbitHole);
+		this.rabbitHole = new RabbitHole();
+		this.lRabbitHoles = rhSer.getAll();
+		compteAll();
+		updatelLibelles();
+		return "listeRabbitHoles";
+	}
+	
+	public String toModifier(int id) {
+		this.rabbitHole = rhSer.getById(id);
+		return "modifierRabbitHole";
+	}
+	
+	public String update() {
+		rhSer.update(this.rabbitHole);
+		this.lRabbitHoles = rhSer.getAll();
+		compteAll();
+		updatelLibelles();
+		return "listeRabbitHoles";
+	}
+	
+	public String delete(int id) {
+		rhSer.delete(id);
+		this.lRabbitHoles = rhSer.getAll();
+		compteAll();
+		updatelLibelles();
+		return "listeRabbitHoles";
+	}
+	
+	public String toListe() {
+		compteAll();
+		return "listeRabbitHoles";
+	}
 }

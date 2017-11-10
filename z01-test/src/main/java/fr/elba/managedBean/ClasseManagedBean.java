@@ -9,7 +9,9 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import fr.elba.model.Classe;
+import fr.elba.model.Quartier;
 import fr.elba.service.IClasseService;
+import fr.elba.service.IQuartierService;
 
 @ManagedBean(name = "ClasseMB")
 @SessionScoped
@@ -22,10 +24,17 @@ public class ClasseManagedBean {
 	@ManagedProperty("#{ClasseService}")
 	private IClasseService clSer;
 
+	@ManagedProperty("#{QuartierService}")
+	private IQuartierService quSer;
+	
 	public void setClSer(IClasseService clSer) {
 		this.clSer = clSer;
 	}
 
+	public void setQuSer(IQuartierService quSer) {
+		this.quSer = quSer;
+	}
+	
 	// +++++++++++++++++++
 	// ---- Variables ----
 	// +++++++++++++++++++
@@ -33,7 +42,9 @@ public class ClasseManagedBean {
 	private Classe classe;
 	private List<Classe> lClasses;
 	private List<String> lLibelles;
-
+	private String selectedQuartier;
+	private String selectedClasseSup;
+	
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
 	// ++++++++++++++++++++++
@@ -46,10 +57,7 @@ public class ClasseManagedBean {
 	@PostConstruct
 	public void init() {
 		this.lClasses = clSer.getAll();
-		this.lLibelles = new ArrayList<>();
-		for (Classe claLib : this.lClasses){
-			this.lLibelles.add(claLib.getLibelle());
-		}
+		updatelLibelle();
 	}
 
 	// +++++++++++++++++++++++
@@ -80,8 +88,68 @@ public class ClasseManagedBean {
 		this.lLibelles = lLibelles;
 	}
 
+	public String getSelectedQuartier() {
+		return selectedQuartier;
+	}
+
+	public void setSelectedQuartier(String selectedQuartier) {
+		this.selectedQuartier = selectedQuartier;
+	}
+
+	public String getSelectedClasseSup() {
+		return selectedClasseSup;
+	}
+
+	public void setSelectedClasseSup(String selectedClasseSup) {
+		this.selectedClasseSup = selectedClasseSup;
+	}
+
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
 
+	public void compteAll() {
+		List<Classe> lCl = new ArrayList<>();
+		for (Classe cla : lClasses) {
+			cla.setCompte(cla.getlFamilles().size());
+			lCl.add(cla);
+		}
+		this.lClasses = lCl;
+	}
+
+	public String toAjouter() {
+		this.classe = new Classe();
+		return "ajouterClasse";
+	}
+	
+	public void updatelLibelle() {
+		this.lLibelles = new ArrayList<>();
+		for (Classe claLib : this.lClasses){
+			this.lLibelles.add(claLib.getLibelle());
+		}
+	}
+	
+	public String toListe() {
+		compteAll();
+		return "listeClasses";
+	}
+	
+	public String create() {
+		Quartier quartier = quSer.getByName(this.selectedQuartier);
+		this.classe.setQuartier(quartier);
+		this.selectedQuartier = null;
+		Classe clasSup = clSer.getByName(selectedClasseSup);
+		this.classe.setClasseSup(clasSup);
+		this.selectedClasseSup = null;
+		clSer.create(this.classe);
+		this.lClasses = clSer.getAll();
+		updatelLibelle();
+		return "detailsClasse";
+	}
+	
+	public String toDetails(int id) {
+		this.classe = clSer.getById(id);
+		return "detailsClasse";
+	}
+	
 }

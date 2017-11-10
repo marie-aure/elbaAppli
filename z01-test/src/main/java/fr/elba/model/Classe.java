@@ -8,8 +8,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -24,10 +27,23 @@ public class Classe {
 
 	private String libelle;
 
+	@Transient
+	private int compte;
+	
 	// liaisons
+	@ManyToOne
+	private Quartier quartier;
+	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "classe",cascade=CascadeType.ALL)
 	private List<Prive> lPrives;
+	
+	@OneToMany(mappedBy="classe", cascade=CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Famille> lFamilles;
+	
+	@OneToOne
+	private Classe classeSup;
 
 	public Classe() {
 		super();
@@ -60,6 +76,14 @@ public class Classe {
 		this.libelle = libelle;
 	}
 
+	public Quartier getQuartier() {
+		return quartier;
+	}
+
+	public void setQuartier(Quartier quartier) {
+		this.quartier = quartier;
+	}
+
 	public List<Prive> getlPrives() {
 		return lPrives;
 	}
@@ -67,10 +91,39 @@ public class Classe {
 	public void setlPrives(List<Prive> lPrives) {
 		this.lPrives = lPrives;
 	}
+	
+	public Classe getClasseSup() {
+		return classeSup;
+	}
+
+	public void setClasseSup(Classe classeSup) {
+		this.classeSup = classeSup;
+	}
+	
+
+	public int getCompte() {
+		return compte;
+	}
+
+	public void setCompte(int compte) {
+		this.compte = compte;
+	}
+
+	public List<Famille> getlFamilles() {
+		return lFamilles;
+	}
+
+	public void setlFamilles(List<Famille> lFamilles) {
+		this.lFamilles = lFamilles;
+	}
 
 	@Override
 	public String toString() {
-		return "Classe [id=" + id + ", libelle=" + libelle + ", lPrives=" + lPrives + "]";
+		return "Classe [id=" + id + ", " + (libelle != null ? "libelle=" + libelle + ", " : "")
+				+ (quartier != null ? "quartier=" + quartier + ", " : "")
+				+ (lPrives != null ? "lPrives=" + lPrives + ", " : "")
+				+ (classeSup != null ? "classeSup=" + classeSup : "") + "]";
 	}
 
+	
 }

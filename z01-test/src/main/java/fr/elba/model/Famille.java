@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,19 +30,24 @@ public class Famille {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Terrain> lTerrains;
 
+	@ManyToOne
+	private Classe classe;
+	
 	public Famille() {
 		super();
 	}
 
-	public Famille(String nom) {
+	public Famille(String nom,Classe classe) {
 		super();
 		this.nom = nom;
+		this.classe = classe;
 	}
 
-	public Famille(int id, String nom) {
+	public Famille(int id, String nom, Classe classe) {
 		super();
 		this.id = id;
 		this.nom = nom;
+		this.classe = classe;
 	}
 
 	public int getId() {
@@ -66,6 +72,14 @@ public class Famille {
 
 	public void setlTerrains(List<Terrain> lTerrains) {
 		this.lTerrains = lTerrains;
+	}
+	
+	public Classe getClasse() {
+		return classe;
+	}
+
+	public void setClasse(Classe classe) {
+		this.classe = classe;
 	}
 
 	@Override

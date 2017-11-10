@@ -46,10 +46,7 @@ public class QuartierManagedBean {
 	@PostConstruct
 	public void init() {
 		this.lQuartiers = quSer.getAll();
-		this.lLibelles = new ArrayList<>();
-		for (Quartier quaLib : lQuartiers) {
-			this.lLibelles.add(quaLib.getLibelle());
-		}
+		updateLibelle();
 	}
 
 	// +++++++++++++++++++++++
@@ -84,4 +81,37 @@ public class QuartierManagedBean {
 	// ---- Méthode ----
 	// +++++++++++++++++
 
+	public void updateLibelle() {
+		this.lLibelles = new ArrayList<>();
+		for (Quartier quaLib : lQuartiers) {
+			this.lLibelles.add(quaLib.getLibelle());
+		}
+	}
+	
+	public String create() {
+		quSer.create(this.quartier);
+		this.quartier = new Quartier();
+		this.lQuartiers = quSer.getAll();
+		updateLibelle();
+		return "listeQuartiers";
+	}
+	
+	public String toModifier(int id) {
+		this.quartier = quSer.getById(id);
+		return "modifierQuartier";
+	}
+	
+	public String update() {
+		quSer.update(this.quartier);
+		this.lQuartiers = quSer.getAll();
+		updateLibelle();
+		return "listeQuartiers";
+	}
+	
+	public String delete(int id) {
+		quSer.delete(id);
+		this.lQuartiers = quSer.getAll();
+		updateLibelle();
+		return "listeQuartiers";
+	}
 }

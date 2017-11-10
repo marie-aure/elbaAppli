@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Classe</title>
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+
+	</ui:insert>
+
+	<h1></h1>
+
+	<p:fieldset legend="Informations">
+		<h:form id="formC">
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="id" value="Id : " />
+				<h:outputText id="id" value="#{ClasseMB.classe.id}" />
+
+				<p:outputLabel for="libelle" value="Libellé : " />
+				<h:outputText id="libelle" value="#{ClasseMB.classe.libelle}" />
+
+				<p:outputLabel for="quartier" value="Quartier : " />
+				<h:outputText id="quartier"
+					value="#{ClasseMB.classe.quartier.libelle}" />
+
+				<p:outputLabel for="famille" value="Famille(s) : " />
+				<p:dataTable var="fam" value="#{ClasseMB.classe.lFamilles}"
+					id="dataF">
+					<p:column headerText="nom">
+						<h:outputText value="#{fam.nom}" />
+					</p:column>
+
+					<p:column headerText="Détails">
+						<p:commandButton value="Voir"
+							action="#{FamilleMB.voirFamille(fam.id)}" />
+					</p:column>
+				</p:dataTable>
+
+				<p:outputLabel for="devoir" value="Devoir(s) : " />
+
+				<p:outputLabel for="droit" value="Droit(s) : " />
+
+				<p:outputLabel for="condition" value="Condition(s) de passage : " />
+
+			</h:panelGrid>
+		</h:form>
+	</p:fieldset>
+
+
+
+</h:body>
+</html>

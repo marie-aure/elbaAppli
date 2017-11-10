@@ -12,21 +12,29 @@
 <body>
 	<ui:composition>
 		<h:form>
-			<p:menubar >
+			<p:menubar>
 				<p:menuitem value="Accueil" url="index.xhtml" />
-				
+
 				<p:submenu label="Terrains">
 					<p:menuitem value="Tous les terrains" url="listeTerrains.xhtml" />
-					<p:menuitem value="Ajouter un terrain" action="#{TerrainMB.toAjouter()}" />
-					<p:menuitem value="Avancement construction" url="avancementTerrain.xhtml"/>
+					<p:menuitem value="Ajouter un terrain"
+						action="#{TerrainMB.toAjouter()}" />
+					<p:menuitem value="Avancement construction"
+						url="avancementTerrain.xhtml" />
 				</p:submenu>
 
-			<p:submenu label="Rabbit Holes">
-					<p:menuitem value="Tous les rabbit holes" url="listeRabbitHoles.xhtml" />
+
+				<p:menuitem value="Rabbit Holes" url="listeRabbitHoles.xhtml" />
+
+
+				<p:menuitem value="Quartiers" url="listeQuartiers.xhtml" />
+
+				<p:submenu label="Classes">
+					<p:menuitem value="Toutes les classes" action="#{ClasseMB.toListe()}" />
+					<p:menuitem value="Ajouter une classe" action="#{ClasseMB.toAjouter()}" />
 				</p:submenu>
-			
 			</p:menubar>
 		</h:form>
-	</ui:composition> 
+	</ui:composition>
 </body>
 </html>

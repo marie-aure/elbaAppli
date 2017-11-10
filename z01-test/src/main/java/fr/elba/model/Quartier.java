@@ -29,6 +29,10 @@ public class Quartier {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Terrain> lTerrains;
 
+	@OneToMany(mappedBy="quartier",cascade=CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Classe> lClasses;
+	
 	public Quartier() {
 		super();
 	}
@@ -66,6 +70,14 @@ public class Quartier {
 
 	public void setlTerrains(List<Terrain> lTerrains) {
 		this.lTerrains = lTerrains;
+	}
+	
+	public List<Classe> getlClasses() {
+		return lClasses;
+	}
+
+	public void setlClasses(List<Classe> lClasses) {
+		this.lClasses = lClasses;
 	}
 
 	@Override

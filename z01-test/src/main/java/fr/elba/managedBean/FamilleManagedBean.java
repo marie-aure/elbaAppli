@@ -84,4 +84,9 @@ public class FamilleManagedBean {
 	// ---- Méthode ----
 	// +++++++++++++++++
 
+	public String voirFamille(int id) {
+		this.famille = faSer.getById(id);
+		return "detailsFamille";
+	}
+	
 }
