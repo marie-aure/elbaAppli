@@ -8,6 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Tous les terrains</title>
+<link type="text/css" rel="stylesheet" href="css/main.css"/>
 </h:head>
 <h:body>
 
@@ -15,11 +16,12 @@
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
 
 	</ui:insert>
+<div class="main">
 
 	<h1>Tous les terrains</h1>
 	<h:form id="formupdate">
-		<p:dataTable var="ter" value="#{TerrainMB.lTerrains}" id="dataT">
-			<p:column headerText="Id">
+		<p:dataTable var="ter" value="#{TerrainMB.lTerrains}" id="dataT" styleclass="dtStyle">
+			<p:column headerText="Id" >
 				<h:outputText value="#{ter.id}" />
 			</p:column>
 
@@ -50,5 +52,8 @@
 
 		</p:dataTable>
 	</h:form>
+	
+	</div>
 </h:body>
+
 </html>

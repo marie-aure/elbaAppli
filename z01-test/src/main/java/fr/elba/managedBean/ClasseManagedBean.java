@@ -152,4 +152,6 @@ public class ClasseManagedBean {
 		return "detailsClasse";
 	}
 	
+	
+	
 }

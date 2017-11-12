@@ -8,6 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Classe</title>
+<link type="text/css" rel="stylesheet" href="css/main.css"/>
 </h:head>
 <h:body>
 
@@ -15,7 +16,7 @@
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
 
 	</ui:insert>
-
+<div class="main">
 	<h1></h1>
 
 	<p:fieldset legend="Informations">
@@ -31,30 +32,23 @@
 				<h:outputText id="quartier"
 					value="#{ClasseMB.classe.quartier.libelle}" />
 
-				<p:outputLabel for="famille" value="Famille(s) : " />
-				<p:dataTable var="fam" value="#{ClasseMB.classe.lFamilles}"
-					id="dataF">
-					<p:column headerText="nom">
-						<h:outputText value="#{fam.nom}" />
-					</p:column>
+				<h:outputText id="famille" value="Famille(s) : " />
+								<p:dataTable var="fam" value="#{ClasseMB.classe.lFamilles}">
+									<p:column headerText="nom">
+										<h:outputText value="#{fam.nom}" />
+									</p:column>
 
-					<p:column headerText="Détails">
-						<p:commandButton value="Voir"
-							action="#{FamilleMB.voirFamille(fam.id)}" />
-					</p:column>
-				</p:dataTable>
-
-				<p:outputLabel for="devoir" value="Devoir(s) : " />
-
-				<p:outputLabel for="droit" value="Droit(s) : " />
-
-				<p:outputLabel for="condition" value="Condition(s) de passage : " />
+									<p:column headerText="Détails">
+										<p:commandButton value="Voir"
+											action="#{FamilleMB.voirFamille(fam.id)}" />
+									</p:column>
+								</p:dataTable>
 
 			</h:panelGrid>
 		</h:form>
 	</p:fieldset>
 
-
+</div>
 
 </h:body>
 </html>

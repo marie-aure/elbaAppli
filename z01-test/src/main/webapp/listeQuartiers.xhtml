@@ -8,6 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Tous les Quartiers</title>
+<link type="text/css" rel="stylesheet" href="css/main.css"/>
 </h:head>
 <h:body>
 
@@ -15,7 +16,7 @@
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
 
 	</ui:insert>
-
+<div class="main">
 	<h1>Tous les quartiers</h1>
 	<h:form id="formupdate">
 		<p:dataTable var="qua" value="#{QuartierMB.lQuartiers}"
@@ -54,5 +55,6 @@
 			</h:panelGrid>
 		</p:fieldset>
 	</h:form>
+	</div>
 </h:body>
 </html>

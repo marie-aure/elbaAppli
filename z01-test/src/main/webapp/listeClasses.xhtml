@@ -8,6 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Toutes les Classes</title>
+<link type="text/css" rel="stylesheet" href="css/main.css"/>
 </h:head>
 <h:body>
 
@@ -15,7 +16,7 @@
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
 
 	</ui:insert>
-
+<div class="main">
 <h1>Toutes les classes</h1>
 	<h:form id="formupdate">
 		<p:dataTable var="cla" value="#{ClasseMB.lClasses}"
@@ -56,6 +57,6 @@
 	</h:form>
 
 
-
+</div>
 </h:body>
 </html>
