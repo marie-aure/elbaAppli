@@ -152,6 +152,12 @@ public class ClasseManagedBean {
 		return "detailsClasse";
 	}
 	
+	public String toModifier(int id) {
+		this.classe = clSer.getById(id);
+		this.selectedQuartier = this.classe.getQuartier().getLibelle();
+		this.selectedClasseSup = this.classe.getClasseSup().getLibelle();
+		return "modifierClasse";
+	}
 	
 	
 }

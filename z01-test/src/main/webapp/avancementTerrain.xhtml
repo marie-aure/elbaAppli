@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Modifier Terrain</title>
-<link type="text/css" rel="stylesheet" href="css/main.css"/>
+	<link type="text/css" rel="stylesheet" href="css/main.css" />
 </h:head>
 <h:body>
 	<ui:insert>
@@ -16,33 +16,33 @@
 
 	</ui:insert>
 	<div class="main">
-	<h1>Avancement des terrains</h1>
-	<h:form id="formtest">
-		<p:dataTable var="ter" value="#{TerrainMB.lTerrains}" id="dataT">
-			<p:column headerText="Id">
-				<h:outputText value="#{ter.id}" />
-			</p:column>
+		<h1>Avancement des terrains</h1>
+		<h:form id="formtest">
+			<p:dataTable var="ter" value="#{TerrainMB.lTerrains}" id="dataT">
+				<p:column headerText="Id">
+					<h:outputText value="#{ter.id}" />
+				</p:column>
 
-			<p:column headerText="Libellé">
-				<h:outputText value="#{ter.libelle}" />
-			</p:column>
+				<p:column headerText="Libellé">
+					<h:outputText value="#{ter.libelle}" />
+				</p:column>
 
-			<p:column headerText="Terrain placé">
-				<h:outputText value="#{ter.terrain}" />
-				<br />
-				<p:commandButton action="#{TerrainMB.updateTerrain(ter.id)}"
-					value="OK / KO" update=":formtest:dataT" />
-			</p:column>
+				<p:column headerText="Terrain placé">
+					<h:outputText value="#{ter.terrain}" />
+					<br />
+					<p:commandButton action="#{TerrainMB.updateTerrain(ter.id)}"
+						value="OK / KO" update=":formtest:dataT" />
+				</p:column>
 
-			<p:column headerText="Terrain construit">
-				<h:outputText value="#{ter.batiment}" />
-				<br />
-				<p:commandButton action="#{TerrainMB.updateBatiment(ter.id)}"
-					value="OK / KO" update=":formtest:dataT" />
-			</p:column>
+				<p:column headerText="Terrain construit">
+					<h:outputText value="#{ter.batiment}" />
+					<br />
+					<p:commandButton action="#{TerrainMB.updateBatiment(ter.id)}"
+						value="OK / KO" update=":formtest:dataT" />
+				</p:column>
 
-		</p:dataTable>
-	</h:form>
+			</p:dataTable>
+		</h:form>
 	</div>
 </h:body>
 </html>

@@ -7,23 +7,21 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Ajouter Classe</title>
-	
+	<title>Modifier Terrain</title>
 </h:head>
 <h:body>
 	<link type="text/css" rel="stylesheet" href="css/main.css" />
 	<ui:insert>
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
-
 	</ui:insert>
+	<h1>Modifier la classe</h1>
 	<div class="main">
-		<h1>Ajouter une classe</h1>
 		<fieldset>
 			<h:form>
 				<h:panelGrid columns="2" cellpadding="5">
-
 					<p:outputLabel for="libelle" value="Libellé : " />
-					<p:inputText id="libelle" value="#{ClasseMB.classe.libelle}" />
+					<p:inputText id="libelle" value="#{ClasseMB.classe.libelle}"
+						placeholder="#{ClasseMB.classe.libelle}" />
 
 					<p:outputLabel for="quartier" value="Quartier : " />
 					<p:selectOneMenu id="quartier" value="#{ClasseMB.selectedQuartier}">
@@ -31,15 +29,15 @@
 						<f:selectItems value="#{QuartierMB.lLibelles}" />
 					</p:selectOneMenu>
 
-					<p:outputLabel for="classeSup" value="Classe Supérieure : " />
+					<p:outputLabel for="classeSup" value="Classe supérieure : " />
 					<p:selectOneMenu id="classeSup"
 						value="#{ClasseMB.selectedClasseSup}">
 						<f:selectItem itemLabel="Selectionner" itemValue="" />
 						<f:selectItems value="#{ClasseMB.lLibelles}" />
 					</p:selectOneMenu>
 
-					<p:commandButton type="submit" value="Ajouter"
-						action="#{ClasseMB.create()}" />
+					<p:commandButton type="submit" value="Modifier"
+						action="#{ClasseMB.update()}" />
 				</h:panelGrid>
 			</h:form>
 		</fieldset>
