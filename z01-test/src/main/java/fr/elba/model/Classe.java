@@ -45,6 +45,9 @@ public class Classe {
 	@OneToOne
 	private Classe classeSup;
 
+	@OneToOne(mappedBy="classeSup")
+	private Classe classeInf;
+	
 	public Classe() {
 		super();
 	}
@@ -115,6 +118,16 @@ public class Classe {
 
 	public void setlFamilles(List<Famille> lFamilles) {
 		this.lFamilles = lFamilles;
+	}
+
+	
+	
+	public Classe getClasseInf() {
+		return classeInf;
+	}
+
+	public void setClasseInf(Classe classeInf) {
+		this.classeInf = classeInf;
 	}
 
 	@Override

@@ -30,8 +30,17 @@
 				<p:menuitem value="Quartiers" url="listeQuartiers.xhtml" />
 
 				<p:submenu label="Classes">
-					<p:menuitem value="Toutes les classes" action="#{ClasseMB.toListe()}" />
-					<p:menuitem value="Ajouter une classe" action="#{ClasseMB.toAjouter()}" />
+					<p:menuitem value="Toutes les classes"
+						action="#{ClasseMB.toListe()}" />
+					<p:menuitem value="Ajouter une classe"
+						action="#{ClasseMB.toAjouter()}" />
+				</p:submenu>
+
+				<p:submenu label="Devoirs">
+					<p:menuitem value="Tous les devoirs"
+						url="listeDevoirs.xhtml" />
+					<p:menuitem value="Ajouter un devoir"
+						url="ajouterDevoir.xhtml" />
 				</p:submenu>
 			</p:menubar>
 		</h:form>

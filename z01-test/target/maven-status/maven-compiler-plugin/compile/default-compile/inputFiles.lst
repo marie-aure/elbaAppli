@@ -4,9 +4,12 @@ D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\servi
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\service\impl\ClasseServiceImpl.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\dao\IRabbitHoleDao.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\service\impl\CommunautaireServiceImpl.java
+D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\managedBean\DevoirManagedBean.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\service\IFamilleService.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\service\impl\TerrainServiceImpl.java
+D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\model\Devoir.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\model\Classe.java
+D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\dao\impl\DevoirDaoImpl.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\dao\IQuartierDao.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\service\impl\QuartierServiceImpl.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\managedBean\ClasseManagedBean.java
@@ -18,6 +21,7 @@ D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\dao\I
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\dao\impl\CommunautaireDaoImpl.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\dao\IPriveDao.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\service\impl\RabbitHoleServiceImpl.java
+D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\service\IDevoirService.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\service\IQuartierService.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\model\Quartier.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\dao\IClasseDao.java
@@ -32,6 +36,7 @@ D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\dao\I
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\managedBean\QuartierManagedBean.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\model\Prive.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\service\impl\PriveServiceImpl.java
+D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\dao\IDevoirDao.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\service\ITerrainService.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\dao\impl\RabbitHoleDaoImpl.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\managedBean\RabbitHoleManagedBean.java
@@ -40,3 +45,4 @@ D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\manag
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\model\Communautaire.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\model\RabbitHole.java
 D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\managedBean\TerrainManagedBean.java
+D:\Profiles\mliza\Documents\workspaces\test\z01-test\src\main\java\fr\elba\service\impl\DevoirServiceImpl.java
