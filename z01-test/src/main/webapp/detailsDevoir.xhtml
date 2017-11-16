@@ -34,8 +34,41 @@
 					<h:outputText id="precision" value="#{DevoirMB.devoir.precisions}" />
 
 					<p:outputLabel for="commentaire" value="Commentaires : " />
-					<h:outputText id="commentaire" value="#{DevoirMB.devoir.commentaire}" />
+					<h:outputText id="commentaire"
+						value="#{DevoirMB.devoir.commentaire}" />
 
+					<p:outputLabel for="classe" value="Classe(s) : " />
+					<p:dataTable var="lia"
+						value="#{DevoirMB.liaisons.entrySet().toArray()}" id="classe">
+						<p:column headerText="Classe">
+							<h:outputText value="#{lia.key.libelle}" />
+						</p:column>
+						<p:column headerText="Valeur Minimum">
+							<h:outputText value="#{lia.value.valeurMin}" />
+						</p:column>
+
+						<p:column headerText="Valeur Maximum">
+							<h:outputText value="#{lia.value.valeurMax}"
+								rendered="#{lia.value!=null}" />
+
+							<p:commandButton type="submit" value="Ajouter"
+								action="#{DevoirMB.toAjouterLiaisonDVCL(lia.key.id)}"
+								rendered="#{lia.value==null}" />
+						</p:column>
+
+						<p:column headerText="Modifier">
+							<p:commandButton type="submit" value="Modifier"
+								action="#{LiaisonDVCLMB.toModifier(lia.value.id)}"
+								rendered="#{lia.value!=null}" />
+						</p:column>
+
+						<p:column headerText="Supprimer">
+							<p:commandButton type="submit" value="Ajouter"
+								action="#{LiaisonDVCLMB.delete(lia.value.id)}"
+								rendered="#{lia.value!=null}" />
+						</p:column>
+
+					</p:dataTable>
 				</h:panelGrid>
 			</h:form>
 		</p:fieldset>

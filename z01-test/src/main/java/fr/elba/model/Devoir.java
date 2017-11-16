@@ -1,10 +1,17 @@
 package fr.elba.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "devoirs")
@@ -18,7 +25,12 @@ public class Devoir {
 	private String libelle;
 	private String precisions;
 	private String commentaire;
-	
+
+	// liaisons
+	@OneToMany(mappedBy = "devoir", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<LiaisonDVCL> lLiaisonDVCLs;
+
 	public Devoir() {
 		super();
 	}
@@ -80,6 +92,14 @@ public class Devoir {
 		this.commentaire = commentaire;
 	}
 
+	public List<LiaisonDVCL> getlLiaisonDVCLs() {
+		return lLiaisonDVCLs;
+	}
+
+	public void setlLiaisonDVCLs(List<LiaisonDVCL> lLiaisonDVCLs) {
+		this.lLiaisonDVCLs = lLiaisonDVCLs;
+	}
+
 	@Override
 	public String toString() {
 		return "Devoir [id=" + id + ", " + (categorie != null ? "categorie=" + categorie + ", " : "")
@@ -88,6 +108,4 @@ public class Devoir {
 				+ (commentaire != null ? "commentaire=" + commentaire : "") + "]";
 	}
 
-
-	
 }

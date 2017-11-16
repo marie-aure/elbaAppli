@@ -42,6 +42,10 @@ public class Classe {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Famille> lFamilles;
 	
+	@OneToMany(mappedBy="classe", cascade=CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<LiaisonDVCL> lLiaisonDVCLs;
+	
 	@OneToOne
 	private Classe classeSup;
 
@@ -128,6 +132,16 @@ public class Classe {
 
 	public void setClasseInf(Classe classeInf) {
 		this.classeInf = classeInf;
+	}
+	
+	
+
+	public List<LiaisonDVCL> getlLiaisonDVCLs() {
+		return lLiaisonDVCLs;
+	}
+
+	public void setlLiaisonDVCLs(List<LiaisonDVCL> lLiaisonDVCLs) {
+		this.lLiaisonDVCLs = lLiaisonDVCLs;
 	}
 
 	@Override

@@ -35,12 +35,12 @@
 			
 			<p:column headerText="Détails">
 				<p:commandButton value="Voir"
-					action="#{DevoirMB.toDetails(int id)}" />
+					action="#{DevoirMB.toDetails(dev.id)}" />
 			</p:column>
 			
 			<p:column headerText="Modifier">
-<!-- 				<p:commandButton value="Modifier" -->
-<!-- 					action="" /> -->
+				<p:commandButton value="Modifier"
+					action="#{DevoirMB.toModifier(dev.id)}" />
 			</p:column>
 
 			<p:column headerText="Supprimer">
