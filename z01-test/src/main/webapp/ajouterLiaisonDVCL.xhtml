@@ -21,7 +21,23 @@
 		<fieldset>
 			<h:form>
 				<h:panelGrid columns="2" cellpadding="5">
-				
+					<p:outputLabel for="devoir" value="Devoir : " />
+					<h:outputText id="devoir"
+						value="#{LiaisonDVCLMB.liaisonDVCL.devoir.libelle}" />
+
+					<p:outputLabel for="classe" value="Classe : " />
+					<h:outputText id="classe"
+						value="#{LiaisonDVCLMB.liaisonDVCL.classe.libelle}" />
+						
+					<p:outputLabel for="valMin" value="Valeur Minimum : " />
+					<p:inputText id="valMin" value="#{LiaisonDVCLMB.liaisonDVCL.valeurMin}" />
+					
+					<p:outputLabel for="valMax" value="Valeur Maximum : " />
+					<p:inputText id="valMax" value="#{LiaisonDVCLMB.liaisonDVCL.valeurMax}" />
+						
+						<p:commandButton type="submit" value="Ajouter"
+						action="#{DevoirMB.createLiaisonDVCL()}" />
+						
 				</h:panelGrid>
 			</h:form>
 		</fieldset>

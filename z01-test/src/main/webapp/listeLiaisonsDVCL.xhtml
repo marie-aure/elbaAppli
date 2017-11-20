@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Les devoirs</title>
+</h:head>
+<h:body>
+	<link type="text/css" rel="stylesheet" href="css/main.css" />
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+
+	</ui:insert>
+	<div class="main">
+		<h1>Valeurs des devoirs</h1>
+		<h:form id="formupdate">
+			<p:dataTable var="lDC" value="#{LiaisonDVCLMB.lLiaisonDVCLs}"
+				id="dataL">
+				<p:column headerText="Id">
+					<h:outputText value="#{lDC.id}" />
+				</p:column>
+
+				<p:column headerText="Devoir">
+					<h:outputText value="#{lDC.devoir.libelle}" />
+				</p:column>
+
+				<p:column headerText="Classe">
+					<h:outputText value="#{lDC.classe.libelle}" />
+				</p:column>
+
+				<p:column headerText="Valeur Minimum">
+					<h:outputText value="#{lDC.valeurMin}" />
+				</p:column>
+
+				<p:column headerText="Valeur Maximum">
+					<h:outputText value="#{lDC.valeurMax}" />
+				</p:column>
+
+				<p:column headerText="Voir Devoir">
+					<p:commandButton value="Voir"
+						action="#{DevoirMB.toDetails(lDC.devoir.id)}" />
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+
+
+	</div>
+</h:body>
+</html>

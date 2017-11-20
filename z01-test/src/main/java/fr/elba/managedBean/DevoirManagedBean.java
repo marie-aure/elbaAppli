@@ -148,4 +148,11 @@ public class DevoirManagedBean {
 		lDVCLMB.getLiaisonDVCL().setDevoir(this.devoir);
 		return "ajouterLiaisonDVCL";
 	}
+	
+	public String createLiaisonDVCL() {
+		lDVCLMB.create();
+		this.devoir=deSer.getById(this.devoir.getId());
+		updateLiaison();
+		return "detailsDevoir";
+	}
 }

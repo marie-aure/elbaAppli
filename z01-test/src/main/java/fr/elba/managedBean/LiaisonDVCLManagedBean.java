@@ -71,5 +71,10 @@ import fr.elba.service.ILiaisonDVCLService;
 		// +++++++++++++++++
 		// ---- Méthode ----
 		// +++++++++++++++++
+		
+		public void create() {
+			ldvclSer.create(this.liaisonDVCL);
+			this.lLiaisonDVCLs = ldvclSer.getAll();
+		}
 
 	}
