@@ -1,29 +1,64 @@
 @CHARSET "ISO-8859-1";
 
 body {
-	background-image: url(../images/background.jpg);
-    background-attachment: fixed; 
+	background-color: #58657a;
+	background-attachment: fixed;
+	margin : 0px 0px 0px 0px;
 }
 
 .main {
-/* 	background-color: rgba(255, 255, 255, 0.6); */
-	background-color: rgb(255, 255, 255);
-	margin-top: 10px;
+	background-color: white;
+	margin-top: 70px;
 	margin-bottom: 10px;
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-left: 5%;
+	margin-right: 5%;
 	padding: 10px;
-	border-style: solid;
-/* 	border-radius: 20px; */
-	border-color: black;
-	border-width: thin;
+	box-shadow: 0px 0px 10px;
+	height:1000px;
 }
+
+.navbar{
+	background-color: white;
+	box-shadow: 0px 0px 10px;
+	width:100%;
+	position:fixed;
+	top: 0;
+	height: 50px;
+}
+
+.ui-menu {
+	background-image: none;
+	background-color: rgba(0,0,0,0);
+	border: none;
+	margin: 0px 0px 0px 0px;
+	border-radius: 0px;
+}
+
+.ui-menu-list
+{
+	background-color: white!important;
+	background-image: none!important;
+	box-shadow: 0px 0px 10px!important;
+	border-radius: 0px !important;
+}
+
+.ui-menuitem-active:hover
+{
+	background-color: hotpink!important;
+}
+
+a .ui-menuitem-active
+{
+	background-color: green!important;
+}
+
+
 
 h1 {
 	text-align: center;
 	color: Black;
 	font-family: sans-serif;
-/* 	text-shadow: 0 0 2px #000000; */
+	/* 	text-shadow: 0 0 2px #000000; */
 	font-size: 30px;
 	font-style: normal;
 	font-weight: 900;
@@ -47,7 +82,7 @@ h1 {
 	border-width: thin;
 }
 
-.ui-datatable body td{
+.ui-datatable body td {
 	border: solid;
 	border-color: black;
 	border-width: thin;

@@ -1,0 +1,54 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background-image: url(../images/background.jpg);
+    background-attachment: fixed; 
+}
+
+.main {
+/* 	background-color: rgba(255, 255, 255, 0.6); */
+	background-color: rgb(255, 255, 255);
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 15%;
+	margin-right: 15%;
+	padding: 10px;
+	border-style: solid;
+/* 	border-radius: 20px; */
+	border-color: black;
+	border-width: thin;
+}
+
+h1 {
+	text-align: center;
+	color: Black;
+	font-family: sans-serif;
+/* 	text-shadow: 0 0 2px #000000; */
+	font-size: 30px;
+	font-style: normal;
+	font-weight: 900;
+}
+
+.ui-datatable {
+	border: solid;
+	border-color: black;
+	border-width: thin;
+}
+
+.ui-datatable thead th, .ui-datatable tfoot td {
+	background-color: rgba(0, 0, 0, 0);
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0));
+	font-size: 75%;
+	font-family: cursive;
+	font-style: oblique;
+	border: solid;
+	border-color: black;
+	border-width: thin;
+}
+
+.ui-datatable body td{
+	border: solid;
+	border-color: black;
+	border-width: thin;
+}
