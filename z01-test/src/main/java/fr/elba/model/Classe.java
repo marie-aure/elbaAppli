@@ -35,14 +35,14 @@ public class Classe {
 	private Quartier quartier;
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(mappedBy = "classe",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "classe"/*,cascade=CascadeType.ALL*/)
 	private List<Prive> lPrives;
 	
-	@OneToMany(mappedBy="classe", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="classe"/*, cascade=CascadeType.ALL*/)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Famille> lFamilles;
 	
-	@OneToMany(mappedBy="classe", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="classe"/*, cascade=CascadeType.ALL*/)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<LiaisonDVCL> lLiaisonDVCLs;
 	

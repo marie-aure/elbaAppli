@@ -25,11 +25,11 @@ public class Quartier {
 	private String libelle;
 
 	// liaisons
-	@OneToMany(mappedBy = "quartier",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "quartier"/*,cascade=CascadeType.ALL*/)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Terrain> lTerrains;
 
-	@OneToMany(mappedBy="quartier",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="quartier"/*,cascade=CascadeType.ALL*/)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Classe> lClasses;
 	

@@ -110,24 +110,24 @@ public class DevoirManagedBean {
 	public String create() {
 		deSer.create(this.devoir);
 		this.lDevoirs = deSer.getAll();
-		return "detailsDevoir";
+		return "detailsDevoir?faces-redirect=true";
 	}
 
 	public String toDetails(int id) {
 		this.devoir = deSer.getById(id);
 		updateLiaison();
-		return "detailsDevoir";
+		return "detailsDevoir?faces-redirect=true";
 	}
 
 	public String toModifier(int id) {
 		this.devoir = deSer.getById(id);
-		return "modifierDevoir";
+		return "modifierDevoir?faces-redirect=true";
 	}
 
 	public String update() {
 		deSer.update(this.devoir);
 		this.lDevoirs = deSer.getAll();
-		return "detailsDevoir";
+		return "detailsDevoir?faces-redirect=true";
 	}
 
 	public void updateLiaison() {
@@ -146,13 +146,13 @@ public class DevoirManagedBean {
 	public String toAjouterLiaisonDVCL(int id) {
 		lDVCLMB.getLiaisonDVCL().setClasse(clSer.getById(id));
 		lDVCLMB.getLiaisonDVCL().setDevoir(this.devoir);
-		return "ajouterLiaisonDVCL";
+		return "ajouterLiaisonDVCL?faces-redirect=true";
 	}
 	
 	public String createLiaisonDVCL() {
 		lDVCLMB.create();
 		this.devoir=deSer.getById(this.devoir.getId());
 		updateLiaison();
-		return "detailsDevoir";
+		return "detailsDevoir?faces-redirect=true";
 	}
 }

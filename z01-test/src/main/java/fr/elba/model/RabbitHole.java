@@ -29,7 +29,7 @@ public class RabbitHole {
 	private int compte;
 	
 	// liaisons
-	@ManyToMany(mappedBy = "lRabbitHoles",cascade=CascadeType.ALL)
+	@ManyToMany(mappedBy = "lRabbitHoles"/*,cascade=CascadeType.ALL*/)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Communautaire> lCommunautaire;
 

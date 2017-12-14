@@ -13,7 +13,7 @@ public class Prive extends Terrain {
 	private Boolean preConstruit;
 
 	// liaisons
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	private Classe classe;
 
 	public Prive() {

@@ -93,25 +93,32 @@ public class QuartierManagedBean {
 		this.quartier = new Quartier();
 		this.lQuartiers = quSer.getAll();
 		updateLibelle();
-		return "listeQuartiers";
+		return "listeQuartiers?faces-redirect=true";
 	}
 	
 	public String toModifier(int id) {
 		this.quartier = quSer.getById(id);
-		return "modifierQuartier";
+		return "modifierQuartier?faces-redirect=true";
 	}
 	
 	public String update() {
 		quSer.update(this.quartier);
 		this.lQuartiers = quSer.getAll();
 		updateLibelle();
-		return "listeQuartiers";
+		return "listeQuartiers?faces-redirect=true";
 	}
 	
 	public String delete(int id) {
 		quSer.delete(id);
 		this.lQuartiers = quSer.getAll();
 		updateLibelle();
-		return "listeQuartiers";
+		return "listeQuartiers?faces-redirect=true";
+	}
+	
+	public String toDetails(int id){
+		this.quartier = quSer.getById(id);
+		return "detailsQuartier?faces-redirect=true";
 	}
 }
+
+

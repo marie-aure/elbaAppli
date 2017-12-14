@@ -40,12 +40,14 @@ public class CommunautaireDaoImpl implements ICommunautaireDao {
 	@Override
 	public void create(Communautaire communautaire) {
 		Session s = sf.getCurrentSession();
+		s.clear();
 		s.save(communautaire);
 	}
 
 	@Override
 	public void update(Communautaire communautaire) {
 		Session s = sf.getCurrentSession();
+		s.clear();
 		s.update(communautaire);
 	}
 

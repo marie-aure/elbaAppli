@@ -20,7 +20,7 @@ public class Communautaire extends Terrain {
 	private String fonction;
 
 	// liaisons
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(/*cascade = CascadeType.ALL*/)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name="l_communautaire_rabbithole",joinColumns={@JoinColumn(name="id_terrain")}, inverseJoinColumns = {@JoinColumn(name="id_rabbithole")})
 	private List<RabbitHole> lRabbitHoles;

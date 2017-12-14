@@ -31,10 +31,10 @@ public class Terrain {
 	private Boolean batiment;
 	
 	// liaisons
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(/*cascade=CascadeType.ALL*/)
 	private Quartier quartier;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(/*cascade=CascadeType.ALL*/)
 	private Famille proprietaire;
 
 	public Terrain() {

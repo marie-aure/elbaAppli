@@ -27,7 +27,7 @@ public class Devoir {
 	private String commentaire;
 
 	// liaisons
-	@OneToMany(mappedBy = "devoir", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "devoir"/*, cascade = CascadeType.ALL*/)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<LiaisonDVCL> lLiaisonDVCLs;
 

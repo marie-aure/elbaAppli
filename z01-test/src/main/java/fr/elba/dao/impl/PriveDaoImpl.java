@@ -40,12 +40,14 @@ public class PriveDaoImpl implements IPriveDao {
 	@Override
 	public void create(Prive prive) {
 		Session s = sf.getCurrentSession();
+		s.clear();
 		s.save(prive);
 	}
 
 	@Override
 	public void update(Prive prive) {
 		Session s = sf.getCurrentSession();
+		s.clear();
 		s.update(prive);
 	}
 

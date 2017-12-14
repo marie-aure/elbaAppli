@@ -86,7 +86,7 @@ public class FamilleManagedBean {
 
 	public String voirFamille(int id) {
 		this.famille = faSer.getById(id);
-		return "detailsFamille";
+		return "detailsFamille?faces-redirect=true";
 	}
 	
 }

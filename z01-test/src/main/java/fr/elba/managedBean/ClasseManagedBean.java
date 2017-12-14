@@ -120,7 +120,7 @@ public class ClasseManagedBean {
 
 	public String toAjouter() {
 		this.classe = new Classe();
-		return "ajouterClasse";
+		return "ajouterClasse?faces-redirect=true";
 	}
 
 	public void updatelLibelle() {
@@ -132,7 +132,7 @@ public class ClasseManagedBean {
 
 	public String toListe() {
 		compteAll();
-		return "listeClasses";
+		return "listeClasses?faces-redirect=true";
 	}
 
 	public String create() {
@@ -145,7 +145,7 @@ public class ClasseManagedBean {
 		clSer.create(this.classe);
 		this.lClasses = clSer.getAll();
 		updatelLibelle();
-		return "detailsClasse";
+		return "detailsClasse?faces-redirect=true";
 	}
 
 	public String toDetails(int id) {
@@ -167,7 +167,7 @@ public class ClasseManagedBean {
 		} else {
 			this.selectedClasseSup = null;
 		}
-		return "modifierClasse";
+		return "modifierClasse?faces-redirect=true";
 	}
 
 	public String update() {
@@ -180,7 +180,7 @@ public class ClasseManagedBean {
 		clSer.update(this.classe);
 		this.lClasses = clSer.getAll();
 		updatelLibelle();
-		return "detailsClasse";
+		return "detailsClasse?faces-redirect=true";
 	}
 
 	public String delete(int id) {
@@ -195,7 +195,7 @@ public class ClasseManagedBean {
 		this.lClasses = clSer.getAll();
 		updatelLibelle();
 
-		return "listeClasses";
+		return "listeClasses?faces-redirect=true";
 
 	}
 }

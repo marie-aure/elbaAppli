@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Quartier</title>
+
+</h:head>
+<h:body>
+	<link type="text/css" rel="stylesheet" href="css/main.css" />
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+
+	</ui:insert>
+	<div class="main">
+		<h1></h1>
+
+		<p:fieldset legend="Informations">
+
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="id" value="Id : " />
+				<h:outputText id="id" value="#{QuartierMB.quartier.id}" />
+
+				<p:outputLabel for="libelle" value="Libellé : " />
+				<h:outputText id="libelle" value="#{QuartierMB.quartier.libelle}" />
+
+				<h:outputText id="terrain" value="Terrain (s) : " />
+				<p:dataTable var="ter" value="#{QuartierMB.quartier.lTerrains}">
+					<p:column headerText="Id">
+						<h:outputText value="#{ter.id}" />
+					</p:column>
+
+					<p:column headerText="Libelle">
+						<h:outputText value="#{ter.libelle}" />
+					</p:column>
+
+					<p:column headerText="Adresse">
+						<h:outputText value="#{ter.adresse}" />
+					</p:column>
+
+					<p:column headerText="Lieu-dit">
+						<h:outputText value="#{ter.lieuDit}" />
+					</p:column>
+
+					<p:column headerText="Détails">
+						<p:commandButton value="Voir"
+							action="#{TerrainMB.toDetails(ter.id)}" />
+					</p:column>
+				</p:dataTable>
+
+			</h:panelGrid>
+
+		</p:fieldset>
+
+	</div>
+
+</h:body>
+</html>

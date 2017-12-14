@@ -161,6 +161,7 @@ public class CommunautaireManagedBean {
 
 		this.communautaire = coSer.getById(id);
 		if (this.communautaire.getlRabbitHoles().size() > 0) {
+			this.selectedRabbitHoles = new ArrayList<>();
 			for (RabbitHole rabbitHole : this.communautaire.getlRabbitHoles()) {
 				this.selectedRabbitHoles.add(rabbitHole.getLibelle());
 			}

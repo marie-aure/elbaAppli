@@ -26,7 +26,7 @@ public class Famille {
 	private String nom;
 
 	// liaisons
-	@OneToMany(mappedBy = "proprietaire",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "proprietaire"/*,cascade=CascadeType.ALL*/)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Terrain> lTerrains;
 

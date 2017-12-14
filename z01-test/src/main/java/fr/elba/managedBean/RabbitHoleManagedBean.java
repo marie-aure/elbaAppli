@@ -111,12 +111,12 @@ public class RabbitHoleManagedBean {
 		this.lRabbitHoles = rhSer.getAll();
 		compteAll();
 		updatelLibelles();
-		return "listeRabbitHoles";
+		return "listeRabbitHoles?faces-redirect=true";
 	}
 	
 	public String toModifier(int id) {
 		this.rabbitHole = rhSer.getById(id);
-		return "modifierRabbitHole";
+		return "modifierRabbitHole?faces-redirect=true";
 	}
 	
 	public String update() {
@@ -124,7 +124,7 @@ public class RabbitHoleManagedBean {
 		this.lRabbitHoles = rhSer.getAll();
 		compteAll();
 		updatelLibelles();
-		return "listeRabbitHoles";
+		return "listeRabbitHoles?faces-redirect=true";
 	}
 	
 	public String delete(int id) {
@@ -132,11 +132,12 @@ public class RabbitHoleManagedBean {
 		this.lRabbitHoles = rhSer.getAll();
 		compteAll();
 		updatelLibelles();
-		return "listeRabbitHoles";
+		return "listeRabbitHoles?faces-redirect=true";
 	}
 	
 	public String toListe() {
+		this.lRabbitHoles = rhSer.getAll();
 		compteAll();
-		return "listeRabbitHoles";
+		return "listeRabbitHoles?faces-redirect=true";
 	}
 }

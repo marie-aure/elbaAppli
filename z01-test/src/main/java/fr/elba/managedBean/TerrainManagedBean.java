@@ -92,19 +92,19 @@ public class TerrainManagedBean {
 	public String toAjouter() {
 		communautaireMB.setCommunautaire(new Communautaire());
 		priveMB.setPrive(new Prive());
-		return "ajouterTerrain";
+		return "ajouterTerrain?faces-redirect=true";
 	}
 	
 	public String createCommunautaire() {
 		communautaireMB.create();
 		this.lTerrains = teSer.getAll();
-		return "detailsCommunautaire";
+		return "detailsCommunautaire?faces-redirect=true";
 	}
 	
 	public String createPrive() {
 		priveMB.create();
 		this.lTerrains = teSer.getAll();
-		return "detailsPrive";
+		return "detailsPrive?faces-redirect=true";
 	}
 	
 	public String toDetails(int id) {
@@ -114,10 +114,10 @@ public class TerrainManagedBean {
 		sessionMap.put("idTerrain", id);
 		if (this.terrain instanceof Communautaire) {
 			communautaireMB.details();
-			return "detailsCommunautaire";
+			return "detailsCommunautaire?faces-redirect=true";
 		} else if (this.terrain instanceof Prive) {
 			priveMB.details();
-			return "detailsPrive";
+			return "detailsPrive?faces-redirect=true";
 		} else {
 			return null;
 		}
@@ -130,10 +130,10 @@ public class TerrainManagedBean {
 		sessionMap.put("idTerrain", id);
 		if (this.terrain instanceof Communautaire) {
 			communautaireMB.modifier();
-			return "modifierCommunautaire";
+			return "modifierCommunautaire?faces-redirect=true";
 		} else if (this.terrain instanceof Prive) {
 			priveMB.modifier();
-			return "modifierPrive";
+			return "modifierPrive?faces-redirect=true";
 		} else {
 			return null;
 		}
@@ -142,37 +142,37 @@ public class TerrainManagedBean {
 	public String updateCommunautaire() {
 		communautaireMB.update();
 		this.lTerrains = teSer.getAll();
-		return "detailsCommunautaire";
+		return "detailsCommunautaire?faces-redirect=true";
 	}
 	
 	public String updatePrive() {
 		priveMB.update();
 		this.lTerrains = teSer.getAll();
-		return "detailsPrive";
+		return "detailsPrive?faces-redirect=true";
 	}
 	
 	public String updateTerrainCommunautaire() {
 		communautaireMB.updateTerrain();
 		this.lTerrains = teSer.getAll();
-		return "detailsCommunautaire";
+		return "detailsCommunautaire?faces-redirect=true";
 	}
 	
 	public String updateTerrainPrive() {
 		priveMB.updateTerrain();
 		this.lTerrains = teSer.getAll();
-		return "detailsPrive";
+		return "detailsPrive?faces-redirect=true";
 	}
 	
 	public String updateBatimentCommunautaire() {
 		communautaireMB.updateBatiment();
 		this.lTerrains = teSer.getAll();
-		return "detailsCommunautaire";
+		return "detailsCommunautaire?faces-redirect=true";
 	}
 	
 	public String updateBatimentPrive() {
 		priveMB.updateBatiment();
 		this.lTerrains = teSer.getAll();
-		return "detailsPrive";
+		return "detailsPrive?faces-redirect=true";
 	}
 
 	public String toDelete(int id) {
@@ -186,6 +186,6 @@ public class TerrainManagedBean {
 			priveMB.delete();
 		}
 		this.lTerrains = teSer.getAll();
-		return "listeTerrains";
+		return "listeTerrains?faces-redirect=true";
 	}
 }
