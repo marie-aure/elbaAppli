@@ -3,51 +3,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
 </h:head>
 
 <body>
-<link type="text/css" rel="stylesheet" href="css/main.css" />
+	<link type="text/css" rel="stylesheet" href="css/main.css" />
 	<ui:composition>
 		<div class="navbar">
-		<h:form>
-			<p:menubar>
-				<p:menuitem value="Accueil" url="index.xhtml" />
-
-				<p:submenu label="Terrains">
-					<p:menuitem value="Tous les terrains" url="listeTerrains.xhtml" />
-					<p:menuitem value="Ajouter un terrain"
-						action="#{TerrainMB.toAjouter()}" />
-					<p:menuitem value="Avancement construction"
-						url="avancementTerrain.xhtml" />
-				</p:submenu>
-
-
-				<p:menuitem value="Rabbit Holes" action="#{RabbitHoleMB.toListe()}" />
-
-
-				<p:menuitem value="Quartiers" url="listeQuartiers.xhtml" />
-
-				<p:submenu label="Classes">
-					<p:menuitem value="Toutes les classes"
-						action="#{ClasseMB.toListe()}" />
-					<p:menuitem value="Ajouter une classe"
-						action="#{ClasseMB.toAjouter()}" />
-				</p:submenu>
-
-				<p:submenu label="Devoirs">
-					<p:menuitem value="Tous les devoirs"
-						url="listeDevoirs.xhtml" />
-					<p:menuitem value="Ajouter un devoir"
-						url="ajouterDevoir.xhtml" />
-						<p:menuitem value="Valeurs des devoirs" url="listeLiaisonsDVCL.xhtml" />
-				</p:submenu>
-			</p:menubar>
-		</h:form>
+			<ul class="navbar-ul">
+				<li class="navbar-button"><a class="navbar-link"
+					href="./accueil.xhtml">Accueil</a></li>
+				<li class="navbar-button"><a class="navbar-link">Dropdown</a>
+					<div class="navbar-dropdown">
+						<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
+							3</a>
+					</div></li>
+			</ul>
 		</div>
+
+
 	</ui:composition>
 </body>
 </html>

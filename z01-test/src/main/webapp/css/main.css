@@ -1,20 +1,10 @@
-@CHARSET "ISO-8859-1";
-
 body {
 	background-color: #58657a;
 	background-attachment: fixed;
 	margin : 0px 0px 0px 0px;
-}
+	}
 
-.main {
-	background-color: white;
-	margin-top: 70px;
-	margin-bottom: 10px;
-	margin-left: 5%;
-	margin-right: 5%;
-	padding: 10px;
-	box-shadow: 0px 0px 10px;
-}
+/* navbar */
 
 .navbar{
 	background-color: white;
@@ -25,64 +15,61 @@ body {
 	height: 50px;
 }
 
-.ui-menu {
-	background-image: none;
-	background-color: rgba(0,0,0,0);
-	border: none;
-	margin: 0px 0px 0px 0px;
-	border-radius: 0px;
+.navbar-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%
 }
 
-.ui-menu-list
-{
-	background-color: white!important;
-	background-image: none!important;
-	box-shadow: 0px 0px 10px!important;
-	border-radius: 0px !important;
-}
-
-.ui-menuitem-active:hover
-{
-	background-color: hotpink!important;
-}
-
-a .ui-menuitem-active
-{
-	background-color: green!important;
-}
-
-
-
-h1 {
-	text-align: center;
-	color: Black;
+.navbar-button{
+	background-color: transparent;
 	font-family: sans-serif;
-	/* 	text-shadow: 0 0 2px #000000; */
-	font-size: 30px;
-	font-style: normal;
-	font-weight: 900;
+	float: left;
+	display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 0px;   
+    margin: 0px 5px;
+    height: 100%
 }
 
-.ui-datatable {
-	border: solid;
-	border-color: black;
-	border-width: thin;
+.navbar-link{
+  text-decoration: none;
+  color: black;
+  height: 100%;
+  padding: 14px 16px;
+  
 }
 
-.ui-datatable thead th, .ui-datatable tfoot td {
-	background-color: rgba(0, 0, 0, 0);
-	background-image: linear-gradient(to top, rgba(0, 0, 0, 0),
-		rgba(0, 0, 0, 0));
-	font-size: 75%;
-	font-family: cursive;
-	font-style: oblique;
-	border: solid;
-	border-color: black;
-	border-width: thin;
+.navbar-button:hover {
+    background-color: #ccd0d7;
 }
 
-.ui-datatable body td {
-	border: solid;
-	border-color: black;
-	border-width: thin;
+.navbar-dropdown {
+	display:none;
+   	margin-top:18px;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 0px 10px;
+    z-index: 1;
+    
+}
+
+.navbar-button:hover .navbar-dropdown {
+    display: block;
+}
+
+.navbar-dropdown a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.navbar-dropdown a:hover {
+   background-color: #ccd0d7;
 }
