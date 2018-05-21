@@ -6,20 +6,28 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
+<link type="text/css" rel="stylesheet" href="css/main.css" />
 </h:head>
 
 <body>
-	<link type="text/css" rel="stylesheet" href="css/main.css" />
+	
 	<ui:composition>
 		<div class="navbar">
 			<ul class="navbar-ul">
-				<li class="navbar-button"><a class="navbar-link"
-					href="./accueil.xhtml">Accueil</a></li>
+				<li class="navbar-button"><h:link class="navbar-link" value="Accueil" outcome="/accueil/accueil" /></li>
+				<li class="navbar-button"><a class="navbar-link">Terrain</a>
+					<div class="navbar-dropdown">
+						<h:link value="Créer un terrain" outcome="/terrain/ajouterTerrain" /> <a href="#">Link 2</a> <a href="#">Link
+							3</a>
+					</div>
+				</li>
+				
 				<li class="navbar-button"><a class="navbar-link">Dropdown</a>
 					<div class="navbar-dropdown">
 						<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
 							3</a>
-					</div></li>
+					</div>
+				</li>
 			</ul>
 		</div>
 

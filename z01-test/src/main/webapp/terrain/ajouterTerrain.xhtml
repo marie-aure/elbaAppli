@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Créer un terrain</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml"></ui:include>
+		</ui:insert>
+
+	<div class="form-box">
+		<div class="tab">
+			<div class="tablinks" onclick="openTab(event, 'Communautaire')">Communautaire</div>
+			<div class="tablinks" onclick="openTab(event, 'Privé')">Privé</div>
+		</div>
+
+		<!-- Tab content -->
+		<div id="defaultOpen" style="display:block;" class="tabcontent">
+			Choisir un type de terrain.
+		</div>
+		<div id="Communautaire" class="tabcontent">
+			<table>
+			  <col width="500px"/>
+  <col width="1000px"/>
+			<tr>
+			<td>Libellé : </td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>libelle:</td>
+			<td>joj</td></tr>
+			</table>
+		</div>
+
+		<div id="Privé" class="tabcontent">
+			text
+		</div>
+
+		<script type = "text/javascript" src = "${facesContext.externalContext.requestContextPath}/js/ajouterTerrain.js"></script> 
+
+	</div>
+
+</div>
+
+
+</h:body>
+</html>
