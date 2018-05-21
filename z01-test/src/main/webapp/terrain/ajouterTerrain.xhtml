@@ -29,30 +29,45 @@
 			<div id="defaultOpen" style="display: block;" class="tabcontent">
 				Choisir un type de terrain.</div>
 			<div id="Communautaire" class="tabcontent">
-				<table>
-					<col width="500px" />
-					<col width="1000px" />
-					<tr>
-						<td>Libellé :</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Type :</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Adresse :</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Lieu-dit :</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Quartier :</td>
-						<td></td>
-					</tr>
-				</table>
+				<h:form>
+					<table>
+						<col width="500px" />
+						<col width="1000px" />
+						<tr>
+							<td>Libellé :</td>
+							<td><h:inputText value="${terrainMB.terrain.libelle}" /></td>
+						</tr>
+						<tr>
+							<td>Type :</td>
+							<td><select value="${terrainMB.terrain.type}">
+									<option label="A" value="a" />
+									<option itemValue="2010" itemLabel="B" />
+									<option itemValue="2020" itemLabel="C" />
+								</select></td>
+						</tr>
+						<tr>
+							<td>Adresse :</td>
+							<td><h:inputText value="${terrainMB.terrain.adresse}" /></td>
+						</tr>
+						<tr>
+							<td>Lieu-dit :</td>
+							<td><h:inputText value="${terrainMB.terrain.lieuDit}" /></td>
+						</tr>
+						<tr>
+							<td>Quartier :</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Fonction :</td>
+							<td><h:inputText value="${terrainMB.terrain.fonction}" /></td>
+						</tr>
+						<tr>
+							<td>Rabbit Hole :</td>
+							<td></td>
+						</tr>
+					</table>
+					<h:button value="Créer" />
+				</h:form>
 			</div>
 
 			<div id="Privé" class="tabcontent">text</div>
