@@ -19,39 +19,38 @@
 			<ui:include src="/template/titreTemplate.xhtml"></ui:include>
 		</ui:insert>
 
-	<div class="form-box">
-		<div class="tab">
-			<div class="tablinks" onclick="openTab(event, 'Communautaire')">Communautaire</div>
-			<div class="tablinks" onclick="openTab(event, 'Privé')">Privé</div>
-		</div>
+		<div class="form-box">
+			<div class="tab">
+				<div class="tablinks" onclick="openTab(event, 'Communautaire')">Communautaire</div>
+				<div class="tablinks" onclick="openTab(event, 'Privé')">Privé</div>
+			</div>
 
-		<!-- Tab content -->
-		<div id="defaultOpen" style="display:block;" class="tabcontent">
-			Choisir un type de terrain.
-		</div>
-		<div id="Communautaire" class="tabcontent">
-			<table>
-			  <col width="500px"/>
-  <col width="1000px"/>
-			<tr>
-			<td>Libellé : </td>
-			<td></td>
-			</tr>
-			<tr>
-			<td>libelle:</td>
-			<td>joj</td></tr>
-			</table>
-		</div>
+			<!-- Tab content -->
+			<div id="defaultOpen" style="display: block;" class="tabcontent">
+				Choisir un type de terrain.</div>
+			<div id="Communautaire" class="tabcontent">
+				<table>
+					<col width="500px" />
+					<col width="1000px" />
+					<tr>
+						<td>Libellé :</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>libelle:</td>
+						<td>joj</td>
+					</tr>
+				</table>
+			</div>
 
-		<div id="Privé" class="tabcontent">
-			text
-		</div>
+			<div id="Privé" class="tabcontent">text</div>
 
-		<script type = "text/javascript" src = "${facesContext.externalContext.requestContextPath}/js/ajouterTerrain.js"></script> 
+			<script type="text/javascript"
+				src="${facesContext.externalContext.requestContextPath}/js/ajouterTerrain.js"></script>
+
+		</div>
 
 	</div>
-
-</div>
 
 
 </h:body>
