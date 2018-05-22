@@ -41,8 +41,8 @@
 							<td>Type :</td>
 							<td><select value="${communautaireMB.communautaire.type}">
 									<option label="Terrain" value="terrain" />
-									<option itemValue="Bâtiment" itemLabel="batiment" />
-									<option itemValue="Bateau" itemLabel="bateau" />
+									<option label="Bâtiment" value="batiment" />
+									<option label="Bateau" value="bateau" />
 								</select></td>
 						</tr>
 						<tr>
@@ -56,9 +56,9 @@
 						<tr>
 							<td>Quartier :</td>
 							<td>
-							<select value="${CommunautaireMB.selectedQuartier">
+							<select value="${CommunautaireMB.selectedQuartier}">
 							<f:selectItem itemLabel="Sélectionner" itemValue=""></f:selectItem>
-							<f:selectItems itemLabel=""/>
+							<f:selectItems value="${QuartierMB.lLibelle}"/>
 							</select>
 							</td>
 						</tr>
@@ -68,7 +68,10 @@
 						</tr>
 						<tr>
 							<td>Rabbit Hole :</td>
-							<td></td>
+							<td><select value="${CommunautaireMB.selectedRabbitHoles}">
+							<f:selectItem itemLabel="Sélectionner" itemValue=""></f:selectItem>
+							<f:selectItems value="${RabbitHoleMB.lLibelle}"/>
+							</select></td>
 						</tr>
 					</table>
 					<h:button value="Créer" />
