@@ -1,5 +1,6 @@
 package fr.elba.managedBean;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -89,10 +90,10 @@ public class TerrainManagedBean {
 	// ---- Méthode ----
 	// +++++++++++++++++
 
-	public String toAjouter() {
+	public String toAjouter() throws IOException {
 		communautaireMB.setCommunautaire(new Communautaire());
 		priveMB.setPrive(new Prive());
-		return "ajouterTerrain?faces-redirect=true";
+		return "accueil2.xhtml";
 	}
 	
 	public String createCommunautaire() {
