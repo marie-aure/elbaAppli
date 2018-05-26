@@ -17,8 +17,9 @@
 				<li class="navbar-button"><h:link class="navbar-link" value="Accueil" outcome="/accueil/accueil" /></li>
 				<li class="navbar-button"><a class="navbar-link">Terrain</a>
 					<div class="navbar-dropdown">
-						<h:link value = "Créer un terrain" onclick="${TerrainMB.toAjouter()}"/> <a href="#">Link 2</a> <a href="#">Link
-							3</a>
+						<h:form>
+							<h:commandLink value="Créer un terrain" action="${TerrainMB.toAjouter()}" />
+						</h:form>
 					</div>
 				</li>
 				

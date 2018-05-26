@@ -90,10 +90,14 @@ public class TerrainManagedBean {
 	// ---- Méthode ----
 	// +++++++++++++++++
 
-	public String toAjouter() throws IOException {
+	public void toAjouter() throws IOException {
 		communautaireMB.setCommunautaire(new Communautaire());
 		priveMB.setPrive(new Prive());
-		return "accueil2.xhtml";
+		ExternalContext ec = FacesContext.getCurrentInstance()
+		        .getExternalContext();
+	
+		    ec.redirect(ec.getRequestContextPath()
+		            + "/terrain/ajouterTerrain.xhtml");
 	}
 	
 	public String createCommunautaire() {
