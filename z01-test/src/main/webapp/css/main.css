@@ -82,8 +82,27 @@ body {
 	background-color: #ccd0d7;
 }
 
+/* titre */
 .titre{
-	background-color: white;
+	background-color: #d3d7df;
+	color:#58657a;
+	text-align: center;
+	font-family: sans-serif;
+	color: black;
+	height : 100px;
+	line-height: 100px;
+	margin : 2px 10%;
+	border-radius: 5px;
+}
+
+hr {
+	width: 90%;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #58657a;
+    margin: 25px auto;
+    padding: 0; 
 }
 
 

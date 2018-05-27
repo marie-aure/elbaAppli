@@ -97,18 +97,20 @@ public class TerrainManagedBean {
 		        .getExternalContext();
 	
 		    ec.redirect(ec.getRequestContextPath()
-		            + "/terrain/ajouterTerrain.xhtml");
+		            + "/terrain/ajouterTerrain.xhtml?faces-redirect=true");
 	}
 	
 	public String createCommunautaire() {
 		communautaireMB.create();
 		this.lTerrains = teSer.getAll();
+		communautaireMB.setCommunautaire(new Communautaire());
 		return "detailsCommunautaire?faces-redirect=true";
 	}
 	
 	public String createPrive() {
 		priveMB.create();
 		this.lTerrains = teSer.getAll();
+		priveMB.setPrive(new Prive());
 		return "detailsPrive?faces-redirect=true";
 	}
 	

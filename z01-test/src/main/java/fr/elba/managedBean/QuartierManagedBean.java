@@ -86,6 +86,7 @@ public class QuartierManagedBean {
 		for (Quartier quaLib : lQuartiers) {
 			this.lLibelles.add(quaLib.getLibelle());
 		}
+		System.out.println(this.lLibelles);
 	}
 	
 	public String create() {

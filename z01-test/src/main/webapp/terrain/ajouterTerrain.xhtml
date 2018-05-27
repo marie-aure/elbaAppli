@@ -16,9 +16,10 @@
 	</ui:insert>
 	<div class="main">
 		<ui:insert>
-			<ui:include src="/template/titreTemplate.xhtml"></ui:include>
+			<ui:include src="/template/titreTemplate.xhtml">
+			<ui:param name="titre" value="Créer un terrain" />
+			</ui:include>
 		</ui:insert>
-
 		<div class="form-box">
 			<div class="tab">
 				<div class="tablinks" onclick="openTab(event, 'Communautaire')">Communautaire</div>
@@ -35,50 +36,121 @@
 						<col width="1000px" />
 						<tr>
 							<td>Libellé :</td>
-							<td><h:inputText value="${communautaireMB.communautaire.libelle}" /></td>
+							<td><h:inputText
+									value="${CommunautaireMB.communautaire.libelle}" /></td>
 						</tr>
 						<tr>
 							<td>Type :</td>
-							<td><select value="${communautaireMB.communautaire.type}">
+							<td><select value="${CommunautaireMB.communautaire.type}">
 									<option label="Terrain" value="terrain" />
 									<option label="Bâtiment" value="batiment" />
 									<option label="Bateau" value="bateau" />
-								</select></td>
+							</select></td>
 						</tr>
 						<tr>
 							<td>Adresse :</td>
-							<td><h:inputText value="${communautaireMB.communautaire.adresse}" /></td>
+							<td><h:inputText
+									value="${CommunautaireMB.communautaire.adresse}" /></td>
 						</tr>
 						<tr>
 							<td>Lieu-dit :</td>
-							<td><h:inputText value="${communautaireMB.communautaire.lieuDit}" /></td>
+							<td><h:inputText
+									value="${CommunautaireMB.communautaire.lieuDit}" /></td>
 						</tr>
 						<tr>
 							<td>Quartier :</td>
-							<td>
-							<select value="${CommunautaireMB.selectedQuartier}">
-							<f:selectItem itemLabel="Sélectionner" itemValue=""></f:selectItem>
-							<f:selectItems value="${QuartierMB.lLibelle}"/>
-							</select>
-							</td>
+							<td><h:selectOneMenu
+									value="#{CommunautaireMB.selectedQuartier}">
+									<f:selectItem itemLabel="Sélectionner" itemValue="" />
+									<f:selectItems value="#{QuartierMB.lLibelles}" />
+								</h:selectOneMenu></td>
 						</tr>
 						<tr>
 							<td>Fonction :</td>
-							<td><h:inputText value="${communautaireMB.communautaire.fonction}" /></td>
+							<td><h:inputText
+									value="${CommunautaireMB.communautaire.fonction}" /></td>
 						</tr>
 						<tr>
 							<td>Rabbit Hole :</td>
-							<td><select value="${CommunautaireMB.selectedRabbitHoles}">
-							<f:selectItem itemLabel="Sélectionner" itemValue=""></f:selectItem>
-							<f:selectItems value="${RabbitHoleMB.lLibelle}"/>
-							</select></td>
+							<td><h:selectManyMenu style="height:100px"
+									value="${CommunautaireMB.selectedRabbitHoles}">
+									<f:selectItem itemLabel="Sélectionner" itemValue="" />
+									<f:selectItems value="${RabbitHoleMB.lLibelles}" />
+								</h:selectManyMenu></td>
 						</tr>
 					</table>
-					<h:button value="Créer" />
+					<h:commandButton value="Créer" type="submit"
+						action="${TerrainMB.createCommunautaire()}" />
 				</h:form>
 			</div>
 
-			<div id="Privé" class="tabcontent">text</div>
+			<div id="Privé" class="tabcontent">
+				<h:form>
+					<table>
+						<col width="500px" />
+						<col width="1000px" />
+						<tr>
+							<td>Libellé :</td>
+							<td><h:inputText
+									value="${PriveMB.prive.libelle}" /></td>
+						</tr>
+						<tr>
+							<td>Type :</td>
+							<td><select value="${PriveMB.prive.type}">
+									<option label="Terrain" value="terrain" />
+									<option label="Bâtiment" value="batiment" />
+									<option label="Bateau" value="bateau" />
+							</select></td>
+						</tr>
+						<tr>
+							<td>Adresse :</td>
+							<td><h:inputText
+									value="${PriveMB.prive.adresse}" /></td>
+						</tr>
+						<tr>
+							<td>Lieu-dit :</td>
+							<td><h:inputText
+									value="${PriveMB.prive.lieuDit}" /></td>
+						</tr>
+						<tr>
+							<td>Quartier :</td>
+							<td><h:selectOneMenu
+									value="#{PriveMB.selectedQuartier}">
+									<f:selectItem itemLabel="Sélectionner" itemValue="" />
+									<f:selectItems value="#{QuartierMB.lLibelles}" />
+								</h:selectOneMenu></td>
+						</tr>
+						<tr>
+							<td>Classe :</td>
+							<td><h:selectOneMenu
+									value="#{PriveMB.selectedClasse}">
+									<f:selectItem itemLabel="Sélectionner" itemValue="" />
+									<f:selectItems value="#{ClasseMB.lLibelles}" />
+								</h:selectOneMenu></td>
+						</tr>
+						<tr>
+							<td>Groupé :</td>
+							<td><h:selectOneMenu
+									value="#{PriveMB.prive.groupe}">
+									<f:selectItem itemLabel="Sélectionner" itemValue="" />
+									<f:selectItem itemLabel="Oui" itemValue="true" />
+									<f:selectItem itemLabel="Non" itemValue="false" />
+								</h:selectOneMenu></td>
+						</tr>
+							<tr>
+							<td>Pré-construit :</td>
+							<td><h:selectOneMenu
+									value="#{PriveMB.prive.preConstruit}">
+									<f:selectItem itemLabel="Sélectionner" itemValue="" />
+									<f:selectItem itemLabel="Oui" itemValue="true" />
+									<f:selectItem itemLabel="Non" itemValue="false" />
+								</h:selectOneMenu></td>
+						</tr>
+					</table>
+					<h:commandButton value="Créer" type="submit"
+						action="${TerrainMB.createPrive()}" />
+				</h:form>
+			</div>
 
 			<script type="text/javascript"
 				src="${facesContext.externalContext.requestContextPath}/js/ajouterTerrain.js"></script>
