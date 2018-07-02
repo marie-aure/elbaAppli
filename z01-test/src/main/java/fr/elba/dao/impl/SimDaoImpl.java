@@ -9,12 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.elba.dao.IQuartierDao;
-import fr.elba.model.Quartier;
+import fr.elba.dao.ISimDao;
+import fr.elba.model.Sim;
+import fr.elba.model.Sim;
 
 @Repository
 @Transactional
-public class QuartierDaoImpl implements IQuartierDao {
+public class SimDaoImpl implements ISimDao {
 
 	@Autowired
 	private SessionFactory sf;
@@ -24,46 +25,36 @@ public class QuartierDaoImpl implements IQuartierDao {
 	}
 
 	@Override
-	public List<Quartier> getAll() {
+	public List<Sim> getAll() {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Quartier";
+		String req = "FROM Sim";
 		Query query = s.createQuery(req);
-		return (List<Quartier>) query.list();
+		return (List<Sim>) query.list();
 	}
 
 	@Override
-	public Quartier getById(int id) {
+	public Sim getById(int id) {
 		Session s = sf.getCurrentSession();
-		return (Quartier) s.get(Quartier.class, id);
+		return (Sim) s.get(Sim.class, id);
 	}
 
 	@Override
-	public Quartier getByName(String name) {
+	public void create(Sim sim) {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Quartier WHERE libelle = ?";
-		Query query = s.createQuery(req);
-		query.setParameter(0, name);
-		query.setMaxResults(1);
-		return (Quartier) query.uniqueResult();
+		s.save(sim);
 	}
 
 	@Override
-	public void create(Quartier quartier) {
+	public void update(Sim sim) {
 		Session s = sf.getCurrentSession();
-		s.save(quartier);
-	}
-
-	@Override
-	public void update(Quartier quartier) {
-		Session s = sf.getCurrentSession();
-		s.update(quartier);
+		s.update(sim);
 	}
 
 	@Override
 	public void delete(int id) {
 		Session s = sf.getCurrentSession();
-		Quartier quartier = (Quartier) s.get(Quartier.class, id);
-		s.delete(quartier);
+		Sim sim = (Sim) s.get(Sim.class, id);
+		s.delete(sim);
 	}
 
 }

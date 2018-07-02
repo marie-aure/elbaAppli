@@ -2,9 +2,7 @@ package fr.elba.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,9 +25,9 @@ public class RabbitHole {
 
 	@Transient
 	private int compte;
-	
+
 	// liaisons
-	@ManyToMany(mappedBy = "lRabbitHoles"/*,cascade=CascadeType.ALL*/)
+	@ManyToMany(mappedBy = "lRabbitHoles"/* ,cascade=CascadeType.ALL */)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Communautaire> lCommunautaire;
 
@@ -71,7 +69,7 @@ public class RabbitHole {
 	public void setlCommunautaire(List<Communautaire> lCommunautaire) {
 		this.lCommunautaire = lCommunautaire;
 	}
-	
+
 	public int getCompte() {
 		return compte;
 	}
@@ -82,8 +80,8 @@ public class RabbitHole {
 
 	@Override
 	public String toString() {
-		return "RabbitHole [id=" + id + ", " + (libelle != null ? "libelle=" + libelle + ", " : "")
-				+ (lCommunautaire != null ? "lCommunautaire=" + lCommunautaire : "") + "]";
+		return "RabbitHole [id=" + id + ", " + (libelle != null ? "libelle=" + libelle + ", " : "") + "compte=" + compte
+				+ "]";
 	}
 
 }

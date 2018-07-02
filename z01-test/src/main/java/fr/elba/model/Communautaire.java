@@ -2,10 +2,8 @@ package fr.elba.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -20,9 +18,10 @@ public class Communautaire extends Terrain {
 	private String fonction;
 
 	// liaisons
-	@ManyToMany(/*cascade = CascadeType.ALL*/)
+	@ManyToMany(/* cascade = CascadeType.ALL */)
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@JoinTable(name="l_communautaire_rabbithole",joinColumns={@JoinColumn(name="id_terrain")}, inverseJoinColumns = {@JoinColumn(name="id_rabbithole")})
+	@JoinTable(name = "l_communautaire_rabbithole", joinColumns = {
+			@JoinColumn(name = "id_terrain") }, inverseJoinColumns = { @JoinColumn(name = "id_rabbithole") })
 	private List<RabbitHole> lRabbitHoles;
 
 	public Communautaire() {
@@ -30,14 +29,14 @@ public class Communautaire extends Terrain {
 	}
 
 	public Communautaire(String libelle, String type, String adresse, String lieuDit, Boolean terrain, Boolean batiment,
-			String fonction) {
-		super(libelle, type, adresse, lieuDit, terrain, batiment);
+			Quartier quartier, Famille proprietaire, String fonction) {
+		super(libelle, type, adresse, lieuDit, terrain, batiment, quartier, proprietaire);
 		this.fonction = fonction;
 	}
 
 	public Communautaire(int id, String libelle, String type, String adresse, String lieuDit, Boolean terrain,
-			Boolean batiment, String fonction) {
-		super(id, libelle, type, adresse, lieuDit, terrain, batiment);
+			Boolean batiment, Quartier quartier, Famille proprietaire, String fonction) {
+		super(id, libelle, type, adresse, lieuDit, terrain, batiment, quartier, proprietaire);
 		this.fonction = fonction;
 	}
 

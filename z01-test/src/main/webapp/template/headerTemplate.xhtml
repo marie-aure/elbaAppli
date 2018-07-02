@@ -25,8 +25,9 @@
 				<li class="navbar-button"><a class="navbar-link">Starter</a>
 					<div class="navbar-dropdown">
 						<h:form>
-							<h:commandLink value="Générer les starters" action="${TerrainMB.toAjouter()}" />
+							<h:commandLink value="Générer les starters" action="${SimMB.toGenerer()}" />
 						</h:form>
+							<h:link class="navbar-link" value="Voir les groupes" outcome="/sim/voirGroupesStarter" />
 					</div>
 				</li>
 				

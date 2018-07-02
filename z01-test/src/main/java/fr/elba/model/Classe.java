@@ -2,9 +2,7 @@ package fr.elba.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +18,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Entity
 @Table(name = "classes")
 public class Classe {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -34,6 +32,19 @@ public class Classe {
 	@ManyToOne
 	private Quartier quartier;
 	
+	@OneToOne
+	private Classe classeSup;
+
+	@OneToOne
+	private Sim chef;
+		
+	@OneToOne(mappedBy="classeSup")
+	private Classe classeInf;
+	
+	@OneToMany(mappedBy="classe"/*, cascade=CascadeType.ALL*/)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Condition> lConditions;
+	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "classe"/*,cascade=CascadeType.ALL*/)
 	private List<Prive> lPrives;
@@ -46,25 +57,33 @@ public class Classe {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<LiaisonDVCL> lLiaisonDVCLs;
 	
-	@OneToOne
-	private Classe classeSup;
-
-	@OneToOne(mappedBy="classeSup")
-	private Classe classeInf;
+	@OneToMany(mappedBy="classe"/*, cascade=CascadeType.ALL*/)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<LiaisonDRCL> lLiaisonDRCLs;
 	
 	public Classe() {
 		super();
 	}
-
-	public Classe(String libelle) {
+	
+	public Classe(String libelle, int compte, Quartier quartier, Classe classeSup, Sim chef, Classe classeInf) {
 		super();
 		this.libelle = libelle;
+		this.compte = compte;
+		this.quartier = quartier;
+		this.classeSup = classeSup;
+		this.chef = chef;
+		this.classeInf = classeInf;
 	}
 
-	public Classe(int id, String libelle) {
+	public Classe(int id, String libelle, int compte, Quartier quartier, Classe classeSup, Sim chef, Classe classeInf) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
+		this.compte = compte;
+		this.quartier = quartier;
+		this.classeSup = classeSup;
+		this.chef = chef;
+		this.classeInf = classeInf;
 	}
 
 	public int getId() {
@@ -83,6 +102,14 @@ public class Classe {
 		this.libelle = libelle;
 	}
 
+	public int getCompte() {
+		return compte;
+	}
+
+	public void setCompte(int compte) {
+		this.compte = compte;
+	}
+
 	public Quartier getQuartier() {
 		return quartier;
 	}
@@ -91,14 +118,6 @@ public class Classe {
 		this.quartier = quartier;
 	}
 
-	public List<Prive> getlPrives() {
-		return lPrives;
-	}
-
-	public void setlPrives(List<Prive> lPrives) {
-		this.lPrives = lPrives;
-	}
-	
 	public Classe getClasseSup() {
 		return classeSup;
 	}
@@ -106,14 +125,37 @@ public class Classe {
 	public void setClasseSup(Classe classeSup) {
 		this.classeSup = classeSup;
 	}
-	
 
-	public int getCompte() {
-		return compte;
+	public Sim getChef() {
+		return chef;
 	}
 
-	public void setCompte(int compte) {
-		this.compte = compte;
+	public void setChef(Sim chef) {
+		this.chef = chef;
+	}
+
+	public Classe getClasseInf() {
+		return classeInf;
+	}
+
+	public void setClasseInf(Classe classeInf) {
+		this.classeInf = classeInf;
+	}
+
+	public List<Condition> getlConditions() {
+		return lConditions;
+	}
+
+	public void setlConditions(List<Condition> lConditions) {
+		this.lConditions = lConditions;
+	}
+
+	public List<Prive> getlPrives() {
+		return lPrives;
+	}
+
+	public void setlPrives(List<Prive> lPrives) {
+		this.lPrives = lPrives;
 	}
 
 	public List<Famille> getlFamilles() {
@@ -124,18 +166,6 @@ public class Classe {
 		this.lFamilles = lFamilles;
 	}
 
-	
-	
-	public Classe getClasseInf() {
-		return classeInf;
-	}
-
-	public void setClasseInf(Classe classeInf) {
-		this.classeInf = classeInf;
-	}
-	
-	
-
 	public List<LiaisonDVCL> getlLiaisonDVCLs() {
 		return lLiaisonDVCLs;
 	}
@@ -144,13 +174,22 @@ public class Classe {
 		this.lLiaisonDVCLs = lLiaisonDVCLs;
 	}
 
-	@Override
-	public String toString() {
-		return "Classe [id=" + id + ", " + (libelle != null ? "libelle=" + libelle + ", " : "")
-				+ (quartier != null ? "quartier=" + quartier + ", " : "")
-				+ (lPrives != null ? "lPrives=" + lPrives + ", " : "")
-				+ (classeSup != null ? "classeSup=" + classeSup : "") + "]";
+	public List<LiaisonDRCL> getlLiaisonDRCLs() {
+		return lLiaisonDRCLs;
 	}
 
-	
+	public void setlLiaisonDRCLs(List<LiaisonDRCL> lLiaisonDRCLs) {
+		this.lLiaisonDRCLs = lLiaisonDRCLs;
+	}
+
+	@Override
+	public String toString() {
+		return "Classe [id=" + id + ", " + (libelle != null ? "libelle=" + libelle + ", " : "") + "compte=" + compte
+				+ ", " + (quartier != null ? "quartier=" + quartier + ", " : "")
+				+ (classeSup != null ? "classeSup=" + classeSup + ", " : "")
+				+ (chef != null ? "chef=" + chef + ", " : "") + (classeInf != null ? "classeInf=" + classeInf : "")
+				+ "]";
+	}
+
+
 }

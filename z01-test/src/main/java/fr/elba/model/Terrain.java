@@ -1,6 +1,5 @@
 package fr.elba.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -13,35 +12,36 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="terrains")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="categorie")
+@Table(name = "terrains")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "categorie")
 @DiscriminatorValue("terrain")
 public class Terrain {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String libelle;
 	private String type;
 	private String adresse;
 	private String lieuDit;
 	private Boolean terrain;
 	private Boolean batiment;
-	
+
 	// liaisons
-	@ManyToOne(/*cascade=CascadeType.ALL*/)
+	@ManyToOne(/* cascade=CascadeType.ALL */)
 	private Quartier quartier;
-	
-	@ManyToOne(/*cascade=CascadeType.ALL*/)
+
+	@ManyToOne(/* cascade=CascadeType.ALL */)
 	private Famille proprietaire;
 
 	public Terrain() {
 		super();
 	}
 
-	public Terrain(String libelle, String type, String adresse, String lieuDit, Boolean terrain, Boolean batiment) {
+	public Terrain(String libelle, String type, String adresse, String lieuDit, Boolean terrain, Boolean batiment,
+			Quartier quartier, Famille proprietaire) {
 		super();
 		this.libelle = libelle;
 		this.type = type;
@@ -49,10 +49,12 @@ public class Terrain {
 		this.lieuDit = lieuDit;
 		this.terrain = terrain;
 		this.batiment = batiment;
+		this.quartier = quartier;
+		this.proprietaire = proprietaire;
 	}
 
 	public Terrain(int id, String libelle, String type, String adresse, String lieuDit, Boolean terrain,
-			Boolean batiment) {
+			Boolean batiment, Quartier quartier, Famille proprietaire) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
@@ -61,6 +63,8 @@ public class Terrain {
 		this.lieuDit = lieuDit;
 		this.terrain = terrain;
 		this.batiment = batiment;
+		this.quartier = quartier;
+		this.proprietaire = proprietaire;
 	}
 
 	public int getId() {
@@ -141,7 +145,9 @@ public class Terrain {
 				+ (type != null ? "type=" + type + ", " : "") + (adresse != null ? "adresse=" + adresse + ", " : "")
 				+ (lieuDit != null ? "lieuDit=" + lieuDit + ", " : "")
 				+ (terrain != null ? "terrain=" + terrain + ", " : "")
-				+ (batiment != null ? "batiment=" + batiment : "") + "]";
+				+ (batiment != null ? "batiment=" + batiment + ", " : "")
+				+ (quartier != null ? "quartier=" + quartier + ", " : "")
+				+ (proprietaire != null ? "proprietaire=" + proprietaire : "") + "]";
 	}
-	
+
 }

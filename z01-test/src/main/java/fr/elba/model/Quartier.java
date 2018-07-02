@@ -2,9 +2,7 @@ package fr.elba.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,14 +23,14 @@ public class Quartier {
 	private String libelle;
 
 	// liaisons
-	@OneToMany(mappedBy = "quartier"/*,cascade=CascadeType.ALL*/)
+	@OneToMany(mappedBy = "quartier"/* ,cascade=CascadeType.ALL */)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Terrain> lTerrains;
 
-	@OneToMany(mappedBy="quartier"/*,cascade=CascadeType.ALL*/)
+	@OneToMany(mappedBy = "quartier"/* ,cascade=CascadeType.ALL */)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Classe> lClasses;
-	
+
 	public Quartier() {
 		super();
 	}
@@ -71,7 +69,7 @@ public class Quartier {
 	public void setlTerrains(List<Terrain> lTerrains) {
 		this.lTerrains = lTerrains;
 	}
-	
+
 	public List<Classe> getlClasses() {
 		return lClasses;
 	}
@@ -82,8 +80,7 @@ public class Quartier {
 
 	@Override
 	public String toString() {
-		return "Quartier [id=" + id + ", " + (libelle != null ? "libelle=" + libelle + ", " : "")
-				+ (lTerrains != null ? "lTerrains=" + lTerrains : "") + "]";
+		return "Quartier [id=" + id + ", " + (libelle != null ? "libelle=" + libelle : "") + "]";
 	}
 
 }

@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Groupes de starters</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Groupes de starters" />
+			</ui:include>
+		</ui:insert>
+
+		<h:form>
+			<table>
+				<col width="500px" />
+				<col width="1000px" />
+				<tr>
+					<td>Groupe :</td>
+					<td><h:selectOneMenu value="#{StarterMB.numero}">
+							<f:selectItem itemLabel="Sélectionner" itemValue="" />
+							<f:selectItems value="#{StarterMB.lNumeros}" />
+						</h:selectOneMenu></td>
+				</tr>
+			</table>
+			<h:commandButton value="Voir le groupe" type="submit"
+				action="${StarterMB.chargerGroupe()}" />
+		</h:form>
+
+		<ui:repeat var="sta" value="#{StarterMB.lStarters}" varStatus="status">
+
+			<table>
+				<col width="500px" />
+				<col width="500px" />
+				<tr>
+					<td>Nom :</td>
+					<td>#{sta.nom}</td>
+				</tr>
+				<tr>
+					<td>Prénom :</td>
+					<td>#{sta.prenom}</td>
+				</tr>
+				<tr>
+					<td>Sexe :</td>
+					<td>#{sta.sexe}</td>
+				</tr>
+				<tr>
+					<td>Espèce :</td>
+					<td>#{sta.espece}</td>
+				</tr>
+				<tr>
+					<td>Orientation :</td>
+					<td>#{sta.orientation}</td>
+				</tr>
+				<tr>
+					<td>Couple :</td>
+					<td>#{sta.couple.nom} #{sta.couple.prenom}</td>
+				</tr>
+				<tr>
+					<td>Peau :</td>
+					<td>#{sta.peau}</td>
+				</tr>
+				<tr>
+					<td>Poids :</td>
+					<td>#{sta.poids}</td>
+				</tr>
+				<tr>
+					<td>Muscle :</td>
+					<td>#{sta.muscle}</td>
+				</tr>
+				<tr>
+					<td>Couleur des cheveux :</td>
+					<td>#{sta.cheveux}</td>
+				</tr>
+				<tr>
+					<td>Visage :</td>
+					<td>#{sta.visage}</td>
+				</tr>
+				<tr>
+					<td>Couleur des yeux :</td>
+					<td>#{sta.couleurYeux}</td>
+				</tr>
+				<tr>
+					<td>Yeux :</td>
+					<td>#{sta.yeux}</td>
+				</tr>
+				<tr>
+					<td>Nez :</td>
+					<td>#{sta.nez}</td>
+				</tr>
+				<tr>
+					<td>Bouche :</td>
+					<td>#{sta.bouche}</td>
+				</tr>
+				<tr>
+					<td>Poitrine :</td>
+					<td>#{sta.poitrine}</td>
+				</tr>
+				<tr>
+					<td>Plat préféré :</td>
+					<td>#{sta.plat}</td>
+				</tr>
+				<tr>
+					<td>Musique préférée :</td>
+					<td>#{sta.musique}</td>
+				</tr>
+				<tr>
+					<td>Couleur préférée :</td>
+					<td>#{sta.couleur}</td>
+				</tr>
+				<tr>
+					<td>Signe astrologique :</td>
+					<td>#{sta.signe}</td>
+				</tr>
+				<tr>
+					<td>Souhait à long terme :</td>
+					<td>#{sta.souhait.libelle}</td>
+				</tr>
+				<tr>
+					<td>Trait 1 :</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Trait 2 :</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Trait 3 :</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Trait 4 :</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Trait 5 :</td>
+					<td></td>
+				</tr>
+			</table>
+	   </ui:repeat>
+	</div>
+</h:body>
+</html>
