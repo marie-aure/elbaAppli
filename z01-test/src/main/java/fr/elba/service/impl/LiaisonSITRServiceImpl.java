@@ -46,7 +46,7 @@ public class LiaisonSITRServiceImpl implements ILiaisonSITRService {
 	}
 	
 	@Override
-	public List<LiaisonSITR> getByGroup(int groupe){
+	public List<LiaisonSITR> chargerGroupe(int groupe){
 		return lsitrDao.getByGroup(groupe);
 	}
 

@@ -62,9 +62,9 @@ public class LiaisonSITRDaoImpl implements ILiaisonSITRDao {
 	
 	@Override
 	public List<LiaisonSITR> getByGroup(int groupe){		
-	 Session s = sf.getCurrentSession();
-		String req = "call get_groupe(:groupe)";
-		Query query = s.createSQLQuery(req);
+	 Session s = sf.getCurrentSession();	 
+	 String req = "call get_groupe(:groupe)";
+		Query query = s.createSQLQuery(req).addEntity(LiaisonSITR.class);
 		query.setParameter("groupe", groupe);
 		return (List<LiaisonSITR>) query.list();
 	

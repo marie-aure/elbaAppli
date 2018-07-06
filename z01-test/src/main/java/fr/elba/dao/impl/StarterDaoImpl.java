@@ -32,15 +32,6 @@ public class StarterDaoImpl implements IStarterDao {
 		Query query = s.createQuery(req);
 		return (List<Starter>) query.list();
 	}
-
-	@Override
-	public List<Starter> getByGroup(int groupe) {
-		Session s = sf.getCurrentSession();
-		String req = "FROM Starter where groupe = :groupe";
-		Query query = s.createQuery(req);
-		query.setParameter("groupe", groupe);
-		return (List<Starter>) query.list();
-	}
 	
 	@Override
 	public Starter getById(int id) {

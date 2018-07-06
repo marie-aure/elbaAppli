@@ -16,6 +16,6 @@ public interface ILiaisonSITRService {
 	
 	public void delete(int id);
 	
-	public List<LiaisonSITR> getByGroup(int groupe);
+	public List<LiaisonSITR> chargerGroupe(int groupe);
 	
 }

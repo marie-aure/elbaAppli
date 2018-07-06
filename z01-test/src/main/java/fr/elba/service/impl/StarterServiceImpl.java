@@ -61,12 +61,6 @@ public class StarterServiceImpl implements IStarterService {
 	}
 	
 	@Override
-	public List<Starter> chargerGroupe(int groupe){
-		List<LiaisonSITR> liste = lsitrSer.getByGroup(1);
-		return stDao.getByGroup(groupe);
-	}
-
-	@Override
 	public Starter getById(int id) {
 		return stDao.getById(id);
 	}

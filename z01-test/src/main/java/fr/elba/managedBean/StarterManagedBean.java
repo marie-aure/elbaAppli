@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import fr.elba.dao.impl.LiaisonSITRDaoImpl;
 import fr.elba.model.LiaisonSITR;
 import fr.elba.model.Starter;
+import fr.elba.service.ILiaisonSITRService;
 import fr.elba.service.IStarterService;
 
 @ManagedBean(name = "StarterMB")
@@ -26,10 +27,17 @@ public class StarterManagedBean {
 	@ManagedProperty("#{StarterService}")
 	private IStarterService stSer;
 
+	@ManagedProperty("#{LiaisonSITRService}")
+	private ILiaisonSITRService lsitrSer;
+
 	public void setStSer(IStarterService stSer) {
 		this.stSer = stSer;
 	}
 
+	public void setLsitrSer(ILiaisonSITRService lsitrSer) {
+		this.lsitrSer = lsitrSer;
+	}
+	
 	// +++++++++++++++++++
 	// ---- Variables ----
 	// +++++++++++++++++++
@@ -39,6 +47,7 @@ public class StarterManagedBean {
 	private int taille;
 	private int numero;
 	private List<Integer> lNumeros;
+	private List<LiaisonSITR> lTraits;
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -81,7 +90,7 @@ public class StarterManagedBean {
 	public void setTaille(int taille) {
 		this.taille = taille;
 	}
-	
+
 	public int getNumero() {
 		return numero;
 	}
@@ -97,22 +106,27 @@ public class StarterManagedBean {
 	public void setlNumeros(List<Integer> lNumeros) {
 		this.lNumeros = lNumeros;
 	}
-	
+
+	public List<LiaisonSITR> getlTraits() {
+		return lTraits;
+	}
+
+	public void setlTraits(List<LiaisonSITR> lTraits) {
+		this.lTraits = lTraits;
+	}
+
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
 
 	public void generateStarters() throws IOException {
-
 		stSer.generate(this.taille);
-
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		ec.redirect(ec.getRequestContextPath() + "/sim/voirGroupesStarter.xhtml?faces-redirect=true");
-
 	}
-	
+
 	public void chargerGroupe() throws IOException {
-		this.lStarters = stSer.chargerGroupe(this.numero);
+		this.lTraits = lsitrSer.chargerGroupe(this.numero);
 		System.out.println("greaaaato");
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		ec.redirect(ec.getRequestContextPath() + "/sim/voirGroupesStarter.xhtml?faces-redirect=true");

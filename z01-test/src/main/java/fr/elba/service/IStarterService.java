@@ -7,8 +7,6 @@ import fr.elba.model.Starter;
 public interface IStarterService {
 
 	public List<Starter> getAll();
-
-	public List<Starter> chargerGroupe(int groupe);
 	
 	public Starter getById(int id);
 
