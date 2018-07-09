@@ -23,8 +23,7 @@
 
 		<h:form>
 			<table>
-				<col width="500px" />
-				<col width="1000px" />
+
 				<tr>
 					<td>Groupe :</td>
 					<td><h:selectOneMenu value="#{StarterMB.numero}">
@@ -36,118 +35,242 @@
 			<h:commandButton value="Voir le groupe" type="submit"
 				action="${StarterMB.chargerGroupe()}" />
 		</h:form>
+		<table class="containTab">
+			<tr>
+				<td><ui:repeat var="sta" value="#{StarterMB.lTraits}"
+						varStatus="status">
+						<div class="starterTabDiv">
+							<table class="starterTab">
+								<col width="500px" />
+								<col width="500px" />
+								<tr>
+									<td>Nom :</td>
+									<td>#{sta.sim.nom}</td>
+								</tr>
+								<tr>
+									<td>Prénom :</td>
+									<td>#{sta.sim.prenom}</td>
+								</tr>
+								<tr>
+									<td>Sexe :</td>
+									<td>#{sta.sim.sexe}</td>
+								</tr>
+								<tr>
+									<td>Espèce :</td>
+									<td>#{sta.sim.espece}</td>
+								</tr>
+								<tr>
+									<td>Orientation :</td>
+									<td>#{sta.sim.orientation}</td>
+								</tr>
+								<tr>
+									<td>Couple :</td>
+									<td>#{sta.sim.couple.nom} #{sta.sim.couple.prenom}</td>
+								</tr>
+								<tr>
+									<td>Peau :</td>
+									<td>#{sta.sim.peau}</td>
+								</tr>
+								<tr>
+									<td>Poids :</td>
+									<td>#{sta.sim.poids}</td>
+								</tr>
+								<tr>
+									<td>Muscle :</td>
+									<td>#{sta.sim.muscle}</td>
+								</tr>
+								<tr>
+									<td>Couleur des cheveux :</td>
+									<td>#{sta.sim.cheveux}</td>
+								</tr>
+								<tr>
+									<td>Visage :</td>
+									<td>#{sta.sim.visage}</td>
+								</tr>
+								<tr>
+									<td>Couleur des yeux :</td>
+									<td>#{sta.sim.couleurYeux}</td>
+								</tr>
+								<tr>
+									<td>Yeux :</td>
+									<td>#{sta.sim.yeux}</td>
+								</tr>
+								<tr>
+									<td>Nez :</td>
+									<td>#{sta.sim.nez}</td>
+								</tr>
+								<tr>
+									<td>Bouche :</td>
+									<td>#{sta.sim.bouche}</td>
+								</tr>
+								<tr>
+									<td>Poitrine :</td>
+									<td>#{sta.sim.poitrine}</td>
+								</tr>
+								<tr>
+									<td>Plat préféré :</td>
+									<td>#{sta.sim.plat}</td>
+								</tr>
+								<tr>
+									<td>Musique préférée :</td>
+									<td>#{sta.sim.musique}</td>
+								</tr>
+								<tr>
+									<td>Couleur préférée :</td>
+									<td>#{sta.sim.couleur}</td>
+								</tr>
+								<tr>
+									<td>Signe astrologique :</td>
+									<td>#{sta.sim.signe}</td>
+								</tr>
+								<tr>
+									<td>Souhait à long terme :</td>
+									<td>#{sta.sim.souhait.libelle}</td>
+								</tr>
+								<tr>
+									<td>Trait 1 :</td>
+									<td>#{sta.trait1.libelle}</td>
+								</tr>
+								<tr>
+									<td>Trait 2 :</td>
+									<td>#{sta.trait2.libelle}</td>
+								</tr>
+								<tr>
+									<td>Trait 3 :</td>
+									<td>#{sta.trait3.libelle}</td>
+								</tr>
+								<tr>
+									<td>Trait 4 :</td>
+									<td>#{sta.trait4.libelle}</td>
+								</tr>
+								<tr>
+									<td>Trait 5 :</td>
+									<td>#{sta.trait5.libelle}</td>
+								</tr>
+							</table>
+						</div>
+					</ui:repeat></td>
 
-		<ui:repeat var="sta" value="#{StarterMB.lStarters}" varStatus="status">
+				<td><ui:repeat var="sta" value="#{StarterMB.lTraits}"
+						varStatus="status">
+						<div class="starterTabDiv">
+							<table class="starterTab">
+								<col width="500px" />
+								<col width="500px" />
+								<tr>
+									<td>Nom :</td>
+									<td>#{sta.sim.nom}</td>
+								</tr>
+								<tr>
+									<td>Prénom :</td>
+									<td>#{sta.sim.prenom}</td>
+								</tr>
+								<tr>
+									<td>Sexe :</td>
+									<td>#{sta.sim.sexe}</td>
+								</tr>
+								<tr>
+									<td>Espèce :</td>
+									<td>#{sta.sim.espece}</td>
+								</tr>
+								<tr>
+									<td>Orientation :</td>
+									<td>#{sta.sim.orientation}</td>
+								</tr>
+								<tr>
+									<td>Couple :</td>
+									<td>#{sta.sim.couple.nom} #{sta.sim.couple.prenom}</td>
+								</tr>
+								<tr>
+									<td>Peau :</td>
+									<td>#{sta.sim.peau}</td>
+								</tr>
+								<tr>
+									<td>Poids :</td>
+									<td>#{sta.sim.poids}</td>
+								</tr>
+								<tr>
+									<td>Muscle :</td>
+									<td>#{sta.sim.muscle}</td>
+								</tr>
+								<tr>
+									<td>Couleur des cheveux :</td>
+									<td>#{sta.sim.cheveux}</td>
+								</tr>
+								<tr>
+									<td>Visage :</td>
+									<td>#{sta.sim.visage}</td>
+								</tr>
+								<tr>
+									<td>Couleur des yeux :</td>
+									<td>#{sta.sim.couleurYeux}</td>
+								</tr>
+								<tr>
+									<td>Yeux :</td>
+									<td>#{sta.sim.yeux}</td>
+								</tr>
+								<tr>
+									<td>Nez :</td>
+									<td>#{sta.sim.nez}</td>
+								</tr>
+								<tr>
+									<td>Bouche :</td>
+									<td>#{sta.sim.bouche}</td>
+								</tr>
+								<tr>
+									<td>Poitrine :</td>
+									<td>#{sta.sim.poitrine}</td>
+								</tr>
+								<tr>
+									<td>Plat préféré :</td>
+									<td>#{sta.sim.plat}</td>
+								</tr>
+								<tr>
+									<td>Musique préférée :</td>
+									<td>#{sta.sim.musique}</td>
+								</tr>
+								<tr>
+									<td>Couleur préférée :</td>
+									<td>#{sta.sim.couleur}</td>
+								</tr>
+								<tr>
+									<td>Signe astrologique :</td>
+									<td>#{sta.sim.signe}</td>
+								</tr>
+								<tr>
+									<td>Souhait à long terme :</td>
+									<td>#{sta.sim.souhait.libelle}</td>
+								</tr>
+								<tr>
+									<td>Trait 1 :</td>
+									<td>#{sta.trait1.libelle}</td>
+								</tr>
+								<tr>
+									<td>Trait 2 :</td>
+									<td>#{sta.trait2.libelle}</td>
+								</tr>
+								<tr>
+									<td>Trait 3 :</td>
+									<td>#{sta.trait3.libelle}</td>
+								</tr>
+								<tr>
+									<td>Trait 4 :</td>
+									<td>#{sta.trait4.libelle}</td>
+								</tr>
+								<tr>
+									<td>Trait 5 :</td>
+									<td>#{sta.trait5.libelle}</td>
+								</tr>
+							</table>
+						</div>
+					</ui:repeat></td>
+			</tr>
+		</table>
 
-			<table>
-				<col width="500px" />
-				<col width="500px" />
-				<tr>
-					<td>Nom :</td>
-					<td>#{sta.nom}</td>
-				</tr>
-				<tr>
-					<td>Prénom :</td>
-					<td>#{sta.prenom}</td>
-				</tr>
-				<tr>
-					<td>Sexe :</td>
-					<td>#{sta.sexe}</td>
-				</tr>
-				<tr>
-					<td>Espèce :</td>
-					<td>#{sta.espece}</td>
-				</tr>
-				<tr>
-					<td>Orientation :</td>
-					<td>#{sta.orientation}</td>
-				</tr>
-				<tr>
-					<td>Couple :</td>
-					<td>#{sta.couple.nom} #{sta.couple.prenom}</td>
-				</tr>
-				<tr>
-					<td>Peau :</td>
-					<td>#{sta.peau}</td>
-				</tr>
-				<tr>
-					<td>Poids :</td>
-					<td>#{sta.poids}</td>
-				</tr>
-				<tr>
-					<td>Muscle :</td>
-					<td>#{sta.muscle}</td>
-				</tr>
-				<tr>
-					<td>Couleur des cheveux :</td>
-					<td>#{sta.cheveux}</td>
-				</tr>
-				<tr>
-					<td>Visage :</td>
-					<td>#{sta.visage}</td>
-				</tr>
-				<tr>
-					<td>Couleur des yeux :</td>
-					<td>#{sta.couleurYeux}</td>
-				</tr>
-				<tr>
-					<td>Yeux :</td>
-					<td>#{sta.yeux}</td>
-				</tr>
-				<tr>
-					<td>Nez :</td>
-					<td>#{sta.nez}</td>
-				</tr>
-				<tr>
-					<td>Bouche :</td>
-					<td>#{sta.bouche}</td>
-				</tr>
-				<tr>
-					<td>Poitrine :</td>
-					<td>#{sta.poitrine}</td>
-				</tr>
-				<tr>
-					<td>Plat préféré :</td>
-					<td>#{sta.plat}</td>
-				</tr>
-				<tr>
-					<td>Musique préférée :</td>
-					<td>#{sta.musique}</td>
-				</tr>
-				<tr>
-					<td>Couleur préférée :</td>
-					<td>#{sta.couleur}</td>
-				</tr>
-				<tr>
-					<td>Signe astrologique :</td>
-					<td>#{sta.signe}</td>
-				</tr>
-				<tr>
-					<td>Souhait à long terme :</td>
-					<td>#{sta.souhait.libelle}</td>
-				</tr>
-				<tr>
-					<td>Trait 1 :</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>Trait 2 :</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>Trait 3 :</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>Trait 4 :</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>Trait 5 :</td>
-					<td></td>
-				</tr>
-			</table>
-	   </ui:repeat>
+
 	</div>
+
+
+
 </h:body>
 </html>

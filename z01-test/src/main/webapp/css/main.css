@@ -83,32 +83,31 @@ body {
 }
 
 /* titre */
-.titre{
+.titre {
 	background-color: #d3d7df;
-	color:#58657a;
+	color: #58657a;
 	text-align: center;
 	font-family: sans-serif;
 	color: black;
-	height : 100px;
+	height: 100px;
 	line-height: 100px;
-	margin : 2px 10%;
+	margin: 2px 10%;
 	border-radius: 5px;
 }
 
 hr {
 	width: 90%;
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #58657a;
-    margin: 25px auto;
-    padding: 0; 
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #58657a;
+	margin: 25px auto;
+	padding: 0;
 }
 
-
 /* tab panel */
-.tab{
-	margin : 2px 10%;
+.tab {
+	margin: 2px 10%;
 }
 
 .tab .tablinks {
@@ -117,17 +116,16 @@ hr {
 	float: center;
 	display: inline-block;
 	color: black;
-	width : 25%;
+	width: 25%;
 	text-align: center;
 	padding: 14px 0px;
 	margin: 0px;
 	height: 100%;
 	border: solid;
-	border-width : 0px;
+	border-width: 0px;
 	border-color: #363d4a;
 	border-radius: 2px;
 }
-
 
 .tab .tablinks:hover {
 	background-color: #a6afbf;
@@ -135,13 +133,13 @@ hr {
 	float: center;
 	display: inline-block;
 	color: black;
-	width : 25%;
+	width: 25%;
 	text-align: center;
 	padding: 14px 0px;
 	margin: 0px;
 	height: 100%;
 	border: solid;
-	border-width : 0px;
+	border-width: 0px;
 	border-color: #363d4a;
 	border-radius: 2px;
 }
@@ -153,33 +151,44 @@ hr {
 	float: center;
 	display: inline-block;
 	color: white;
-	width : 25%;
+	width: 25%;
 	text-align: center;
 	padding: 14px 0px;
 	margin: 0px;
 	height: 100%;
 	border-radius: 2px;
-
 }
 
-.tabcontent{
+.tabcontent {
 	display: none;
-	background-color : #d3d7df;
-	margin : 5px 10%;
+	background-color: #d3d7df;
+	margin: 5px 10%;
 	min-height: 500px;
 	border-radius: 2px;
-	color:#58657a;
+	color: #58657a;
 	text-align: left;
 	padding: 20px 10%;
 	font-weight: bold;
 	font-family: sans-serif;
-	font-size:large;
+	font-size: large;
 }
 
-#defaultOpen{
+#defaultOpen {
 	text-align: center;
 }
 
-.form-label{
+.form-label {
 	text-align: right;
+}
+
+/* starter table */
+.containTab{
+	width:80%;
+	margin: auto;
+}
+
+.starterTab {
+	background-color: #d3d7df;
+	border-radius: 5px;
+	margin: 15px;
 }

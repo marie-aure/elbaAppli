@@ -56,10 +56,6 @@ public class LiaisonSITRDaoImpl implements ILiaisonSITRDao {
 		s.delete(liaisonSITR);
 	}
 	
-	
-	
-	
-	
 	@Override
 	public List<LiaisonSITR> getByGroup(int groupe){		
 	 Session s = sf.getCurrentSession();	 
