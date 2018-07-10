@@ -162,6 +162,11 @@ public class StarterManagedBean {
 	
 	public void updateStarter(int id) throws IOException {
 		System.out.println(id);
+		Starter starter = stSer.getById(id);
+		starter.setNom(this.nom);
+		starter.setPrenom(this.prenom);
+		stSer.update(starter);
+		chargerGroupe();
 	}
 
 }
