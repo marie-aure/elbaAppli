@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
 	<title>Groupes de starters</title>
 	<link type="text/css" rel="stylesheet" href="../css/main.css" />
@@ -23,33 +24,39 @@
 
 		<h:form>
 			<table>
-
+<col width="100px" />
+						<col width="200px" />
+						<col width="500px" />
 				<tr>
 					<td>Groupe :</td>
 					<td><h:selectOneMenu value="#{StarterMB.numero}">
 							<f:selectItem itemLabel="Sélectionner" itemValue="" />
 							<f:selectItems value="#{StarterMB.lNumeros}" />
 						</h:selectOneMenu></td>
+						<td><h:commandButton value="Voir le groupe" class="formButton2" type="submit"
+				action="${StarterMB.chargerGroupe()}" /></td>
 				</tr>
 			</table>
-			<h:commandButton value="Voir le groupe" type="submit"
-				action="${StarterMB.chargerGroupe()}" />
 		</h:form>
 		<table class="containTab">
 			<tr>
 				<td><ui:repeat var="sta" value="#{StarterMB.lTraits}"
-						varStatus="status">
+						varStatus="status" step="2">
 						<div class="starterTabDiv">
 							<table class="starterTab">
 								<col width="500px" />
 								<col width="500px" />
+								<h:form>
 								<tr>
 									<td>Nom :</td>
-									<td>#{sta.sim.nom}</td>
+									<td>
+									<h:inputText class="inputText"
+									value="${StarterMB.nom}" pt:placeholder="${sta.sim.nom}"/></td>
 								</tr>
 								<tr>
 									<td>Prénom :</td>
-									<td>#{sta.sim.prenom}</td>
+									<td><h:inputText class="inputText"
+									value="${StarterMB.prenom}" pt:placeholder="#{sta.sim.prenom}"/></td>
 								</tr>
 								<tr>
 									<td>Sexe :</td>
@@ -147,23 +154,30 @@
 									<td>Trait 5 :</td>
 									<td>#{sta.trait5.libelle}</td>
 								</tr>
+								<tr>
+								<td><h:commandButton class="formButton1" value="Modifier" type="submit"
+						action="${StarterMB.UpdateStarter(sta.id)}" /></td></tr>
+						</h:form>
 							</table>
 						</div>
 					</ui:repeat></td>
 
 				<td><ui:repeat var="sta" value="#{StarterMB.lTraits}"
-						varStatus="status">
+						varStatus="status" step="2" offset="1">
 						<div class="starterTabDiv">
 							<table class="starterTab">
 								<col width="500px" />
 								<col width="500px" />
+								<h:form>
 								<tr>
 									<td>Nom :</td>
-									<td>#{sta.sim.nom}</td>
+									<td><h:inputText class="inputText"
+									value="${StarterMB.nom}" pt:placeholder="${sta.sim.nom}"/></td>
 								</tr>
 								<tr>
 									<td>Prénom :</td>
-									<td>#{sta.sim.prenom}</td>
+									<td><h:inputText class="inputText"
+									value="${StarterMB.prenom}" pt:placeholder="#{sta.sim.prenom}"/></td>
 								</tr>
 								<tr>
 									<td>Sexe :</td>
@@ -261,6 +275,10 @@
 									<td>Trait 5 :</td>
 									<td>#{sta.trait5.libelle}</td>
 								</tr>
+								<tr><td>
+								<h:commandButton class="formButton1" value="Modifier" type="submit"
+						action="${StarterMB.UpdateStarters(sta.id)}" /></td></tr>
+						</h:form>
 							</table>
 						</div>
 					</ui:repeat></td>

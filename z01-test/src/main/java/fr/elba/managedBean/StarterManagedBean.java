@@ -48,6 +48,9 @@ public class StarterManagedBean {
 	private int numero;
 	private List<Integer> lNumeros;
 	private List<LiaisonSITR> lTraits;
+	private String nom;
+	private String prenom;
+	private int id;
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -115,6 +118,30 @@ public class StarterManagedBean {
 		this.lTraits = lTraits;
 	}
 
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
@@ -131,6 +158,10 @@ public class StarterManagedBean {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		ec.redirect(ec.getRequestContextPath() + "/sim/voirGroupesStarter.xhtml?faces-redirect=true");
 
+	}
+	
+	public void updateStarter(int id) throws IOException {
+		System.out.println(id);
 	}
 
 }

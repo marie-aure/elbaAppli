@@ -63,6 +63,14 @@ public class LiaisonSITR {
 		this.trait4 = trait4;
 		this.trait5 = trait5;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public boolean isHeritage1() {
 		return heritage1;

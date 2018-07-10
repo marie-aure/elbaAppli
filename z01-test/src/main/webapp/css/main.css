@@ -182,8 +182,8 @@ hr {
 }
 
 /* starter table */
-.containTab{
-	width:80%;
+.containTab {
+	width: 80%;
 	margin: auto;
 }
 
@@ -191,4 +191,44 @@ hr {
 	background-color: #d3d7df;
 	border-radius: 5px;
 	margin: 15px;
+}
+
+/* boutons */
+.formButton1 {
+	background-color: white;
+	border-radius: 2px;
+	padding: 5px 20px;
+	margin: 5px;
+	border: none;
+	font-family: sans-serif;
+	font-weight: bolder;
+}
+
+.formButton1:hover {
+	background-color: #58657a;
+	color:white;
+	font-weight: bolder;
+}
+
+.formButton2 {
+	background-color: #d3d7df;
+	border-radius: 2px;
+	padding: 5px 20px;
+	margin: 5px;
+	border: none;
+	font-family: sans-serif;
+	font-weight: bolder;
+}
+
+.formButton2:hover {
+	background-color: #58657a;
+	color:white;
+	font-weight: bolder;
+}
+
+.inputText {
+	border:none;
+	background-color: white;
+	border-radius: 2px;
+	width: 100px;
 }
