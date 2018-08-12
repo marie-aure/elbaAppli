@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.elba.dao.IPriveDao;
+import fr.elba.dao.IPretDao;
 import fr.elba.model.Famille;
-import fr.elba.model.Prive;
+import fr.elba.model.Pret;
 
 @Repository
 @Transactional
-public class PriveDaoImpl implements IPriveDao {
+public class PretDaoImpl implements IPretDao {
 
 	@Autowired
 	private SessionFactory sf;
@@ -25,55 +25,45 @@ public class PriveDaoImpl implements IPriveDao {
 	}
 
 	@Override
-	public List<Prive> getAll() {
+	public List<Pret> getAll() {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Prive";
+		String req = "FROM Pret";
 		Query query = s.createQuery(req);
-		return (List<Prive>) query.list();
+		return (List<Pret>) query.list();
 	}
 
 	@Override
-	public Prive getById(int id) {
+	public Pret getById(int id) {
 		Session s = sf.getCurrentSession();
-		return (Prive) s.get(Prive.class, id);
+		return (Pret) s.get(Pret.class, id);
 	}
-	@Override
-	public List<Prive> getByOwner(Famille famille) {
-		Session s = sf.getCurrentSession();
-		String req = "FROM Prive WHERE proprietaire = :famille";
-		Query query = s.createQuery(req);
-		query.setParameter("famille", famille);
-		return (List<Prive>) query.list();
-	}
-
 	
 	@Override
-	public List<Prive> getAVendre() {
+	public List<Pret> getByFamily(Famille famille) {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Prive WHERE proprietaire IS NULL";
+		String req = "FROM Pret WHERE famille = ?";
 		Query query = s.createQuery(req);
-		return (List<Prive>) query.list();
+		query.setParameter(0, famille);
+		return (List<Pret>) query.list();
 	}
 
 	@Override
-	public void create(Prive prive) {
+	public void create(Pret pret) {
 		Session s = sf.getCurrentSession();
-		s.clear();
-		s.save(prive);
+		s.save(pret);
 	}
 
 	@Override
-	public void update(Prive prive) {
+	public void update(Pret pret) {
 		Session s = sf.getCurrentSession();
-		s.clear();
-		s.update(prive);
+		s.update(pret);
 	}
 
 	@Override
 	public void delete(int id) {
 		Session s = sf.getCurrentSession();
-		Prive prive = (Prive) s.get(Prive.class, id);
-		s.delete(prive);
+		Pret pret = (Pret) s.get(Pret.class, id);
+		s.delete(pret);
 	}
 
 }

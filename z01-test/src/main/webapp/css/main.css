@@ -49,7 +49,7 @@ body {
 	text-decoration: none;
 	color: black;
 	height: 100%;
-	padding: 14px 16px;
+	padding: 0px 16px;
 }
 
 .navbar-button:hover {
@@ -193,6 +193,11 @@ hr {
 	margin: 15px;
 }
 
+.starterDiv {
+	width: 70%;
+	margin: auto;
+}
+
 /* boutons */
 .formButton1 {
 	background-color: white;
@@ -206,7 +211,7 @@ hr {
 
 .formButton1:hover {
 	background-color: #58657a;
-	color:white;
+	color: white;
 	font-weight: bolder;
 }
 
@@ -222,13 +227,39 @@ hr {
 
 .formButton2:hover {
 	background-color: #58657a;
-	color:white;
+	color: white;
 	font-weight: bolder;
 }
 
 .inputText {
-	border:none;
+	border: none;
 	background-color: white;
 	border-radius: 2px;
 	width: 100px;
+}
+
+/*tableau terrains*/
+.tableTh {
+	font-family: sans-serif;
+	font-weight: bold;
+	padding: 5px 5px; 
+}
+
+.tableTr {
+	font-family: sans-serif;
+	font-size: small;
+}
+
+.tabTerrain {
+	display: none;
+	background-color: #d3d7df;
+	margin: 0px auto;
+	min-height: 500px;
+	border-radius: 2px;
+	color: #58657a;
+	text-align: left;
+	padding: 20px 1%;
+	font-weight: normal;
+	font-family: sans-serif;
+	font-size: small;
 }

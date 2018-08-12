@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import fr.elba.dao.impl.LiaisonSITRDaoImpl;
 import fr.elba.model.LiaisonSITR;
 import fr.elba.model.Starter;
+import fr.elba.service.IFamilleService;
 import fr.elba.service.ILiaisonSITRService;
 import fr.elba.service.IStarterService;
 
@@ -29,6 +30,12 @@ public class StarterManagedBean {
 
 	@ManagedProperty("#{LiaisonSITRService}")
 	private ILiaisonSITRService lsitrSer;
+	
+	@ManagedProperty("#{FamilleService}")
+	private IFamilleService faSer;
+	
+	@ManagedProperty("#{LiaisonSITRMB}")
+	private LiaisonSITRManagedBean lSITRMB;
 
 	public void setStSer(IStarterService stSer) {
 		this.stSer = stSer;
@@ -36,6 +43,14 @@ public class StarterManagedBean {
 
 	public void setLsitrSer(ILiaisonSITRService lsitrSer) {
 		this.lsitrSer = lsitrSer;
+	}
+	
+	public void setFaSer(IFamilleService faSer){
+		this.faSer = faSer;
+	}
+	
+	public void setlSITRMB(LiaisonSITRManagedBean lSITRMB) {
+		this.lSITRMB = lSITRMB;
 	}
 	
 	// +++++++++++++++++++
@@ -157,16 +172,15 @@ public class StarterManagedBean {
 		System.out.println("greaaaato");
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		ec.redirect(ec.getRequestContextPath() + "/sim/voirGroupesStarter.xhtml?faces-redirect=true");
-
 	}
 	
-	public void updateStarter(int id) throws IOException {
-		System.out.println(id);
-		Starter starter = stSer.getById(id);
-		starter.setNom(this.nom);
-		starter.setPrenom(this.prenom);
-		stSer.update(starter);
-		chargerGroupe();
+	public void creerGroupe() throws IOException {
+		System.out.println(this.numero);
+		lSITRMB.creerGroupe(this.lTraits, this.numero);
+	}
+	
+	public void validerGroupe() throws IOException {
+		faSer.validerGroupe(lTraits);
 	}
 
 }

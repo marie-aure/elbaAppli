@@ -7,19 +7,118 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Accueil</title>
-	<link href="${facesContext.externalContext.requestContextPath}/css/main.css" rel="stylesheet" type="text/css"/>
+	<link
+		href="${facesContext.externalContext.requestContextPath}/css/main.css"
+		rel="stylesheet" type="text/css" />
 </h:head>
 <h:body>
-	
 	<ui:insert>
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
 	</ui:insert>
 	<div class="main">
-	<ui:insert>
-		<ui:include src="/template/titreTemplate.xhtml">
-		<ui:param name="titre" value="Elba City" />
-		</ui:include>
-	</ui:insert>	
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Elba City" />
+			</ui:include>
+		</ui:insert>
+		<div class="nomFamille">${AccueilMB.enCours.famille.nom}</div>
+		<table class="Informations">
+			<tr>
+				<td>
+					<table>
+						<tr>Génération : ${AccueilMB.enCours.famille.generation}
+						</tr>
+						<br />
+						<tr>Classe : ${AccueilMB.enCours.famille.classe.libelle}
+						</tr>
+					</table>
+				</td>
+				<td>
+					<table>
+						<tr>
+							<td>Chefs de famille :</td>
+							<td>${AccueilMB.enCours.famille.chef.prenom}
+								${AccueilMB.enCours.famille.chef.nom} <br>
+									${AccueilMB.enCours.famille.chef.couple.prenom}
+									(${AccueilMB.enCours.famille.chef.couple.prenom})
+									${AccueilMB.enCours.famille.chef.nom}</br>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		Terrains
+		<table>
+			<thead>
+				<th>Nom</th>
+				<th>Type</th>
+			</thead>
+			<tr>
+				<td>${AccueilMB.enCours.famille.residence.libelle}</td>
+				<td>${AccueilMB.enCours.famille.residence.type}</td>
+			</tr>
+			<ui:repeat var="ter" value="${AccueilMB.proprietes}">
+				<tr>
+					<td>${ter.libelle}</td>
+					<td>${ter.type}</td>
+				</tr>
+			</ui:repeat>
+		</table>
+		Finances Prêts
+		<table>
+			<thead>
+				<th>Somme</th>
+				<th>Remboursé</th>
+				<th>Taux</th>
+				<th>Intérêts</th>
+				<th>Restant à rembourser</th>
+			</thead>
+			<ui:repeat var="pre" value="${AccueilMB.lPrets}">
+				<tr>
+					<td>${pre.somme}</td>
+					<td>${pre.rembourse}</td>
+					<td>${pre.taux}</td>
+					<td>${pre.interet}</td>
+					<td>${pre.restant}</td>
+				</tr>
+			</ui:repeat>
+		</table>
+		Comptes
+		<table>
+			<thead>
+				<th>Montant</th>
+				<th>Taux</th>
+				<th>Dépôt</th>
+				<th>Retrait</th>
+			</thead>
+			<ui:repeat var="pre" value="${AccueilMB.lComptes}">
+				<tr>
+					<td>${com.montant}</td>
+					<td>${com.taux}</td>
+					<td>${com.depot}</td>
+					<td>${com.retrait}</td>
+				</tr>
+			</ui:repeat>
+		</table>
+		Actions
+		<h:form>
+			<h:commandButton type="Submit" value="Acheter un terrain"
+				action="${AccueilMB.achatTerrain()}" />
+		</h:form>
+
+
+		<h:form>
+			<h:commandButton type="Submit" value="Tour suivant"
+				action="${AccueilMB.tourSuivant()}" />
+		</h:form>
+		
+		<h:form>
+			<h:commandButton type="Submit" value="Choisir résidence"
+				action="${AccueilMB.choixResidence()}" />
+		</h:form>
 	</div>
+
+
 </h:body>
 </html>

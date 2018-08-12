@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import fr.elba.dao.ICommunautaireDao;
 import fr.elba.model.Communautaire;
+import fr.elba.model.Famille;
 import fr.elba.service.ICommunautaireService;
 
 @Service("CommunautaireService")
@@ -28,7 +29,16 @@ public class CommunautaireServiceImpl implements ICommunautaireService {
 	public Communautaire getById(int id) {
 		return coDao.getById(id);
 	}
+	@Override
+	public List<Communautaire> getByOwner(Famille famille) {
+		return coDao.getByOwner(famille);
+	}
 
+	@Override
+	public List<Communautaire> getAVendre() {
+		return coDao.getAVendre();
+	}
+	
 	@Override
 	public void create(Communautaire communautaire) {
 		coDao.create(communautaire);

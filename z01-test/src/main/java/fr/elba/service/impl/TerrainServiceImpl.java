@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.elba.dao.ITerrainDao;
+import fr.elba.model.Famille;
 import fr.elba.model.Terrain;
 import fr.elba.service.ITerrainService;
 
@@ -29,6 +30,11 @@ public class TerrainServiceImpl implements ITerrainService {
 		return teDao.getById(id);
 	}
 
+	@Override
+	public List<Terrain> getByOwner(Famille famille) {
+		return teDao.getByOwner(famille);
+	}
+	
 	@Override
 	public void create(Terrain terrain) {
 		teDao.create(terrain);

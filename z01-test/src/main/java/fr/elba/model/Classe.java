@@ -34,9 +34,6 @@ public class Classe {
 	
 	@OneToOne
 	private Classe classeSup;
-
-	@OneToOne
-	private Sim chef;
 		
 	@OneToOne(mappedBy="classeSup")
 	private Classe classeInf;
@@ -65,24 +62,23 @@ public class Classe {
 		super();
 	}
 	
-	public Classe(String libelle, int compte, Quartier quartier, Classe classeSup, Sim chef, Classe classeInf) {
+	public Classe(String libelle, int compte, Quartier quartier, Classe classeSup,  Classe classeInf) {
 		super();
 		this.libelle = libelle;
 		this.compte = compte;
 		this.quartier = quartier;
 		this.classeSup = classeSup;
-		this.chef = chef;
+
 		this.classeInf = classeInf;
 	}
 
-	public Classe(int id, String libelle, int compte, Quartier quartier, Classe classeSup, Sim chef, Classe classeInf) {
+	public Classe(int id, String libelle, int compte, Quartier quartier, Classe classeSup, Classe classeInf) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 		this.compte = compte;
 		this.quartier = quartier;
 		this.classeSup = classeSup;
-		this.chef = chef;
 		this.classeInf = classeInf;
 	}
 
@@ -126,13 +122,7 @@ public class Classe {
 		this.classeSup = classeSup;
 	}
 
-	public Sim getChef() {
-		return chef;
-	}
 
-	public void setChef(Sim chef) {
-		this.chef = chef;
-	}
 
 	public Classe getClasseInf() {
 		return classeInf;
@@ -187,7 +177,7 @@ public class Classe {
 		return "Classe [id=" + id + ", " + (libelle != null ? "libelle=" + libelle + ", " : "") + "compte=" + compte
 				+ ", " + (quartier != null ? "quartier=" + quartier + ", " : "")
 				+ (classeSup != null ? "classeSup=" + classeSup + ", " : "")
-				+ (chef != null ? "chef=" + chef + ", " : "") + (classeInf != null ? "classeInf=" + classeInf : "")
+				+ (classeInf != null ? "classeInf=" + classeInf : "")
 				+ "]";
 	}
 

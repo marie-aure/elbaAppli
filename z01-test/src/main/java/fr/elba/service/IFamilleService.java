@@ -3,6 +3,7 @@ package fr.elba.service;
 import java.util.List;
 
 import fr.elba.model.Famille;
+import fr.elba.model.LiaisonSITR;
 
 public interface IFamilleService {
 
@@ -17,5 +18,7 @@ public interface IFamilleService {
 	public void update(Famille famille);
 
 	public void delete(int id);
+	
+	public void validerGroupe(List<LiaisonSITR> lStarters);
 
 }

@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:uj="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title>Créer le groupe</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Créer le groupe" />
+			</ui:include>
+		</ui:insert>
+
+		<div class="starterTabDiv">
+			<h:form>
+				<table class="starterTab">
+					<col width="500px" />
+					<col width="500px" />
+					<tr>
+						<td>Nom :</td>
+						<td><h:inputText value="#{LiaisonSITRMB.starter.sim.nom}"
+								pt:placeholder="#{LiaisonSITRMB.starter.sim.nom}" /></td>
+					</tr>
+					<tr>
+						<td>Prénom :</td>
+						<td><h:inputText value="#{LiaisonSITRMB.starter.sim.prenom}"
+								pt:placeholder="#{LiaisonSITRMB.starter.sim.prenom}" /></td>
+					</tr>
+					<tr>
+						<td>Sexe :</td>
+						<td>#{LiaisonSITRMB.starter.sim.sexe}</td>
+					</tr>
+					<tr>
+						<td>Espèce :</td>
+						<td>#{LiaisonSITRMB.starter.sim.espece}</td>
+					</tr>
+					<tr>
+						<td>Orientation :</td>
+						<td>#{LiaisonSITRMB.starter.sim.orientation}</td>
+					</tr>
+					<tr>
+						<td>Couple :</td>
+						<td>#{LiaisonSITRMB.starter.sim.couple.nom}
+							#{LiaisonSITRMB.starter.sim.couple.prenom}</td>
+					</tr>
+					<tr>
+						<td>Peau :</td>
+						<td>#{LiaisonSITRMB.starter.sim.peau}</td>
+					</tr>
+					<tr>
+						<td>Poids :</td>
+						<td>#{LiaisonSITRMB.starter.sim.poids}</td>
+					</tr>
+					<tr>
+						<td>Muscle :</td>
+						<td>#{LiaisonSITRMB.starter.sim.muscle}</td>
+					</tr>
+					<tr>
+						<td>Couleur des cheveux :</td>
+						<td>#{LiaisonSITRMB.starter.sim.cheveux}</td>
+					</tr>
+					<tr>
+						<td>Visage :</td>
+						<td>#{LiaisonSITRMB.starter.sim.visage}</td>
+					</tr>
+					<tr>
+						<td>Couleur des yeux :</td>
+						<td>#{LiaisonSITRMB.starter.sim.couleurYeux}</td>
+					</tr>
+					<tr>
+						<td>Yeux :</td>
+						<td>#{LiaisonSITRMB.starter.sim.yeux}</td>
+					</tr>
+					<tr>
+						<td>Nez :</td>
+						<td>#{LiaisonSITRMB.starter.sim.nez}</td>
+					</tr>
+					<tr>
+						<td>Bouche :</td>
+						<td>#{LiaisonSITRMB.starter.sim.bouche}</td>
+					</tr>
+					<tr>
+						<td>Poitrine :</td>
+						<td>#{LiaisonSITRMB.starter.sim.poitrine}</td>
+					</tr>
+					<tr>
+						<td>Plat préféré :</td>
+						<td>#{LiaisonSITRMB.starter.sim.plat}</td>
+					</tr>
+					<tr>
+						<td>Musique préférée :</td>
+						<td>#{LiaisonSITRMB.starter.sim.musique}</td>
+					</tr>
+					<tr>
+						<td>Couleur préférée :</td>
+						<td>#{LiaisonSITRMB.starter.sim.couleur}</td>
+					</tr>
+					<tr>
+						<td>Signe astrologique :</td>
+						<td>#{LiaisonSITRMB.starter.sim.signe}</td>
+					</tr>
+					<tr>
+						<td>Souhait à long terme :</td>
+						<td>#{LiaisonSITRMB.starter.sim.souhait.libelle}</td>
+					</tr>
+					<tr>
+						<td>Trait 1 :</td>
+						<td>#{LiaisonSITRMB.starter.trait1.libelle}</td>
+					</tr>
+					<tr>
+						<td>Trait 2 :</td>
+						<td>#{LiaisonSITRMB.starter.trait2.libelle}</td>
+					</tr>
+					<tr>
+						<td>Trait 3 :</td>
+						<td>#{LiaisonSITRMB.starter.trait3.libelle}</td>
+					</tr>
+					<tr>
+						<td>Trait 4 :</td>
+						<td>#{LiaisonSITRMB.starter.trait4.libelle}</td>
+					</tr>
+					<tr>
+						<td>Trait 5 :</td>
+						<td>#{LiaisonSITRMB.starter.trait5.libelle}</td>
+					</tr>
+					<tr>
+						<td><h:commandButton value="Modifier" class="formButton1"
+								type="submit" action="${LiaisonSITRMB.updateStarter()}" /></td>
+					</tr>
+				</table>
+			</h:form>
+			<h:form>
+				<h:commandButton value="Précédent" class="formButton2" type="submit"
+					action="${LiaisonSITRMB.precedent()}" />
+				<h:commandButton value="Suivant" class="formButton2" type="submit"
+					action="${LiaisonSITRMB.suivant()}" />
+			</h:form>
+		</div>
+
+
+
+	</div>
+</h:body>
+</html>

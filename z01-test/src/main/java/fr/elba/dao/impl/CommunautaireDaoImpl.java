@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.elba.dao.ICommunautaireDao;
 import fr.elba.model.Communautaire;
+import fr.elba.model.Famille;
 
 @Repository
 @Transactional
@@ -35,6 +36,23 @@ public class CommunautaireDaoImpl implements ICommunautaireDao {
 	public Communautaire getById(int id) {
 		Session s = sf.getCurrentSession();
 		return (Communautaire) s.get(Communautaire.class, id);
+	}
+
+	@Override
+	public List<Communautaire> getByOwner(Famille famille) {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Communautaire WHERE proprietaire = :famille";
+		Query query = s.createQuery(req);
+		query.setParameter("famille", famille);
+		return (List<Communautaire>) query.list();
+	}
+
+	@Override
+	public List<Communautaire> getAVendre() {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Communautaire WHERE proprietaire IS NULL";
+		Query query = s.createQuery(req);
+		return (List<Communautaire>) query.list();
 	}
 
 	@Override
