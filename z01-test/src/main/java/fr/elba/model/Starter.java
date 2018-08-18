@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("starter")
 public class Starter extends Sim {
 
+	private String nomOrigine;
 	private int peau;
 	private int poids;
 	private int muscle;
@@ -37,10 +38,10 @@ public class Starter extends Sim {
 	}
 
 	public Starter(String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
-			boolean realise, Famille famille, Famille familleOrigine, Sim couple, int peau, int poids, int muscle,
+			boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1, Sim parent2, int peau, int poids, int muscle,
 			int cheveux, int visage, int couleurYeux, int yeux, int nez, int bouche, int poitrine, int plat,
-			int musique, int couleur, int signe, Souhait souhait, int groupe) {
-		super(prenom, nom, sexe, espece, orientation, marie, realise, famille, familleOrigine, couple);
+			int musique, int couleur, int signe, Souhait souhait, int groupe, String nomOrigine) {
+		super(prenom, nom, sexe, espece, orientation, marie, realise, famille, familleOrigine, couple, parent1, parent2);
 		this.peau = peau;
 		this.poids = poids;
 		this.muscle = muscle;
@@ -57,13 +58,14 @@ public class Starter extends Sim {
 		this.signe = signe;
 		this.souhait = souhait;
 		this.groupe = groupe;
+		this.nomOrigine = nomOrigine;
 	}
 
 	public Starter(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
-			boolean realise, Famille famille, Famille familleOrigine, Sim couple, int peau, int poids, int muscle,
+			boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1, Sim parent2, int peau, int poids, int muscle,
 			int cheveux, int visage, int couleurYeux, int yeux, int nez, int bouche, int poitrine, int plat,
-			int musique, int couleur, int signe, Souhait souhait, int groupe) {
-		super(id, prenom, nom, sexe, espece, orientation, marie, realise, famille, familleOrigine, couple);
+			int musique, int couleur, int signe, Souhait souhait, int groupe, String nomOrigine) {
+		super(id, prenom, nom, sexe, espece, orientation, marie, realise, famille, familleOrigine, couple, parent1, parent2);
 		this.peau = peau;
 		this.poids = poids;
 		this.muscle = muscle;
@@ -80,6 +82,15 @@ public class Starter extends Sim {
 		this.signe = signe;
 		this.souhait = souhait;
 		this.groupe = groupe;
+		this.nomOrigine = nomOrigine;
+	}
+
+	public String getNomOrigine() {
+		return nomOrigine;
+	}
+
+	public void setNomOrigine(String nomOrigine) {
+		this.nomOrigine = nomOrigine;
 	}
 
 	public int getPeau() {

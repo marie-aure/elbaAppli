@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.elba.dao.IPriveDao;
+import fr.elba.dao.ICompteDao;
 import fr.elba.model.Famille;
-import fr.elba.model.Prive;
+import fr.elba.model.Compte;
 
 @Repository
 @Transactional
-public class PriveDaoImpl implements IPriveDao {
+public class CompteDaoImpl implements ICompteDao {
 
 	@Autowired
 	private SessionFactory sf;
@@ -25,55 +25,45 @@ public class PriveDaoImpl implements IPriveDao {
 	}
 
 	@Override
-	public List<Prive> getAll() {
+	public List<Compte> getAll() {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Prive";
+		String req = "FROM Compte";
 		Query query = s.createQuery(req);
-		return (List<Prive>) query.list();
+		return (List<Compte>) query.list();
 	}
 
 	@Override
-	public Prive getById(int id) {
+	public Compte getById(int id) {
 		Session s = sf.getCurrentSession();
-		return (Prive) s.get(Prive.class, id);
+		return (Compte) s.get(Compte.class, id);
 	}
-	@Override
-	public List<Prive> getByOwner(Famille famille) {
-		Session s = sf.getCurrentSession();
-		String req = "FROM Prive WHERE proprietaire = :famille";
-		Query query = s.createQuery(req);
-		query.setParameter("famille", famille);
-		return (List<Prive>) query.list();
-	}
-
 	
 	@Override
-	public List<Prive> getAVendre() {
+	public List<Compte> getByFamily(Famille famille) {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Prive WHERE proprietaire IS NULL";
+		String req = "FROM Compte WHERE famille = ?";
 		Query query = s.createQuery(req);
-		return (List<Prive>) query.list();
+		query.setParameter(0, famille);
+		return (List<Compte>) query.list();
 	}
 
 	@Override
-	public void create(Prive prive) {
+	public void create(Compte compte) {
 		Session s = sf.getCurrentSession();
-		s.clear();
-		s.save(prive);
+		s.save(compte);
 	}
 
 	@Override
-	public void update(Prive prive) {
+	public void update(Compte compte) {
 		Session s = sf.getCurrentSession();
-		s.clear();
-		s.update(prive);
+		s.update(compte);
 	}
 
 	@Override
 	public void delete(int id) {
 		Session s = sf.getCurrentSession();
-		Prive prive = (Prive) s.get(Prive.class, id);
-		s.delete(prive);
+		Compte compte = (Compte) s.get(Compte.class, id);
+		s.delete(compte);
 	}
 
 }

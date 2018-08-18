@@ -3,6 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:uj="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
@@ -24,17 +25,18 @@
 
 		<h:form>
 			<table>
-<col width="100px" />
-						<col width="200px" />
-						<col width="500px" />
+				<col width="100px" />
+				<col width="200px" />
+				<col width="500px" />
 				<tr>
 					<td>Groupe :</td>
 					<td><h:selectOneMenu value="#{StarterMB.numero}">
 							<f:selectItem itemLabel="Sélectionner" itemValue="" />
 							<f:selectItems value="#{StarterMB.lNumeros}" />
 						</h:selectOneMenu></td>
-						<td><h:commandButton value="Voir le groupe" class="formButton2" type="submit"
-				action="${StarterMB.chargerGroupe()}" /></td>
+					<td><h:commandButton value="Voir le groupe"
+							class="formButton2" type="submit"
+							action="${StarterMB.chargerGroupe()}" /></td>
 				</tr>
 			</table>
 		</h:form>
@@ -46,17 +48,13 @@
 							<table class="starterTab">
 								<col width="500px" />
 								<col width="500px" />
-								<h:form>
 								<tr>
 									<td>Nom :</td>
-									<td>
-									<h:inputText class="inputText"
-									value="${StarterMB.nom}" pt:placeholder="${sta.sim.nom}"/></td>
+									<td>#{sta.sim.nom}</td>
 								</tr>
 								<tr>
 									<td>Prénom :</td>
-									<td><h:inputText class="inputText"
-									value="${StarterMB.prenom}" pt:placeholder="#{sta.sim.prenom}"/></td>
+									<td>#{sta.sim.prenom}</td>
 								</tr>
 								<tr>
 									<td>Sexe :</td>
@@ -154,10 +152,6 @@
 									<td>Trait 5 :</td>
 									<td>#{sta.trait5.libelle}</td>
 								</tr>
-								<tr>
-								<td><h:commandButton class="formButton1" value="Modifier" type="submit"
-						action="${StarterMB.updateStarter(sta.sim.id)}" /></td></tr>
-						</h:form>
 							</table>
 						</div>
 					</ui:repeat></td>
@@ -168,16 +162,13 @@
 							<table class="starterTab">
 								<col width="500px" />
 								<col width="500px" />
-								<h:form>
 								<tr>
 									<td>Nom :</td>
-									<td><h:inputText class="inputText"
-									value="${StarterMB.nom}" pt:placeholder="${sta.sim.nom}"/></td>
+									<td>#{sta.sim.nom}</td>
 								</tr>
 								<tr>
 									<td>Prénom :</td>
-									<td><h:inputText class="inputText"
-									value="${StarterMB.prenom}" pt:placeholder="#{sta.sim.prenom}"/></td>
+									<td>#{sta.sim.prenom}</td>
 								</tr>
 								<tr>
 									<td>Sexe :</td>
@@ -275,16 +266,17 @@
 									<td>Trait 5 :</td>
 									<td>#{sta.trait5.libelle}</td>
 								</tr>
-								<tr><td>
-								<h:commandButton class="formButton1" value="Modifier" type="submit"
-						action="${StarterMB.updateStarter(sta.sim.id)}" /></td></tr>
-						</h:form>
 							</table>
 						</div>
 					</ui:repeat></td>
 			</tr>
 		</table>
-
+<h:form><h:commandButton value="Créer le groupe" class="formButton2"
+			type="submit" action="${StarterMB.creerGroupe()}" />
+			<h:commandButton value="Valider le groupe" class="formButton2"
+			type="submit" action="${StarterMB.validerGroupe()}" />
+			</h:form>
+		
 
 	</div>
 

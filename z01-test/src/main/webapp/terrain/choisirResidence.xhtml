@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Choisir résidence</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+<!-- 	<div class="main"> -->
+<!-- 		<ui:insert> -->
+<!-- 			<ui:include src="/template/titreTemplate.xhtml"> -->
+<!-- 				<ui:param name="titre" value="Choisir la résidence principale" /> -->
+<!-- 			</ui:include> -->
+<!-- 		</ui:insert> -->
+
+<!-- 		<div id="Privé" class="tabcontent tabTerrain"> -->
+<!-- 			<table> -->
+<!-- 				<thread class="tableTh"> -->
+<!-- 				<th class="tableTh">Libelle</th> -->
+<!-- 				<th class="tableTh">Type</th> -->
+<!-- 				<th class="tableTh">Adresse</th> -->
+<!-- 				<th class="tableTh">Lieu-dit</th> -->
+<!-- 				<th class="tableTh">Quartier</th> -->
+<!-- 				<th class="tableTh">Classe</th> -->
+<!-- 				<th class="tableTh"></th> -->
+<!-- 				</thread> -->
+<!-- 				<c:forEach var="pri" items="${ChoixResidenceMB.proprietes}"> -->
+<!-- 					<tr class="tableTr"> -->
+<!-- 						<h:form> -->
+<!-- 							<td>${pri.libelle}</td> -->
+<!-- 							<td>${pri.type}</td> -->
+<!-- 							<td>${pri.adresse}</td> -->
+<!-- 							<td>${pri.lieuDit}</td> -->
+<!-- 							<td>${pri.quartier.libelle}</td> -->
+<!-- 							<td>${pri.classe.libelle}</td> -->
+<!-- 							<td><h:commandButton type="Submit" value="Choisir résidence" -->
+<!-- 									action="${ChoixResidenceMB.choisir(pri.id)}" /></td> -->
+<!-- 						</h:form> -->
+<!-- 					</tr> -->
+
+<!-- 				</c:forEach> -->
+<!-- 			</table> -->
+
+<!-- 		</div> -->
+
+<!-- 	</div> -->
+
+
+</h:body>
+</html>

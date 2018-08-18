@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.elba.dao.IPriveDao;
+import fr.elba.model.Famille;
 import fr.elba.model.Prive;
 import fr.elba.service.IPriveService;
 
@@ -27,6 +28,16 @@ public class PriveServiceImpl implements IPriveService {
 	@Override
 	public Prive getById(int id) {
 		return prDao.getById(id);
+	}
+
+	@Override
+	public List<Prive> getByOwner(Famille famille) {
+		return prDao.getByOwner(famille);
+	}
+
+	@Override
+	public List<Prive> getAVendre() {
+		return prDao.getAVendre();
 	}
 
 	@Override

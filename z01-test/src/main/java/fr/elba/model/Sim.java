@@ -33,6 +33,12 @@ public class Sim {
 
 	@OneToOne
 	private Sim couple;
+	
+	@ManyToOne
+	private Sim parent1;
+	
+	@ManyToOne
+	private Sim parent2;
 
 	@OneToOne(mappedBy = "chef")
 	private Famille cFamille;
@@ -42,7 +48,7 @@ public class Sim {
 	}
 
 	public Sim(String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
-			boolean realise, Famille famille, Famille familleOrigine, Sim couple) {
+			boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1, Sim parent2) {
 		super();
 		this.prenom = prenom;
 		this.nom = nom;
@@ -54,10 +60,12 @@ public class Sim {
 		this.famille = famille;
 		this.familleOrigine = familleOrigine;
 		this.couple = couple;
+		this.parent1 = parent1;
+		this.parent2 = parent2;
 	}
 
 	public Sim(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
-			boolean realise, Famille famille, Famille familleOrigine, Sim couple) {
+			boolean realise, Famille famille, Famille familleOrigine, Sim couple,Sim parent1, Sim parent2) {
 		super();
 		this.id = id;
 		this.prenom = prenom;
@@ -70,8 +78,10 @@ public class Sim {
 		this.famille = famille;
 		this.familleOrigine = familleOrigine;
 		this.couple = couple;
+		this.parent1 = parent1;
+		this.parent2 = parent2;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -158,6 +168,22 @@ public class Sim {
 
 	public void setCouple(Sim couple) {
 		this.couple = couple;
+	}
+
+	public Sim getParent1() {
+		return parent1;
+	}
+
+	public void setParent1(Sim parent1) {
+		this.parent1 = parent1;
+	}
+
+	public Sim getParent2() {
+		return parent2;
+	}
+
+	public void setParent2(Sim parent2) {
+		this.parent2 = parent2;
 	}
 
 	public Famille getcFamille() {

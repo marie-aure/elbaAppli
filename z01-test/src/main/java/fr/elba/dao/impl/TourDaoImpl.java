@@ -9,13 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.elba.dao.ITerrainDao;
-import fr.elba.model.Famille;
-import fr.elba.model.Terrain;
+import fr.elba.dao.ITourDao;
+import fr.elba.model.Tour;
 
 @Repository
 @Transactional
-public class TerrainDaoImpl implements ITerrainDao {
+public class TourDaoImpl implements ITourDao {
 
 	@Autowired
 	private SessionFactory sf;
@@ -25,45 +24,45 @@ public class TerrainDaoImpl implements ITerrainDao {
 	}
 
 	@Override
-	public List<Terrain> getAll() {
+	public List<Tour> getAll() {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Terrain";
+		String req = "FROM Tour";
 		Query query = s.createQuery(req);
-		return (List<Terrain>) query.list();
+		return (List<Tour>) query.list();
 	}
 
 	@Override
-	public Terrain getById(int id) {
+	public Tour getById(int id) {
 		Session s = sf.getCurrentSession();
-		return (Terrain) s.get(Terrain.class, id);
+		return (Tour) s.get(Tour.class, id);
 	}
-	
+
 	@Override
-	public List<Terrain> getByOwner(Famille famille) {
+	public Tour getEnCours() {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Terrain WHERE proprietaire = :famille";
+		String req = "FROM Tour WHERE enCours = 1";
 		Query query = s.createQuery(req);
-		query.setParameter("famille", famille);
-		return (List<Terrain>) query.list();
+		query.setMaxResults(1);
+		return (Tour) query.uniqueResult();
 	}
 
 	@Override
-	public void create(Terrain terrain) {
+	public void create(Tour tour) {
 		Session s = sf.getCurrentSession();
-		s.save(terrain);
+		s.save(tour);
 	}
 
 	@Override
-	public void update(Terrain terrain) {
+	public void update(Tour tour) {
 		Session s = sf.getCurrentSession();
-		s.update(terrain);
+		s.update(tour);
 	}
 
 	@Override
 	public void delete(int id) {
 		Session s = sf.getCurrentSession();
-		Terrain terrain = (Terrain) s.get(Terrain.class, id);
-		s.delete(terrain);
+		Tour tour = (Tour) s.get(Tour.class, id);
+		s.delete(tour);
 	}
 
 }
