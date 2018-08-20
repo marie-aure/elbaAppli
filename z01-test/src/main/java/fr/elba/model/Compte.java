@@ -17,8 +17,8 @@ public class Compte {
 
 	private long montant;
 	private long taux;
-	private int depot;
-	private int retrait;
+	private long depot;
+	private long retrait;
 	
 	// liaisons
 	@ManyToOne
@@ -28,7 +28,7 @@ public class Compte {
 		super();
 	}
 
-	public Compte(long montant, long taux, int depot, int retrait, Famille famille) {
+	public Compte(long montant, long taux, long depot, long retrait, Famille famille) {
 		super();
 		this.montant = montant;
 		this.taux = taux;
@@ -37,7 +37,7 @@ public class Compte {
 		this.famille = famille;
 	}
 
-	public Compte(int id, long montant, long taux, int depot, int retrait, Famille famille) {
+	public Compte(int id, long montant, long taux, long depot, long retrait, Famille famille) {
 		super();
 		this.id = id;
 		this.montant = montant;
@@ -71,19 +71,19 @@ public class Compte {
 		this.taux = taux;
 	}
 
-	public int getDepot() {
+	public long getDepot() {
 		return depot;
 	}
 
-	public void setDepot(int depot) {
+	public void setDepot(long depot) {
 		this.depot = depot;
 	}
 
-	public int getRetrait() {
+	public long getRetrait() {
 		return retrait;
 	}
 
-	public void setRetrait(int retrait) {
+	public void setRetrait(long retrait) {
 		this.retrait = retrait;
 	}
 

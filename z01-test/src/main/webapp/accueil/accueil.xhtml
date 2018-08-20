@@ -48,6 +48,8 @@
 				</td>
 			</tr>
 		</table>
+		Argent "In Game" : ${AccueilMB.enCours.famille.argentIG}
+		<br/>
 		Terrains
 		<table>
 			<thead>
@@ -55,7 +57,7 @@
 				<th>Type</th>
 			</thead>
 			<tr>
-				<td>${AccueilMB.enCours.famille.residence.libelle}</td>
+				<td>R - ${AccueilMB.enCours.famille.residence.libelle}</td>
 				<td>${AccueilMB.enCours.famille.residence.type}</td>
 			</tr>
 			<ui:repeat var="ter" value="${AccueilMB.proprietes}">
@@ -92,7 +94,7 @@
 				<th>Dépôt</th>
 				<th>Retrait</th>
 			</thead>
-			<ui:repeat var="pre" value="${AccueilMB.lComptes}">
+			<ui:repeat var="com" value="${AccueilMB.lComptes}">
 				<tr>
 					<td>${com.montant}</td>
 					<td>${com.taux}</td>
@@ -106,16 +108,17 @@
 			<h:commandButton type="Submit" value="Acheter un terrain"
 				action="${AccueilMB.achatTerrain()}" />
 		</h:form>
-
-
 		<h:form>
 			<h:commandButton type="Submit" value="Tour suivant"
 				action="${AccueilMB.tourSuivant()}" />
-		</h:form>
-		
+		</h:form>		
 		<h:form>
 			<h:commandButton type="Submit" value="Choisir résidence"
 				action="${AccueilMB.choixResidence()}" />
+		</h:form>
+		<h:form>
+			<h:commandButton type="Submit" value="Gérer finances"
+				action="${AccueilMB.toGererFinance()}" />
 		</h:form>
 	</div>
 

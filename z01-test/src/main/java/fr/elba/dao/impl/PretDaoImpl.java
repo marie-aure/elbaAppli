@@ -41,7 +41,7 @@ public class PretDaoImpl implements IPretDao {
 	@Override
 	public List<Pret> getByFamily(Famille famille) {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Pret WHERE famille = ?";
+		String req = "FROM Pret WHERE famille = ? AND ferme = 0";
 		Query query = s.createQuery(req);
 		query.setParameter(0, famille);
 		return (List<Pret>) query.list();

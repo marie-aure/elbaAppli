@@ -63,6 +63,11 @@ public class ChoixResidenceManagedBean {
 	@PostConstruct
 	public void init() {
 		this.proprietes = getPrives();
+		if(this.proprietes.size()>0){
+			for (Prive prive : this.proprietes){
+				System.out.println(prive.getLibelle());
+			}
+		}
 		System.out.println("Hey!");
 		System.out.println(this.proprietes.size());
 	}
@@ -84,6 +89,7 @@ public class ChoixResidenceManagedBean {
 	// +++++++++++++++++
 
 	public List<Prive> getPrives() {
+		System.out.println("start getPrives");
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		Famille famille = (Famille) sessionMap.get("familleEnCoursAchatTerrain");

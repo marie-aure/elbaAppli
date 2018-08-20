@@ -156,8 +156,10 @@ public class AccueilManagedBean {
 		ec.redirect(ec.getRequestContextPath() + "/terrain/achatTerrain.xhtml?faces-redirect=true");
 	}
 
-	public void tourSuivant() {
+	public void tourSuivant() throws IOException {
 		System.out.println("TOUR SUIVANT YEAH!!!");
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		ec.redirect(ec.getRequestContextPath() + "/accueil/tourSuivant1.xhtml?faces-redirect=true");
 	}
 
 	public void choixResidence() throws IOException {
@@ -167,4 +169,10 @@ public class AccueilManagedBean {
 		ec.redirect(ec.getRequestContextPath() + "/terrain/choisirResidence.xhtml?faces-redirect=true");
 	}
 
+	public void toGererFinance() throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("familleEnCoursAchatTerrain", this.enCours.getFamille());
+		ec.redirect(ec.getRequestContextPath() + "/accueil/gererFinances.xhtml?faces-redirect=true");
+	}
 }

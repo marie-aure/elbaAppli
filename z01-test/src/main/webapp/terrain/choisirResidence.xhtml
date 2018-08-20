@@ -15,44 +15,42 @@
 	<ui:insert>
 		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
 	</ui:insert>
-<!-- 	<div class="main"> -->
-<!-- 		<ui:insert> -->
-<!-- 			<ui:include src="/template/titreTemplate.xhtml"> -->
-<!-- 				<ui:param name="titre" value="Choisir la résidence principale" /> -->
-<!-- 			</ui:include> -->
-<!-- 		</ui:insert> -->
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Choisir la résidence principale" />
+			</ui:include>
+		</ui:insert>
 
-<!-- 		<div id="Privé" class="tabcontent tabTerrain"> -->
-<!-- 			<table> -->
-<!-- 				<thread class="tableTh"> -->
-<!-- 				<th class="tableTh">Libelle</th> -->
-<!-- 				<th class="tableTh">Type</th> -->
-<!-- 				<th class="tableTh">Adresse</th> -->
-<!-- 				<th class="tableTh">Lieu-dit</th> -->
-<!-- 				<th class="tableTh">Quartier</th> -->
-<!-- 				<th class="tableTh">Classe</th> -->
-<!-- 				<th class="tableTh"></th> -->
-<!-- 				</thread> -->
-<!-- 				<c:forEach var="pri" items="${ChoixResidenceMB.proprietes}"> -->
-<!-- 					<tr class="tableTr"> -->
-<!-- 						<h:form> -->
-<!-- 							<td>${pri.libelle}</td> -->
-<!-- 							<td>${pri.type}</td> -->
-<!-- 							<td>${pri.adresse}</td> -->
-<!-- 							<td>${pri.lieuDit}</td> -->
-<!-- 							<td>${pri.quartier.libelle}</td> -->
-<!-- 							<td>${pri.classe.libelle}</td> -->
-<!-- 							<td><h:commandButton type="Submit" value="Choisir résidence" -->
-<!-- 									action="${ChoixResidenceMB.choisir(pri.id)}" /></td> -->
-<!-- 						</h:form> -->
-<!-- 					</tr> -->
+			<table>
+				<thread class="tableTh">
+				<th class="tableTh">Libelle</th>
+				<th class="tableTh">Type</th>
+				<th class="tableTh">Adresse</th>
+				<th class="tableTh">Lieu-dit</th>
+				<th class="tableTh">Quartier</th>
+				<th class="tableTh">Classe</th>
+				<th class="tableTh"></th>
+				</thread>
+				<c:forEach var="pri" items="${ChoixResidenceMB.proprietes}">
+					<tr class="tableTr">
+						<h:form>
+							<td>${pri.libelle}</td>
+							<td>${pri.type}</td>
+							<td>${pri.adresse}</td>
+							<td>${pri.lieuDit}</td>
+							<td>${pri.quartier.libelle}</td>
+							<td>${pri.classe.libelle}</td>
+							<td><h:commandButton type="Submit" value="Choisir résidence"
+									action="${ChoixResidenceMB.choisir(pri.id)}" /></td>
+						</h:form>
+					</tr>
 
-<!-- 				</c:forEach> -->
-<!-- 			</table> -->
+				</c:forEach>
+			</table>
 
-<!-- 		</div> -->
 
-<!-- 	</div> -->
+	</div>
 
 
 </h:body>

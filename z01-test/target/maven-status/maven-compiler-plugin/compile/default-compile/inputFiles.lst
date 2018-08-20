@@ -35,6 +35,7 @@ C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Famille.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Terrain.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\IPriveDao.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Compte.java
+C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\managedBean\FinanceManagedBean.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\ISouhaitDao.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Souhait.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\managedBean\FamilleManagedBean.java
@@ -96,6 +97,7 @@ C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\IFamilleSer
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\ICommunautaireDao.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\RabbitHole.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\impl\LiaisonSITRServiceImpl.java
+C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\managedBean\TourSuivantManagedBean.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\IDevoirService.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\ITourService.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\impl\StarterDaoImpl.java
