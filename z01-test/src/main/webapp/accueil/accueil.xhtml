@@ -48,6 +48,7 @@
 				</td>
 			</tr>
 		</table>
+<<<<<<< HEAD
 		Terrains
 		<table>
 			<thead>
@@ -116,6 +117,79 @@
 		<h:form>
 			<h:commandButton type="Submit" value="Choisir résidence"
 				action="${AccueilMB.choixResidence()}" />
+=======
+		Argent "In Game" : ${AccueilMB.enCours.famille.argentIG}
+		<br/>
+		Terrains
+		<table>
+			<thead>
+				<th>Nom</th>
+				<th>Type</th>
+			</thead>
+			<tr>
+				<td>R - ${AccueilMB.enCours.famille.residence.libelle}</td>
+				<td>${AccueilMB.enCours.famille.residence.type}</td>
+			</tr>
+			<ui:repeat var="ter" value="${AccueilMB.proprietes}">
+				<tr>
+					<td>${ter.libelle}</td>
+					<td>${ter.type}</td>
+				</tr>
+			</ui:repeat>
+		</table>
+		Finances Prêts
+		<table>
+			<thead>
+				<th>Somme</th>
+				<th>Remboursé</th>
+				<th>Taux</th>
+				<th>Intérêts</th>
+				<th>Restant à rembourser</th>
+			</thead>
+			<ui:repeat var="pre" value="${AccueilMB.lPrets}">
+				<tr>
+					<td>${pre.somme}</td>
+					<td>${pre.rembourse}</td>
+					<td>${pre.taux}</td>
+					<td>${pre.interet}</td>
+					<td>${pre.restant}</td>
+				</tr>
+			</ui:repeat>
+		</table>
+		Comptes
+		<table>
+			<thead>
+				<th>Montant</th>
+				<th>Taux</th>
+				<th>Dépôt</th>
+				<th>Retrait</th>
+			</thead>
+			<ui:repeat var="com" value="${AccueilMB.lComptes}">
+				<tr>
+					<td>${com.montant}</td>
+					<td>${com.taux}</td>
+					<td>${com.depot}</td>
+					<td>${com.retrait}</td>
+				</tr>
+			</ui:repeat>
+		</table>
+		Actions
+		<h:form>
+			<h:commandButton type="Submit" value="Acheter un terrain"
+				action="${AccueilMB.achatTerrain()}" />
+		</h:form>
+		<h:form>
+			<h:commandButton type="Submit" value="Tour suivant"
+				action="${AccueilMB.tourSuivant()}" />
+		</h:form>		
+		<h:form>
+			<h:commandButton type="Submit" value="Choisir résidence"
+				action="${AccueilMB.choixResidence()}" />
+		</h:form>
+		<h:form>
+			<h:commandButton type="Submit" value="Gérer finances"
+				action="${AccueilMB.toGererFinance()}" />
+>>>>>>> branch 'master' of https://github.com/marie-aure/elbaAppli.git
 		</h:form>
 	</div>
 

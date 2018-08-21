@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+fr\elba\managedBean\TourSuivantManagedBean.class
+>>>>>>> branch 'master' of https://github.com/marie-aure/elbaAppli.git
 fr\elba\model\Tour.class
 fr\elba\dao\impl\PriveDaoImpl.class
 fr\elba\service\ICompteService.class
@@ -18,6 +22,10 @@ fr\elba\service\impl\FamilleServiceImp.class
 fr\elba\service\ITourService.class
 fr\elba\dao\ICommunautaireDao.class
 fr\elba\dao\impl\QuartierDaoImpl.class
+<<<<<<< HEAD
+=======
+fr\elba\managedBean\FinanceManagedBean.class
+>>>>>>> branch 'master' of https://github.com/marie-aure/elbaAppli.git
 fr\elba\dao\impl\RabbitHoleDaoImpl.class
 fr\elba\dao\impl\TraitDaoImpl.class
 fr\elba\service\impl\StarterServiceImpl.class

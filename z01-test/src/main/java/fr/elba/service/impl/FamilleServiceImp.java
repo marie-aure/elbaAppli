@@ -108,7 +108,11 @@ public class FamilleServiceImp implements IFamilleService {
 			}
 			// créer famille
 			Classe pauvre = clSer.getByName("Pauvre");
+<<<<<<< HEAD
 			Famille famille = new Famille(chef.getNom(), 1, 7000, pauvre, null, chef);
+=======
+			Famille famille = new Famille(chef.getNom(), 1, 0, pauvre, null, chef);
+>>>>>>> branch 'master' of https://github.com/marie-aure/elbaAppli.git
 			Tour tour = new Tour(false, 0, famille, pauvre);
 			create(famille);
 			starter1.setFamille(famille);

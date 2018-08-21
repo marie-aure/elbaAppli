@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Finances</title>
+	<link
+		href="${facesContext.externalContext.requestContextPath}/css/main.css"
+		rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Finances" />
+			</ui:include>
+		</ui:insert>
+		<div class="nomFamille">${FinanceMB.famille.nom}</div>
+		Finances Prêts
+		<table>
+			<thead>
+				<th>Somme</th>
+				<th>Remboursé</th>
+				<th>Taux</th>
+				<th>Intérêts</th>
+				<th>Restant à rembourser</th>
+			</thead>
+			<ui:repeat var="pre" value="${FinanceMB.lPrets}">
+				<h:form>
+					<tr>
+						<td>${pre.somme}</td>
+						<td>${pre.rembourse}</td>
+						<td>${pre.taux}</td>
+						<td>${pre.interet}</td>
+						<td>${pre.restant}</td>
+						<td><h:inputText value="${FinanceMB.solde}" label="Montant" />
+							<h:commandButton type="Submit" value="Verser un remboursement"
+								action="${FinanceMB.remboursement(pre.id)}" />
+								<h:commandButton type="Submit" value="Clôturer un prêt"
+								action="${FinanceMB.fermerPret(pre.id)}" /></td>
+					</tr>
+				</h:form>
+			</ui:repeat>
+		</table>
+		Comptes
+		<table>
+			<thead>
+				<th>Montant</th>
+				<th>Taux</th>
+				<th>Dépôt</th>
+				<th>Retrait</th>
+			</thead>
+			<ui:repeat var="com" value="${FinanceMB.lComptes}">
+				<h:form>
+					<tr>
+						<td>${com.montant}</td>
+						<td>${com.taux}</td>
+						<td>${com.depot}</td>
+						<td>${com.retrait}</td>
+						<td> 
+								<h:inputText value="${FinanceMB.solde}" label="Montant" />
+							<h:commandButton type="Submit" value="Dépôt"
+								action="${FinanceMB.depot(com.id)}" /><h:commandButton type="Submit" value="Retrait"
+								action="${FinanceMB.retrait(com.id)}" /><h:commandButton
+								type="Submit" value="Clôturer un compte"
+								action="${FinanceMB.fermerCompte(com.id)}" /></td>
+					</tr>
+				</h:form>
+			</ui:repeat>
+		</table>
+
+		Actions
+		<h:form>
+			<h:inputText value="${FinanceMB.solde}" label="Montant" />
+			<h:commandButton type="Submit" value="Ouvrir un prêt"
+				action="${FinanceMB.ouvrirPret()}" />
+		</h:form>
+		<h:form>
+			<h:inputText value="${FinanceMB.solde}" label="Solde" />
+			<h:commandButton type="Submit" value="Ouvrir un compte"
+				action="${FinanceMB.ouvrirCompte()}" />
+		</h:form>
+		<div class="messageErreur">${FinanceMB.message}</div>
+	</div>
+
+
+
+</h:body>
+</html>

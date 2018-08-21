@@ -63,6 +63,7 @@ public class ChoixResidenceManagedBean {
 	@PostConstruct
 	public void init() {
 		this.proprietes = getPrives();
+<<<<<<< HEAD
 		System.out.println("Hey!");
 		System.out.println(this.proprietes.size());
 	}
@@ -84,6 +85,35 @@ public class ChoixResidenceManagedBean {
 	// +++++++++++++++++
 
 	public List<Prive> getPrives() {
+=======
+		if(this.proprietes.size()>0){
+			for (Prive prive : this.proprietes){
+				System.out.println(prive.getLibelle());
+			}
+		}
+		System.out.println("Hey!");
+		System.out.println(this.proprietes.size());
+	}
+
+	// +++++++++++++++++++++++
+	// ---- Getter/Setter ----
+	// +++++++++++++++++++++++
+
+	public List<Prive> getProprietes() {
+		return proprietes;
+	}
+
+	public void setProprietes(List<Prive> proprietes) {
+		this.proprietes = proprietes;
+	}
+
+	// +++++++++++++++++
+	// ---- Méthode ----
+	// +++++++++++++++++
+
+	public List<Prive> getPrives() {
+		System.out.println("start getPrives");
+>>>>>>> branch 'master' of https://github.com/marie-aure/elbaAppli.git
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		Famille famille = (Famille) sessionMap.get("familleEnCoursAchatTerrain");

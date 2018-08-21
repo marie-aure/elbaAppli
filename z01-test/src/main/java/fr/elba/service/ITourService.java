@@ -18,4 +18,9 @@ public interface ITourService {
 	
 	public void delete(int id);
 	
+<<<<<<< HEAD
+=======
+	public void selectionSuivant(Tour tour);
+	
+>>>>>>> branch 'master' of https://github.com/marie-aure/elbaAppli.git
 }
