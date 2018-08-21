@@ -26,7 +26,12 @@
 		page 2
 		modification finances ? 
 		
-		<h:form>
+		Argent IG : <h:form>
+			<h:inputText value="${TourSuivantMB.argentIG}" label="Solde" />
+			
+			
+			${TourSuivantMB.message};
+			
 			<h:commandButton type="Submit" value="Suivant"
 				action="${TourSuivantMB.goToPage3()}" />
 		</h:form>

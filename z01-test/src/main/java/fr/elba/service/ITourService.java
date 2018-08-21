@@ -18,4 +18,6 @@ public interface ITourService {
 	
 	public void delete(int id);
 	
+	public void selectionSuivant(Tour tour);
+	
 }
