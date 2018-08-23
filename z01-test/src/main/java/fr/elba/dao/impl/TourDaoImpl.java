@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.elba.dao.ITourDao;
+import fr.elba.model.Classe;
 import fr.elba.model.Tour;
 
 @Repository
@@ -28,6 +29,16 @@ public class TourDaoImpl implements ITourDao {
 		Session s = sf.getCurrentSession();
 		String req = "FROM Tour";
 		Query query = s.createQuery(req);
+		return (List<Tour>) query.list();
+	}
+	
+	@Override
+	public List<Tour> getSuivantParClasse(Classe classe, int nb){
+		Session s = sf.getCurrentSession();
+		String req = "FROM Tour WHERE classe = :classe and nb < :nb";
+		Query query = s.createQuery(req);
+		query.setParameter("classe", classe);
+		query.setParameter("nb", nb);
 		return (List<Tour>) query.list();
 	}
 
