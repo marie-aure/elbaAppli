@@ -1,5 +1,7 @@
 package fr.elba.dao.impl;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.elba.dao.IStarterDao;
+import fr.elba.model.LiaisonSITR;
 import fr.elba.model.Starter;
 
 @Repository
@@ -32,7 +35,7 @@ public class StarterDaoImpl implements IStarterDao {
 		Query query = s.createQuery(req);
 		return (List<Starter>) query.list();
 	}
-	
+
 	@Override
 	public Starter getById(int id) {
 		Session s = sf.getCurrentSession();
@@ -59,14 +62,25 @@ public class StarterDaoImpl implements IStarterDao {
 		Starter starter = (Starter) s.get(Starter.class, id);
 		s.delete(starter);
 	}
-	
+
 	@Override
-	public List<Integer> getDistinctGroups(){
+	public List<Integer> getDistinctGroups() {
 		Session s = sf.getCurrentSession();
 		String req = "Select Distinct groupe FROM Starter";
 		Query query = s.createQuery(req);
 		List<Integer> liste = (List<Integer>) query.list();
 		Collections.sort(liste);
+		return liste;
+	}
+
+	public List<Integer> getDernierGroupe() {
+		Session s = sf.getCurrentSession();
+		String req = "call get_dernierGroupe()";
+		Query query = s.createSQLQuery(req);
+		Object[] res = (Object[]) query.uniqueResult();
+		List<Integer> liste = new ArrayList<>();
+		liste.add((int) res[0]);
+		liste.add(((BigInteger) res[1]).intValue());
 		return liste;
 	}
 

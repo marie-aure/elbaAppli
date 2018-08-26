@@ -17,5 +17,7 @@ public interface IStarterDao {
 	public void delete(int id);
 	
 	public List<Integer> getDistinctGroups();
+
+	public List<Integer> getDernierGroupe();
 	
 }

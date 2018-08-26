@@ -25,23 +25,23 @@ public class Trait {
 
 	// liaisons
 	@OneToMany(mappedBy = "trait1"/* , cascade=CascadeType.ALL */)
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@LazyCollection(LazyCollectionOption.TRUE)
 	private List<LiaisonSITR> lLiaisonSITRs1;
 
 	@OneToMany(mappedBy = "trait2"/* , cascade=CascadeType.ALL */)
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@LazyCollection(LazyCollectionOption.TRUE)
 	private List<LiaisonSITR> lLiaisonSITRs2;
 
 	@OneToMany(mappedBy = "trait3"/* , cascade=CascadeType.ALL */)
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@LazyCollection(LazyCollectionOption.TRUE)
 	private List<LiaisonSITR> lLiaisonSITRs3;
 
 	@OneToMany(mappedBy = "trait4"/* , cascade=CascadeType.ALL */)
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@LazyCollection(LazyCollectionOption.TRUE)
 	private List<LiaisonSITR> lLiaisonSITRs4;
 
 	@OneToMany(mappedBy = "trait5"/* , cascade=CascadeType.ALL */)
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@LazyCollection(LazyCollectionOption.TRUE)
 	private List<LiaisonSITR> lLiaisonSITRs5;
 
 	public Trait() {

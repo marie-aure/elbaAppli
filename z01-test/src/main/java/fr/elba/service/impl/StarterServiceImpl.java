@@ -35,7 +35,7 @@ public class StarterServiceImpl implements IStarterService {
 
 	@Autowired
 	private ITraitService trSer;
-	
+
 	@Autowired
 	private ILiaisonSITRService lsitrSer;
 
@@ -59,7 +59,7 @@ public class StarterServiceImpl implements IStarterService {
 	public List<Starter> getAll() {
 		return stDao.getAll();
 	}
-	
+
 	@Override
 	public Starter getById(int id) {
 		return stDao.getById(id);
@@ -128,7 +128,7 @@ public class StarterServiceImpl implements IStarterService {
 		int[][] tabHF = new int[h.size()][f.size()];
 
 		for (int i = 0; i < h.size(); i++) {
-			for (int j = 0 ; j < f.size(); j++) {
+			for (int j = 0; j < f.size(); j++) {
 				tabHF[i][j] = score(h.get(i), f.get(j));
 			}
 		}
@@ -154,26 +154,29 @@ public class StarterServiceImpl implements IStarterService {
 			}
 
 			if (cond) {
-			Couple couple = new Couple(hh.get(ligne), hh.get(col), max);
-			lCouples.add(couple);
+				Couple couple = new Couple(hh.get(ligne), hh.get(col), max);
+				lCouples.add(couple);
 
-			System.out.println("ligne " + ligne + " col " + col);
-			
-			for (int i = 0; i < hh.size() - 1; i++) {
-				tabHH[i][col-1] = 0;
-				if(ligne > 0){tabHH[i][ligne - 1] = 0;}
-			}
+				System.out.println("ligne " + ligne + " col " + col);
 
-			for (int j = 0; j < hh.size() - 1; j++) {
-				tabHH[ligne][j] = 0;
-				if(col < hh.size()-1) {tabHH[col][j] = 0;}
-			}
+				for (int i = 0; i < hh.size() - 1; i++) {
+					tabHH[i][col - 1] = 0;
+					if (ligne > 0) {
+						tabHH[i][ligne - 1] = 0;
+					}
+				}
 
-			System.out.println("stopwatch");
+				for (int j = 0; j < hh.size() - 1; j++) {
+					tabHH[ligne][j] = 0;
+					if (col < hh.size() - 1) {
+						tabHH[col][j] = 0;
+					}
+				}
+
+				System.out.println("stopwatch");
 			}
 		}
-		
-		
+
 		// Sélectionner couples FF
 		cond = true;
 		while (cond) {
@@ -194,27 +197,29 @@ public class StarterServiceImpl implements IStarterService {
 			}
 
 			if (cond) {
-			Couple couple = new Couple(ff.get(ligne), ff.get(col), max);
-			lCouples.add(couple);
+				Couple couple = new Couple(ff.get(ligne), ff.get(col), max);
+				lCouples.add(couple);
 
-			System.out.println("ligne " + ligne + " col " + col);
-			
-			for (int i = 0; i < ff.size() - 1; i++) {
-				tabFF[i][col - 1] = 0;
-				if(ligne > 0){tabFF[i][ligne - 1] = 0;}
-			}
+				System.out.println("ligne " + ligne + " col " + col);
 
-			for (int j = 0; j < ff.size() - 1; j++) {
-				tabFF[ligne][j] = 0;
-				if(col < ff.size()-1) {tabFF[col][j] = 0;}
-			}
+				for (int i = 0; i < ff.size() - 1; i++) {
+					tabFF[i][col - 1] = 0;
+					if (ligne > 0) {
+						tabFF[i][ligne - 1] = 0;
+					}
+				}
 
-			System.out.println("stopwatch");
+				for (int j = 0; j < ff.size() - 1; j++) {
+					tabFF[ligne][j] = 0;
+					if (col < ff.size() - 1) {
+						tabFF[col][j] = 0;
+					}
+				}
+
+				System.out.println("stopwatch");
 			}
 		}
-	
-		
-		
+
 		// Sélectionner couples FH
 		cond = true;
 		while (cond) {
@@ -223,7 +228,7 @@ public class StarterServiceImpl implements IStarterService {
 			int col = 0;
 			cond = false;
 
-			for (int i = 0; i < h.size() ; i++) {
+			for (int i = 0; i < h.size(); i++) {
 				for (int j = 0; j < f.size(); j++) {
 					if (tabHF[i][j] >= 10 && tabHF[i][j] > max) {
 						max = tabHF[i][j];
@@ -235,66 +240,90 @@ public class StarterServiceImpl implements IStarterService {
 			}
 
 			if (cond) {
-			Couple couple = new Couple(h.get(ligne), f.get(col), max);
-			lCouples.add(couple);
+				Couple couple = new Couple(h.get(ligne), f.get(col), max);
+				lCouples.add(couple);
 
-			System.out.println("ligne " + ligne + " col " + col);
-			
-			for (int i = 0; i < h.size(); i++) {
-				tabHF[i][col] = 0;
-			}
+				System.out.println("ligne " + ligne + " col " + col);
 
-			for (int j = 0; j < f.size(); j++) {
-				tabHF[ligne][j] = 0;
-			}
+				for (int i = 0; i < h.size(); i++) {
+					tabHF[i][col] = 0;
+				}
 
-			System.out.println("stopwatch");
+				for (int j = 0; j < f.size(); j++) {
+					tabHF[ligne][j] = 0;
+				}
+
+				System.out.println("stopwatch");
 			}
 		}
-	
+
 		System.out.println(lCouples);
-		
+
 		// créer des groupes
-		int nb = (int) lCouples.size()/8;
+
+		// récupérer dernier groupe créé
+		List<Integer> dernierGroupe = stDao.getDernierGroupe();
+		int _dernierGroupe = dernierGroupe.get(0);
+		int place = dernierGroupe.get(1);
 		Random rnd = new Random();
+		// si groupe pas complet
+		if (place < 16) {
+			// remplir le groupe
+			for (int i = place/2 ; i < 8; i++) {
+				cond = true;
+				while (cond) {
+					int ran = rnd.nextInt(lCouples.size());
+					if (lCouples.get(ran).getGroupe() < 1) {
+						cond = false;
+						lCouples.get(ran).setGroupe(_dernierGroupe);
+					}
+				}
+			}
+		}
+
 		
-		for (int i = 0; i<nb+1; i++){
-			for(int j = 0; j<8; j++){
-				if(lCouples.size()>8 * i + j){
+		// remplir les groupes suivants
+		
+		// nb de couples restants
+		int restant = lCouples.size() - (8 - place/2);
+		
+		
+		int nb = (int) restant / 8;
+
+		for (int i = 0; i < nb + 1; i++) {
+			for (int j = 0; j < 8; j++) {
+				if (lCouples.size()-restant> 8 * i + j) {
 					cond = true;
-					while (cond){
+					while (cond) {
 						int ran = rnd.nextInt(lCouples.size());
-						if(lCouples.get(ran).getGroupe() < 1){
+						if (lCouples.get(ran).getGroupe() < 1) {
 							cond = false;
-							lCouples.get(ran).setGroupe(i+1);
+							lCouples.get(ran).setGroupe(_dernierGroupe + i + 1);
 						}
 					}
 				}
 			}
 		}
-		
 
- // enregistrer les starters
-		for(Couple couple : lCouples){
+		// enregistrer les starters
+		for (Couple couple : lCouples) {
 			LiaisonSITR starter1 = couple.getStarter1();
 			LiaisonSITR starter2 = couple.getStarter2();
-			
+
 			((Starter) starter1.getSim()).setGroupe(couple.getGroupe());
 			create((Starter) starter1.getSim());
 			lsitrSer.create(starter1);
-			
+
 			((Starter) starter2.getSim()).setGroupe(couple.getGroupe());
 			starter2.getSim().setCouple(starter1.getSim());
 			create((Starter) starter2.getSim());
 			lsitrSer.create(starter2);
-			
+
 			starter1.getSim().setCouple(starter2.getSim());
-			update((Starter) starter1.getSim()); 
-		
+			update((Starter) starter1.getSim());
+
 		}
-		
-		
-		
+
 	}
 
 	private List<LiaisonSITR> creerSims(int taille) {
@@ -316,20 +345,20 @@ public class StarterServiceImpl implements IStarterService {
 			starter.setMarie(false);
 			starter.setRealise(false);
 
-			starter.setPeau(rnd.nextInt(10)+1);
-			starter.setPoids(rnd.nextInt(10)+1);
-			starter.setMuscle(rnd.nextInt(10)+1);
-			starter.setPoitrine(rnd.nextInt(10)+1);
-			starter.setCheveux(rnd.nextInt(8)+1);
-			starter.setVisage(rnd.nextInt(12)+1);
-			starter.setCouleurYeux(rnd.nextInt(8)+1);
-			starter.setYeux(rnd.nextInt(15)+1);
-			starter.setNez(rnd.nextInt(24)+1);
-			starter.setBouche(rnd.nextInt(17)+1);
-			starter.setPlat(rnd.nextInt(51)+1);
-			starter.setMusique(rnd.nextInt(28)+1);
-			starter.setCouleur(rnd.nextInt(20)+1);
-			starter.setSigne(rnd.nextInt(12)+1);
+			starter.setPeau(rnd.nextInt(10) + 1);
+			starter.setPoids(rnd.nextInt(10) + 1);
+			starter.setMuscle(rnd.nextInt(10) + 1);
+			starter.setPoitrine(rnd.nextInt(10) + 1);
+			starter.setCheveux(rnd.nextInt(8) + 1);
+			starter.setVisage(rnd.nextInt(12) + 1);
+			starter.setCouleurYeux(rnd.nextInt(8) + 1);
+			starter.setYeux(rnd.nextInt(15) + 1);
+			starter.setNez(rnd.nextInt(24) + 1);
+			starter.setBouche(rnd.nextInt(17) + 1);
+			starter.setPlat(rnd.nextInt(51) + 1);
+			starter.setMusique(rnd.nextInt(28) + 1);
+			starter.setCouleur(rnd.nextInt(20) + 1);
+			starter.setSigne(rnd.nextInt(12) + 1);
 			starter.setGroupe(0);
 			Souhait souhait = soSer.getRandom();
 			starter.setSouhait(souhait);
@@ -440,9 +469,8 @@ public class StarterServiceImpl implements IStarterService {
 	}
 
 	@Override
-	public List<Integer> getGroupes(){
+	public List<Integer> getGroupes() {
 		return stDao.getDistinctGroups();
 	}
-	
-	
+
 }
