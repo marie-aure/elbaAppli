@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.elba.dao.ITourDao;
 import fr.elba.model.Classe;
+import fr.elba.model.LiaisonSITR;
 import fr.elba.model.Tour;
 
 @Repository
@@ -31,9 +32,9 @@ public class TourDaoImpl implements ITourDao {
 		Query query = s.createQuery(req);
 		return (List<Tour>) query.list();
 	}
-	
+
 	@Override
-	public List<Tour> getSuivantParClasse(Classe classe, int nb){
+	public List<Tour> getSuivantParClasse(Classe classe, int nb) {
 		Session s = sf.getCurrentSession();
 		String req = "FROM Tour WHERE classe = :classe and nb < :nb";
 		Query query = s.createQuery(req);
@@ -55,6 +56,26 @@ public class TourDaoImpl implements ITourDao {
 		Query query = s.createQuery(req);
 		query.setMaxResults(1);
 		return (Tour) query.uniqueResult();
+	}
+
+	@Override
+	public int nombreTour(Classe classe){
+		Session s = sf.getCurrentSession();
+		
+		 String req = "call get_nombreTour(:classe)";
+			Query query = s.createSQLQuery(req);
+			query.setParameter("classe", classe.getId());
+			
+			int nb = 0;
+			try {
+					nb = (int) query.uniqueResult();
+			} catch (Exception e){
+				System.out.println("C'est null mon neveu!!");
+			}
+			return nb;
+					
+					
+		
 	}
 
 	@Override

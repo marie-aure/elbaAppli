@@ -137,12 +137,12 @@ public class TourSuivantManagedBean {
 	public Tour tourEnCours() {
 		return toSer.getEnCours();
 	}
-	
-	public List<Pret> getPrets(){
+
+	public List<Pret> getPrets() {
 		return prSer.getByFamily(this.enCours.getFamille());
 	}
-	
-	public List<Compte> getComptes(){
+
+	public List<Compte> getComptes() {
 		return coSer.getByFamily(this.enCours.getFamille());
 	}
 
@@ -154,7 +154,9 @@ public class TourSuivantManagedBean {
 	public void goToPage3() throws IOException {
 		if (this.argentIG > 0) {
 			this.message = "";
-			this.enCours.getFamille().setArgentIG(argentIG);
+			if (this.enCours.getFamille() != null) {
+				this.enCours.getFamille().setArgentIG(argentIG);
+			}
 			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 			ec.redirect(ec.getRequestContextPath() + "/accueil/tourSuivant3.xhtml?faces-redirect=true");
 		} else {
@@ -174,52 +176,52 @@ public class TourSuivantManagedBean {
 
 	public void confirmer() throws IOException {
 		System.out.println("Confirmation");
-		System.out.println(this.enCours.getFamille().getNom());
-		faSer.update(this.enCours.getFamille());
+		if (this.enCours.getFamille() != null) {
+			faSer.update(this.enCours.getFamille());
+		}
 		this.enCours.setNb(this.enCours.getNb() + 1);
 		this.enCours.setEnCours(false);
 		toSer.update(this.enCours);
+		if (this.enCours.getFamille() != null) {
+			// maj finances
+			if (this.lPrets.size() > 0) {
+				for (Pret pret : this.lPrets) {
+					pret.setSomme(pret.getSomme() + pret.getInteret() - pret.getRembourse());
+					pret.setInteret(pret.getSomme() * pret.getTaux() / 100);
+					pret.setRembourse(0);
+					pret.setRestant(pret.getSomme() + pret.getInteret() - pret.getRembourse());
 
-		// maj finances
-		if(this.lPrets.size() > 0){
-			for (Pret pret : this.lPrets){
-				pret.setSomme(pret.getSomme()+pret.getInteret()-pret.getRembourse());
-				pret.setInteret(pret.getSomme()*pret.getTaux()/100);
-				pret.setRembourse(0);
-				pret.setRestant(pret.getSomme()+pret.getInteret()-pret.getRembourse());
-				
-				if (pret.getRestant() == 0){
-					pret.setFerme(true);
+					if (pret.getRestant() == 0) {
+						pret.setFerme(true);
+					}
+					prSer.update(pret);
 				}
-				prSer.update(pret);
+			}
+
+			if (this.lComptes.size() > 0) {
+				for (Compte compte : this.lComptes) {
+					compte.setMontant(
+							compte.getMontant() + ((compte.getMontant() - compte.getRetrait()) * compte.getTaux() / 100)
+									+ compte.getDepot() - compte.getRetrait());
+					compte.setDepot(0);
+					compte.setRetrait(0);
+
+					coSer.update(compte);
+				}
 			}
 		}
-		
-		if(this.lComptes.size() > 0){
-			for (Compte compte : this.lComptes){
-				compte.setMontant(compte.getMontant()+((compte.getMontant()-compte.getRetrait())*compte.getTaux()/100)+compte.getDepot()-compte.getRetrait());
-				compte.setDepot(0);
-				compte.setRetrait(0);
-				
-				coSer.update(compte);
-			}
-		}
-		
 		// choix prochaine famille
 		// si Y famille même classe avec nb inferieur,
 		// sinon first famille de la classe suivante,
 		// sinon starter.
 		toSer.selectionSuivant(this.enCours);
 
-		
-		this.enCours=tourEnCours();
-		this.argentIG= 0;
-		this.message="";
+		this.enCours = tourEnCours();
+		this.argentIG = 0;
+		this.message = "";
 		this.lPrets = getPrets();
 		this.lComptes = getComptes();
-		
-		
-		
+
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		ec.redirect(ec.getRequestContextPath() + "/accueil/accueil.xhtml?faces-redirect=true");
 	}

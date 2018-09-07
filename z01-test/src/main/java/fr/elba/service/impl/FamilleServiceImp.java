@@ -7,12 +7,15 @@ import org.springframework.stereotype.Service;
 
 import fr.elba.dao.IFamilleDao;
 import fr.elba.model.Classe;
+import fr.elba.model.Compte;
 import fr.elba.model.Famille;
 import fr.elba.model.LiaisonSITR;
 import fr.elba.model.Sim;
 import fr.elba.model.Starter;
 import fr.elba.model.Tour;
 import fr.elba.service.IClasseService;
+import fr.elba.service.ICommunautaireService;
+import fr.elba.service.ICompteService;
 import fr.elba.service.IFamilleService;
 import fr.elba.service.IStarterService;
 import fr.elba.service.ITourService;
@@ -31,6 +34,13 @@ public class FamilleServiceImp implements IFamilleService {
 
 	@Autowired
 	private ITourService toSer;
+
+	@Autowired
+	private ICompteService coSer;
+
+	public void setCoSer(ICompteService coSer) {
+		this.coSer = coSer;
+	}
 
 	public void setFaDao(IFamilleDao faDao) {
 		this.faDao = faDao;
@@ -108,8 +118,13 @@ public class FamilleServiceImp implements IFamilleService {
 			}
 			// créer famille
 			Classe pauvre = clSer.getByName("Pauvre");
+
 			Famille famille = new Famille(chef.getNom(), 1, 0, pauvre, null, chef);
-			Tour tour = new Tour(false, 0, famille, pauvre);
+			// Crée compte à 5000§
+			Compte compte = new Compte(5000, 4, 0, 0, famille);
+			// Récupère nb de tour
+			int nb = toSer.nombreTour(pauvre);
+			Tour tour = new Tour(false, nb, famille, pauvre);
 			create(famille);
 			starter1.setFamille(famille);
 			starter2.setFamille(famille);
@@ -118,6 +133,7 @@ public class FamilleServiceImp implements IFamilleService {
 			stSer.update(starter1);
 			stSer.update(starter2);
 			toSer.create(tour);
+			coSer.create(compte);
 		}
 
 	}

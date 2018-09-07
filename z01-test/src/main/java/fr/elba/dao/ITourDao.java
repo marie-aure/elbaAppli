@@ -15,6 +15,8 @@ public interface ITourDao {
 	
 	public Tour getEnCours();
 	
+	public int nombreTour(Classe classe);
+	
 	public void create(Tour tour);
 	
 	public void update(Tour tour);

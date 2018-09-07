@@ -44,6 +44,11 @@ public class TourServiceImpl implements ITourService {
 	}
 
 	@Override
+	public int nombreTour(Classe classe){
+		return toDao.nombreTour(classe);
+	}
+	
+	@Override
 	public void create(Tour tour) {
 		toDao.create(tour);
 	}

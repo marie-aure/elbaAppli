@@ -2,6 +2,7 @@ package fr.elba.service;
 
 import java.util.List;
 
+import fr.elba.model.Classe;
 import fr.elba.model.Tour;
 
 public interface ITourService {
@@ -11,6 +12,8 @@ public interface ITourService {
 	public Tour getById(int id);
 	
 	public Tour getEnCours();
+	
+	public int nombreTour(Classe classe);
 	
 	public void create(Tour tour);
 	
