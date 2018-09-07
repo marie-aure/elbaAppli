@@ -21,7 +21,7 @@ import fr.elba.service.IStarterService;
 import fr.elba.service.ITourService;
 
 @Service("FamilleService")
-public class FamilleServiceImp implements IFamilleService {
+public class FamilleServiceImpl implements IFamilleService {
 
 	@Autowired
 	private IFamilleDao faDao;
