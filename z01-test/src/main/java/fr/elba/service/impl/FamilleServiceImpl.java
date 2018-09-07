@@ -14,7 +14,6 @@ import fr.elba.model.Sim;
 import fr.elba.model.Starter;
 import fr.elba.model.Tour;
 import fr.elba.service.IClasseService;
-import fr.elba.service.ICommunautaireService;
 import fr.elba.service.ICompteService;
 import fr.elba.service.IFamilleService;
 import fr.elba.service.IStarterService;
