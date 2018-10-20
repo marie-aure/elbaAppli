@@ -13,7 +13,7 @@ import fr.elba.service.IDroitService;
 public class DroitServiceImpl implements IDroitService {
 
 	@Autowired
-	private IDroitDao deDao;
+	private IDroitDao deDao; 
 
 	public void setDeDao(IDroitDao deDao) {
 		this.deDao = deDao;
