@@ -194,15 +194,6 @@ public class Sim {
 		this.cFamille = cFamille;
 	}
 
-	@Override
-	public String toString() {
-		return "Sim [id=" + id + ", " + (prenom != null ? "prenom=" + prenom + ", " : "")
-				+ (nom != null ? "nom=" + nom + ", " : "") + (sexe != null ? "sexe=" + sexe + ", " : "")
-				+ (espece != null ? "espece=" + espece + ", " : "")
-				+ (orientation != null ? "orientation=" + orientation + ", " : "") + "marie=" + marie + ", realise="
-				+ realise + ", " + (famille != null ? "famille=" + famille + ", " : "")
-				+ (familleOrigine != null ? "familleOrigine=" + familleOrigine + ", " : "")
-				+ (couple != null ? "couple=" + couple : "") + "]";
-	}
+	
 
 }

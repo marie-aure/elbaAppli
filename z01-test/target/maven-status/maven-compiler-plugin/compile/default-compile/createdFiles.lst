@@ -1,3 +1,4 @@
+fr\elba\managedBean\DetailSimManagedBean.class
 fr\elba\managedBean\TourSuivantManagedBean.class
 fr\elba\model\Tour.class
 fr\elba\dao\impl\PriveDaoImpl.class

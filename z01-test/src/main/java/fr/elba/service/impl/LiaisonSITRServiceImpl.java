@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import fr.elba.dao.ILiaisonSITRDao;
 import fr.elba.model.LiaisonSITR;
+import fr.elba.model.Sim;
 import fr.elba.service.ILiaisonSITRService;
 
 @Service("LiaisonSITRService")
@@ -26,10 +27,14 @@ public class LiaisonSITRServiceImpl implements ILiaisonSITRService {
 
 	@Override
 	public LiaisonSITR getById(int id) {
-
 		return lsitrDao.getById(id);
 	}
 
+	@Override
+	public LiaisonSITR getBySim(Sim sim) {
+		return lsitrDao.getBySim(sim);
+	}
+	
 	@Override
 	public void create(LiaisonSITR liaisonSITR) {
 		lsitrDao.create(liaisonSITR);

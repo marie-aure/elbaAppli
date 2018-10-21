@@ -2,11 +2,14 @@ package fr.elba.dao;
 
 import java.util.List;
 
+import fr.elba.model.Famille;
 import fr.elba.model.Sim;
 
 public interface ISimDao {
 
 	public List<Sim> getAll();
+	
+	public List<Sim> getByFamille(Famille famille);
 	
 	public Sim getById(int id);
 	

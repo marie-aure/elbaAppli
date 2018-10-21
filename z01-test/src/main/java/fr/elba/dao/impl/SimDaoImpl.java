@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.elba.dao.ISimDao;
-import fr.elba.model.Sim;
+import fr.elba.model.Famille;
 import fr.elba.model.Sim;
 
 @Repository
@@ -31,7 +31,16 @@ public class SimDaoImpl implements ISimDao {
 		Query query = s.createQuery(req);
 		return (List<Sim>) query.list();
 	}
-
+	
+	@Override
+	public List<Sim> getByFamille(Famille famille) {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Sim WHERE famille=:famille";
+		Query query = s.createQuery(req);
+		query.setParameter("famille", famille);
+		return (List<Sim>) query.list();
+	}
+	
 	@Override
 	public Sim getById(int id) {
 		Session s = sf.getCurrentSession();

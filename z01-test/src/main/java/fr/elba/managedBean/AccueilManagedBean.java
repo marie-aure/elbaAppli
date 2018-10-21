@@ -13,10 +13,12 @@ import javax.faces.context.FacesContext;
 
 import fr.elba.model.Compte;
 import fr.elba.model.Pret;
+import fr.elba.model.Sim;
 import fr.elba.model.Terrain;
 import fr.elba.model.Tour;
 import fr.elba.service.ICompteService;
 import fr.elba.service.IPretService;
+import fr.elba.service.ISimService;
 import fr.elba.service.ITerrainService;
 import fr.elba.service.ITourService;
 
@@ -39,6 +41,9 @@ public class AccueilManagedBean {
 
 	@ManagedProperty("#{CompteService}")
 	private ICompteService coSer;
+	
+	@ManagedProperty("#{SimService}")
+	private ISimService siSer;
 
 	public void setCoSer(ICompteService coSer) {
 		this.coSer = coSer;
@@ -50,6 +55,10 @@ public class AccueilManagedBean {
 
 	public void setTeSer(ITerrainService teSer) {
 		this.teSer = teSer;
+	}
+
+	public void setSiSer(ISimService siSer) {
+		this.siSer = siSer;
 	}
 
 	public void setToSer(ITourService toSer) {
@@ -65,6 +74,7 @@ public class AccueilManagedBean {
 	private List<Terrain> proprietes;
 	private List<Compte> lComptes;
 	private List<Pret> lPrets;
+	private List<Sim> lSims;
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -82,6 +92,10 @@ public class AccueilManagedBean {
 			this.proprietes = getTerrains();
 			this.lPrets = getPrets();
 			this.lComptes = getComptes();
+			this.lSims = getSims();
+			for (Sim sim:this.lSims){
+				System.out.println(sim.getPrenom());
+			}
 		}
 	}
 
@@ -128,7 +142,15 @@ public class AccueilManagedBean {
 	public void setlPrets(List<Pret> lPrets) {
 		this.lPrets = lPrets;
 	}
+	
+	public List<Sim> getlSims() {
+		return lSims;
+	}
 
+	public void setlSims(List<Sim> lSims) {
+		this.lSims = lSims;
+	}
+	
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
@@ -147,6 +169,10 @@ public class AccueilManagedBean {
 
 	public List<Compte> getComptes() {
 		return coSer.getByFamily(this.enCours.getFamille());
+	}
+	
+	public List<Sim> getSims(){
+		return siSer.getByFamille(this.enCours.getFamille());
 	}
 
 	public void achatTerrain() throws IOException {
@@ -174,5 +200,12 @@ public class AccueilManagedBean {
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		sessionMap.put("familleEnCoursAchatTerrain", this.enCours.getFamille());
 		ec.redirect(ec.getRequestContextPath() + "/accueil/gererFinances.xhtml?faces-redirect=true");
+	}
+	
+	public void toDetailSim(int id) throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("detailSim", siSer.getById(id));
+		ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
 	}
 }

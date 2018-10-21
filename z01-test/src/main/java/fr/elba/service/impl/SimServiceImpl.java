@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.elba.dao.ISimDao;
+import fr.elba.model.Famille;
 import fr.elba.model.Sim;
 import fr.elba.service.ISimService;
 
@@ -22,6 +23,11 @@ public class SimServiceImpl implements ISimService {
 	@Override
 	public List<Sim> getAll() {
 		return siDao.getAll();
+	}
+	
+	@Override
+	public List<Sim> getByFamille(Famille famille) {
+		return siDao.getByFamille(famille);
 	}
 
 	@Override
