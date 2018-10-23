@@ -19,118 +19,127 @@
 	<div class="main">
 		<ui:insert>
 			<ui:include src="/template/titreTemplate.xhtml">
-				<ui:param name="titre" value="${DetailSimMB.lsitr.sim.prenom} ${DetailSimMB.lsitr.sim.nom}" />
+				<ui:param name="titre"
+					value="${DetailSimMB.lsitr.sim.prenom} ${DetailSimMB.lsitr.sim.nom}" />
 			</ui:include>
 		</ui:insert>
 
-	<table class="starterTab">
-								<col width="500px" />
-								<col width="500px" />
-								<tr>
-									<td>Nom :</td>
-									<td>#{DetailSimMB.lsitr.sim.nom}</td>
-								</tr>
-								<tr>
-									<td>Prénom :</td>
-									<td>#{DetailSimMB.lsitr.sim.prenom}</td>
-								</tr>
-								<tr>
-									<td>Sexe :</td>
-									<td>#{DetailSimMB.lsitr.sim.sexe}</td>
-								</tr>
-								<tr>
-									<td>Espèce :</td>
-									<td>#{DetailSimMB.lsitr.sim.espece}</td>
-								</tr>
-								<tr>
-									<td>Orientation :</td>
-									<td>#{DetailSimMB.lsitr.sim.orientation}</td>
-								</tr>
-								<tr>
-									<td>Couple :</td>
-									<td><c:if test="#{DetailSimMB.lsitr.sim.couple != null and DetailSimMB.lsitr.sim.marie == true}">#{DetailSimMB.lsitr.sim.couple.nom} #{DetailSimMB.lsitr.sim.couple.prenom}</c:if></td>
-								</tr>
-								<tr>
-									<td>Peau :</td>
-									<td>#{DetailSimMB.lsitr.sim.peau}</td>
-								</tr>
-								<tr>
-									<td>Poids :</td>
-									<td>#{DetailSimMB.lsitr.sim.poids}</td>
-								</tr>
-								<tr>
-									<td>Muscle :</td>
-									<td>#{DetailSimMB.lsitr.sim.muscle}</td>
-								</tr>
-								<tr>
-									<td>Couleur des cheveux :</td>
-									<td>#{DetailSimMB.lsitr.sim.cheveux}</td>
-								</tr>
-								<tr>
-									<td>Visage :</td>
-									<td>#{DetailSimMB.lsitr.sim.visage}</td>
-								</tr>
-								<tr>
-									<td>Couleur des yeux :</td>
-									<td>#{DetailSimMB.lsitr.sim.couleurYeux}</td>
-								</tr>
-								<tr>
-									<td>Yeux :</td>
-									<td>#{DetailSimMB.lsitr.sim.yeux}</td>
-								</tr>
-								<tr>
-									<td>Nez :</td>
-									<td>#{DetailSimMB.lsitr.sim.nez}</td>
-								</tr>
-								<tr>
-									<td>Bouche :</td>
-									<td>#{DetailSimMB.lsitr.sim.bouche}</td>
-								</tr>
-								<tr>
-									<td>Poitrine :</td>
-									<td>#{DetailSimMB.lsitr.sim.poitrine}</td>
-								</tr>
-								<tr>
-									<td>Plat préféré :</td>
-									<td>#{DetailSimMB.lsitr.sim.plat}</td>
-								</tr>
-								<tr>
-									<td>Musique préférée :</td>
-									<td>#{DetailSimMB.lsitr.sim.musique}</td>
-								</tr>
-								<tr>
-									<td>Couleur préférée :</td>
-									<td>#{DetailSimMB.lsitr.sim.couleur}</td>
-								</tr>
-								<tr>
-									<td>Signe astrologique :</td>
-									<td>#{DetailSimMB.lsitr.sim.signe}</td>
-								</tr>
-								<tr>
-									<td>Souhait à long terme :</td>
-									<td>#{DetailSimMB.lsitr.sim.souhait.libelle}</td>
-								</tr>
-								<tr>
-									<td>Trait 1 :</td>
-									<td>#{DetailSimMB.lsitr.trait1.libelle}</td>
-								</tr>
-								<tr>
-									<td>Trait 2 :</td>
-									<td>#{DetailSimMB.lsitr.trait2.libelle}</td>
-								</tr>
-								<tr>
-									<td>Trait 3 :</td>
-									<td>#{DetailSimMB.lsitr.trait3.libelle}</td>
-								</tr>
-								<tr>
-									<td>Trait 4 :</td>
-									<td>#{DetailSimMB.lsitr.trait4.libelle}</td>
-								</tr>
-								<tr>
-									<td>Trait 5 :</td>
-									<td>#{DetailSimMB.lsitr.trait5.libelle}</td>
-								</tr>
-							</table>
+		<table class="starterTab">
+			<col width="500px" />
+			<col width="500px" />
+			<tr>
+				<td>Nom :</td>
+				<td>#{DetailSimMB.lsitr.sim.nom}</td>
+			</tr>
+			<tr>
+				<td>Prénom :</td>
+				<td>#{DetailSimMB.lsitr.sim.prenom}</td>
+			</tr>
+			<tr>
+				<td>Sexe :</td>
+				<td>#{DetailSimMB.lsitr.sim.sexe}</td>
+			</tr>
+			<tr>
+				<td>Espèce :</td>
+				<td>#{DetailSimMB.lsitr.sim.espece}</td>
+			</tr>
+			<tr>
+				<td>Orientation :</td>
+				<td>#{DetailSimMB.lsitr.sim.orientation}</td>
+			</tr>
+			<tr>
+				<td>Couple :</td>
+				<td><c:choose>
+						<c:when
+							test="#{DetailSimMB.lsitr.sim.couple != null and DetailSimMB.lsitr.sim.marie == true}">#{DetailSimMB.lsitr.sim.couple.nom} #{DetailSimMB.lsitr.sim.couple.prenom}</c:when>
+						<c:when
+							test="#{DetailSimMB.lsitr.sim.couple != null and DetailSimMB.lsitr.sim.marie == false}">Fiancé : #{DetailSimMB.lsitr.sim.couple.nom} #{DetailSimMB.lsitr.sim.couple.prenom}</c:when>
+						<c:otherwise>Célibataire</c:otherwise>
+					</c:choose></td>
+			</tr>
+			<c:if test="#{DetailSimMB.lsitr.sim eq 'Starter'}">
+				<tr>
+					<td>Peau :</td>
+					<td>#{DetailSimMB.lsitr.sim.peau}</td>
+				</tr>
+				<tr>
+					<td>Poids :</td>
+					<td>#{DetailSimMB.lsitr.sim.poids}</td>
+				</tr>
+				<tr>
+					<td>Muscle :</td>
+					<td>#{DetailSimMB.lsitr.sim.muscle}</td>
+				</tr>
+				<tr>
+					<td>Couleur des cheveux :</td>
+					<td>#{DetailSimMB.lsitr.sim.cheveux}</td>
+				</tr>
+				<tr>
+					<td>Visage :</td>
+					<td>#{DetailSimMB.lsitr.sim.visage}</td>
+				</tr>
+				<tr>
+					<td>Couleur des yeux :</td>
+					<td>#{DetailSimMB.lsitr.sim.couleurYeux}</td>
+				</tr>
+				<tr>
+					<td>Yeux :</td>
+					<td>#{DetailSimMB.lsitr.sim.yeux}</td>
+				</tr>
+				<tr>
+					<td>Nez :</td>
+					<td>#{DetailSimMB.lsitr.sim.nez}</td>
+				</tr>
+				<tr>
+					<td>Bouche :</td>
+					<td>#{DetailSimMB.lsitr.sim.bouche}</td>
+				</tr>
+				<tr>
+					<td>Poitrine :</td>
+					<td>#{DetailSimMB.lsitr.sim.poitrine}</td>
+				</tr>
+				<tr>
+					<td>Plat préféré :</td>
+					<td>#{DetailSimMB.lsitr.sim.plat}</td>
+				</tr>
+				<tr>
+					<td>Musique préférée :</td>
+					<td>#{DetailSimMB.lsitr.sim.musique}</td>
+				</tr>
+				<tr>
+					<td>Couleur préférée :</td>
+					<td>#{DetailSimMB.lsitr.sim.couleur}</td>
+				</tr>
+				<tr>
+					<td>Signe astrologique :</td>
+					<td>#{DetailSimMB.lsitr.sim.signe}</td>
+				</tr>
+			</c:if>
+			<tr>
+				<td>Souhait à long terme :</td>
+				<td>#{DetailSimMB.lsitr.sim.souhait.libelle}</td>
+			</tr>
+			<tr>
+				<td>Trait 1 :</td>
+				<td>#{DetailSimMB.lsitr.trait1.libelle}</td>
+			</tr>
+			<tr>
+				<td>Trait 2 :</td>
+				<td>#{DetailSimMB.lsitr.trait2.libelle}</td>
+			</tr>
+			<tr>
+				<td>Trait 3 :</td>
+				<td>#{DetailSimMB.lsitr.trait3.libelle}</td>
+			</tr>
+			<tr>
+				<td>Trait 4 :</td>
+				<td>#{DetailSimMB.lsitr.trait4.libelle}</td>
+			</tr>
+			<tr>
+				<td>Trait 5 :</td>
+				<td>#{DetailSimMB.lsitr.trait5.libelle}</td>
+			</tr>
+		</table>
 
 	</div>
 </h:body>
