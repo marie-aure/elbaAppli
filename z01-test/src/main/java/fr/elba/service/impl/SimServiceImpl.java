@@ -31,6 +31,11 @@ public class SimServiceImpl implements ISimService {
 	}
 
 	@Override
+	public List<Sim> getListEnfants(Sim sim) {
+		return siDao.getListEnfants(sim);
+	}
+	
+	@Override
 	public Sim getById(int id) {
 		return siDao.getById(id);
 	}

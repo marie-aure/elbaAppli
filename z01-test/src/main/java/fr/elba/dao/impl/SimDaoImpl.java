@@ -42,6 +42,15 @@ public class SimDaoImpl implements ISimDao {
 	}
 	
 	@Override
+	public List<Sim> getListEnfants(Sim sim) {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Sim WHERE parent1=:sim OR parent2=:sim";
+		Query query = s.createQuery(req);
+		query.setParameter("sim", sim);
+		return (List<Sim>) query.list();
+	}
+	
+	@Override
 	public Sim getById(int id) {
 		Session s = sf.getCurrentSession();
 		return (Sim) s.get(Sim.class, id);

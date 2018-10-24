@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -22,7 +23,7 @@ import fr.elba.service.ISimService;
 import fr.elba.service.ITerrainService;
 
 @ManagedBean(name = "DetailSimMB")
-@SessionScoped
+@ViewScoped
 public class DetailSimManagedBean {
 
 	// ++++++++++++++++++
@@ -31,7 +32,7 @@ public class DetailSimManagedBean {
 
 	@ManagedProperty("#{SimService}")
 	private ISimService siSer;
-	
+
 	@ManagedProperty("#{LiaisonSITRService}")
 	private ILiaisonSITRService lsitrSer;
 
@@ -49,6 +50,7 @@ public class DetailSimManagedBean {
 
 	private Sim sim;
 	private LiaisonSITR lsitr;
+	private List<Sim> enfants;
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -64,9 +66,10 @@ public class DetailSimManagedBean {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		this.sim = (Sim) sessionMap.get("detailSim");
-		if (this.sim != null){
+		if (this.sim != null) {
 			this.lsitr = lsitrSer.getBySim(this.sim);
 		}
+
 	}
 
 	// +++++++++++++++++++++++
@@ -89,9 +92,20 @@ public class DetailSimManagedBean {
 		this.lsitr = lsitr;
 	}
 
+	public List<Sim> getEnfants() {
+		return enfants;
+	}
+
+	public void setEnfants(List<Sim> enfants) {
+		this.enfants = enfants;
+	}
+
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
 
+	private List<Sim> getListEnfants() {
+		return siSer.getListEnfants(this.sim);
+	}
 
 }

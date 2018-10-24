@@ -57,7 +57,7 @@
 						<c:otherwise>Célibataire</c:otherwise>
 					</c:choose></td>
 			</tr>
-			<c:if test="#{DetailSimMB.lsitr.sim eq 'Starter'}">
+			<c:if test="#{DetailSimMB.lsitr.sim.getClass().getSimpleName() == 'Starter'}">
 				<tr>
 					<td>Peau :</td>
 					<td>#{DetailSimMB.lsitr.sim.peau}</td>
@@ -140,6 +140,9 @@
 				<td>#{DetailSimMB.lsitr.trait5.libelle}</td>
 			</tr>
 		</table>
+		
+		Enfants :
+		
 
 	</div>
 </h:body>

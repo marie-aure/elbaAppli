@@ -11,6 +11,8 @@ public interface ISimDao {
 	
 	public List<Sim> getByFamille(Famille famille);
 	
+	public List<Sim> getListEnfants(Sim sim);
+	
 	public Sim getById(int id);
 	
 	public void create(Sim sim);

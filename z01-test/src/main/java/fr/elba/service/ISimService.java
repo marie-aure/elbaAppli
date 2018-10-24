@@ -10,6 +10,8 @@ public interface ISimService {
 	public List<Sim> getAll();
 
 	public List<Sim> getByFamille(Famille famille);
+	
+	public List<Sim> getListEnfants(Sim sim);
 
 	public Sim getById(int id);
 
