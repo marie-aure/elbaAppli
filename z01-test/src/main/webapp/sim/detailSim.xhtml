@@ -57,7 +57,8 @@
 						<c:otherwise>Célibataire</c:otherwise>
 					</c:choose></td>
 			</tr>
-			<c:if test="#{DetailSimMB.lsitr.sim.getClass().getSimpleName() == 'Starter'}">
+			<c:if
+				test="#{DetailSimMB.lsitr.sim.getClass().getSimpleName() == 'Starter'}">
 				<tr>
 					<td>Peau :</td>
 					<td>#{DetailSimMB.lsitr.sim.peau}</td>
@@ -140,9 +141,45 @@
 				<td>#{DetailSimMB.lsitr.trait5.libelle}</td>
 			</tr>
 		</table>
-		
+
 		Enfants :
-		
+		<c:if test="#{DetailSimMB.enfants.size() == 0}">
+			<br />Aucun enfant
+		</c:if>
+		<c:if test="#{DetailSimMB.enfants.size() != 0}">
+			<table>
+				<thead>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Sexe</th>
+					<th>Orientation</th>
+					<th>Espèce</th>
+					<th></th>
+				</thead>
+				<ui:repeat var="enf" value="${DetailSimMB.enfants}">
+					<tr>
+						<td>${enf.nom}</td>
+						<td>${enf.prenom}</td>
+						<td>${enf.sexe}</td>
+						<td>${enf.orientation}</td>
+						<td>${enf.espece}</td>
+						<td><h:form>
+								<h:commandButton type="Submit" value="Détails"
+									action="${DetailSimMB.toDetailSim(enf.id)}" />
+							</h:form></td>
+					</tr>
+				</ui:repeat>
+			</table>
+		</c:if>
+
+		<br />Actions :
+		<c:if
+			test="#{DetailSimMB.lsitr.sim.couple != null and DetailSimMB.lsitr.sim.marie == false}">
+			<h:form>
+				<h:commandButton type="Submit" value="Se marier"
+					action="${DetailSimMB.marierSim()}" />
+			</h:form>
+		</c:if>
 
 	</div>
 </h:body>

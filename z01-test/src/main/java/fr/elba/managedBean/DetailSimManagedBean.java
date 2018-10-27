@@ -1,6 +1,7 @@
 package fr.elba.managedBean;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -59,6 +60,7 @@ public class DetailSimManagedBean {
 	public DetailSimManagedBean() {
 		super();
 		this.sim = new Sim();
+		this.enfants = new ArrayList<>();
 	}
 
 	@PostConstruct
@@ -68,6 +70,7 @@ public class DetailSimManagedBean {
 		this.sim = (Sim) sessionMap.get("detailSim");
 		if (this.sim != null) {
 			this.lsitr = lsitrSer.getBySim(this.sim);
+			this.enfants = getListEnfants();
 		}
 
 	}
@@ -106,6 +109,25 @@ public class DetailSimManagedBean {
 
 	private List<Sim> getListEnfants() {
 		return siSer.getListEnfants(this.sim);
+	}
+	
+	public void toDetailSim(int id) throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("detailSim", siSer.getById(id));
+		ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
+	}
+	
+	public void marierSim() throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		if (this.sim.getCouple() != null){
+			this.sim.setMarie(true);
+			Sim epoux = this.sim.getCouple();
+			siSer.update(this.sim);
+			siSer.update(epoux);
+			ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
+		}
 	}
 
 }
