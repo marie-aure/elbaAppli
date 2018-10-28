@@ -42,6 +42,7 @@ fr\elba\managedBean\FamilleManagedBean.class
 fr\elba\dao\ISouhaitDao.class
 fr\elba\service\impl\DevoirServiceImpl.class
 fr\elba\dao\impl\SimDaoImpl.class
+fr\elba\managedBean\CreerEnfantManagedBean.class
 fr\elba\managedBean\PriveManagedBean.class
 fr\elba\dao\ILiaisonSITRDao.class
 fr\elba\dao\impl\CompteDaoImpl.class

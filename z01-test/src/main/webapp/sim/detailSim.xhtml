@@ -180,7 +180,10 @@
 					action="${DetailSimMB.marierSim()}" />
 			</h:form>
 		</c:if>
-
+		<h:form>
+		<h:commandButton type="Submit" value="Créer un enfant"
+			action="${DetailSimMB.toCreateChild()}" />
+		</h:form>
 	</div>
 </h:body>
 </html>

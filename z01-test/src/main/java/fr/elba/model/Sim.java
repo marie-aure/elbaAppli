@@ -25,6 +25,7 @@ public class Sim {
 	private String orientation;
 	private boolean marie;
 	private boolean realise;
+	private boolean mort;
 
 	// liaisons
 	@ManyToOne
@@ -49,7 +50,7 @@ public class Sim {
 		super();
 	}
 
-	public Sim(String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
+	public Sim(String prenom, String nom, String sexe, String espece, String orientation, boolean marie,boolean mort,
 			boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1, Sim parent2) {
 		super();
 		this.prenom = prenom;
@@ -58,6 +59,7 @@ public class Sim {
 		this.espece = espece;
 		this.orientation = orientation;
 		this.marie = marie;
+		this.mort = mort;
 		this.realise = realise;
 		this.famille = famille;
 		this.familleOrigine = familleOrigine;
@@ -66,7 +68,7 @@ public class Sim {
 		this.parent2 = parent2;
 	}
 
-	public Sim(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
+	public Sim(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,boolean mort,
 			boolean realise, Famille famille, Famille familleOrigine, Sim couple,Sim parent1, Sim parent2) {
 		super();
 		this.id = id;
@@ -76,6 +78,7 @@ public class Sim {
 		this.espece = espece;
 		this.orientation = orientation;
 		this.marie = marie;
+		this.mort = mort;
 		this.realise = realise;
 		this.famille = famille;
 		this.familleOrigine = familleOrigine;

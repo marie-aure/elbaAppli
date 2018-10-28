@@ -37,11 +37,11 @@ public class Starter extends Sim {
 		super();
 	}
 
-	public Starter(String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
+	public Starter(String prenom, String nom, String sexe, String espece, String orientation, boolean marie,boolean mort,
 			boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1, Sim parent2, int peau, int poids, int muscle,
 			int cheveux, int visage, int couleurYeux, int yeux, int nez, int bouche, int poitrine, int plat,
 			int musique, int couleur, int signe, Souhait souhait, int groupe, String nomOrigine) {
-		super(prenom, nom, sexe, espece, orientation, marie, realise, famille, familleOrigine, couple, parent1, parent2);
+		super(prenom, nom, sexe, espece, orientation, marie,mort, realise, famille, familleOrigine, couple, parent1, parent2);
 		this.peau = peau;
 		this.poids = poids;
 		this.muscle = muscle;
@@ -61,11 +61,11 @@ public class Starter extends Sim {
 		this.nomOrigine = nomOrigine;
 	}
 
-	public Starter(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
+	public Starter(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,boolean mort,
 			boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1, Sim parent2, int peau, int poids, int muscle,
 			int cheveux, int visage, int couleurYeux, int yeux, int nez, int bouche, int poitrine, int plat,
 			int musique, int couleur, int signe, Souhait souhait, int groupe, String nomOrigine) {
-		super(id, prenom, nom, sexe, espece, orientation, marie, realise, famille, familleOrigine, couple, parent1, parent2);
+		super(id, prenom, nom, sexe, espece, orientation, marie,mort, realise, famille, familleOrigine, couple, parent1, parent2);
 		this.peau = peau;
 		this.poids = poids;
 		this.muscle = muscle;

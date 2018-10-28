@@ -12,6 +12,8 @@ public interface ISimService {
 	public List<Sim> getByFamille(Famille famille);
 	
 	public List<Sim> getListEnfants(Sim sim);
+	
+	public List<Sim> getListParents(String sx);
 
 	public Sim getById(int id);
 

@@ -115,5 +115,6 @@ C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\ILiaisonDRCLDao
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Tour.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\IDroitDao.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\impl\DroitDaoImpl.java
+C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\managedBean\CreerEnfantManagedBean.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\ITraitService.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\impl\TerrainServiceImpl.java

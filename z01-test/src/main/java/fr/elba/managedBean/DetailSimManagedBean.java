@@ -130,4 +130,11 @@ public class DetailSimManagedBean {
 		}
 	}
 
+	public void toCreateChild() throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("CreerEnfant", this.sim);
+		ec.redirect(ec.getRequestContextPath() + "/sim/creerEnfant.xhtml?faces-redirect=true");
+	}
+	
 }
