@@ -2,6 +2,7 @@ package fr.elba.managedBean;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,12 +35,12 @@ public class CreerEnfantManagedBean {
 	@ManagedProperty("#{SimService}")
 	private ISimService siSer;
 
-//	@ManagedProperty("#{LiaisonSITRService}")
-//	private ILiaisonSITRService lsitrSer;
-//
-//	public void setLsitrSer(ILiaisonSITRService lsitrSer) {
-//		this.lsitrSer = lsitrSer;
-//	}
+	// @ManagedProperty("#{LiaisonSITRService}")
+	// private ILiaisonSITRService lsitrSer;
+	//
+	// public void setLsitrSer(ILiaisonSITRService lsitrSer) {
+	// this.lsitrSer = lsitrSer;
+	// }
 
 	public void setSiSer(ISimService siSer) {
 		this.siSer = siSer;
@@ -51,9 +52,11 @@ public class CreerEnfantManagedBean {
 
 	private Sim parent1;
 	private Sim parent2;
-	private List<Sim> lParents;
+	private String parent2Lib;
+	private Map<String, Sim> lParents;
 	private Sim enfant;
-//	private LiaisonSITR lsitr;
+	private boolean afficherFormulaire;
+	// private LiaisonSITR lsitr;
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -61,7 +64,7 @@ public class CreerEnfantManagedBean {
 
 	public CreerEnfantManagedBean() {
 		super();
-		this.lParents = new ArrayList<>();
+		this.lParents = new HashMap();
 		this.enfant = new Sim();
 	}
 
@@ -70,14 +73,16 @@ public class CreerEnfantManagedBean {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		this.parent1 = (Sim) sessionMap.get("CreerEnfant");
+		this.afficherFormulaire = false;
 		if (this.parent1 != null) {
 			String sexe;
-			if (this.parent1.getSexe().equals("M")){
-				sexe = "F";
+			if (this.parent1.getSexe().equals("m")) {
+				sexe = "f";
 			} else {
-				sexe = "M";
+				sexe = "m";
 			}
-		this.lParents = getListParents(sexe);	
+			this.lParents = getListParents(sexe);
+			System.out.println(this.lParents);
 		}
 	}
 
@@ -101,11 +106,11 @@ public class CreerEnfantManagedBean {
 		this.parent2 = parent2;
 	}
 
-	public List<Sim> getlParents() {
+	public Map<String, Sim> getlParents() {
 		return lParents;
 	}
 
-	public void setlParents(List<Sim> lParents) {
+	public void setlParents(Map<String, Sim> lParents) {
 		this.lParents = lParents;
 	}
 
@@ -117,12 +122,39 @@ public class CreerEnfantManagedBean {
 		this.enfant = enfant;
 	}
 
+	public boolean isAfficherFormulaire() {
+		return afficherFormulaire;
+	}
+
+	public void setAfficherFormulaire(boolean afficherFormulaire) {
+		this.afficherFormulaire = afficherFormulaire;
+	}
+
+	public String getParent2Lib() {
+		return parent2Lib;
+	}
+
+	public void setParent2Lib(String parent2Lib) {
+		this.parent2Lib = parent2Lib;
+	}
+
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
 
-	public List<Sim> getListParents(String sx){
+	public Map<String, Sim> getListParents(String sx) {
 		return siSer.getListParents(sx);
 	}
 	
+	public void selectionnerParent2() {
+		if (this.lParents.size() > 0) {
+			System.out.println(this.parent2Lib);
+			this.parent2 = this.lParents.get(this.parent2Lib);
+			System.out.println(this.parent2);
+			if (this.parent2 != null) {
+				this.afficherFormulaire = true;
+			}
+		} 
+	}
+
 }

@@ -23,24 +23,25 @@
 			</ui:include>
 		</ui:insert>
 
-
-
-		Parent 1 :
-
 		<table>
-			<col width="500px" />
-			<col width="500px" />
+			<col width="50%" />
+			<col width="50%" />
 			<tr>
 				<td>Parent 1 : ${CreerEnfantMB.parent1.prenom}
 					${CreerEnfantMB.parent1.nom}</td>
-				<td>Parent 2 : <h:selectOneMenu
+				<td><h:form>Parent 2 : <h:selectOneMenu
 						value="#{CreerEnfantMB.parent2}">
-						<f:selectItem itemLabel="#{CreerEnfantMB.parent1.getCouple()}" itemValue="#{CreerEnfantMB.parent1.getCouple().getNom()} #{CreerEnfantMB.parent1.getCouple().getPrenom()}" />
 						<f:selectItems value="#{CreerEnfantMB.lParents}" />
 					</h:selectOneMenu> 
-					<h:commandButton value="Voir le groupe" class="formButton2"
-						type="submit" action="${StarterMB.chargerGroupe()}" /></td>
+					<h:commandButton value="Sélectionner" class="formButton2"
+						type="submit" action="${CreerEnfantMB.selectionnerParent2()}" /></h:form></td>
 			</tr>
+			</table>
+			
+			<c:if test="#{CreerEnfantMB.afficherFormulaire == true}">
+				formulaire affiché
+				#{CreerEnfantMB.parent1.getCouple()}
+			</c:if>
 	</div>
 </h:body>
 </html>

@@ -1,6 +1,8 @@
 package fr.elba.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,8 +38,15 @@ public class SimServiceImpl implements ISimService {
 	}
 	
 	@Override
-	public List<Sim> getListParents(String sx){
-		return siDao.getListParents(sx);
+	public Map<String, Sim> getListParents(String sx){
+		List<Sim> liste = siDao.getListParents(sx);
+		Map<String, Sim> map = new HashMap<>();
+		if(liste.size() > 0) {
+			for (Sim sim : liste) {
+				map.put(sim.getPrenom() + " " + sim.getNom(), sim);
+			}
+		}
+		return map; 
 	}
 	
 	@Override
