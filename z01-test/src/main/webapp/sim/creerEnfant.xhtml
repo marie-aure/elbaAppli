@@ -31,6 +31,10 @@
 					${CreerEnfantMB.parent1.nom}</td>
 				<td><h:form>Parent 2 : <h:selectOneMenu
 						value="#{CreerEnfantMB.parent2}">
+						<c:if test="#{CreerEnfantMB.parent1.couple != null}" >
+						<f:selectItem value="#{CreerEnfantMB.parent2}" var="parent2"
+    itemLabel="#{parent2}" itemValue="#{parent2}" />
+						</c:if>
 						<f:selectItems value="#{CreerEnfantMB.lParents}" />
 					</h:selectOneMenu> 
 					<h:commandButton value="Sélectionner" class="formButton2"
