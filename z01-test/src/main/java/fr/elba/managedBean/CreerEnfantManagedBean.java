@@ -81,6 +81,9 @@ public class CreerEnfantManagedBean {
 			} else {
 				sexe = "m";
 			}
+			if (this.parent1.getCouple() != null && this.parent1.getOrientation().equals("Hétérosexuel")){
+				this.parent2 = this.parent1.getCouple();
+			}
 			this.lParents = getListParents(sexe);
 			System.out.println(this.lParents);
 		}
