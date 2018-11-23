@@ -29,20 +29,21 @@
 			<tr>
 				<td>Parent 1 : ${CreerEnfantMB.parent1.prenom}
 					${CreerEnfantMB.parent1.nom}</td>
-				<td><h:form>Parent 2 : <h:selectOneMenu
-							value="#{CreerEnfantMB.parent2}">
+				<h:form>
+					<td>Parent 2 : <h:selectOneMenu
+							value="#{CreerEnfantMB.parent2Id}">
 							<c:if test="#{CreerEnfantMB.parent1.couple != null}">
-								<f:selectItem value="#{CreerEnfantMB.parent2}" var="parent2"
-									itemLabel="#{CreerEnfantMB.parent2Lib}" itemValue="#{parent2}" />
+								<f:selectItem itemValue="#{CreerEnfantMB.parent2.id}"
+									itemLabel="#{CreerEnfantMB.parent2Lib}" />
 							</c:if>
 							<f:selectItems value="#{CreerEnfantMB.lParents}" />
-						</h:selectOneMenu>
-						<h:commandButton value="Sélectionner" class="formButton2"
+						</h:selectOneMenu> <h:commandButton value="Sélectionner" class="formButton2"
 							type="submit" action="${CreerEnfantMB.selectionnerParent2()}" />
-					</h:form></td>
+					</td>
+				</h:form>
 			</tr>
 		</table>
-		
+
 
 		<c:if test="#{CreerEnfantMB.afficherFormulaire == true}">
 				formulaire affiché

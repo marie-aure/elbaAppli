@@ -53,7 +53,8 @@ public class CreerEnfantManagedBean {
 	private Sim parent1;
 	private Sim parent2;
 	private String parent2Lib;
-	private Map<String, Sim> lParents;
+	private Integer parent2Id;
+	private Map<String, Integer> lParents;
 	private Sim enfant;
 	private boolean afficherFormulaire;
 	// private LiaisonSITR lsitr;
@@ -111,11 +112,11 @@ public class CreerEnfantManagedBean {
 		this.parent2 = parent2;
 	}
 
-	public Map<String, Sim> getlParents() {
+	public Map<String, Integer> getlParents() {
 		return lParents;
 	}
 
-	public void setlParents(Map<String, Sim> lParents) {
+	public void setlParents(Map<String, Integer> lParents) {
 		this.lParents = lParents;
 	}
 
@@ -135,6 +136,14 @@ public class CreerEnfantManagedBean {
 		this.afficherFormulaire = afficherFormulaire;
 	}
 
+	public Integer getParent2Id() {
+		return parent2Id;
+	}
+
+	public void setParent2Id(Integer parent2Id) {
+		this.parent2Id = parent2Id;
+	}
+
 	public String getParent2Lib() {
 		return parent2Lib;
 	}
@@ -147,15 +156,14 @@ public class CreerEnfantManagedBean {
 	// ---- Méthode ----
 	// +++++++++++++++++
 
-	public Map<String, Sim> getListParents(String sx) {
+	public Map<String, Integer> getListParents(String sx) {
 		return siSer.getListParents(sx);
 	}
 	
 	public void selectionnerParent2() {
-		if (this.lParents.size() > 0) {
-			System.out.println(this.parent2Lib);
-			this.parent2 = this.lParents.get(this.parent2Lib);
-			System.out.println(this.parent2);
+		if (this.parent2Id != null) {
+			System.out.println(this.parent2Id);
+			this.parent2 = siSer.getById(this.parent2Id);
 			if (this.parent2 != null) {
 				this.afficherFormulaire = true;
 			}

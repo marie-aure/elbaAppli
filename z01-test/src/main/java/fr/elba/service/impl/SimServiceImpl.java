@@ -38,12 +38,12 @@ public class SimServiceImpl implements ISimService {
 	}
 	
 	@Override
-	public Map<String, Sim> getListParents(String sx){
+	public Map<String, Integer> getListParents(String sx){
 		List<Sim> liste = siDao.getListParents(sx);
-		Map<String, Sim> map = new HashMap<>();
+		Map<String, Integer> map = new HashMap<>();
 		if(liste.size() > 0) {
 			for (Sim sim : liste) {
-				map.put(sim.getPrenom() + " " + sim.getNom(), sim);
+				map.put(sim.getPrenom() + " " + sim.getNom(), sim.getId());
 			}
 		}
 		return map; 
