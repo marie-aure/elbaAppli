@@ -15,8 +15,11 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import fr.elba.model.Communautaire;
+import fr.elba.model.Espece;
 import fr.elba.model.Famille;
+import fr.elba.model.Genre;
 import fr.elba.model.LiaisonSITR;
+import fr.elba.model.Orientation;
 import fr.elba.model.Prive;
 import fr.elba.model.Sim;
 import fr.elba.model.Terrain;
@@ -57,6 +60,8 @@ public class CreerEnfantManagedBean {
 	private Map<String, Integer> lParents;
 	private Sim enfant;
 	private boolean afficherFormulaire;
+	private boolean heritier = true;
+	private boolean legitime = true;
 	// private LiaisonSITR lsitr;
 
 	// ++++++++++++++++++++++
@@ -82,13 +87,12 @@ public class CreerEnfantManagedBean {
 			} else {
 				sexe = "m";
 			}
-			if (this.parent1.getCouple() != null && this.parent1.getOrientation().equals("Hétérosexuel")){
+			if (this.parent1.getCouple() != null && this.parent1.getOrientation().equals("Hétérosexuel")) {
 				this.parent2 = this.parent1.getCouple();
 				this.parent2Lib = this.parent2.getPrenom() + " " + this.parent2.getNom();
 			}
 			this.lParents = getListParents(sexe);
-			System.out.println(this.lParents);
-			System.out.println(this.parent2Lib);
+			this.enfant.setNom(this.parent1.getFamille().getNom());
 		}
 	}
 
@@ -144,6 +148,22 @@ public class CreerEnfantManagedBean {
 		this.parent2Id = parent2Id;
 	}
 
+	public boolean isHeritier() {
+		return heritier;
+	}
+
+	public void setHeritier(boolean heritier) {
+		this.heritier = heritier;
+	}
+
+	public boolean isLegitime() {
+		return legitime;
+	}
+
+	public void setLegitime(boolean legitime) {
+		this.legitime = legitime;
+	}
+
 	public String getParent2Lib() {
 		return parent2Lib;
 	}
@@ -159,7 +179,19 @@ public class CreerEnfantManagedBean {
 	public Map<String, Integer> getListParents(String sx) {
 		return siSer.getListParents(sx);
 	}
+
+	public Espece[] getEspeceValues() {
+		return Espece.values();
+	}
+
+	public Genre[] getGenreValues() {
+		return Genre.values();
+	}
 	
+	public Orientation[] getOrientationValues() {
+		return Orientation.values();
+	}
+
 	public void selectionnerParent2() {
 		if (this.parent2Id != null) {
 			System.out.println(this.parent2Id);
@@ -167,7 +199,11 @@ public class CreerEnfantManagedBean {
 			if (this.parent2 != null) {
 				this.afficherFormulaire = true;
 			}
-		} 
+		}
+	}
+	
+	public void creerEnfant() {
+		
 	}
 
 }

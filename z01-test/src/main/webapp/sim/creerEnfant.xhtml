@@ -31,6 +31,7 @@
 					${CreerEnfantMB.parent1.nom}</td>
 				<h:form>
 					<td>Parent 2 : <h:selectOneMenu
+							disabled="#{CreerEnfantMB.afficherFormulaire}"
 							value="#{CreerEnfantMB.parent2Id}">
 							<c:if test="#{CreerEnfantMB.parent1.couple != null}">
 								<f:selectItem itemValue="#{CreerEnfantMB.parent2.id}"
@@ -38,7 +39,8 @@
 							</c:if>
 							<f:selectItems value="#{CreerEnfantMB.lParents}" />
 						</h:selectOneMenu> <h:commandButton value="Sélectionner" class="formButton2"
-							type="submit" action="${CreerEnfantMB.selectionnerParent2()}" />
+							disabled="#{CreerEnfantMB.afficherFormulaire}" type="submit"
+							action="${CreerEnfantMB.selectionnerParent2()}" />
 					</td>
 				</h:form>
 			</tr>
@@ -46,8 +48,49 @@
 
 
 		<c:if test="#{CreerEnfantMB.afficherFormulaire == true}">
-				formulaire affiché
-				#{CreerEnfantMB.parent1.getCouple()}
+			<h:form>
+				<div>
+					Espèce :
+					<h:selectOneMenu value="#{CreerEnfantMB.enfant.espece}">
+						<f:selectItems value="#{CreerEnfantMB.especeValues}" var="e"
+							itemValue="#{e}" itemLabel="#{e.espece}" />
+					</h:selectOneMenu>
+				</div>
+				<div>
+					Genre :
+					<h:selectOneMenu value="#{CreerEnfantMB.enfant.sexe}">
+						<f:selectItems value="#{CreerEnfantMB.genreValues}" var="g"
+							itemValue="#{g}" itemLabel="#{g.genre}" />
+					</h:selectOneMenu>
+				</div>
+				<div>
+					Nom :
+					<h:inputText value="#{CreerEnfantMB.enfant.nom}" />
+				</div>
+				<div>
+					Prénom :
+					<h:inputText value="#{CreerEnfantMB.enfant.prenom}" />
+				</div>
+				<div>
+					Orientation :
+					<h:selectOneMenu value="#{CreerEnfantMB.enfant.orientation}">
+						<f:selectItems value="#{CreerEnfantMB.orientationValues}" var="o"
+							itemValue="#{o}" itemLabel="#{o.orientation}" />
+					</h:selectOneMenu>
+				</div>
+				<div>
+					Héritier :
+					<h:selectBooleanCheckbox value="#{CreerEnfantMB.heritier}" />
+				</div>
+				<div>
+					Légitime :
+					<h:selectBooleanCheckbox value="#{CreerEnfantMB.legitime}" />
+				</div>
+				
+				 <h:commandButton value="Confirmer" class="formButton2"
+							type="submit"
+							action="${CreerEnfantMB.creerEnfant()}" />
+			</h:form>
 		</c:if>
 	</div>
 </h:body>
