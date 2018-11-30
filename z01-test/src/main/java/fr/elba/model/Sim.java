@@ -199,6 +199,14 @@ public class Sim {
 		this.cFamille = cFamille;
 	}
 
+	public boolean isMort() {
+		return mort;
+	}
+
+	public void setMort(boolean mort) {
+		this.mort = mort;
+	}
+
 	
 
 }

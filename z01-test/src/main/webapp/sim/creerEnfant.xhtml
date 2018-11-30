@@ -86,10 +86,120 @@
 					Légitime :
 					<h:selectBooleanCheckbox value="#{CreerEnfantMB.legitime}" />
 				</div>
+
+
+				<div>
+					Traits de caractère : Parent 1 : #{CreerEnfantMB.parent1.nom}
+					#{CreerEnfantMB.parent1.prenom}
+
+					<table>
+						<tr>
+							<td>#{CreerEnfantMB.parent1trait.trait1.libelle}</td>
+							<td>#{CreerEnfantMB.parent1trait.trait1.type}</td>
+						</tr>
+						<tr>
+							<td>#{CreerEnfantMB.parent1trait.trait2.libelle}</td>
+							<td>#{CreerEnfantMB.parent1trait.trait2.type}</td>
+						</tr>
+						<tr>
+							<td>#{CreerEnfantMB.parent1trait.trait3.libelle}</td>
+							<td>#{CreerEnfantMB.parent1trait.trait3.type}</td>
+						</tr>
+						<tr>
+							<td>#{CreerEnfantMB.parent1trait.trait4.libelle}</td>
+							<td>#{CreerEnfantMB.parent1trait.trait4.type}</td>
+						</tr>
+						<tr>
+							<td>#{CreerEnfantMB.parent1trait.trait5.libelle}</td>
+							<td>#{CreerEnfantMB.parent1trait.trait5.type}</td>
+						</tr>
+					</table>
+				</div>
+
+				<div>
+					Traits de caractère : Parent 2 : #{CreerEnfantMB.parent2.nom}
+					#{CreerEnfantMB.parent2.prenom}
+
+					<table>
+						<tr>
+							<td>#{CreerEnfantMB.parent2trait.trait1.libelle}</td>
+							<td>#{CreerEnfantMB.parent2trait.trait1.type}</td>
+						</tr>
+						<tr>
+							<td>#{CreerEnfantMB.parent2trait.trait2.libelle}</td>
+							<td>#{CreerEnfantMB.parent2trait.trait2.type}</td>
+						</tr>
+						<tr>
+							<td>#{CreerEnfantMB.parent2trait.trait3.libelle}</td>
+							<td>#{CreerEnfantMB.parent2trait.trait3.type}</td>
+						</tr>
+						<tr>
+							<td>#{CreerEnfantMB.parent2trait.trait4.libelle}</td>
+							<td>#{CreerEnfantMB.parent2trait.trait4.type}</td>
+						</tr>
+						<tr>
+							<td>#{CreerEnfantMB.parent2trait.trait5.libelle}</td>
+							<td>#{CreerEnfantMB.parent2trait.trait5.type}</td>
+						</tr>
+					</table>
+				</div>
+
+				<div>
+					Trait 1 :
+					<h:selectOneMenu value="#{CreerEnfantMB.enfantTrait.trait1}">
+						<f:selectItem itemLabel="Aucun trait" itemValue="" />
+						<f:selectItems value="#{CreerEnfantMB.lTraits}" var="t"
+							itemLabel="#{t.libelle} - #{t.type}" />
+					</h:selectOneMenu>
+				</div>
+
+				<div>
+					Trait 2 :
+					<h:selectOneMenu value="#{CreerEnfantMB.enfantTrait.trait2}">
+						<f:selectItem itemLabel="Aucun trait" itemValue="" />
+						<f:selectItems value="#{CreerEnfantMB.lTraits}" var="t"
+							itemLabel="#{t.libelle} - #{t.type}" />
+					</h:selectOneMenu>
+				</div>
+
+				<div>
+					Trait 3 :
+					<h:selectOneMenu value="#{CreerEnfantMB.enfantTrait.trait3}">
+						<f:selectItem itemLabel="Aucun trait" itemValue="" />
+						<f:selectItems value="#{CreerEnfantMB.lTraits}" var="t"
+							itemLabel="#{t.libelle} - #{t.type}" />
+					</h:selectOneMenu>
+				</div>
+
+				<div>
+					Trait 4 :
+					<h:selectOneMenu value="#{CreerEnfantMB.enfantTrait.trait4}">
+						<f:selectItem itemLabel="Aucun trait" itemValue="" />
+						<f:selectItems value="#{CreerEnfantMB.lTraits}" var="t"
+							itemLabel="#{t.libelle} - #{t.type}" />
+					</h:selectOneMenu>
+				</div>
+
+				<div>
+					Trait 5 :
+					<h:selectOneMenu value="#{CreerEnfantMB.enfantTrait.trait5}">
+						<f:selectItem itemLabel="Aucun trait" itemValue="" />
+						<f:selectItems value="#{CreerEnfantMB.lTraits}" var="t"
+							itemLabel="#{t.libelle} - #{t.type}" />
+					</h:selectOneMenu>
+				</div>
 				
-				 <h:commandButton value="Confirmer" class="formButton2"
-							type="submit"
-							action="${CreerEnfantMB.creerEnfant()}" />
+				<div>
+					Souhait :
+					<h:selectOneMenu value="#{CreerEnfantMB.enfant.souhait}">
+						<f:selectItem itemLabel="Aucun souhait" itemValue="" />
+						<f:selectItems value="#{CreerEnfantMB.lSouhaits}" var="s"
+							itemLabel="#{s.libelle}" />
+					</h:selectOneMenu>
+				</div>
+				
+				<h:commandButton value="Confirmer" class="formButton2" type="submit"
+					action="${CreerEnfantMB.creerEnfant()}" />
 			</h:form>
 		</c:if>
 	</div>

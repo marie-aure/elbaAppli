@@ -23,9 +23,11 @@ import fr.elba.model.Orientation;
 import fr.elba.model.Prive;
 import fr.elba.model.Sim;
 import fr.elba.model.Terrain;
+import fr.elba.model.Trait;
 import fr.elba.service.ILiaisonSITRService;
 import fr.elba.service.ISimService;
 import fr.elba.service.ITerrainService;
+import fr.elba.service.ITraitService;
 
 @ManagedBean(name = "CreerEnfantMB")
 @ViewScoped
@@ -38,12 +40,19 @@ public class CreerEnfantManagedBean {
 	@ManagedProperty("#{SimService}")
 	private ISimService siSer;
 
-	// @ManagedProperty("#{LiaisonSITRService}")
-	// private ILiaisonSITRService lsitrSer;
-	//
-	// public void setLsitrSer(ILiaisonSITRService lsitrSer) {
-	// this.lsitrSer = lsitrSer;
-	// }
+	@ManagedProperty("#{LiaisonSITRService}")
+	private ILiaisonSITRService lsitrSer;
+
+	@ManagedProperty("#{TraitService}")
+	private ITraitService trSer;
+
+	public void setTrSer(ITraitService trSer) {
+		this.trSer = trSer;
+	}
+
+	public void setLsitrSer(ILiaisonSITRService lsitrSer) {
+		this.lsitrSer = lsitrSer;
+	}
 
 	public void setSiSer(ISimService siSer) {
 		this.siSer = siSer;
@@ -59,9 +68,13 @@ public class CreerEnfantManagedBean {
 	private Integer parent2Id;
 	private Map<String, Integer> lParents;
 	private Sim enfant;
+	private LiaisonSITR enfantTrait;
 	private boolean afficherFormulaire;
 	private boolean heritier = true;
 	private boolean legitime = true;
+	private LiaisonSITR parent1trait;
+	private LiaisonSITR parent2trait;
+	private List<Trait> lTraits;
 	// private LiaisonSITR lsitr;
 
 	// ++++++++++++++++++++++
@@ -72,6 +85,7 @@ public class CreerEnfantManagedBean {
 		super();
 		this.lParents = new HashMap();
 		this.enfant = new Sim();
+		this.enfantTrait = new LiaisonSITR();
 	}
 
 	@PostConstruct
@@ -80,6 +94,7 @@ public class CreerEnfantManagedBean {
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		this.parent1 = (Sim) sessionMap.get("CreerEnfant");
 		this.afficherFormulaire = false;
+		this.lTraits = trSer.getAll();
 		if (this.parent1 != null) {
 			String sexe;
 			if (this.parent1.getSexe().equals("m")) {
@@ -164,6 +179,38 @@ public class CreerEnfantManagedBean {
 		this.legitime = legitime;
 	}
 
+	public LiaisonSITR getParent1trait() {
+		return parent1trait;
+	}
+
+	public void setParent1trait(LiaisonSITR parent1trait) {
+		this.parent1trait = parent1trait;
+	}
+
+	public LiaisonSITR getParent2trait() {
+		return parent2trait;
+	}
+
+	public void setParent2trait(LiaisonSITR parent2trait) {
+		this.parent2trait = parent2trait;
+	}
+
+	public LiaisonSITR getEnfantTrait() {
+		return enfantTrait;
+	}
+
+	public void setEnfantTrait(LiaisonSITR enfantTrait) {
+		this.enfantTrait = enfantTrait;
+	}
+
+	public List<Trait> getlTraits() {
+		return lTraits;
+	}
+
+	public void setlTraits(List<Trait> lTraits) {
+		this.lTraits = lTraits;
+	}
+
 	public String getParent2Lib() {
 		return parent2Lib;
 	}
@@ -187,7 +234,7 @@ public class CreerEnfantManagedBean {
 	public Genre[] getGenreValues() {
 		return Genre.values();
 	}
-	
+
 	public Orientation[] getOrientationValues() {
 		return Orientation.values();
 	}
@@ -196,13 +243,21 @@ public class CreerEnfantManagedBean {
 		if (this.parent2Id != null) {
 			System.out.println(this.parent2Id);
 			this.parent2 = siSer.getById(this.parent2Id);
+			this.parent1trait = lsitrSer.getBySim(this.parent1);
 			if (this.parent2 != null) {
 				this.afficherFormulaire = true;
+				this.parent2trait = lsitrSer.getBySim(this.parent2);
 			}
 		}
 	}
-	
+
 	public void creerEnfant() {
+		System.out.println("Création enfant");
+		this.enfant.setParent1(this.parent1);
+		this.enfant.setParent2(this.parent2);
+		this.enfant.setMarie(false);
+		this.enfant.setRealise(false);
+		this.enfant.setMort(false);
 		
 	}
 
