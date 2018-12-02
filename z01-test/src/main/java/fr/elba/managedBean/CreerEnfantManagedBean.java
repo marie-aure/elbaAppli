@@ -3,8 +3,10 @@ package fr.elba.managedBean;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -22,10 +24,13 @@ import fr.elba.model.LiaisonSITR;
 import fr.elba.model.Orientation;
 import fr.elba.model.Prive;
 import fr.elba.model.Sim;
+import fr.elba.model.Souhait;
 import fr.elba.model.Terrain;
 import fr.elba.model.Trait;
+import fr.elba.service.IFamilleService;
 import fr.elba.service.ILiaisonSITRService;
 import fr.elba.service.ISimService;
+import fr.elba.service.ISouhaitService;
 import fr.elba.service.ITerrainService;
 import fr.elba.service.ITraitService;
 
@@ -46,6 +51,12 @@ public class CreerEnfantManagedBean {
 	@ManagedProperty("#{TraitService}")
 	private ITraitService trSer;
 
+	@ManagedProperty("#{FamilleService}")
+	private IFamilleService faSer;
+
+	@ManagedProperty("#{SouhaitService}")
+	private ISouhaitService soSer;
+
 	public void setTrSer(ITraitService trSer) {
 		this.trSer = trSer;
 	}
@@ -56,6 +67,14 @@ public class CreerEnfantManagedBean {
 
 	public void setSiSer(ISimService siSer) {
 		this.siSer = siSer;
+	}
+
+	public void setSoSer(ISouhaitService soSer) {
+		this.soSer = soSer;
+	}
+
+	public void setFaSer(IFamilleService faSer) {
+		this.faSer = faSer;
 	}
 
 	// +++++++++++++++++++
@@ -70,11 +89,10 @@ public class CreerEnfantManagedBean {
 	private Sim enfant;
 	private LiaisonSITR enfantTrait;
 	private boolean afficherFormulaire;
-	private boolean heritier = true;
-	private boolean legitime = true;
 	private LiaisonSITR parent1trait;
 	private LiaisonSITR parent2trait;
 	private List<Trait> lTraits;
+	private List<Souhait> lSouhaits;
 	// private LiaisonSITR lsitr;
 
 	// ++++++++++++++++++++++
@@ -85,6 +103,8 @@ public class CreerEnfantManagedBean {
 		super();
 		this.lParents = new HashMap();
 		this.enfant = new Sim();
+		this.enfant.setLegitime(true);
+		this.enfant.setHeritier(true);
 		this.enfantTrait = new LiaisonSITR();
 	}
 
@@ -95,6 +115,7 @@ public class CreerEnfantManagedBean {
 		this.parent1 = (Sim) sessionMap.get("CreerEnfant");
 		this.afficherFormulaire = false;
 		this.lTraits = trSer.getAll();
+		this.lSouhaits = soSer.getAll();
 		if (this.parent1 != null) {
 			String sexe;
 			if (this.parent1.getSexe().equals("m")) {
@@ -163,22 +184,6 @@ public class CreerEnfantManagedBean {
 		this.parent2Id = parent2Id;
 	}
 
-	public boolean isHeritier() {
-		return heritier;
-	}
-
-	public void setHeritier(boolean heritier) {
-		this.heritier = heritier;
-	}
-
-	public boolean isLegitime() {
-		return legitime;
-	}
-
-	public void setLegitime(boolean legitime) {
-		this.legitime = legitime;
-	}
-
 	public LiaisonSITR getParent1trait() {
 		return parent1trait;
 	}
@@ -209,6 +214,14 @@ public class CreerEnfantManagedBean {
 
 	public void setlTraits(List<Trait> lTraits) {
 		this.lTraits = lTraits;
+	}
+
+	public List<Souhait> getlSouhaits() {
+		return lSouhaits;
+	}
+
+	public void setlSouhaits(List<Souhait> lSouhaits) {
+		this.lSouhaits = lSouhaits;
 	}
 
 	public String getParent2Lib() {
@@ -258,7 +271,57 @@ public class CreerEnfantManagedBean {
 		this.enfant.setMarie(false);
 		this.enfant.setRealise(false);
 		this.enfant.setMort(false);
-		
+		if (this.enfant.isLegitime()) {
+			this.enfant.setFamille(this.parent1.getFamille());
+			this.enfant.setFamilleOrigine(this.parent1.getFamille());
+		} else {
+			Famille illegitime = faSer.getByName("Illégitime");
+			this.enfant.setFamille(illegitime);
+			this.enfant.setFamilleOrigine(illegitime);
+		}
+		siSer.create(this.enfant);
+		heritageTrait();
+		this.enfantTrait.setSim(this.enfant);
+		lsitrSer.create(this.enfantTrait);
+	}
+
+	public void heritageTrait() {
+		Set<Trait> lTraits = new HashSet<>();
+		lTraits.add(this.parent1trait.getTrait1());
+		lTraits.add(this.parent1trait.getTrait2());
+		lTraits.add(this.parent1trait.getTrait3());
+		lTraits.add(this.parent1trait.getTrait4());
+		lTraits.add(this.parent1trait.getTrait5());
+		lTraits.add(this.parent2trait.getTrait1());
+		lTraits.add(this.parent2trait.getTrait2());
+		lTraits.add(this.parent2trait.getTrait3());
+		lTraits.add(this.parent2trait.getTrait4());
+		lTraits.add(this.parent2trait.getTrait5());
+		if (lTraits.contains(this.enfantTrait.getTrait1())) {
+			this.enfantTrait.setHeritage1(true);
+		} else {
+			this.enfantTrait.setHeritage1(false);
+		}
+		if (lTraits.contains(this.enfantTrait.getTrait2())) {
+			this.enfantTrait.setHeritage2(true);
+		} else {
+			this.enfantTrait.setHeritage2(false);
+		}
+		if (lTraits.contains(this.enfantTrait.getTrait3())) {
+			this.enfantTrait.setHeritage3(true);
+		} else {
+			this.enfantTrait.setHeritage3(false);
+		}
+		if (lTraits.contains(this.enfantTrait.getTrait4())) {
+			this.enfantTrait.setHeritage4(true);
+		} else {
+			this.enfantTrait.setHeritage4(false);
+		}
+		if (lTraits.contains(this.enfantTrait.getTrait5())) {
+			this.enfantTrait.setHeritage5(true);
+		} else {
+			this.enfantTrait.setHeritage5(false);
+		}
 	}
 
 }

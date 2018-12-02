@@ -27,9 +27,6 @@ public class Starter extends Sim {
 	private int groupe;
 
 	// liaisons
-	@ManyToOne
-	private Souhait souhait;
-
 	@OneToOne(mappedBy = "sim")
 	private LiaisonSITR trait;
 
@@ -37,11 +34,12 @@ public class Starter extends Sim {
 		super();
 	}
 
-	public Starter(String prenom, String nom, String sexe, String espece, String orientation, boolean marie,boolean mort,
-			boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1, Sim parent2, int peau, int poids, int muscle,
-			int cheveux, int visage, int couleurYeux, int yeux, int nez, int bouche, int poitrine, int plat,
-			int musique, int couleur, int signe, Souhait souhait, int groupe, String nomOrigine) {
-		super(prenom, nom, sexe, espece, orientation, marie,mort, realise, famille, familleOrigine, couple, parent1, parent2);
+	public Starter(String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
+			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
+			Sim parent2, int peau, int poids, int muscle, int cheveux, int visage, int couleurYeux, int yeux, int nez,
+			int bouche, int poitrine, int plat, int musique, int couleur, int signe, int groupe, String nomOrigine) {
+		super(prenom, nom, sexe, espece, orientation, marie, mort, realise, famille, familleOrigine, couple, parent1,
+				parent2);
 		this.peau = peau;
 		this.poids = poids;
 		this.muscle = muscle;
@@ -56,16 +54,16 @@ public class Starter extends Sim {
 		this.musique = musique;
 		this.couleur = couleur;
 		this.signe = signe;
-		this.souhait = souhait;
 		this.groupe = groupe;
 		this.nomOrigine = nomOrigine;
 	}
 
-	public Starter(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,boolean mort,
-			boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1, Sim parent2, int peau, int poids, int muscle,
-			int cheveux, int visage, int couleurYeux, int yeux, int nez, int bouche, int poitrine, int plat,
-			int musique, int couleur, int signe, Souhait souhait, int groupe, String nomOrigine) {
-		super(id, prenom, nom, sexe, espece, orientation, marie,mort, realise, famille, familleOrigine, couple, parent1, parent2);
+	public Starter(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
+			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
+			Sim parent2, int peau, int poids, int muscle, int cheveux, int visage, int couleurYeux, int yeux, int nez,
+			int bouche, int poitrine, int plat, int musique, int couleur, int signe, int groupe, String nomOrigine) {
+		super(id, prenom, nom, sexe, espece, orientation, marie, mort, realise, famille, familleOrigine, couple,
+				parent1, parent2);
 		this.peau = peau;
 		this.poids = poids;
 		this.muscle = muscle;
@@ -80,7 +78,6 @@ public class Starter extends Sim {
 		this.musique = musique;
 		this.couleur = couleur;
 		this.signe = signe;
-		this.souhait = souhait;
 		this.groupe = groupe;
 		this.nomOrigine = nomOrigine;
 	}
@@ -205,14 +202,6 @@ public class Starter extends Sim {
 		this.signe = signe;
 	}
 
-	public Souhait getSouhait() {
-		return souhait;
-	}
-
-	public void setSouhait(Souhait souhait) {
-		this.souhait = souhait;
-	}
-
 	public LiaisonSITR getTrait() {
 		return trait;
 	}
@@ -220,22 +209,13 @@ public class Starter extends Sim {
 	public void setTrait(LiaisonSITR trait) {
 		this.trait = trait;
 	}
-	
+
 	public int getGroupe() {
 		return groupe;
 	}
 
 	public void setGroupe(int groupe) {
 		this.groupe = groupe;
-	}
-
-	@Override
-	public String toString() {
-		return "Starter [peau=" + peau + ", poids=" + poids + ", muscle=" + muscle + ", cheveux=" + cheveux
-				+ ", visage=" + visage + ", couleurYeux=" + couleurYeux + ", yeux=" + yeux + ", nez=" + nez
-				+ ", bouche=" + bouche + ", poitrine=" + poitrine + ", plat=" + plat + ", musique=" + musique
-				+ ", couleur=" + couleur + ", signe=" + signe + ", groupe=" + groupe + ", "
-				+ (souhait != null ? "souhait=" + souhait + ", " : "") + (trait != null ? "trait=" + trait : "") + "]";
 	}
 
 }

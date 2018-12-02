@@ -26,7 +26,8 @@ public class Sim {
 	private boolean marie;
 	private boolean realise;
 	private boolean mort;
-
+	private boolean legitime;
+	private boolean heritier;
 	// liaisons
 	@ManyToOne
 	private Famille famille;
@@ -36,21 +37,24 @@ public class Sim {
 
 	@OneToOne
 	private Sim couple;
-	
+
 	@ManyToOne
 	private Sim parent1;
-	
+
 	@ManyToOne
 	private Sim parent2;
 
 	@OneToOne(mappedBy = "chef")
 	private Famille cFamille;
 
+	@ManyToOne
+	private Souhait souhait;
+
 	public Sim() {
 		super();
 	}
 
-	public Sim(String prenom, String nom, String sexe, String espece, String orientation, boolean marie,boolean mort,
+	public Sim(String prenom, String nom, String sexe, String espece, String orientation, boolean marie, boolean mort,
 			boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1, Sim parent2) {
 		super();
 		this.prenom = prenom;
@@ -68,8 +72,9 @@ public class Sim {
 		this.parent2 = parent2;
 	}
 
-	public Sim(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,boolean mort,
-			boolean realise, Famille famille, Famille familleOrigine, Sim couple,Sim parent1, Sim parent2) {
+	public Sim(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
+			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
+			Sim parent2) {
 		super();
 		this.id = id;
 		this.prenom = prenom;
@@ -86,7 +91,7 @@ public class Sim {
 		this.parent1 = parent1;
 		this.parent2 = parent2;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -207,6 +212,28 @@ public class Sim {
 		this.mort = mort;
 	}
 
-	
+	public boolean isLegitime() {
+		return legitime;
+	}
+
+	public void setLegitime(boolean legitime) {
+		this.legitime = legitime;
+	}
+
+	public boolean isHeritier() {
+		return heritier;
+	}
+
+	public void setHeritier(boolean heritier) {
+		this.heritier = heritier;
+	}
+
+	public Souhait getSouhait() {
+		return souhait;
+	}
+
+	public void setSouhait(Souhait souhait) {
+		this.souhait = souhait;
+	}
 
 }
