@@ -42,6 +42,15 @@ public class TraitDaoImpl implements ITraitDao {
 		Session s = sf.getCurrentSession();
 		return (Trait) s.get(Trait.class, id);
 	}
+	
+	@Override
+	public Trait getByName(String name) {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Trait WHERE libelle = :name";
+		Query query = s.createQuery(req);
+		query.setParameter("name", name);
+		return (Trait) query.uniqueResult();
+	}
 
 	@Override
 	public Trait getRandom(String type) {

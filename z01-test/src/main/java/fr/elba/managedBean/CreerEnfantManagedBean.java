@@ -93,6 +93,12 @@ public class CreerEnfantManagedBean {
 	private LiaisonSITR parent2trait;
 	private List<Trait> lTraits;
 	private List<Souhait> lSouhaits;
+	private String trait1;
+	private String trait2;
+	private String trait3;
+	private String trait4;
+	private String trait5;
+	private String souhait;
 	// private LiaisonSITR lsitr;
 
 	// ++++++++++++++++++++++
@@ -224,6 +230,54 @@ public class CreerEnfantManagedBean {
 		this.lSouhaits = lSouhaits;
 	}
 
+	public String getTrait1() {
+		return trait1;
+	}
+
+	public void setTrait1(String trait1) {
+		this.trait1 = trait1;
+	}
+
+	public String getTrait2() {
+		return trait2;
+	}
+
+	public void setTrait2(String trait2) {
+		this.trait2 = trait2;
+	}
+
+	public String getTrait3() {
+		return trait3;
+	}
+
+	public void setTrait3(String trait3) {
+		this.trait3 = trait3;
+	}
+
+	public String getTrait4() {
+		return trait4;
+	}
+
+	public void setTrait4(String trait4) {
+		this.trait4 = trait4;
+	}
+
+	public String getTrait5() {
+		return trait5;
+	}
+
+	public void setTrait5(String trait5) {
+		this.trait5 = trait5;
+	}
+
+	public String getSouhait() {
+		return souhait;
+	}
+
+	public void setSouhait(String souhait) {
+		this.souhait = souhait;
+	}
+
 	public String getParent2Lib() {
 		return parent2Lib;
 	}
@@ -264,7 +318,7 @@ public class CreerEnfantManagedBean {
 		}
 	}
 
-	public void creerEnfant() {
+	public void creerEnfant() throws IOException {
 		System.out.println("Création enfant");
 		this.enfant.setParent1(this.parent1);
 		this.enfant.setParent2(this.parent2);
@@ -279,10 +333,15 @@ public class CreerEnfantManagedBean {
 			this.enfant.setFamille(illegitime);
 			this.enfant.setFamilleOrigine(illegitime);
 		}
+		this.enfant.setSouhait(soSer.getByName(this.souhait));
 		siSer.create(this.enfant);
 		heritageTrait();
 		this.enfantTrait.setSim(this.enfant);
 		lsitrSer.create(this.enfantTrait);
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("detailSim", this.enfant);
+		ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
 	}
 
 	public void heritageTrait() {
@@ -297,26 +356,31 @@ public class CreerEnfantManagedBean {
 		lTraits.add(this.parent2trait.getTrait3());
 		lTraits.add(this.parent2trait.getTrait4());
 		lTraits.add(this.parent2trait.getTrait5());
+		this.enfantTrait.setTrait1(trSer.getByName(this.trait1));
 		if (lTraits.contains(this.enfantTrait.getTrait1())) {
 			this.enfantTrait.setHeritage1(true);
 		} else {
 			this.enfantTrait.setHeritage1(false);
 		}
+		this.enfantTrait.setTrait1(trSer.getByName(this.trait2));
 		if (lTraits.contains(this.enfantTrait.getTrait2())) {
 			this.enfantTrait.setHeritage2(true);
 		} else {
 			this.enfantTrait.setHeritage2(false);
 		}
+		this.enfantTrait.setTrait1(trSer.getByName(this.trait3));
 		if (lTraits.contains(this.enfantTrait.getTrait3())) {
 			this.enfantTrait.setHeritage3(true);
 		} else {
 			this.enfantTrait.setHeritage3(false);
 		}
+		this.enfantTrait.setTrait1(trSer.getByName(this.trait4));
 		if (lTraits.contains(this.enfantTrait.getTrait4())) {
 			this.enfantTrait.setHeritage4(true);
 		} else {
 			this.enfantTrait.setHeritage4(false);
 		}
+		this.enfantTrait.setTrait1(trSer.getByName(this.trait5));
 		if (lTraits.contains(this.enfantTrait.getTrait5())) {
 			this.enfantTrait.setHeritage5(true);
 		} else {
