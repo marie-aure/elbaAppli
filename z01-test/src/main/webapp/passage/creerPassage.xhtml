@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Créer un passage</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Créer un passage" />
+			</ui:include>
+		</ui:insert>
+
+
+		<h:form>
+			<table>
+				<col width="500px" />
+				<col width="1000px" />
+				<tr>
+					<td>Catégorie :</td>
+					<td><h:inputText
+							value="${}" /></td>
+				</tr>
+				<tr>
+					<td>Type :</td>
+					<td><select value="${CommunautaireMB.communautaire.type}">
+							<option label="Terrain" value="terrain" />
+							<option label="Bâtiment" value="batiment" />
+							<option label="Bateau" value="bateau" />
+					</select></td>
+				</tr>
+				<tr>
+					<td>Adresse :</td>
+					<td><h:inputText
+							value="${CommunautaireMB.communautaire.adresse}" /></td>
+				</tr>
+				<tr>
+					<td>Lieu-dit :</td>
+					<td><h:inputText
+							value="${CommunautaireMB.communautaire.lieuDit}" /></td>
+				</tr>
+				<tr>
+					<td>Quartier :</td>
+					<td><h:selectOneMenu
+							value="#{CommunautaireMB.selectedQuartier}">
+							<f:selectItem itemLabel="Sélectionner" itemValue="" />
+							<f:selectItems value="#{QuartierMB.lLibelles}" />
+						</h:selectOneMenu></td>
+				</tr>
+				<tr>
+					<td>Fonction :</td>
+					<td><h:inputText
+							value="${CommunautaireMB.communautaire.fonction}" /></td>
+				</tr>
+				<tr>
+					<td>Rabbit Hole :</td>
+					<td><h:selectManyMenu style="height:100px"
+							value="${CommunautaireMB.selectedRabbitHoles}">
+							<f:selectItem itemLabel="Sélectionner" itemValue="" />
+							<f:selectItems value="${RabbitHoleMB.lLibelles}" />
+						</h:selectManyMenu></td>
+				</tr>
+			</table>
+			<h:commandButton value="Créer" type="submit"
+				action="${TerrainMB.createCommunautaire()}" />
+		</h:form>
+</div>
+</h:body>
+</html>
