@@ -21,7 +21,7 @@ public class Souhait {
 
 	// liaisons
 	@OneToMany(mappedBy = "souhait")
-	private List<Starter> lStarters;
+	private List<Sim> lSims;
 
 	public Souhait() {
 		super();
@@ -54,12 +54,12 @@ public class Souhait {
 		this.libelle = libelle;
 	}
 
-	public List<Starter> getlStarters() {
-		return lStarters;
+	public List<Sim> getlSims() {
+		return lSims;
 	}
 
-	public void setlStarters(List<Starter> lStarters) {
-		this.lStarters = lStarters;
+	public void setlSims(List<Sim> lSims) {
+		this.lSims = lSims;
 	}
 
 	@Override

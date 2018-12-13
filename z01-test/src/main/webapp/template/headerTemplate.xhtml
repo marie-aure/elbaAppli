@@ -6,31 +6,38 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-<link type="text/css" rel="stylesheet" href="css/main.css" />
+	<link type="text/css" rel="stylesheet" href="css/main.css" />
 </h:head>
 
 <body>
-	
+
 	<ui:composition>
 		<div class="navbar">
 			<ul class="navbar-ul">
-				<li class="navbar-button"><h:link class="navbar-link" value="Accueil" outcome="/accueil/accueil" /></li>
+				<li class="navbar-button"><h:link class="navbar-link"
+						value="Accueil" outcome="/accueil/accueil" /></li>
 				<li class="navbar-button"><a class="navbar-link">Terrain</a>
 					<div class="navbar-dropdown">
 						<h:form>
-							<h:commandLink value="Créer un terrain" action="${TerrainMB.toAjouter()}" />
+							<h:commandLink value="Créer un terrain"
+								action="${TerrainMB.toAjouter()}" />
 						</h:form>
-					</div>
-				</li>
+					</div></li>
 				<li class="navbar-button"><a class="navbar-link">Starter</a>
 					<div class="navbar-dropdown">
 						<h:form>
-							<h:commandLink value="Générer les starters" action="${SimMB.toGenerer()}" />
+							<h:commandLink value="Générer les starters"
+								action="${SimMB.toGenerer()}" />
 						</h:form>
-							<h:link class="navbar-link" value="Voir les groupes" outcome="/sim/voirGroupesStarter" />
+						<h:link class="navbar-link" value="Voir les groupes"
+							outcome="/sim/voirGroupesStarter" />
+					</div></li>
+				<li class="navbar-button"><a class="navbar-link">Droits</a>
+					<div class="navbar-dropdown">
+						<h:link class="navbar-link"
+						value="Liste de droits" outcome="/droits/syntheseDroits" />
 					</div>
 				</li>
-				
 			</ul>
 		</div>
 

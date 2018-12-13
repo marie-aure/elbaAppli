@@ -30,6 +30,11 @@ public class TraitServiceImpl implements ITraitService {
 	}
 	
 	@Override
+	public Trait getByName(String trait) {
+		return trDao.getByName(trait);
+	}
+	
+	@Override
 	public Trait getRandom(String type){
 		return trDao.getRandom(type);
 	}

@@ -10,6 +10,8 @@ public interface ITraitDao {
 	
 	public Trait getById(int id);
 	
+	public Trait getByName(String trait);
+	
 	public Trait getRandom(String type);
 	
 	public Trait getRandom();

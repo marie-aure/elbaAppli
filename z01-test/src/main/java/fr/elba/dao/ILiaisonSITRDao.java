@@ -3,6 +3,7 @@ package fr.elba.dao;
 import java.util.List;
 
 import fr.elba.model.LiaisonSITR;
+import fr.elba.model.Sim;
 
 public interface ILiaisonSITRDao {
 
@@ -10,6 +11,8 @@ public interface ILiaisonSITRDao {
 	
 	public LiaisonSITR getById(int id);
 	
+	public LiaisonSITR getBySim(Sim sim);
+
 	public void create(LiaisonSITR liaisonSITR);
 	
 	public void update(LiaisonSITR liaisonSITR);

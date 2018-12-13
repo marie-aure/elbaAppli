@@ -39,6 +39,15 @@ public class SouhaitDaoImpl implements ISouhaitDao {
 		Session s = sf.getCurrentSession();
 		return (Souhait) s.get(Souhait.class, id);
 	}
+	
+	@Override
+	public Souhait getByName(String name) {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Souhait WHERE libelle = :name";
+		Query query = s.createQuery(req);
+		query.setParameter("name", name);
+		return (Souhait) query.uniqueResult();
+	}
 
 	@Override
 	public void create(Souhait souhait) {

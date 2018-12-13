@@ -10,6 +10,8 @@ public interface ISouhaitService {
 
 	public Souhait getById(int id);
 
+	public Souhait getByName(String name);
+	
 	public Souhait getRandom();
 	
 	public void create(Souhait souhait);

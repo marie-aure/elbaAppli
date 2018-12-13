@@ -9,6 +9,8 @@ public interface ITraitService {
 	public List<Trait> getAll();
 
 	public Trait getById(int id);
+	
+	public Trait getByName(String trait);
 
 	public Trait getRandom(String type);
 	

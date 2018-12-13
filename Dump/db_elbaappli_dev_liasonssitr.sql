@@ -1,0 +1,73 @@
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: db_elbaappli_dev
+-- ------------------------------------------------------
+-- Server version	5.7.20-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `liasonssitr`
+--
+
+DROP TABLE IF EXISTS `liasonssitr`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `liasonssitr` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `heritage1` tinyint(1) NOT NULL,
+  `heritage2` tinyint(1) NOT NULL,
+  `heritage3` tinyint(1) NOT NULL,
+  `heritage4` tinyint(1) NOT NULL,
+  `heritage5` tinyint(1) NOT NULL,
+  `sim_id` int(11) DEFAULT NULL,
+  `trait1_id` int(11) DEFAULT NULL,
+  `trait2_id` int(11) DEFAULT NULL,
+  `trait3_id` int(11) DEFAULT NULL,
+  `trait4_id` int(11) DEFAULT NULL,
+  `trait5_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_4jwwxprphsr0q8gm3b36blpxq` (`sim_id`),
+  KEY `FK_d9c7ujal0x0oq5bhauxmd5t2s` (`trait1_id`),
+  KEY `FK_gaey4nc7ip6mf6dx19x34sbty` (`trait2_id`),
+  KEY `FK_14g1bkixs7vvqbg7trriphs6i` (`trait3_id`),
+  KEY `FK_9scwsn5ef34ejfs3ufqmji478` (`trait4_id`),
+  KEY `FK_p2v7fbsbunqb6psv0khmcvi3e` (`trait5_id`),
+  CONSTRAINT `FK_14g1bkixs7vvqbg7trriphs6i` FOREIGN KEY (`trait3_id`) REFERENCES `traits` (`id`),
+  CONSTRAINT `FK_4jwwxprphsr0q8gm3b36blpxq` FOREIGN KEY (`sim_id`) REFERENCES `sims` (`id`),
+  CONSTRAINT `FK_9scwsn5ef34ejfs3ufqmji478` FOREIGN KEY (`trait4_id`) REFERENCES `traits` (`id`),
+  CONSTRAINT `FK_d9c7ujal0x0oq5bhauxmd5t2s` FOREIGN KEY (`trait1_id`) REFERENCES `traits` (`id`),
+  CONSTRAINT `FK_gaey4nc7ip6mf6dx19x34sbty` FOREIGN KEY (`trait2_id`) REFERENCES `traits` (`id`),
+  CONSTRAINT `FK_p2v7fbsbunqb6psv0khmcvi3e` FOREIGN KEY (`trait5_id`) REFERENCES `traits` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `liasonssitr`
+--
+
+LOCK TABLES `liasonssitr` WRITE;
+/*!40000 ALTER TABLE `liasonssitr` DISABLE KEYS */;
+INSERT INTO `liasonssitr` VALUES (1,0,0,0,0,0,1,21,27,42,72,43),(2,0,0,0,0,0,2,4,35,55,87,90),(3,0,0,0,0,0,3,2,29,70,85,69),(4,0,0,0,0,0,4,19,35,55,96,2),(5,0,0,0,0,0,5,18,23,62,94,79),(6,0,0,0,0,0,6,1,32,45,99,50),(7,0,0,0,0,0,7,7,35,66,98,84),(8,0,0,0,0,0,8,16,28,59,78,86),(9,0,0,0,0,0,9,21,32,45,98,4),(10,0,0,0,0,0,10,6,30,58,78,26),(11,0,0,0,0,0,11,2,30,71,88,7),(12,0,0,0,0,0,12,16,25,71,94,6),(13,0,0,0,0,0,13,1,32,44,94,59),(14,0,0,0,0,0,14,10,33,65,78,97),(15,0,0,0,0,0,15,2,29,47,82,65),(16,0,0,0,0,0,16,6,32,57,76,34),(17,0,0,0,0,0,17,12,35,58,91,20),(18,0,0,0,0,0,18,19,35,45,90,15),(19,0,0,0,0,0,19,1,35,49,98,31),(20,0,0,0,0,0,20,1,37,48,97,48),(21,0,0,0,0,0,21,14,34,58,78,62),(22,0,0,0,0,0,22,20,33,70,73,71),(23,0,0,0,0,0,23,12,22,53,92,26),(24,0,0,0,0,0,24,1,33,71,74,21),(25,0,0,0,0,0,25,17,26,49,76,14),(26,0,0,0,0,0,26,14,33,55,93,93),(27,0,0,0,0,0,27,12,24,42,90,60),(28,0,0,0,0,0,28,4,31,63,80,97),(29,0,0,0,0,0,29,5,31,53,75,32),(30,0,0,0,0,0,30,3,38,49,83,71),(31,0,0,0,0,0,31,10,33,59,80,69),(32,0,0,0,0,0,32,18,27,49,84,85),(33,0,0,0,0,0,33,19,29,62,73,60),(34,0,0,0,0,0,34,14,31,45,88,90),(35,0,0,0,0,0,35,14,37,40,75,46),(36,0,0,0,0,0,36,7,30,58,98,88),(37,0,0,0,0,0,37,3,39,67,81,39),(38,0,0,0,0,0,38,17,38,54,91,52),(39,0,0,0,0,0,39,13,23,44,98,12),(40,0,0,0,0,0,40,1,30,60,73,6),(41,0,0,0,0,0,41,18,28,49,76,87),(42,0,0,0,0,0,42,1,23,54,88,11),(43,0,0,0,0,0,43,7,32,69,85,11),(44,0,0,0,0,0,44,13,32,41,90,63),(45,0,0,0,0,0,45,4,26,59,78,51),(46,0,0,0,0,0,46,3,39,46,90,53),(47,0,0,0,0,0,47,14,29,57,83,93),(48,0,0,0,0,0,48,15,27,62,84,68),(49,0,0,0,0,0,49,16,27,65,99,42),(50,0,0,0,0,0,50,16,36,49,92,94),(51,0,0,0,0,0,51,13,24,55,74,70),(52,0,0,0,0,0,52,21,33,40,94,17),(53,0,0,0,0,0,53,10,26,45,92,60),(54,0,0,0,0,0,54,7,30,48,90,64),(55,0,0,0,0,0,55,14,23,45,99,50),(56,0,0,0,0,0,56,15,25,58,95,3),(57,0,0,0,0,0,57,20,28,57,92,93),(58,0,0,0,0,0,58,10,38,47,92,3),(59,0,0,0,0,0,59,8,22,71,97,37),(60,0,0,0,0,0,60,15,34,66,92,75),(61,0,0,0,0,0,61,17,22,42,95,73),(62,0,0,0,0,0,62,19,25,49,91,40),(63,0,0,0,0,0,63,2,34,64,93,66),(64,0,0,0,0,0,64,1,35,70,88,4),(65,0,0,0,0,0,65,5,37,45,81,5),(66,0,0,0,0,0,66,18,31,49,97,66),(67,0,0,0,0,0,67,2,33,62,82,54),(68,0,0,0,0,0,68,8,29,46,85,50),(69,0,0,0,0,0,69,6,37,69,90,41),(70,0,0,0,0,0,70,21,22,51,84,96),(71,0,0,0,0,0,71,20,31,40,94,3),(72,0,0,0,0,0,72,13,28,63,82,46),(73,0,0,0,0,0,73,15,26,55,87,97),(74,0,0,0,0,0,74,11,32,42,77,47),(75,0,0,0,0,0,75,19,29,52,85,70),(76,0,0,0,0,0,76,16,27,56,87,19),(77,0,0,0,0,0,77,2,22,48,83,19),(78,0,0,0,0,0,78,4,35,55,72,68),(79,0,0,0,0,0,79,7,29,62,82,5),(80,0,0,0,0,0,80,3,29,65,74,74),(81,0,0,0,0,0,81,21,29,53,91,40),(82,0,0,0,0,0,82,15,31,47,85,9),(83,0,0,0,0,0,83,13,35,65,84,78),(84,0,0,0,0,0,84,18,33,71,78,57),(85,0,0,0,0,0,85,14,36,57,80,72),(86,0,0,0,0,0,86,17,25,54,74,56),(87,0,0,0,0,0,87,2,30,53,93,66),(88,0,0,0,0,0,88,5,32,41,96,88),(89,0,0,0,0,0,89,2,36,69,85,7),(90,0,0,0,0,0,90,5,25,59,87,79),(91,0,0,0,0,0,91,17,27,66,78,6),(92,0,0,0,0,0,92,20,25,62,72,16);
+/*!40000 ALTER TABLE `liasonssitr` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-10-28 23:20:41

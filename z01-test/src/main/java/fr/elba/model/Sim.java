@@ -1,5 +1,6 @@
 package fr.elba.model;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "sims")
+@DiscriminatorValue("sim")
 public class Sim {
 
 	@Id
@@ -23,7 +25,9 @@ public class Sim {
 	private String orientation;
 	private boolean marie;
 	private boolean realise;
-
+	private boolean mort;
+	private boolean legitime;
+	private boolean heritier;
 	// liaisons
 	@ManyToOne
 	private Famille famille;
@@ -33,21 +37,24 @@ public class Sim {
 
 	@OneToOne
 	private Sim couple;
-	
+
 	@ManyToOne
 	private Sim parent1;
-	
+
 	@ManyToOne
 	private Sim parent2;
 
 	@OneToOne(mappedBy = "chef")
 	private Famille cFamille;
 
+	@ManyToOne
+	private Souhait souhait;
+
 	public Sim() {
 		super();
 	}
 
-	public Sim(String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
+	public Sim(String prenom, String nom, String sexe, String espece, String orientation, boolean marie, boolean mort,
 			boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1, Sim parent2) {
 		super();
 		this.prenom = prenom;
@@ -56,6 +63,7 @@ public class Sim {
 		this.espece = espece;
 		this.orientation = orientation;
 		this.marie = marie;
+		this.mort = mort;
 		this.realise = realise;
 		this.famille = famille;
 		this.familleOrigine = familleOrigine;
@@ -65,7 +73,8 @@ public class Sim {
 	}
 
 	public Sim(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
-			boolean realise, Famille famille, Famille familleOrigine, Sim couple,Sim parent1, Sim parent2) {
+			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
+			Sim parent2) {
 		super();
 		this.id = id;
 		this.prenom = prenom;
@@ -74,6 +83,7 @@ public class Sim {
 		this.espece = espece;
 		this.orientation = orientation;
 		this.marie = marie;
+		this.mort = mort;
 		this.realise = realise;
 		this.famille = famille;
 		this.familleOrigine = familleOrigine;
@@ -81,7 +91,7 @@ public class Sim {
 		this.parent1 = parent1;
 		this.parent2 = parent2;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -194,15 +204,36 @@ public class Sim {
 		this.cFamille = cFamille;
 	}
 
-	@Override
-	public String toString() {
-		return "Sim [id=" + id + ", " + (prenom != null ? "prenom=" + prenom + ", " : "")
-				+ (nom != null ? "nom=" + nom + ", " : "") + (sexe != null ? "sexe=" + sexe + ", " : "")
-				+ (espece != null ? "espece=" + espece + ", " : "")
-				+ (orientation != null ? "orientation=" + orientation + ", " : "") + "marie=" + marie + ", realise="
-				+ realise + ", " + (famille != null ? "famille=" + famille + ", " : "")
-				+ (familleOrigine != null ? "familleOrigine=" + familleOrigine + ", " : "")
-				+ (couple != null ? "couple=" + couple : "") + "]";
+	public boolean isMort() {
+		return mort;
+	}
+
+	public void setMort(boolean mort) {
+		this.mort = mort;
+	}
+
+	public boolean isLegitime() {
+		return legitime;
+	}
+
+	public void setLegitime(boolean legitime) {
+		this.legitime = legitime;
+	}
+
+	public boolean isHeritier() {
+		return heritier;
+	}
+
+	public void setHeritier(boolean heritier) {
+		this.heritier = heritier;
+	}
+
+	public Souhait getSouhait() {
+		return souhait;
+	}
+
+	public void setSouhait(Souhait souhait) {
+		this.souhait = souhait;
 	}
 
 }

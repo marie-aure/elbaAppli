@@ -28,6 +28,11 @@ public class SouhaitServiceImpl implements ISouhaitService {
 	public Souhait getById(int id) {
 		return soDao.getById(id);
 	}
+	
+	@Override
+	public Souhait getByName(String name) {
+		return soDao.getByName(name);
+	}
 
 	@Override
 	public Souhait getRandom(){

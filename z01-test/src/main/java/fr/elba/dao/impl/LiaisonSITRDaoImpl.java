@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.elba.dao.ILiaisonSITRDao;
 import fr.elba.model.LiaisonSITR;
+import fr.elba.model.Sim;
 
 @Repository
 @Transactional
@@ -35,6 +36,15 @@ public class LiaisonSITRDaoImpl implements ILiaisonSITRDao {
 	public LiaisonSITR getById(int id) {
 		Session s = sf.getCurrentSession();
 		return (LiaisonSITR) s.get(LiaisonSITR.class, id);
+	}
+	
+	@Override
+	public LiaisonSITR getBySim(Sim sim) {
+		Session s = sf.getCurrentSession();
+		String req = "From LiaisonSITR WHERE sim=:sim";
+		Query query = s.createQuery(req);
+		query.setParameter("sim", sim);
+		return (LiaisonSITR) query.uniqueResult();
 	}
 
 	@Override

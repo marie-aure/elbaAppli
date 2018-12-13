@@ -160,13 +160,13 @@ public class LiaisonSITR {
 		this.trait5 = trait5;
 	}
 
-	@Override
-	public String toString() {
-		return "LiaisonSITR [heritage1=" + heritage1 + ", heritage2=" + heritage2 + ", heritage3=" + heritage3
-				+ ", heritage4=" + heritage4 + ", heritage5=" + heritage5 + ", "
-				+ (sim != null ? "sim=" + sim + ", " : "") + (trait1 != null ? "trait1=" + trait1 + ", " : "")
-				+ (trait2 != null ? "trait2=" + trait2 + ", " : "") + (trait3 != null ? "trait3=" + trait3 + ", " : "")
-				+ (trait4 != null ? "trait4=" + trait4 + ", " : "") + (trait5 != null ? "trait5=" + trait5 : "") + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "LiaisonSITR [heritage1=" + heritage1 + ", heritage2=" + heritage2 + ", heritage3=" + heritage3
+//				+ ", heritage4=" + heritage4 + ", heritage5=" + heritage5 + ", "
+//				+ (sim != null ? "sim=" + sim + ", " : "") + (trait1 != null ? "trait1=" + trait1 + ", " : "")
+//				+ (trait2 != null ? "trait2=" + trait2 + ", " : "") + (trait3 != null ? "trait3=" + trait3 + ", " : "")
+//				+ (trait4 != null ? "trait4=" + trait4 + ", " : "") + (trait5 != null ? "trait5=" + trait5 : "") + "]";
+//	}
 
 }

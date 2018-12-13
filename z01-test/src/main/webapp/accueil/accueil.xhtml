@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
 	<title>Accueil</title>
 	<link
@@ -48,6 +49,26 @@
 				</td>
 			</tr>
 		</table>
+		Famille :
+		<table>
+			<thead>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th> </th>
+			</thead>
+		<c:forEach var="sim" items="${AccueilMB.lSims}">
+		<tr>
+		<td>${sim.nom}</td>
+		<td>${sim.prenom}</td>
+		<td><h:form>
+			<h:commandButton type="Submit" value="Détails"
+				action="${AccueilMB.toDetailSim(sim.id)}" />
+		</h:form>		</td>
+		</tr>
+		</c:forEach>			
+		</table>
+		
+		
 		Argent "In Game" : ${AccueilMB.enCours.famille.argentIG}
 		<br/>
 		Terrains
