@@ -81,7 +81,7 @@ public class PassageManagedBean {
 	public void setPassage(Passage passage) {
 		this.passage = passage;
 	}
-	
+
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
@@ -95,8 +95,13 @@ public class PassageManagedBean {
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		this.passage = paSer.getById(id);
 		if (this.passage != null) {
-		sessionMap.put("passageEnCoursDetailPassage", this.passage);
-		ec.redirect(ec.getRequestContextPath() + "/passage/detailPassage.xhtml?faces-redirect=true");
+			sessionMap.put("passageEnCoursDetailPassage", this.passage);
+			ec.redirect(ec.getRequestContextPath() + "/passage/detailPassage.xhtml?faces-redirect=true");
 		}
+	}
+
+	public void toCreerPassage() throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		ec.redirect(ec.getRequestContextPath() + "/passage/creerPassage.xhtml?faces-redirect=true");
 	}
 }
