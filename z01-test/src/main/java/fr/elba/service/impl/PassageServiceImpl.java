@@ -13,40 +13,45 @@ import fr.elba.service.IPassageService;
 public class PassageServiceImpl implements IPassageService {
 
 	@Autowired
-	private IPassageDao soDao;
+	private IPassageDao paDao;
 
-	public void setSoDao(IPassageDao soDao) {
-		this.soDao = soDao;
+	public void setPaDao(IPassageDao paDao) {
+		this.paDao = paDao;
 	}
 
 	@Override
 	public List<Passage> getAll() {
-		return soDao.getAll();
+		return paDao.getAll();
+	}
+	
+	@Override
+	public List<String> getAllCategorie(){
+		return paDao.getAllCategorie();
 	}
 
 	@Override
 	public Passage getById(int id) {
-		return soDao.getById(id);
+		return paDao.getById(id);
 	}
 	
 	@Override
 	public Passage getByLibelle(String libelle) {
-		return soDao.getByLibelle(libelle);
+		return paDao.getByLibelle(libelle);
 	}
 
 	@Override
 	public void create(Passage passage) {
-		soDao.create(passage);
+		paDao.create(passage);
 	}
 
 	@Override
 	public void update(Passage passage) {
-		soDao.update(passage);
+		paDao.update(passage);
 	}
 
 	@Override
 	public void delete(int id) {
-		soDao.delete(id);
+		paDao.delete(id);
 	}
 
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Créer un passage</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Créer un passage" />
+			</ui:include>
+		</ui:insert>
+
+
+		<h:form>
+			<table>
+				<col width="500px" />
+				<col width="1000px" />
+				<tr>
+					<td>Catégorie :</td>
+					<td><c:if test="${CreerPassageMB.lCategories.size() > 0}"><h:selectOneMenu
+							value="#{CreerPassageMB.categorie}">
+							<f:selectItem itemLabel="Aucune" itemValue="" />
+							<f:selectItems value="#{CreerPassageMB.lCategories}" />
+						</h:selectOneMenu></c:if>
+					<h:inputText
+							value="${CreerPassageMB.passage.categorie}" /></td>
+				</tr>
+				<tr>
+					<td>Libellé :</td>
+					<td>
+					<h:inputText
+							value="${CreerPassageMB.passage.libelle}" /></td>
+				</tr>
+				<tr>
+					<td>Précisions :</td>
+					<td><h:inputText
+							value="${CreerPassageMB.passage.precisions}" /></td>
+				</tr>
+				<tr>
+					<td>Commentaire :</td>
+					<td><h:inputTextarea
+							value="${CreerPassageMB.passage.commentaire}" /></td>
+				</tr>
+			</table>
+			#{CreerPassageMB.message}
+			<h:commandButton value="Créer" type="submit"
+				action="${CreerPassageMB.creerPassage()}" />
+		</h:form>
+</div>
+</h:body>
+</html>

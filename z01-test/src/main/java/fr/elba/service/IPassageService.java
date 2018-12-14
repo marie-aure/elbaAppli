@@ -7,7 +7,9 @@ import fr.elba.model.Passage;
 public interface IPassageService {
 
 	public List<Passage> getAll();
-
+	
+	public List<String> getAllCategorie();
+	
 	public Passage getById(int id);
 
 	public Passage getByLibelle(String libelle);
