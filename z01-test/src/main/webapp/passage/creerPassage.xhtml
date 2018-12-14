@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
 	<title>Créer un passage</title>
 	<link type="text/css" rel="stylesheet" href="../css/main.css" />
@@ -28,51 +29,34 @@
 				<col width="1000px" />
 				<tr>
 					<td>Catégorie :</td>
+					<td><c:if test="${CreerPassageMB.lCategories.size() > 0}"><h:selectOneMenu
+							value="#{CreerPassageMB.categorie}">
+							<f:selectItem itemLabel="Aucune" itemValue="" />
+							<f:selectItems value="#{CreerPassageMB.lCategories}" />
+						</h:selectOneMenu></c:if>
+					<h:inputText
+							value="${CreerPassageMB.passage.categorie}" /></td>
+				</tr>
+				<tr>
+					<td>Libellé :</td>
+					<td>
+					<h:inputText
+							value="${CreerPassageMB.passage.libelle}" /></td>
+				</tr>
+				<tr>
+					<td>Précisions :</td>
 					<td><h:inputText
-							value="${}" /></td>
+							value="${CreerPassageMB.passage.precisions}" /></td>
 				</tr>
 				<tr>
-					<td>Type :</td>
-					<td><select value="${CommunautaireMB.communautaire.type}">
-							<option label="Terrain" value="terrain" />
-							<option label="Bâtiment" value="batiment" />
-							<option label="Bateau" value="bateau" />
-					</select></td>
-				</tr>
-				<tr>
-					<td>Adresse :</td>
-					<td><h:inputText
-							value="${CommunautaireMB.communautaire.adresse}" /></td>
-				</tr>
-				<tr>
-					<td>Lieu-dit :</td>
-					<td><h:inputText
-							value="${CommunautaireMB.communautaire.lieuDit}" /></td>
-				</tr>
-				<tr>
-					<td>Quartier :</td>
-					<td><h:selectOneMenu
-							value="#{CommunautaireMB.selectedQuartier}">
-							<f:selectItem itemLabel="Sélectionner" itemValue="" />
-							<f:selectItems value="#{QuartierMB.lLibelles}" />
-						</h:selectOneMenu></td>
-				</tr>
-				<tr>
-					<td>Fonction :</td>
-					<td><h:inputText
-							value="${CommunautaireMB.communautaire.fonction}" /></td>
-				</tr>
-				<tr>
-					<td>Rabbit Hole :</td>
-					<td><h:selectManyMenu style="height:100px"
-							value="${CommunautaireMB.selectedRabbitHoles}">
-							<f:selectItem itemLabel="Sélectionner" itemValue="" />
-							<f:selectItems value="${RabbitHoleMB.lLibelles}" />
-						</h:selectManyMenu></td>
+					<td>Commentaire :</td>
+					<td><h:inputTextarea
+							value="${CreerPassageMB.passage.commentaire}" /></td>
 				</tr>
 			</table>
+			#{CreerPassageMB.message}
 			<h:commandButton value="Créer" type="submit"
-				action="${TerrainMB.createCommunautaire()}" />
+				action="${CreerPassageMB.creerPassage()}" />
 		</h:form>
 </div>
 </h:body>

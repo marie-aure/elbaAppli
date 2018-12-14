@@ -44,8 +44,10 @@ public class CreerPassageManagedBean {
 	// ---- Variables ----
 	// +++++++++++++++++++
 
+	private String message = "";
 	private Passage passage;
 	private List<String> lCategories;
+	private String categorie = "";
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -59,6 +61,7 @@ public class CreerPassageManagedBean {
 
 	@PostConstruct
 	public void init() {
+		getAllCategorie();
 	}
 
 	// +++++++++++++++++++++++
@@ -73,6 +76,22 @@ public class CreerPassageManagedBean {
 		this.passage = passage;
 	}
 
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+
 	public List<String> getlCategories() {
 		return lCategories;
 	}
@@ -81,7 +100,6 @@ public class CreerPassageManagedBean {
 		this.lCategories = lCategories;
 	}
 
-	
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
@@ -90,18 +108,23 @@ public class CreerPassageManagedBean {
 		this.lCategories = paSer.getAllCategorie();
 	}
 
-//	public void toDetailPassage(int id) throws IOException {
-//		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-//		Map<String, Object> sessionMap = ec.getSessionMap();
-//		this.passage = paSer.getById(id);
-//		if (this.passage != null) {
-//			sessionMap.put("passageEnCoursDetailPassage", this.passage);
-//			ec.redirect(ec.getRequestContextPath() + "/passage/detailPassage.xhtml?faces-redirect=true");
-//		}
-//	}
-//
-//	public void toCreerPassage() throws IOException {
-//		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-//		ec.redirect(ec.getRequestContextPath() + "/passage/creerPassage.xhtml?faces-redirect=true");
-//	}
+	public void creerPassage() throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+
+		if ((!this.categorie.equals("") || this.passage.getCategorie().length() > 0)
+				&& this.passage.getLibelle().length() > 0 && this.passage.getPrecisions().length() > 0
+				&& this.passage.getCommentaire().length() > 0) {
+			if (!this.categorie.equals("")) {
+				this.passage.setCategorie(this.categorie);
+			}
+			paSer.create(this.passage);
+			sessionMap.put("passageEnCoursDetailPassage", this.passage);
+			ec.redirect(ec.getRequestContextPath() + "/passage/detailPassage.xhtml?faces-redirect=true");
+
+		} else {
+			this.message = "Tous les champs doivent être remplis";
+		}
+
+	}
 }

@@ -8,6 +8,8 @@ public interface IPassageDao {
 
 	public List<Passage> getAll();
 	
+	public List<String> getAllCategorie();
+	
 	public Passage getById(int id);
 	
 	public Passage getByLibelle(String libelle);

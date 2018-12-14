@@ -33,6 +33,14 @@ public class PassageDaoImpl implements IPassageDao {
 		Query query = s.createQuery(req);
 		return (List<Passage>) query.list();
 	}
+	
+	@Override
+	public List<String> getAllCategorie() {
+		Session s = sf.getCurrentSession();
+		String req = "Select Distinct categorie FROM Passage";
+		Query query = s.createQuery(req);
+		return (List<String>) query.list();
+	}
 
 	@Override
 	public Passage getById(int id) {
