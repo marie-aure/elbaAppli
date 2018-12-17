@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>${DetailPassageMB.passage.libelle}</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="${DetailPassageMB.passage.libelle}" />
+			</ui:include>
+		</ui:insert>
+
+		<table>
+			<col width="500px" />
+			<col width="1000px" />
+			<tr>
+				<td>Catégorie :</td>
+				<td>${DetailPassageMB.passage.categorie}</td>
+			</tr>
+			<tr>
+				<td>Libellé :</td>
+				<td>${DetailPassageMB.passage.libelle}</td>
+			</tr>
+			<tr>
+				<td>Précisions :</td>
+				<td>${DetailPassageMB.passage.precisions}</td>
+			</tr>
+			<tr>
+				<td>Commentaire :</td>
+				<td>${DetailPassageMB.passage.commentaire}</td>
+			</tr>
+		</table>
+
+
+		Conditions :
+		<table>
+			<thead>
+				<th>Classe</th>
+				<th>Valeur Minimum</th>
+				<th>Valeur Maximum</th>
+				<th></th>
+			</thead>
+			<c:forEach var="cond" items="${DetailPassageMB.lConditions}">
+				<tr>
+					<td>${cond.classe.libelle}</td>
+				
+					<td>${cond.valeurMin}</td>
+
+					<td>${cond.valeurMax}</td>
+				
+				<h:form>
+					
+						<td><h:commandButton value="Modifier" type="submit"
+								action="${DetailPassageMB.toModifierCondition(cond.id)}" /></td>
+					</h:form></tr>
+				
+			</c:forEach>
+
+		</table>
+
+		Ajouter une condition :
+		<h:form>
+			<table>
+				<col width="500px" />
+				<col width="1000px" />
+				<tr>
+					<td>Classe :</td>
+					<td><h:selectOneMenu value="#{DetailPassageMB.libClasse}">
+							<f:selectItems value="#{DetailPassageMB.lClasses}" />
+						</h:selectOneMenu></td>
+				</tr>
+				<tr>
+					<td>Valeur Minimum :</td>
+					<td><h:inputText
+							value="#{DetailPassageMB.condition.valeurMin}" /></td>
+				</tr>
+				<tr>
+					<td>Valeur Maximum :</td>
+					<td><h:inputText
+							value="#{DetailPassageMB.condition.valeurMax}" /></td>
+				</tr>
+
+			</table>
+
+			<h:commandButton value="Ajouter une condition" type="submit"
+				action="${DetailPassageMB.CreerCondition()}" />
+
+		</h:form>
+
+		<h:form>
+			<h:commandButton value="Supprimer le passage" type="submit"
+				action="${DetailPassageMB.confirmationSuppression()}" />
+		</h:form>
+
+		<c:if test="${DetailPassageMB.confirmation}">
+		Confirmation de suppression. 
+		<h:form>	<h:commandButton value="Supprimer" type="submit"
+				action="${DetailPassageMB.supprimerPassage()}" />
+			<h:commandButton value="Annuler" type="submit"
+				action="${DetailPassageMB.annulerSuppression()}" /></h:form>
+	
+		</c:if>
+	</div>
+</h:body>
+</html>
