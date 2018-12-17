@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Classes</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Classes" />
+			</ui:include>
+		</ui:insert>
+
+		<table>
+			<thead>
+				<th>Libellé</th>
+				<th>Quartier</th>
+				<th>Classe inférieure</th>
+				<th>Classe supérieure</th>
+				<th> </th>
+			</thead>
+			<c:forEach var="cla" items="${ClasseMB.lClasses}">
+				<tr>
+					<td>${cla.libelle}</td>
+					<td>${cla.quartier.libelle}</td>
+					<td>${cla.classeInf.libelle}</td>
+					<td>${cla.classeSup.libelle}</td>
+					<td><h:form>
+							<h:commandButton type="Submit" value="Détails"
+								action="${PassageMB.toDetailClasse(cla.id)}" />
+						</h:form></td>
+				</tr>
+			</c:forEach>
+		</table>
+		
+		<h:form>
+			<h:commandButton type="Submit" value="Créer un passage"
+				action="${PassageMB.toCreerPassage()}" />
+		</h:form>	
+		
+	</div>
+
+
+</h:body>
+</html>
