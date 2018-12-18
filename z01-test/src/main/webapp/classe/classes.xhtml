@@ -38,17 +38,13 @@
 					<td>${cla.classeSup.libelle}</td>
 					<td><h:form>
 							<h:commandButton type="Submit" value="Détails"
-								action="${PassageMB.toDetailClasse(cla.id)}" />
+								action="${ClasseMB.toDetailClasse(cla.id)}" />
 						</h:form></td>
 				</tr>
 			</c:forEach>
 		</table>
 		
-		<h:form>
-			<h:commandButton type="Submit" value="Créer un passage"
-				action="${PassageMB.toCreerPassage()}" />
-		</h:form>	
-		
+				
 	</div>
 
 

@@ -28,7 +28,7 @@ public class DevoirManagedBean {
 	private IDevoirService deSer;
 
 	@ManagedProperty("#{ClasseMB}")
-	private ClasseManagedBean classeMB;
+	private ClasseOldManagedBean classeMB;
 
 	@ManagedProperty("#{LiaisonDVCLMB}")
 	private LiaisonDVCLManagedBean lDVCLMB;
@@ -40,7 +40,7 @@ public class DevoirManagedBean {
 		this.deSer = deSer;
 	}
 
-	public void setClasseMB(ClasseManagedBean classeMB) {
+	public void setClasseMB(ClasseOldManagedBean classeMB) {
 		this.classeMB = classeMB;
 	}
 
