@@ -26,6 +26,7 @@ import fr.elba.model.Tour;
 import fr.elba.service.IClasseService;
 import fr.elba.service.ICompteService;
 import fr.elba.service.IConditionService;
+import fr.elba.service.IFamilleService;
 import fr.elba.service.IPassageService;
 import fr.elba.service.IPretService;
 import fr.elba.service.ISimService;
@@ -42,9 +43,16 @@ public class DetailClasseManagedBean {
 
 	@ManagedProperty("#{ClasseService}")
 	private IClasseService clSer;
+	
+	@ManagedProperty("#{FamilleService}")
+	private IFamilleService faSer;
 
 	public void setClSer(IClasseService clSer) {
 		this.clSer = clSer;
+	}
+
+	public void setFaSer(IFamilleService faSer) {
+		this.faSer = faSer;
 	}
 
 	// +++++++++++++++++++
@@ -66,7 +74,7 @@ public class DetailClasseManagedBean {
 
 	@PostConstruct
 	public void init() {
-		
+
 	}
 
 	// +++++++++++++++++++++++
@@ -93,4 +101,26 @@ public class DetailClasseManagedBean {
 	// ---- Méthode ----
 	// +++++++++++++++++
 
+	public void getClasseAffiche() {
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		this.classe = (Classe) sessionMap.get("classeEnCoursDetailClasse");
+	}
+
+	public void getAllFamille() {
+		this.lFamilles = faSer.getAll();
+	}
+	
+	public void toDetailFamille(int id) throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		Famille famille = faSer.getById(id);
+		
+		if (famille != null) {
+			sessionMap.put("familleEnCoursDetailFamille", famille);
+			ec.redirect(ec.getRequestContextPath() + "/famille/detailFamille.xhtml?faces-redirect=true");
+		}
+
+		
+	}
 }

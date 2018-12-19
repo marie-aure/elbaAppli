@@ -2,13 +2,16 @@ package fr.elba.service;
 
 import java.util.List;
 
+import fr.elba.model.Classe;
 import fr.elba.model.Famille;
 import fr.elba.model.LiaisonSITR;
 
 public interface IFamilleService {
 
 	public List<Famille> getAll();
-
+	
+	public List<Famille> getByClasse(Classe classe);
+	
 	public Famille getById(int id);
 
 	public Famille getByName(String name);

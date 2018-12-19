@@ -2,11 +2,14 @@ package fr.elba.dao;
 
 import java.util.List;
 
+import fr.elba.model.Classe;
 import fr.elba.model.Famille;
 
 public interface IFamilleDao {
 
 	public List<Famille> getAll();
+	
+	public List<Famille> getByClasse(Classe classe);
 	
 	public Famille getById(int id);
 	

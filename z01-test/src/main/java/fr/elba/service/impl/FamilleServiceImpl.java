@@ -61,6 +61,11 @@ public class FamilleServiceImpl implements IFamilleService {
 	public List<Famille> getAll() {
 		return faDao.getAll();
 	}
+	
+	@Override
+	public List<Famille> getByClasse(Classe classe) {
+		return faDao.getByClasse(classe);
+	}
 
 	@Override
 	public Famille getById(int id) {

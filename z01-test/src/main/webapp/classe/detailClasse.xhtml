@@ -49,14 +49,13 @@
 				<th>Nom</th>
 				<th> </th>
 			</thead>
-			<c:forEach var="cla" items="${DetailClasseMB.lFamilles}">
+			<c:forEach var="fam" items="${DetailClasseMB.lFamilles}">
 				<tr>
-					<td>${pas.categorie}</td>
-					<td>${pas.libelle}</td>
-					<td>${pas.precisions}</td>
+					<td>${fam.nom}</td>
+					<td> </td>
 					<td><h:form>
 							<h:commandButton type="Submit" value="Détails"
-								action="${PassageMB.toDetailPassage(pas.id)}" />
+								action="${DetailClasseMB.toDetailFamille(fam.id)}" />
 						</h:form></td>
 				</tr>
 			</c:forEach>
