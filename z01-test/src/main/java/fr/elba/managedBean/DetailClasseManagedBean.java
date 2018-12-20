@@ -74,7 +74,8 @@ public class DetailClasseManagedBean {
 
 	@PostConstruct
 	public void init() {
-
+		getClasseAffiche();
+		getAllFamille();
 	}
 
 	// +++++++++++++++++++++++
