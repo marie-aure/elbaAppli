@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.elba.dao.IConditionDao;
 import fr.elba.model.Famille;
 import fr.elba.model.Passage;
+import fr.elba.model.Classe;
 import fr.elba.model.Condition;
 
 @Repository
@@ -32,13 +33,22 @@ public class ConditionDaoImpl implements IConditionDao {
 		Query query = s.createQuery(req);
 		return (List<Condition>) query.list();
 	}
-	
+
+	@Override
+	public List<Condition> getByClasse(Classe classe) {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Condition WHERE classe = :classe";
+		Query query = s.createQuery(req);
+		query.setParameter("classe", classe);
+		return (List<Condition>) query.list();
+	}
+
 	@Override
 	public List<Condition> getByPassage(Passage passage) {
 		Session s = sf.getCurrentSession();
 		String req = "FROM Condition WHERE passage = :passage";
 		Query query = s.createQuery(req);
-		query.setParameter("passage",passage);
+		query.setParameter("passage", passage);
 		return (List<Condition>) query.list();
 	}
 
@@ -47,7 +57,6 @@ public class ConditionDaoImpl implements IConditionDao {
 		Session s = sf.getCurrentSession();
 		return (Condition) s.get(Condition.class, id);
 	}
-	
 
 	@Override
 	public void create(Condition condition) {

@@ -77,7 +77,7 @@ public void toDetailClasse(int id) throws IOException {
 	Map<String, Object> sessionMap = ec.getSessionMap();
 	Classe classe = clSer.getById(id);
 	sessionMap.put("classeEnCoursDetailClasse", classe);
-	ec.redirect(ec.getRequestContextPath() + "/accueil/detailClasse.xhtml?faces-redirect=true");
+	ec.redirect(ec.getRequestContextPath() + "/classe/detailClasse.xhtml?faces-redirect=true");
 }
 	
 }

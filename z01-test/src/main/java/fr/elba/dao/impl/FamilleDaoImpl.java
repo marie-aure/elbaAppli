@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.elba.dao.IFamilleDao;
+import fr.elba.model.Classe;
 import fr.elba.model.Famille;
 
 @Repository
@@ -28,6 +29,15 @@ public class FamilleDaoImpl implements IFamilleDao {
 		Session s = sf.getCurrentSession();
 		String req = "FROM Famille";
 		Query query = s.createQuery(req);
+		return (List<Famille>) query.list();
+	}
+	
+	@Override
+	public List<Famille> getByClasse(Classe classe) {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Famille WHERE classe = :classe";
+		Query query = s.createQuery(req);
+		query.setParameter("classe", classe);
 		return (List<Famille>) query.list();
 	}
 

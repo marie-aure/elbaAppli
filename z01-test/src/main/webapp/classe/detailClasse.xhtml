@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>${DetailClasseMB.classe.libelle}</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="${DetailClasseMB.classe.libelle}" />
+			</ui:include>
+		</ui:insert>
+
+		<table>
+			<col width="500px" />
+			<col width="1000px" />
+			<tr>
+				<td>Libellé :</td>
+				<td>${DetailClasseMB.classe.libelle}</td>
+			</tr>
+			<tr>
+				<td>Quartier :</td>
+				<td>${DetailClasseMB.classe.quartier.libelle}</td>
+			</tr>
+			<tr>
+				<td>Classe Inférieure :</td>
+				<td>${DetailClasseMB.classe.classeInf.libelle}</td>
+			</tr>
+			<tr>
+				<td>Classe Supérieure :</td>
+				<td>${DetailClasseMB.classe.classeSup.libelle}</td>
+			</tr>
+		</table>
+				
+		Familles de la classe :		
+		<table>
+			<thead>
+				<th>Nom</th>
+				<th> </th>
+			</thead>
+			<c:forEach var="fam" items="${DetailClasseMB.lFamilles}">
+				<tr>
+					<td>${fam.nom}</td>
+					<td><h:form>
+							<h:commandButton type="Submit" value="Détails"
+								action="${DetailClasseMB.toDetailFamille(fam.id)}" />
+						</h:form></td>
+				</tr>
+			</c:forEach>
+		</table>
+			
+		Conditions de passage : 
+		<table>
+			<thead>
+				<th>Catégorie</th>
+				<th>Libellé</th>
+				<th>Précisions</th>
+				<th>Valeur minimum</th>
+				<th>Valeur maximum</th>
+				<th> </th>
+			</thead>
+			<c:forEach var="cond" items="${DetailClasseMB.lConditions}">
+				<tr>
+					<td>${cond.passage.categorie}</td>
+					<td>${cond.passage.libelle}</td>
+					<td>${cond.passage.precisions}</td>
+					<td>${cond.valeurMin}</td>
+					<td>${cond.valeurMax}</td>
+					<td><h:form>
+							<h:commandButton type="Submit" value="Passage"
+								action="${DetailClasseMB.toDetailPassage(cond.id)}" />
+						</h:form></td>
+				</tr>
+			</c:forEach>
+		</table>	
+	</div>
+</h:body>
+</html>
