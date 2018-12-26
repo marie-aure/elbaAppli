@@ -43,12 +43,19 @@ public class DetailClasseManagedBean {
 
 	@ManagedProperty("#{ClasseService}")
 	private IClasseService clSer;
-	
+
 	@ManagedProperty("#{FamilleService}")
 	private IFamilleService faSer;
 
+	@ManagedProperty("#{ConditionService}")
+	private IConditionService coSer;
+
 	public void setClSer(IClasseService clSer) {
 		this.clSer = clSer;
+	}
+
+	public void setCoSer(IConditionService coSer) {
+		this.coSer = coSer;
 	}
 
 	public void setFaSer(IFamilleService faSer) {
@@ -61,6 +68,7 @@ public class DetailClasseManagedBean {
 
 	private Classe classe;
 	private List<Famille> lFamilles;
+	private List<Condition> lConditions;
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -70,12 +78,14 @@ public class DetailClasseManagedBean {
 		super();
 		this.classe = new Classe();
 		this.lFamilles = new ArrayList<>();
+		this.lConditions = new ArrayList<>();
 	}
 
 	@PostConstruct
 	public void init() {
 		getClasseAffiche();
 		getAllFamille();
+		getAllCondition();
 	}
 
 	// +++++++++++++++++++++++
@@ -88,6 +98,14 @@ public class DetailClasseManagedBean {
 
 	public void setClasse(Classe classe) {
 		this.classe = classe;
+	}
+
+	public List<Condition> getlConditions() {
+		return lConditions;
+	}
+
+	public void setlConditions(List<Condition> lConditions) {
+		this.lConditions = lConditions;
 	}
 
 	public List<Famille> getlFamilles() {
@@ -111,17 +129,32 @@ public class DetailClasseManagedBean {
 	public void getAllFamille() {
 		this.lFamilles = faSer.getAll();
 	}
-	
+
+	public void getAllCondition() {
+		this.lConditions = coSer.getByClasse(this.classe);
+	}
+
 	public void toDetailFamille(int id) throws IOException {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		Famille famille = faSer.getById(id);
-		
+
 		if (famille != null) {
 			sessionMap.put("familleEnCoursDetailFamille", famille);
 			ec.redirect(ec.getRequestContextPath() + "/famille/detailFamille.xhtml?faces-redirect=true");
 		}
 
-		
+	}
+	
+	public void toDetailPassage(int id) throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		Passage passage = coSer.getById(id).getPassage();
+			
+		if (passage != null) {
+			sessionMap.put("passageEnCoursDetailPassage", passage);
+			ec.redirect(ec.getRequestContextPath() + "/passage/detailPassage.xhtml?faces-redirect=true");
+		}
+
 	}
 }

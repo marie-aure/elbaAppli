@@ -43,7 +43,7 @@
 			</tr>
 		</table>
 				
-				
+		Familles de la classe :		
 		<table>
 			<thead>
 				<th>Nom</th>
@@ -52,7 +52,6 @@
 			<c:forEach var="fam" items="${DetailClasseMB.lFamilles}">
 				<tr>
 					<td>${fam.nom}</td>
-					<td> </td>
 					<td><h:form>
 							<h:commandButton type="Submit" value="Détails"
 								action="${DetailClasseMB.toDetailFamille(fam.id)}" />
@@ -60,7 +59,31 @@
 				</tr>
 			</c:forEach>
 		</table>
-				
+			
+		Conditions de passage : 
+		<table>
+			<thead>
+				<th>Catégorie</th>
+				<th>Libellé</th>
+				<th>Précisions</th>
+				<th>Valeur minimum</th>
+				<th>Valeur maximum</th>
+				<th> </th>
+			</thead>
+			<c:forEach var="cond" items="${DetailClasseMB.lConditions}">
+				<tr>
+					<td>${cond.passage.categorie}</td>
+					<td>${cond.passage.libelle}</td>
+					<td>${cond.passage.precisions}</td>
+					<td>${cond.valeurMin}</td>
+					<td>${cond.valeurMax}</td>
+					<td><h:form>
+							<h:commandButton type="Submit" value="Passage"
+								action="${DetailClasseMB.toDetailPassage(cond.id)}" />
+						</h:form></td>
+				</tr>
+			</c:forEach>
+		</table>	
 	</div>
 </h:body>
 </html>
