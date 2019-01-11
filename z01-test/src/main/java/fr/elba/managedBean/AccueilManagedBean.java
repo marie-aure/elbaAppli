@@ -41,7 +41,7 @@ public class AccueilManagedBean {
 
 	@ManagedProperty("#{CompteService}")
 	private ICompteService coSer;
-	
+
 	@ManagedProperty("#{SimService}")
 	private ISimService siSer;
 
@@ -70,6 +70,7 @@ public class AccueilManagedBean {
 	// +++++++++++++++++++
 
 	private Tour enCours;
+	private boolean sansFamille;
 	private Terrain residence;
 	private List<Terrain> proprietes;
 	private List<Compte> lComptes;
@@ -82,20 +83,25 @@ public class AccueilManagedBean {
 
 	public AccueilManagedBean() {
 		super();
+		this.sansFamille = false;
 	}
 
 	@PostConstruct
 	public void init() {
 		this.enCours = tourEnCours();
-		if (this.enCours.getFamille() != null) {
-			this.residence = enCours.getFamille().getResidence();
-			this.proprietes = getTerrains();
-			this.lPrets = getPrets();
-			this.lComptes = getComptes();
-			this.lSims = getSims();
-			for (Sim sim:this.lSims){
-				System.out.println(sim.getPrenom());
+		if (this.enCours != null) {
+			if (this.enCours.getFamille() != null) {
+				this.residence = enCours.getFamille().getResidence();
+				this.proprietes = getTerrains();
+				this.lPrets = getPrets();
+				this.lComptes = getComptes();
+				this.lSims = getSims();
+				for (Sim sim : this.lSims) {
+					System.out.println(sim.getPrenom());
+				}
 			}
+		} else {
+			this.sansFamille = true;
 		}
 	}
 
@@ -142,7 +148,15 @@ public class AccueilManagedBean {
 	public void setlPrets(List<Pret> lPrets) {
 		this.lPrets = lPrets;
 	}
-	
+
+	public boolean isSansFamille() {
+		return sansFamille;
+	}
+
+	public void setSansFamille(boolean sansFamille) {
+		this.sansFamille = sansFamille;
+	}
+
 	public List<Sim> getlSims() {
 		return lSims;
 	}
@@ -150,7 +164,7 @@ public class AccueilManagedBean {
 	public void setlSims(List<Sim> lSims) {
 		this.lSims = lSims;
 	}
-	
+
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
@@ -170,8 +184,8 @@ public class AccueilManagedBean {
 	public List<Compte> getComptes() {
 		return coSer.getByFamily(this.enCours.getFamille());
 	}
-	
-	public List<Sim> getSims(){
+
+	public List<Sim> getSims() {
 		return siSer.getByFamille(this.enCours.getFamille());
 	}
 
@@ -201,7 +215,7 @@ public class AccueilManagedBean {
 		sessionMap.put("familleEnCoursAchatTerrain", this.enCours.getFamille());
 		ec.redirect(ec.getRequestContextPath() + "/accueil/gererFinances.xhtml?faces-redirect=true");
 	}
-	
+
 	public void toDetailSim(int id) throws IOException {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = ec.getSessionMap();
