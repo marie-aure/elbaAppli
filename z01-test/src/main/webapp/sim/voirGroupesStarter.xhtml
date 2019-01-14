@@ -58,15 +58,15 @@
 								</tr>
 								<tr>
 									<td>Sexe :</td>
-									<td>#{sta.sim.sexe}</td>
+									<td>#{sta.sim.sexe.libelle}</td>
 								</tr>
 								<tr>
 									<td>Espèce :</td>
-									<td>#{sta.sim.espece}</td>
+									<td>#{sta.sim.espece.libelle}</td>
 								</tr>
 								<tr>
 									<td>Orientation :</td>
-									<td>#{sta.sim.orientation}</td>
+									<td>#{sta.sim.orientation.libelle}</td>
 								</tr>
 								<tr>
 									<td>Couple :</td>
@@ -83,6 +83,10 @@
 								<tr>
 									<td>Muscle :</td>
 									<td>#{sta.sim.muscle}</td>
+								</tr>
+								<tr>
+									<td>Poitrine :</td>
+									<td>#{sta.sim.poitrine}</td>
 								</tr>
 								<tr>
 									<td>Couleur des cheveux :</td>
@@ -109,10 +113,6 @@
 									<td>#{sta.sim.bouche}</td>
 								</tr>
 								<tr>
-									<td>Poitrine :</td>
-									<td>#{sta.sim.poitrine}</td>
-								</tr>
-								<tr>
 									<td>Plat préféré :</td>
 									<td>#{sta.sim.plat}</td>
 								</tr>
@@ -124,14 +124,7 @@
 									<td>Couleur préférée :</td>
 									<td>#{sta.sim.couleur}</td>
 								</tr>
-								<tr>
-									<td>Signe astrologique :</td>
-									<td>#{sta.sim.signe}</td>
-								</tr>
-								<tr>
-									<td>Souhait à long terme :</td>
-									<td>#{sta.sim.souhait.libelle}</td>
-								</tr>
+								
 								<tr>
 									<td>Trait 1 :</td>
 									<td>#{sta.trait1.libelle}</td>
@@ -151,6 +144,14 @@
 								<tr>
 									<td>Trait 5 :</td>
 									<td>#{sta.trait5.libelle}</td>
+								</tr>
+								<tr>
+									<td>Souhait à long terme :</td>
+									<td>#{sta.sim.souhait.libelle}</td>
+								</tr>
+								<tr>
+									<td>Signe astrologique :</td>
+									<td>#{sta.sim.signe}</td>
 								</tr>
 							</table>
 						</div>
@@ -172,15 +173,15 @@
 								</tr>
 								<tr>
 									<td>Sexe :</td>
-									<td>#{sta.sim.sexe}</td>
+									<td>#{sta.sim.sexe.libelle}</td>
 								</tr>
 								<tr>
 									<td>Espèce :</td>
-									<td>#{sta.sim.espece}</td>
+									<td>#{sta.sim.espece.libelle}</td>
 								</tr>
 								<tr>
 									<td>Orientation :</td>
-									<td>#{sta.sim.orientation}</td>
+									<td>#{sta.sim.orientation.libelle}</td>
 								</tr>
 								<tr>
 									<td>Couple :</td>
@@ -197,6 +198,10 @@
 								<tr>
 									<td>Muscle :</td>
 									<td>#{sta.sim.muscle}</td>
+								</tr>
+								<tr>
+									<td>Poitrine :</td>
+									<td>#{sta.sim.poitrine}</td>
 								</tr>
 								<tr>
 									<td>Couleur des cheveux :</td>
@@ -223,10 +228,6 @@
 									<td>#{sta.sim.bouche}</td>
 								</tr>
 								<tr>
-									<td>Poitrine :</td>
-									<td>#{sta.sim.poitrine}</td>
-								</tr>
-								<tr>
 									<td>Plat préféré :</td>
 									<td>#{sta.sim.plat}</td>
 								</tr>
@@ -237,15 +238,7 @@
 								<tr>
 									<td>Couleur préférée :</td>
 									<td>#{sta.sim.couleur}</td>
-								</tr>
-								<tr>
-									<td>Signe astrologique :</td>
-									<td>#{sta.sim.signe}</td>
-								</tr>
-								<tr>
-									<td>Souhait à long terme :</td>
-									<td>#{sta.sim.souhait.libelle}</td>
-								</tr>
+								</tr>							
 								<tr>
 									<td>Trait 1 :</td>
 									<td>#{sta.trait1.libelle}</td>
@@ -266,17 +259,26 @@
 									<td>Trait 5 :</td>
 									<td>#{sta.trait5.libelle}</td>
 								</tr>
+								<tr>
+									<td>Souhait à long terme :</td>
+									<td>#{sta.sim.souhait.libelle}</td>
+								</tr>
+								<tr>
+									<td>Signe astrologique :</td>
+									<td>#{sta.sim.signe}</td>
+								</tr>
 							</table>
 						</div>
 					</ui:repeat></td>
 			</tr>
 		</table>
-<h:form><h:commandButton value="Créer le groupe" class="formButton2"
-			type="submit" action="${StarterMB.creerGroupe()}" />
+		<h:form>
+			<h:commandButton value="Créer le groupe" class="formButton2"
+				type="submit" action="${StarterMB.creerGroupe()}" />
 			<h:commandButton value="Valider le groupe" class="formButton2"
-			type="submit" action="${StarterMB.validerGroupe()}" />
-			</h:form>
-		
+				type="submit" action="${StarterMB.validerGroupe()}" />
+		</h:form>
+
 
 	</div>
 

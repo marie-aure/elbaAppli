@@ -12,18 +12,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import fr.elba.model.Compte;
 import fr.elba.model.Passage;
-import fr.elba.model.Pret;
-import fr.elba.model.Sim;
-import fr.elba.model.Terrain;
-import fr.elba.model.Tour;
-import fr.elba.service.ICompteService;
 import fr.elba.service.IPassageService;
-import fr.elba.service.IPretService;
-import fr.elba.service.ISimService;
-import fr.elba.service.ITerrainService;
-import fr.elba.service.ITourService;
 
 @ManagedBean(name = "CreerPassageMB")
 @ViewScoped

@@ -3,6 +3,7 @@ package fr.elba.dao;
 import java.util.List;
 
 import fr.elba.model.Famille;
+import fr.elba.model.Genre;
 import fr.elba.model.Sim;
 
 public interface ISimDao {
@@ -13,7 +14,7 @@ public interface ISimDao {
 	
 	public List<Sim> getListEnfants(Sim sim);
 	
-	public List<Sim> getListParents(String sx);
+	public List<Sim> getListParents(Genre genre);
 	
 	public Sim getById(int id);
 	

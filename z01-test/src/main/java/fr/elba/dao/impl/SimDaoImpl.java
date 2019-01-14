@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.elba.dao.ISimDao;
 import fr.elba.model.Famille;
+import fr.elba.model.Genre;
 import fr.elba.model.Sim;
 
 @Repository
@@ -51,11 +52,11 @@ public class SimDaoImpl implements ISimDao {
 	}
 	
 	@Override
-	public List<Sim> getListParents(String sx) {
+	public List<Sim> getListParents(Genre genre) {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Sim WHERE sexe=:sx and mort is false and famille is not null";
+		String req = "FROM Sim WHERE sexe=:genre and mort is false and famille is not null";
 		Query query = s.createQuery(req);
-		query.setParameter("sx", sx);
+		query.setParameter("genre", genre);
 		return (List<Sim>) query.list();
 	}
 	
