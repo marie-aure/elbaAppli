@@ -4,7 +4,13 @@ public enum Espece {
 
 	HUMAIN("Humain"),
 	FEE("Fée"),
-	VAMPIRE("Vampire");
+	VAMPIRE("Vampire"),
+	LOUPGAROU("Loup Garou"),
+	SORCIER("Sorcier"),
+	SIRENE("Sirène"),
+	VEGESIM("Végésim"),
+	GENIE("Génie"),
+	FANTOME("Fantôme");
 	
 	 private String espece ;  
      

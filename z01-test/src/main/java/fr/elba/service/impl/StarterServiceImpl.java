@@ -15,7 +15,10 @@ import com.mysql.fabric.xmlrpc.base.Array;
 import fr.elba.dao.IStarterDao;
 import fr.elba.dao.ITraitDao;
 import fr.elba.model.Couple;
+import fr.elba.model.Espece;
+import fr.elba.model.Genre;
 import fr.elba.model.LiaisonSITR;
+import fr.elba.model.Orientation;
 import fr.elba.model.Souhait;
 import fr.elba.model.Starter;
 import fr.elba.model.Trait;
@@ -91,13 +94,13 @@ public class StarterServiceImpl implements IStarterService {
 
 		for (int i = 0; i < taille; i++) {
 			Starter starter = (Starter) lLiaisonSITRs.get(i).getSim();
-			if (starter.getSexe() == "F" && starter.getOrientation() == "Hétérosexuel") {
+			if (starter.getSexe() == Genre.FEMME && starter.getOrientation() == Orientation.HET) {
 				f.add(lLiaisonSITRs.get(i));
-			} else if (starter.getSexe() == "F" && starter.getOrientation() == "Homosexuel") {
+			} else if (starter.getSexe() == Genre.FEMME && starter.getOrientation() == Orientation.HOM) {
 				ff.add(lLiaisonSITRs.get(i));
-			} else if (starter.getSexe() == "M" && starter.getOrientation() == "Hétérosexuel") {
+			} else if (starter.getSexe() == Genre.HOMME && starter.getOrientation() == Orientation.HET) {
 				h.add(lLiaisonSITRs.get(i));
-			} else if (starter.getSexe() == "M" && starter.getOrientation() == "Homosexuel") {
+			} else if (starter.getSexe() == Genre.HOMME && starter.getOrientation() == Orientation.HOM) {
 				hh.add(lLiaisonSITRs.get(i));
 			} else {
 				System.out.println("Problème du troisième type !");
@@ -329,19 +332,17 @@ public class StarterServiceImpl implements IStarterService {
 	private List<LiaisonSITR> creerSims(int taille) {
 		// créer liste de sims
 		List<LiaisonSITR> lLiaisonSITRs = new ArrayList<>();
-		String[] enumSexe = { "F", "M" };
-		String[] enumEspece = { "Humain", "Humain", "Humain", "Humain", "Humain", "Humain", "Humain", "Fée", "Vampire",
-				"Loup Garou", "Sorcier", "Sirène", "Végésim", "Génie", "Fantôme" };
-		String[] enumOrientation = { "Homosexuel", "Hétérosexuel", "Hétérosexuel", "Hétérosexuel" };
+		int[] enumEspece = { 0, 0, 0, 0, 0, 0, 0, 1, 2,	3, 4, 5, 6, 7, 8 };
+		int[] enumOrientation = { 1, 0, 0, 0};
 
 		for (int i = 0; i < taille; i++) {
 			Random rnd = new Random();
 			Starter starter = new Starter();
 			starter.setPrenom(String.valueOf((char) (rnd.nextInt(26) + 'A')));
 			starter.setNom(String.valueOf((char) (rnd.nextInt(26) + 'A')));
-			starter.setSexe(enumSexe[rnd.nextInt(2)]);
-			starter.setEspece(enumEspece[rnd.nextInt(15)]);
-			starter.setOrientation(enumOrientation[rnd.nextInt(4)]);
+			starter.setSexe(Genre.values()[rnd.nextInt(2)]);
+			starter.setEspece(Espece.values()[enumEspece[rnd.nextInt(15)]]);
+			starter.setOrientation(Orientation.values()[enumOrientation[rnd.nextInt(4)]]);
 			starter.setMarie(false);
 			starter.setRealise(false);
 
@@ -395,11 +396,11 @@ public class StarterServiceImpl implements IStarterService {
 		Starter starter1 = (Starter) sim1.getSim();
 		Starter starter2 = (Starter) sim2.getSim();
 		// espece surnaturel + humain ++ surnat pareil +++
-		if (starter1.getEspece() != "Humain" && starter2.getEspece() != "Humain") {
+		if (starter1.getEspece() != Espece.HUMAIN && starter2.getEspece() != Espece.HUMAIN) {
 			score = score + 10;
-		} else if (starter1.getEspece() == "Humain" && starter2.getEspece() == "Humain") {
+		} else if (starter1.getEspece() ==Espece.HUMAIN && starter2.getEspece() == Espece.HUMAIN) {
 			score = score + 15;
-		} else if (starter1.getEspece() == starter2.getEspece() && starter1.getEspece() != "Humain") {
+		} else if (starter1.getEspece() == starter2.getEspece() && starter1.getEspece() != Espece.HUMAIN) {
 			score = score + 20;
 		}
 
