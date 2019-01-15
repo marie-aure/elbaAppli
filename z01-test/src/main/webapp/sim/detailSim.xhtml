@@ -37,15 +37,15 @@
 			</tr>
 			<tr>
 				<td>Sexe :</td>
-				<td>#{DetailSimMB.lsitr.sim.sexe.libelle}</td>
+				<td>#{DetailSimMB.lsitr.sim.sexe.genre}</td>
 			</tr>
 			<tr>
 				<td>Espèce :</td>
-				<td>#{DetailSimMB.lsitr.sim.espece.libelle}</td>
+				<td>#{DetailSimMB.lsitr.sim.espece.espece}</td>
 			</tr>
 			<tr>
 				<td>Orientation :</td>
-				<td>#{DetailSimMB.lsitr.sim.orientation.libelle}</td>
+				<td>#{DetailSimMB.lsitr.sim.orientation.orientation}</td>
 			</tr>
 			<tr>
 				<td>Couple :</td>
@@ -160,9 +160,9 @@
 					<tr>
 						<td>${enf.nom}</td>
 						<td>${enf.prenom}</td>
-						<td>${enf.sexe.libelle}</td>
-						<td>${enf.orientation.libelle}</td>
-						<td>${enf.espece.libelle}</td>
+						<td>${enf.sexe.genre}</td>
+						<td>${enf.orientation.orientation}</td>
+						<td>${enf.espece.espece}</td>
 						<td><h:form>
 								<h:commandButton type="Submit" value="Détails"
 									action="${DetailSimMB.toDetailSim(enf.id)}" />
