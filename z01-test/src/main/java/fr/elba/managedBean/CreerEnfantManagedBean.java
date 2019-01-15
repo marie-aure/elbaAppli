@@ -361,25 +361,25 @@ public class CreerEnfantManagedBean {
 		} else {
 			this.enfantTrait.setHeritage1(false);
 		}
-		this.enfantTrait.setTrait1(trSer.getByName(this.trait2));
+		this.enfantTrait.setTrait2(trSer.getByName(this.trait2));
 		if (lTraits.contains(this.enfantTrait.getTrait2())) {
 			this.enfantTrait.setHeritage2(true);
 		} else {
 			this.enfantTrait.setHeritage2(false);
 		}
-		this.enfantTrait.setTrait1(trSer.getByName(this.trait3));
+		this.enfantTrait.setTrait3(trSer.getByName(this.trait3));
 		if (lTraits.contains(this.enfantTrait.getTrait3())) {
 			this.enfantTrait.setHeritage3(true);
 		} else {
 			this.enfantTrait.setHeritage3(false);
 		}
-		this.enfantTrait.setTrait1(trSer.getByName(this.trait4));
+		this.enfantTrait.setTrait4(trSer.getByName(this.trait4));
 		if (lTraits.contains(this.enfantTrait.getTrait4())) {
 			this.enfantTrait.setHeritage4(true);
 		} else {
 			this.enfantTrait.setHeritage4(false);
 		}
-		this.enfantTrait.setTrait1(trSer.getByName(this.trait5));
+		this.enfantTrait.setTrait5(trSer.getByName(this.trait5));
 		if (lTraits.contains(this.enfantTrait.getTrait5())) {
 			this.enfantTrait.setHeritage5(true);
 		} else {
