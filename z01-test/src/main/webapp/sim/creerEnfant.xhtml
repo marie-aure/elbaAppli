@@ -149,16 +149,15 @@
 					<h:selectOneMenu value="#{CreerEnfantMB.trait1}">
 						<f:selectItem itemLabel="Aucun trait" itemValue="" />
 						<f:selectItems value="#{CreerEnfantMB.lTraits}" var="t"
-							itemLabel="#{t.libelle} - #{t.type}" itemValue="#{t.libelle}"/>
+							itemLabel="#{t.libelle} - #{t.type}" itemValue="#{t.libelle}" />
 					</h:selectOneMenu>
 				</div>
-
 				<div>
 					Trait 2 :
 					<h:selectOneMenu value="#{CreerEnfantMB.trait2}">
 						<f:selectItem itemLabel="Aucun trait" itemValue="" />
 						<f:selectItems value="#{CreerEnfantMB.lTraits}" var="t"
-							itemLabel="#{t.libelle} - #{t.type}" />
+							itemLabel="#{t.libelle} - #{t.type}" itemValue="#{t.libelle}" />
 					</h:selectOneMenu>
 				</div>
 
@@ -167,37 +166,35 @@
 					<h:selectOneMenu value="#{CreerEnfantMB.trait3}">
 						<f:selectItem itemLabel="Aucun trait" itemValue="" />
 						<f:selectItems value="#{CreerEnfantMB.lTraits}" var="t"
-							itemLabel="#{t.libelle} - #{t.type}" />
+							itemLabel="#{t.libelle} - #{t.type}" itemValue="#{t.libelle}" />
 					</h:selectOneMenu>
 				</div>
-
 				<div>
 					Trait 4 :
 					<h:selectOneMenu value="#{CreerEnfantMB.trait4}">
 						<f:selectItem itemLabel="Aucun trait" itemValue="" />
 						<f:selectItems value="#{CreerEnfantMB.lTraits}" var="t"
-							itemLabel="#{t.libelle} - #{t.type}" />
+							itemLabel="#{t.libelle} - #{t.type}" itemValue="#{t.libelle}" />
 					</h:selectOneMenu>
 				</div>
-
 				<div>
 					Trait 5 :
 					<h:selectOneMenu value="#{CreerEnfantMB.trait5}">
 						<f:selectItem itemLabel="Aucun trait" itemValue="" />
 						<f:selectItems value="#{CreerEnfantMB.lTraits}" var="t"
-							itemLabel="#{t.libelle} - #{t.type}" />
+							itemLabel="#{t.libelle} - #{t.type}" itemValue="#{t.libelle}" />
 					</h:selectOneMenu>
 				</div>
-				
+
 				<div>
 					Souhait :
 					<h:selectOneMenu value="#{CreerEnfantMB.souhait}">
 						<f:selectItem itemLabel="Aucun souhait" itemValue="" />
 						<f:selectItems value="#{CreerEnfantMB.lSouhaits}" var="s"
-							itemLabel="#{s.libelle}" />
+							itemLabel="#{s.libelle}" itemValue="#{s.libelle}"/>
 					</h:selectOneMenu>
 				</div>
-				
+
 				<h:commandButton value="Confirmer" class="formButton2" type="submit"
 					action="${CreerEnfantMB.creerEnfant()}" />
 			</h:form>
