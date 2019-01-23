@@ -262,40 +262,25 @@ public class StarterServiceImpl implements IStarterService {
 
 		System.out.println(lCouples);
 
+		//récupérer les couples sans groupe
+		
+		
 		// créer des groupes
 
 		// récupérer dernier groupe créé
 		List<Integer> dernierGroupe = stDao.getDernierGroupe();
 		int _dernierGroupe = dernierGroupe.get(0);
-		int place = dernierGroupe.get(1);
 		Random rnd = new Random();
-		// si groupe pas complet
-		if (place < 16) {
-			// remplir le groupe
-			for (int i = place/2 ; i < 8; i++) {
-				cond = true;
-				while (cond) {
-					int ran = rnd.nextInt(lCouples.size());
-					if (lCouples.get(ran).getGroupe() < 1) {
-						cond = false;
-						lCouples.get(ran).setGroupe(_dernierGroupe);
-					}
-				}
-			}
-		}
-
 		
-		// remplir les groupes suivants
+		// remplir les groupes
 		
 		// nb de couples restants
-		int restant = lCouples.size() - (8 - place/2);
-		
-		
+		int restant = lCouples.size();
 		int nb = (int) restant / 8;
 
-		for (int i = 0; i < nb + 1; i++) {
+		for (int i = 0; i < nb ; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (lCouples.size()-restant> 8 * i + j) {
+				if (restant> 8 * i + j) {
 					cond = true;
 					while (cond) {
 						int ran = rnd.nextInt(lCouples.size());
@@ -310,6 +295,7 @@ public class StarterServiceImpl implements IStarterService {
 
 		// enregistrer les starters
 		for (Couple couple : lCouples) {
+			if (couple.getGroupe()>0) {
 			LiaisonSITR starter1 = couple.getStarter1();
 			LiaisonSITR starter2 = couple.getStarter2();
 
@@ -324,7 +310,7 @@ public class StarterServiceImpl implements IStarterService {
 
 			starter1.getSim().setCouple(starter2.getSim());
 			update((Starter) starter1.getSim());
-
+			}
 		}
 
 	}
