@@ -80,7 +80,6 @@ public class StarterDaoImpl implements IStarterDao {
 		Object[] res = (Object[]) query.uniqueResult();
 		List<Integer> liste = new ArrayList<>();
 		liste.add((int) res[0]);
-		liste.add(((BigInteger) res[1]).intValue());
 		return liste;
 	}
 
