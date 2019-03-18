@@ -125,6 +125,35 @@
 					</tr>
 				</ui:repeat>
 			</table>
+			
+			Conditions de passage
+		<table>
+				<thead>
+					<th>Catégorie</th>
+					<th>Libellé</th>
+					<th>Valeur Min</th>
+					<th>valeur Max</th>
+					<th>Progression</th>
+					<th>valeur</th>
+					<th>Commentaire</th>
+					<th>Validé</th>
+					<th>Condition de passage</th>
+				</thead>
+				<ui:repeat var="lcofa" value="${AccueilMB.lLCOFA}">
+					<tr>
+						<td>${lcofa.condition.passage.categorie}</td>
+						<td>${lcofa.condition.passage.libelle}</td>
+						<td>${lcofa.condition.valeurMin}</td>
+						<td>${lcofa.condition.valeurMax}</td>
+						<td>${lcofa.progression}</td>
+						<td>${lcofa.valeur}</td>
+						<td>${lcofa.commentaire}</td>
+						<td>${lcofa.valide}</td>
+						<td>lien</td>
+					</tr>
+				</ui:repeat>
+			</table>
+			
 		Actions
 		<h:form>
 				<h:commandButton type="Submit" value="Acheter un terrain"
