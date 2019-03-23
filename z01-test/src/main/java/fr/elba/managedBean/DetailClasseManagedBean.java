@@ -127,7 +127,7 @@ public class DetailClasseManagedBean {
 	}
 
 	public void getAllFamille() {
-		this.lFamilles = faSer.getAll();
+		this.lFamilles = faSer.getByClasse(this.classe);
 	}
 
 	public void getAllCondition() {

@@ -1,5 +1,6 @@
 package fr.elba.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +9,18 @@ import org.springframework.stereotype.Service;
 import fr.elba.dao.IFamilleDao;
 import fr.elba.model.Classe;
 import fr.elba.model.Compte;
+import fr.elba.model.Condition;
 import fr.elba.model.Famille;
+import fr.elba.model.LiaisonCOFA;
 import fr.elba.model.LiaisonSITR;
 import fr.elba.model.Sim;
 import fr.elba.model.Starter;
 import fr.elba.model.Tour;
 import fr.elba.service.IClasseService;
 import fr.elba.service.ICompteService;
+import fr.elba.service.IConditionService;
 import fr.elba.service.IFamilleService;
+import fr.elba.service.ILiaisonCOFAService;
 import fr.elba.service.IStarterService;
 import fr.elba.service.ITourService;
 
@@ -37,31 +42,17 @@ public class FamilleServiceImpl implements IFamilleService {
 	@Autowired
 	private ICompteService coSer;
 
-	public void setCoSer(ICompteService coSer) {
-		this.coSer = coSer;
-	}
+	@Autowired
+	private IConditionService cnSer;
 
-	public void setFaDao(IFamilleDao faDao) {
-		this.faDao = faDao;
-	}
-
-	public void setClSer(IClasseService clSer) {
-		this.clSer = clSer;
-	}
-
-	public void setStSer(IStarterService stSer) {
-		this.stSer = stSer;
-	}
-
-	public void setToSer(ITourService toSer) {
-		this.toSer = toSer;
-	}
+	@Autowired
+	private ILiaisonCOFAService lcofaSer;
 
 	@Override
 	public List<Famille> getAll() {
 		return faDao.getAll();
 	}
-	
+
 	@Override
 	public List<Famille> getByClasse(Classe classe) {
 		return faDao.getByClasse(classe);
@@ -122,10 +113,10 @@ public class FamilleServiceImpl implements IFamilleService {
 			}
 			// créer famille
 			Classe pauvre = clSer.getByName("Pauvre");
-
 			Famille famille = new Famille(chef.getNom(), 1, 0, pauvre, null, chef);
 			// Crée compte à 5000§
 			Compte compte = new Compte(5000, 4, 0, 0, famille);
+
 			// Récupère nb de tour
 			int nb = toSer.nombreTour(pauvre);
 			Tour tour = new Tour(false, nb, famille, pauvre);
@@ -138,6 +129,15 @@ public class FamilleServiceImpl implements IFamilleService {
 			stSer.update(starter2);
 			toSer.create(tour);
 			coSer.create(compte);
+			// Crée les conditions de passage
+			List<Condition> lConditions = new ArrayList<>();
+			lConditions = cnSer.getByClasse(pauvre);
+			if (lConditions.size() > 0) {
+				for (Condition condition : lConditions) {
+					LiaisonCOFA liaisonCOFA = new LiaisonCOFA("", 0, "", false, famille, condition);
+					lcofaSer.create(liaisonCOFA);
+				}
+			}
 		}
 
 	}

@@ -108,6 +108,7 @@
 					</tr>
 				</ui:repeat>
 			</table>
+			
 		Comptes
 		<table>
 				<thead>
@@ -125,6 +126,26 @@
 					</tr>
 				</ui:repeat>
 			</table>
+			
+		Conditions de passage 
+			<table>
+				<thead>
+					<th>Montant</th>
+					<th>Taux</th>
+					<th>Dépôt</th>
+					<th>Retrait</th>
+				</thead>
+				<ui:repeat var="com" value="${AccueilMB.lComptes}">
+					<tr>
+						<td>${com.montant}</td>
+						<td>${com.taux}</td>
+						<td>${com.depot}</td>
+						<td>${com.retrait}</td>
+					</tr>
+				</ui:repeat>
+			</table>
+			
+			
 		Actions
 		<h:form>
 				<h:commandButton type="Submit" value="Acheter un terrain"
