@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.elba.dao.ILiaisonCOFADao;
+import fr.elba.model.Famille;
 import fr.elba.model.LiaisonCOFA;
 import fr.elba.service.ILiaisonCOFAService;
 
@@ -13,31 +14,41 @@ import fr.elba.service.ILiaisonCOFAService;
 public class LiaisonCOFAServiceImpl implements ILiaisonCOFAService {
 
 	@Autowired
-	private ILiaisonCOFADao lsitrDao;
+	private ILiaisonCOFADao lcofaDao;
 
-	@Override
-	public List<LiaisonCOFA> getAll() {
-		return lsitrDao.getAll();
+	public void setLdrclDao(ILiaisonCOFADao lcofaDao) {
+		this.lcofaDao = lcofaDao;
 	}
 
 	@Override
+	public List<LiaisonCOFA> getAll() {
+		return lcofaDao.getAll();
+	}
+
+	@Override
+	public List<LiaisonCOFA> getByFamille(Famille famille){
+		return lcofaDao.getByFamille(famille);
+	}
+	
+	@Override
 	public LiaisonCOFA getById(int id) {
-		return lsitrDao.getById(id);
+
+		return lcofaDao.getById(id);
 	}
 
 	@Override
 	public void create(LiaisonCOFA liaisonCOFA) {
-		lsitrDao.create(liaisonCOFA);
+		lcofaDao.create(liaisonCOFA);
 	}
 
 	@Override
 	public void update(LiaisonCOFA liaisonCOFA) {
-		lsitrDao.update(liaisonCOFA);
+		lcofaDao.update(liaisonCOFA);
 	}
 
 	@Override
 	public void delete(int id) {
-		lsitrDao.delete(id);
+		lcofaDao.delete(id);
 	}
 
 }

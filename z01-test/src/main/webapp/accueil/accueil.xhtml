@@ -127,24 +127,33 @@
 				</ui:repeat>
 			</table>
 			
-		Conditions de passage 
-			<table>
+			Conditions de passage
+		<table>
 				<thead>
-					<th>Montant</th>
-					<th>Taux</th>
-					<th>Dépôt</th>
-					<th>Retrait</th>
+					<th>Catégorie</th>
+					<th>Libellé</th>
+					<th>Valeur Min</th>
+					<th>valeur Max</th>
+					<th>Progression</th>
+					<th>valeur</th>
+					<th>Commentaire</th>
+					<th>Validé</th>
+					<th>Condition de passage</th>
 				</thead>
-				<ui:repeat var="com" value="${AccueilMB.lComptes}">
+				<ui:repeat var="lcofa" value="${AccueilMB.lLCOFA}">
 					<tr>
-						<td>${com.montant}</td>
-						<td>${com.taux}</td>
-						<td>${com.depot}</td>
-						<td>${com.retrait}</td>
+						<td>${lcofa.condition.passage.categorie}</td>
+						<td>${lcofa.condition.passage.libelle}</td>
+						<td>${lcofa.condition.valeurMin}</td>
+						<td>${lcofa.condition.valeurMax}</td>
+						<td>${lcofa.progression}</td>
+						<td>${lcofa.valeur}</td>
+						<td>${lcofa.commentaire}</td>
+						<td>${lcofa.valide}</td>
+						<td>lien</td>
 					</tr>
 				</ui:repeat>
 			</table>
-			
 			
 		Actions
 		<h:form>
