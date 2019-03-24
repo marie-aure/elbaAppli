@@ -246,4 +246,11 @@ public class AccueilManagedBean {
 		sessionMap.put("detailSim", siSer.getById(id));
 		ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
 	}
+	
+	public void toDetailLCOFA(int id) throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("detailLCOFA", lcofaSer.getById(id));
+		ec.redirect(ec.getRequestContextPath() + "/passage/detailLCOFA.xhtml?faces-redirect=true");
+	}
 }

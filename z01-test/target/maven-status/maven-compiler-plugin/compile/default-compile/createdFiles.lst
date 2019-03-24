@@ -37,6 +37,7 @@ fr\elba\managedBean\CreerPassageManagedBean.class
 fr\elba\model\Starter.class
 fr\elba\service\ICommunautaireService.class
 fr\elba\dao\IDroitDao.class
+fr\elba\managedBean\DetailLCOFAManagedBean.class
 fr\elba\service\ILiaisonDVCLService.class
 fr\elba\service\impl\TerrainServiceImpl.class
 fr\elba\model\Prive.class
