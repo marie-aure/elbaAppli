@@ -181,8 +181,12 @@
 			</h:form>
 		</c:if>
 		<h:form>
-		<h:commandButton type="Submit" value="Créer un enfant"
-			action="${DetailSimMB.toCreateChild()}" />
+			<h:commandButton type="Submit" value="Créer un enfant"
+				action="${DetailSimMB.toCreateChild()}" />
+		</h:form>
+		<h:form>
+			<h:commandButton type="Submit" value="Compléter la personnalité"
+				action="${DetailSimMB.toUpdateTraits()}" />
 		</h:form>
 	</div>
 </h:body>
