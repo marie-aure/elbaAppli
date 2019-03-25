@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Condition de passage</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Condition de passage" />
+			</ui:include>
+		</ui:insert>
+
+		<h:form>
+			<table class="">
+				<col width="500px" />
+				<col width="500px" />
+				<tr>
+					<td>Catégorie :</td>
+					<td>${DetailLCOFAMB.lCOFA.condition.passage.categorie}</td>
+				</tr>
+				<tr>
+					<td>Libellé :</td>
+					<td>${DetailLCOFAMB.lCOFA.condition.passage.libelle}</td>
+				</tr>
+				<tr>
+					<td>Précisions :</td>
+					<td>${DetailLCOFAMB.lCOFA.condition.passage.precisions}</td>
+				</tr>
+				<tr>
+					<td>Commentaires :</td>
+					<td>${DetailLCOFAMB.lCOFA.condition.passage.commentaire}</td>
+				</tr>
+				<tr>
+					<td>Valeur Min :</td>
+					<td>${DetailLCOFAMB.lCOFA.condition.valeurMin}</td>
+				</tr>
+				<tr>
+					<td>valeur Max :</td>
+					<td>${DetailLCOFAMB.lCOFA.condition.valeurMax}</td>
+				</tr>
+				<tr>
+					<td>Progression :</td>
+					<td><h:inputText value="${DetailLCOFAMB.lCOFA.progression}" /></td>
+				</tr>
+				<tr>
+					<td>Valeur :</td>
+					<td><h:inputText value="${DetailLCOFAMB.lCOFA.valeur}" /></td>
+				</tr>
+				<tr>
+					<td>Commentaire :</td>
+					<td><h:inputText value="${DetailLCOFAMB.lCOFA.commentaire}" /></td>
+				</tr>
+				<tr>
+					<td>Validé :</td>
+					<td><h:selectOneMenu value="${DetailLCOFAMB.lCOFA.valide}">
+							<f:selectItem itemLabel="Sélectionner" itemValue="" />
+							<f:selectItem itemLabel="Oui" itemValue="true" />
+							<f:selectItem itemLabel="Non" itemValue="false" />
+						</h:selectOneMenu></td>
+				</tr>
+
+			</table>
+
+			<h:commandButton value="Modifier" type="submit"
+				action="${DetailLCOFAMB.updateLCOFA()}" />
+		</h:form>
+
+
+	</div>
+
+</h:body>
+</html>

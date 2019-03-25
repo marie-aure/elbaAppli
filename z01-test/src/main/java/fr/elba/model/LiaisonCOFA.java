@@ -15,7 +15,6 @@ public class LiaisonCOFA {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	
 	private String progression;
 	private long valeur;
 	private String commentaire;
@@ -41,6 +40,14 @@ public class LiaisonCOFA {
 		this.valide = valide;
 		this.famille = famille;
 		this.condition = condition;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getProgression() {
