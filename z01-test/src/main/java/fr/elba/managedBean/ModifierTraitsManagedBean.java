@@ -78,7 +78,11 @@ public class ModifierTraitsManagedBean {
 	private LiaisonSITR lSITR;
 	private LiaisonSITR lSITRParent1;
 	private LiaisonSITR lSITRParent2;
-	private String[] selectedTraits;
+	private String trait1;
+	private String trait2;
+	private String trait3;
+	private String trait4;
+	private String trait5;
 	private List<Trait> lTraits;
 
 	// ++++++++++++++++++++++
@@ -87,7 +91,6 @@ public class ModifierTraitsManagedBean {
 
 	public ModifierTraitsManagedBean() {
 		super();
-		this.selectedTraits = new ArrayList<>();
 		this.lTraits = new ArrayList<>();
 	}
 
@@ -98,6 +101,11 @@ public class ModifierTraitsManagedBean {
 		this.sim = (Sim) sessionMap.get("detailSim");
 		getLSITRBySim();
 		this.lTraits = trSer.getAll();
+		if (this.lSITR.getTrait1()!=null) this.trait1 = this.lSITR.getTrait1().getLibelle() + " - " + this.lSITR.getTrait1().getType();
+		if (this.lSITR.getTrait2()!=null) this.trait2 = this.lSITR.getTrait2().getLibelle() + " - " + this.lSITR.getTrait2().getType();
+		if (this.lSITR.getTrait3()!=null) this.trait3 = this.lSITR.getTrait3().getLibelle() + " - " + this.lSITR.getTrait3().getType();
+		if (this.lSITR.getTrait4()!=null) this.trait4 = this.lSITR.getTrait4().getLibelle() + " - " + this.lSITR.getTrait4().getType();
+		if (this.lSITR.getTrait5()!=null) this.trait5 = this.lSITR.getTrait5().getLibelle() + " - " + this.lSITR.getTrait5().getType();
 		// this.lSouhaits = soSer.getAll();
 		// if (this.parent1 != null) {
 		// Genre genre;
@@ -152,12 +160,44 @@ public class ModifierTraitsManagedBean {
 		this.lSITRParent2 = lSITRParent2;
 	}
 
-	public String[] getSelectedTraits() {
-		return selectedTraits;
+	public String getTrait1() {
+		return trait1;
 	}
 
-	public void setSelectedTraits(String[] selectedTraits) {
-		this.selectedTraits = selectedTraits;
+	public void setTrait1(String trait1) {
+		this.trait1 = trait1;
+	}
+
+	public String getTrait2() {
+		return trait2;
+	}
+
+	public void setTrait2(String trait2) {
+		this.trait2 = trait2;
+	}
+
+	public String getTrait3() {
+		return trait3;
+	}
+
+	public void setTrait3(String trait3) {
+		this.trait3 = trait3;
+	}
+
+	public String getTrait4() {
+		return trait4;
+	}
+
+	public void setTrait4(String trait4) {
+		this.trait4 = trait4;
+	}
+
+	public String getTrait5() {
+		return trait5;
+	}
+
+	public void setTrait5(String trait5) {
+		this.trait5 = trait5;
 	}
 
 	public List<Trait> getlTraits() {
@@ -176,6 +216,14 @@ public class ModifierTraitsManagedBean {
 		this.lSITR = lsitrSer.getBySim(this.sim);
 		this.lSITRParent1 = lsitrSer.getBySim(this.sim.getParent1());
 		this.lSITRParent2 = lsitrSer.getBySim(this.sim.getParent2());
+	}
+
+	public void modifier() {
+		System.out.println(this.trait1);
+		System.out.println(this.trait2);
+		System.out.println(this.trait3);
+		System.out.println(this.trait4);
+		System.out.println(this.trait5);
 	}
 
 }
