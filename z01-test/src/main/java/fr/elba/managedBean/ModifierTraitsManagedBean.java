@@ -101,11 +101,16 @@ public class ModifierTraitsManagedBean {
 		this.sim = (Sim) sessionMap.get("detailSim");
 		getLSITRBySim();
 		this.lTraits = trSer.getAll();
-		if (this.lSITR.getTrait1()!=null) this.trait1 = this.lSITR.getTrait1().getLibelle() + " - " + this.lSITR.getTrait1().getType();
-		if (this.lSITR.getTrait2()!=null) this.trait2 = this.lSITR.getTrait2().getLibelle() + " - " + this.lSITR.getTrait2().getType();
-		if (this.lSITR.getTrait3()!=null) this.trait3 = this.lSITR.getTrait3().getLibelle() + " - " + this.lSITR.getTrait3().getType();
-		if (this.lSITR.getTrait4()!=null) this.trait4 = this.lSITR.getTrait4().getLibelle() + " - " + this.lSITR.getTrait4().getType();
-		if (this.lSITR.getTrait5()!=null) this.trait5 = this.lSITR.getTrait5().getLibelle() + " - " + this.lSITR.getTrait5().getType();
+		if (this.lSITR.getTrait1() != null)
+			this.trait1 = this.lSITR.getTrait1().getLibelle() + " - " + this.lSITR.getTrait1().getType();
+		if (this.lSITR.getTrait2() != null)
+			this.trait2 = this.lSITR.getTrait2().getLibelle() + " - " + this.lSITR.getTrait2().getType();
+		if (this.lSITR.getTrait3() != null)
+			this.trait3 = this.lSITR.getTrait3().getLibelle() + " - " + this.lSITR.getTrait3().getType();
+		if (this.lSITR.getTrait4() != null)
+			this.trait4 = this.lSITR.getTrait4().getLibelle() + " - " + this.lSITR.getTrait4().getType();
+		if (this.lSITR.getTrait5() != null)
+			this.trait5 = this.lSITR.getTrait5().getLibelle() + " - " + this.lSITR.getTrait5().getType();
 		// this.lSouhaits = soSer.getAll();
 		// if (this.parent1 != null) {
 		// Genre genre;
@@ -218,12 +223,39 @@ public class ModifierTraitsManagedBean {
 		this.lSITRParent2 = lsitrSer.getBySim(this.sim.getParent2());
 	}
 
-	public void modifier() {
-		System.out.println(this.trait1);
-		System.out.println(this.trait2);
-		System.out.println(this.trait3);
-		System.out.println(this.trait4);
-		System.out.println(this.trait5);
+	public void modifier() throws IOException {
+		System.out.println("Modification du sim");
+		if (this.trait1 != null) {
+			this.lSITR.setTrait1(trSer.getByName(trait1));
+		} else {
+			this.lSITR.setTrait1(null);
+		}
+		if (this.trait2 != null) {
+			this.lSITR.setTrait1(trSer.getByName(trait2));
+		} else {
+			this.lSITR.setTrait2(null);
+		}
+		if (this.trait3 != null) {
+			this.lSITR.setTrait3(trSer.getByName(trait3));
+		} else {
+			this.lSITR.setTrait1(null);
+		}
+		if (this.trait1 != null) {
+			this.lSITR.setTrait4(trSer.getByName(trait4));
+		} else {
+			this.lSITR.setTrait4(null);
+		}
+		if (this.trait1 != null) {
+			this.lSITR.setTrait5(trSer.getByName(trait5));
+		} else {
+			this.lSITR.setTrait5(null);
+		}
+		
+		lsitrSer.update(lSITR);
+		
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
 	}
-
+	
 }
