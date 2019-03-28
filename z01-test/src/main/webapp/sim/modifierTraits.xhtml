@@ -145,7 +145,19 @@
 				</h:selectOneMenu>
 			</div>
 
-
+			<div>
+				Souhait à long terme :
+				<h:selectOneMenu value="#{ModifierTraitsMB.souhait}">
+					<c:if test="${ModifierTraitsMB.souhait == null}">
+						<f:selectItem itemLabel="Aucun souhait" itemValue="" />
+					</c:if>
+					<c:otherwise>
+						<f:selectItem itemLabel="${ModifierTraitsMB.souhait}" itemValue="" />
+					</c:otherwise>
+					<f:selectItems value="#{CreerEnfantMB.lSouhaits}" var="s"
+						itemLabel="#{s.libelle}" itemValue="#{s.libelle}" />
+				</h:selectOneMenu>
+			</div>
 
 			<h:commandButton value="Modifier" class="formButton2" type="submit"
 				action="${ModifierTraitsMB.modifier()}" />

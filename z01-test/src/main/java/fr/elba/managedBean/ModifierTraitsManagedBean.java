@@ -51,9 +51,9 @@ public class ModifierTraitsManagedBean {
 	@ManagedProperty("#{TraitService}")
 	private ITraitService trSer;
 
-	// @ManagedProperty("#{SouhaitService}")
-	// private ISouhaitService soSer;
-	//
+	@ManagedProperty("#{SouhaitService}")
+	private ISouhaitService soSer;
+
 	public void setTrSer(ITraitService trSer) {
 		this.trSer = trSer;
 	}
@@ -66,9 +66,9 @@ public class ModifierTraitsManagedBean {
 		this.lsitrSer = lsitrSer;
 	}
 
-	// public void setSoSer(ISouhaitService soSer) {
-	// this.soSer = soSer;
-	// }
+	public void setSoSer(ISouhaitService soSer) {
+		this.soSer = soSer;
+	}
 
 	// +++++++++++++++++++
 	// ---- Variables ----
@@ -84,6 +84,8 @@ public class ModifierTraitsManagedBean {
 	private String trait4;
 	private String trait5;
 	private List<Trait> lTraits;
+	private String souhait;
+	private List<Souhait> lSouhaits;
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -92,6 +94,7 @@ public class ModifierTraitsManagedBean {
 	public ModifierTraitsManagedBean() {
 		super();
 		this.lTraits = new ArrayList<>();
+		this.lSouhaits = new ArrayList<>();
 	}
 
 	@PostConstruct
@@ -111,22 +114,16 @@ public class ModifierTraitsManagedBean {
 			this.trait4 = this.lSITR.getTrait4().getLibelle() + " - " + this.lSITR.getTrait4().getType();
 		if (this.lSITR.getTrait5() != null)
 			this.trait5 = this.lSITR.getTrait5().getLibelle() + " - " + this.lSITR.getTrait5().getType();
-		// this.lSouhaits = soSer.getAll();
-		// if (this.parent1 != null) {
-		// Genre genre;
-		// if (this.parent1.getSexe().equals(Genre.HOMME)) {
-		// genre = Genre.FEMME;
-		// } else {
-		// genre = Genre.HOMME;
-		// }
-		// if (this.parent1.getCouple() != null &&
-		// this.parent1.getOrientation().equals(Orientation.HET)) {
-		// this.parent2 = this.parent1.getCouple();
-		// this.parent2Lib = this.parent2.getPrenom() + " " + this.parent2.getNom();
-		// }
-		// this.lParents = getListParents(genre);
-		// this.enfant.setNom(this.parent1.getFamille().getNom());
-		// }
+
+		if (this.sim.getParent1() != null) {
+			this.lSITRParent1 = lsitrSer.getBySim(this.sim.getParent1());
+		}
+		if (this.sim.getParent2() != null) {
+			this.lSITRParent2 = lsitrSer.getBySim(this.sim.getParent2());
+		}
+
+		this.lSouhaits = soSer.getAll();
+
 	}
 
 	// +++++++++++++++++++++++
@@ -213,6 +210,22 @@ public class ModifierTraitsManagedBean {
 		this.lTraits = lTraits;
 	}
 
+	public String getSouhait() {
+		return souhait;
+	}
+
+	public void setSouhait(String souhait) {
+		this.souhait = souhait;
+	}
+
+	public List<Souhait> getlSouhaits() {
+		return lSouhaits;
+	}
+
+	public void setlSouhaits(List<Souhait> lSouhaits) {
+		this.lSouhaits = lSouhaits;
+	}
+
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
@@ -250,12 +263,11 @@ public class ModifierTraitsManagedBean {
 		} else {
 			this.lSITR.setTrait5(null);
 		}
-		
+
 		lsitrSer.update(lSITR);
-		
+
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-		Map<String, Object> sessionMap = ec.getSessionMap();
 		ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
 	}
-	
+
 }
