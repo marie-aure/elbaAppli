@@ -123,6 +123,9 @@ public class ModifierTraitsManagedBean {
 		}
 
 		this.lSouhaits = soSer.getAll();
+		if (this.sim.getSouhait() != null) {
+			this.souhait = this.sim.getSouhait().getLibelle();
+		}
 
 	}
 
@@ -253,17 +256,22 @@ public class ModifierTraitsManagedBean {
 		} else {
 			this.lSITR.setTrait1(null);
 		}
-		if (this.trait1 != null) {
+		if (this.trait4 != null) {
 			this.lSITR.setTrait4(trSer.getByName(trait4));
 		} else {
 			this.lSITR.setTrait4(null);
 		}
-		if (this.trait1 != null) {
+		if (this.trait5 != null) {
 			this.lSITR.setTrait5(trSer.getByName(trait5));
 		} else {
 			this.lSITR.setTrait5(null);
 		}
 
+		if (!this.souhait.equals("")) {
+			this.sim.setSouhait(soSer.getByName(this.souhait));
+		}
+
+		siSer.update(this.sim);
 		lsitrSer.update(lSITR);
 
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
