@@ -16,6 +16,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import org.springframework.util.StringUtils;
+
 import fr.elba.model.Communautaire;
 import fr.elba.model.Espece;
 import fr.elba.model.Famille;
@@ -241,33 +243,23 @@ public class ModifierTraitsManagedBean {
 
 	public void modifier() throws IOException {
 		System.out.println("Modification du sim");
-		if (this.trait1 != null) {
+		if (!StringUtils.isEmpty(this.trait1)) {
 			this.lSITR.setTrait1(trSer.getByName(trait1));
-		} else {
-			this.lSITR.setTrait1(null);
 		}
-		if (this.trait2 != null) {
-			this.lSITR.setTrait1(trSer.getByName(trait2));
-		} else {
-			this.lSITR.setTrait2(null);
-		}
-		if (this.trait3 != null) {
+		if (!StringUtils.isEmpty(this.trait2)) {
+			this.lSITR.setTrait2(trSer.getByName(trait2));
+		} 
+		if (!StringUtils.isEmpty(this.trait3)) {
 			this.lSITR.setTrait3(trSer.getByName(trait3));
-		} else {
-			this.lSITR.setTrait1(null);
-		}
-		if (this.trait4 != null) {
+		} 
+		if (!StringUtils.isEmpty(this.trait4)) {
 			this.lSITR.setTrait4(trSer.getByName(trait4));
-		} else {
-			this.lSITR.setTrait4(null);
-		}
-		if (this.trait5 != null) {
+		} 
+		if (!StringUtils.isEmpty(this.trait5)) {
 			this.lSITR.setTrait5(trSer.getByName(trait5));
-		} else {
-			this.lSITR.setTrait5(null);
-		}
+		} 
 
-		if (!this.souhait.equals("")) {
+		if (!StringUtils.isEmpty(this.souhait)) {
 			this.sim.setSouhait(soSer.getByName(this.souhait));
 		}
 
