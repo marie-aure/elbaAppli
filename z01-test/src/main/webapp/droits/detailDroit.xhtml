@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Liste des droits</title>
+	<title>${DetailDroitMB.droit.libelle}</title>
 	<link
 		href="${facesContext.externalContext.requestContextPath}/css/main.css"
 		rel="stylesheet" type="text/css" />
@@ -19,24 +19,13 @@
 	<div class="main">
 		<ui:insert>
 			<ui:include src="/template/titreTemplate.xhtml">
-				<ui:param name="titre" value="Créer un droit" />
+				<ui:param name="titre" value="${DetailDroitMB.droit.libelle}" />
 			</ui:include>
 		</ui:insert>
 
-		<table>
-			<thead>
-				<th>Catégorie</th>
-				<th>Libellé</th>
-				<th>Précisions</th>
-				<th>Commentaire</th>
-			</thead>
-			<tr>
-				<td>${CreerLDRCLMB.droit.commentaire}</td>
-				<td>${CreerLDRCLMB.droit.libelle}</td>
-				<td>${CreerLDRCLMB.droit.precisions}</td>
-				<td>${CreerLDRCLMB.droit.commentaire}</td>
-			</tr>
-		</table>
+		
+		
+		
 
 		Liaisons Droit - Classe
 

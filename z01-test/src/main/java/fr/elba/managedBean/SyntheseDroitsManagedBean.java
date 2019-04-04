@@ -95,6 +95,14 @@ public class SyntheseDroitsManagedBean {
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
+	
+	public void toDetailDroit(int id) throws IOException {
+		this.droit = drSer.getById(id);
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("detailDroit", this.droit);
+		ec.redirect(ec.getRequestContextPath() + "/droits/detailDroit.xhtml?faces-redirect=true");
+	}
 
 //	public void creerDroit() {
 //		if (!this.droit.getCategorie().equals("") && !this.droit.getLibelle().equals("")
