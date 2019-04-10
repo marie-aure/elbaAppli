@@ -20,7 +20,7 @@ import fr.elba.service.IDroitService;
 import fr.elba.service.ILiaisonDRCLService;
 
 @ManagedBean(name = "SyntheseDroitsMB")
-@SessionScoped
+@ViewScoped
 public class SyntheseDroitsManagedBean {
 
 	// ++++++++++++++++++
@@ -104,27 +104,19 @@ public class SyntheseDroitsManagedBean {
 		ec.redirect(ec.getRequestContextPath() + "/droits/detailDroit.xhtml?faces-redirect=true");
 	}
 
-//	public void creerDroit() {
-//		if (!this.droit.getCategorie().equals("") && !this.droit.getLibelle().equals("")
-//				&& !this.droit.getPrecisions().equals("") && !this.droit.getCommentaire().equals("")) {
-//			drSer.create(this.droit);
-//			this.message = "";
-//			this.droit = new Droit();
-//		} else {
-//			this.message = "Tous les champs doivent être remplis";
-//		}
-//		getAllDroits();
-//	}
-//
-//	public void creerLiaisonDRCL(int id) throws IOException {
-//		Droit droitCreation = drSer.getById(id);
-//
-//		if (droitCreation != null) {
-//			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-//			Map<String, Object> sessionMap = ec.getSessionMap();
-//			sessionMap.put("droitCreationLDRCl", droitCreation);
-//			ec.redirect(ec.getRequestContextPath() + "/droits/creerLiaisonDRCL.xhtml?faces-redirect=true");
-//		}
-//	}
+	public void creerDroit() throws IOException {
+		if (!this.droit.getCategorie().equals("") && !this.droit.getLibelle().equals("")
+				&& !this.droit.getPrecisions().equals("") && !this.droit.getCommentaire().equals("")) {
+			drSer.create(this.droit);
+			this.message = "";
+		} else {
+			this.message = "Tous les champs doivent être remplis";
+		}
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext(); 
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("detailDroit", this.droit);
+		ec.redirect(ec.getRequestContextPath() + "/droits/detailDroit.xhtml?faces-redirect=true");
+
+	}
 
 }

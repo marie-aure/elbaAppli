@@ -34,7 +34,7 @@ Droits :
 			</thead>
 			<c:forEach var="dro" items="${SyntheseDroitsMB.lDroits}">
 				<tr>
-					<td>${dro.commentaire}</td>
+					<td>${dro.categorie}</td>
 					<td>${dro.libelle}</td>
 					<td>${dro.precisions}</td>
 					<td>${dro.commentaire}</td>
@@ -44,18 +44,18 @@ Droits :
 			</c:forEach>
 		</table>
 
-<!-- 		<h:form> -->
-<!-- 			Catégorie : <h:inputText value="${SyntheseDroitsMB.droit.categorie}" /> -->
-<!-- 			Libellé : <h:inputText value="${SyntheseDroitsMB.droit.libelle}" /> -->
-<!-- 			Précisions : <h:inputText -->
-<!-- 				value="${SyntheseDroitsMB.droit.precisions}" /> -->
-<!-- 			Commentaire : <h:inputText -->
-<!-- 				value="${SyntheseDroitsMB.droit.commentaire}" /> -->
-<!-- 			<h:commandButton type="Submit" value="Créer" -->
-<!-- 				action="${SyntheseDroitsMB.creerDroit()}" /> -->
-<!-- 		</h:form> -->
+		<h:form>
+			Catégorie : <h:inputText value="${SyntheseDroitsMB.droit.categorie}" />
+			Libellé : <h:inputText value="${SyntheseDroitsMB.droit.libelle}" />
+			Précisions : <h:inputText
+				value="${SyntheseDroitsMB.droit.precisions}" />
+			Commentaire : <h:inputText
+				value="${SyntheseDroitsMB.droit.commentaire}" />
+			<h:commandButton type="Submit" value="Créer"
+				action="${SyntheseDroitsMB.creerDroit()}" />
+		</h:form>
 
-<!-- 		${SyntheseDroitsMB.message} -->
+		${SyntheseDroitsMB.message}
 
 	</div>
 </h:body>
