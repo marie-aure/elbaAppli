@@ -137,4 +137,10 @@ public class DetailSimManagedBean {
 		ec.redirect(ec.getRequestContextPath() + "/sim/creerEnfant.xhtml?faces-redirect=true");
 	}
 	
+	public void toUpdateTraits() throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		ec.redirect(ec.getRequestContextPath() + "/sim/modifierTraits.xhtml?faces-redirect=true");
+
+	}
+	
 }

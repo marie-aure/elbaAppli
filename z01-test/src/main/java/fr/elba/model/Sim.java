@@ -20,9 +20,9 @@ public class Sim {
 
 	private String prenom;
 	private String nom;
-	private String sexe;
-	private String espece;
-	private String orientation;
+	private Genre sexe;
+	private Espece espece;
+	private Orientation orientation;
 	private boolean marie;
 	private boolean realise;
 	private boolean mort;
@@ -54,8 +54,9 @@ public class Sim {
 		super();
 	}
 
-	public Sim(String prenom, String nom, String sexe, String espece, String orientation, boolean marie, boolean mort,
-			boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1, Sim parent2) {
+	public Sim(String prenom, String nom, Genre sexe, Espece espece, Orientation orientation, boolean marie,
+			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
+			Sim parent2) {
 		super();
 		this.prenom = prenom;
 		this.nom = nom;
@@ -72,7 +73,7 @@ public class Sim {
 		this.parent2 = parent2;
 	}
 
-	public Sim(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
+	public Sim(int id, String prenom, String nom, Genre sexe, Espece espece, Orientation orientation, boolean marie,
 			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
 			Sim parent2) {
 		super();
@@ -116,27 +117,27 @@ public class Sim {
 		this.nom = nom;
 	}
 
-	public String getSexe() {
+	public Genre getSexe() {
 		return sexe;
 	}
 
-	public void setSexe(String sexe) {
+	public void setSexe(Genre sexe) {
 		this.sexe = sexe;
 	}
 
-	public String getEspece() {
+	public Espece getEspece() {
 		return espece;
 	}
 
-	public void setEspece(String espece) {
+	public void setEspece(Espece espece) {
 		this.espece = espece;
 	}
 
-	public String getOrientation() {
+	public Orientation getOrientation() {
 		return orientation;
 	}
 
-	public void setOrientation(String orientation) {
+	public void setOrientation(Orientation orientation) {
 		this.orientation = orientation;
 	}
 

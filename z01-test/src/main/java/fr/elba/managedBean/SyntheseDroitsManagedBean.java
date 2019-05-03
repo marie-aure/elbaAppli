@@ -1,6 +1,7 @@
 package fr.elba.managedBean;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,7 @@ import fr.elba.service.IDroitService;
 import fr.elba.service.ILiaisonDRCLService;
 
 @ManagedBean(name = "SyntheseDroitsMB")
-@SessionScoped
+@ViewScoped
 public class SyntheseDroitsManagedBean {
 
 	// ++++++++++++++++++
@@ -44,7 +45,7 @@ public class SyntheseDroitsManagedBean {
 	// ---- Variables ----
 	// +++++++++++++++++++
 
-	private Map<Droit, List<LiaisonDRCL>> mDroits;
+	private List<Droit> lDroits;
 	private Droit droit;
 	private String message;
 
@@ -54,26 +55,30 @@ public class SyntheseDroitsManagedBean {
 
 	public SyntheseDroitsManagedBean() {
 		super();
-		this.mDroits = new HashMap<>();
+		this.lDroits = new ArrayList<>();
 		this.droit = new Droit();
 		this.message = "";
 	}
 
 	@PostConstruct
 	public void init() {
-		getAllDroits();
+		this.lDroits = drSer.getAll();
 	}
 
 	// +++++++++++++++++++++++
 	// ---- Getter/Setter ----
 	// +++++++++++++++++++++++
 
-	public Map<Droit, List<LiaisonDRCL>> getmDroits() {
-		return mDroits;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setmDroits(Map<Droit, List<LiaisonDRCL>> mDroits) {
-		this.mDroits = mDroits;
+	public List<Droit> getlDroits() {
+		return lDroits;
+	}
+
+	public void setlDroits(List<Droit> lDroits) {
+		this.lDroits = lDroits;
 	}
 
 	public Droit getDroit() {
@@ -84,49 +89,34 @@ public class SyntheseDroitsManagedBean {
 		this.droit = droit;
 	}
 
-	public String getMessage() {
-		return message;
-	}
-
 	public void setMessage(String message) {
 		this.message = message;
 	}
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
-
-	public void getAllDroits() {
-		this.mDroits = new HashMap<>();
-		List<Droit> lDroits = drSer.getAll();
-		if (lDroits.size() > 0) {
-			for (Droit droit : lDroits) {
-				List<LiaisonDRCL> lLDRCLs = ldrclSer.getByDroit(droit);
-				mDroits.put(droit, lLDRCLs);
-			}
-		}
+	
+	public void toDetailDroit(int id) throws IOException {
+		this.droit = drSer.getById(id);
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("detailDroit", this.droit);
+		ec.redirect(ec.getRequestContextPath() + "/droits/detailDroit.xhtml?faces-redirect=true");
 	}
 
-	public void creerDroit() {
+	public void creerDroit() throws IOException {
 		if (!this.droit.getCategorie().equals("") && !this.droit.getLibelle().equals("")
 				&& !this.droit.getPrecisions().equals("") && !this.droit.getCommentaire().equals("")) {
 			drSer.create(this.droit);
 			this.message = "";
-			this.droit = new Droit();
 		} else {
 			this.message = "Tous les champs doivent être remplis";
 		}
-		getAllDroits();
-	}
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext(); 
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("detailDroit", this.droit);
+		ec.redirect(ec.getRequestContextPath() + "/droits/detailDroit.xhtml?faces-redirect=true");
 
-	public void creerLiaisonDRCL(int id) throws IOException {
-		Droit droitCreation = drSer.getById(id);
-
-		if (droitCreation != null) {
-			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-			Map<String, Object> sessionMap = ec.getSessionMap();
-			sessionMap.put("droitCreationLDRCl",droitCreation);
-			ec.redirect(ec.getRequestContextPath() + "/droits/creerLiaisonDRCL.xhtml?faces-redirect=true");
-		}
 	}
 
 }

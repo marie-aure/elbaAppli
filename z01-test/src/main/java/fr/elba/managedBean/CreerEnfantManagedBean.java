@@ -99,8 +99,7 @@ public class CreerEnfantManagedBean {
 	private String trait4;
 	private String trait5;
 	private String souhait;
-	// private LiaisonSITR lsitr;
-
+	
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
 	// ++++++++++++++++++++++
@@ -123,17 +122,17 @@ public class CreerEnfantManagedBean {
 		this.lTraits = trSer.getAll();
 		this.lSouhaits = soSer.getAll();
 		if (this.parent1 != null) {
-			String sexe;
-			if (this.parent1.getSexe().equals("m")) {
-				sexe = "f";
+			Genre genre;
+			if (this.parent1.getSexe().equals(Genre.HOMME)) {
+				genre = Genre.FEMME;
 			} else {
-				sexe = "m";
+				genre = Genre.HOMME;
 			}
-			if (this.parent1.getCouple() != null && this.parent1.getOrientation().equals("Hétérosexuel")) {
+			if (this.parent1.getCouple() != null && this.parent1.getOrientation().equals(Orientation.HET)) {
 				this.parent2 = this.parent1.getCouple();
 				this.parent2Lib = this.parent2.getPrenom() + " " + this.parent2.getNom();
 			}
-			this.lParents = getListParents(sexe);
+			this.lParents = getListParents(genre);
 			this.enfant.setNom(this.parent1.getFamille().getNom());
 		}
 	}
@@ -290,8 +289,8 @@ public class CreerEnfantManagedBean {
 	// ---- Méthode ----
 	// +++++++++++++++++
 
-	public Map<String, Integer> getListParents(String sx) {
-		return siSer.getListParents(sx);
+	public Map<String, Integer> getListParents(Genre genre) {
+		return siSer.getListParents(genre);
 	}
 
 	public Espece[] getEspeceValues() {
@@ -362,25 +361,25 @@ public class CreerEnfantManagedBean {
 		} else {
 			this.enfantTrait.setHeritage1(false);
 		}
-		this.enfantTrait.setTrait1(trSer.getByName(this.trait2));
+		this.enfantTrait.setTrait2(trSer.getByName(this.trait2));
 		if (lTraits.contains(this.enfantTrait.getTrait2())) {
 			this.enfantTrait.setHeritage2(true);
 		} else {
 			this.enfantTrait.setHeritage2(false);
 		}
-		this.enfantTrait.setTrait1(trSer.getByName(this.trait3));
+		this.enfantTrait.setTrait3(trSer.getByName(this.trait3));
 		if (lTraits.contains(this.enfantTrait.getTrait3())) {
 			this.enfantTrait.setHeritage3(true);
 		} else {
 			this.enfantTrait.setHeritage3(false);
 		}
-		this.enfantTrait.setTrait1(trSer.getByName(this.trait4));
+		this.enfantTrait.setTrait4(trSer.getByName(this.trait4));
 		if (lTraits.contains(this.enfantTrait.getTrait4())) {
 			this.enfantTrait.setHeritage4(true);
 		} else {
 			this.enfantTrait.setHeritage4(false);
 		}
-		this.enfantTrait.setTrait1(trSer.getByName(this.trait5));
+		this.enfantTrait.setTrait5(trSer.getByName(this.trait5));
 		if (lTraits.contains(this.enfantTrait.getTrait5())) {
 			this.enfantTrait.setHeritage5(true);
 		} else {

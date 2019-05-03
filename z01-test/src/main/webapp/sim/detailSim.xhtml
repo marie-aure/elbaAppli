@@ -37,15 +37,15 @@
 			</tr>
 			<tr>
 				<td>Sexe :</td>
-				<td>#{DetailSimMB.lsitr.sim.sexe}</td>
+				<td>#{DetailSimMB.lsitr.sim.sexe.genre}</td>
 			</tr>
 			<tr>
 				<td>Espèce :</td>
-				<td>#{DetailSimMB.lsitr.sim.espece}</td>
+				<td>#{DetailSimMB.lsitr.sim.espece.espece}</td>
 			</tr>
 			<tr>
 				<td>Orientation :</td>
-				<td>#{DetailSimMB.lsitr.sim.orientation}</td>
+				<td>#{DetailSimMB.lsitr.sim.orientation.orientation}</td>
 			</tr>
 			<tr>
 				<td>Couple :</td>
@@ -72,6 +72,10 @@
 					<td>#{DetailSimMB.lsitr.sim.muscle}</td>
 				</tr>
 				<tr>
+					<td>Poitrine :</td>
+					<td>#{DetailSimMB.lsitr.sim.poitrine}</td>
+				</tr>
+				<tr>
 					<td>Couleur des cheveux :</td>
 					<td>#{DetailSimMB.lsitr.sim.cheveux}</td>
 				</tr>
@@ -94,10 +98,6 @@
 				<tr>
 					<td>Bouche :</td>
 					<td>#{DetailSimMB.lsitr.sim.bouche}</td>
-				</tr>
-				<tr>
-					<td>Poitrine :</td>
-					<td>#{DetailSimMB.lsitr.sim.poitrine}</td>
 				</tr>
 				<tr>
 					<td>Plat préféré :</td>
@@ -160,9 +160,9 @@
 					<tr>
 						<td>${enf.nom}</td>
 						<td>${enf.prenom}</td>
-						<td>${enf.sexe}</td>
-						<td>${enf.orientation}</td>
-						<td>${enf.espece}</td>
+						<td>${enf.sexe.genre}</td>
+						<td>${enf.orientation.orientation}</td>
+						<td>${enf.espece.espece}</td>
 						<td><h:form>
 								<h:commandButton type="Submit" value="Détails"
 									action="${DetailSimMB.toDetailSim(enf.id)}" />
@@ -181,8 +181,12 @@
 			</h:form>
 		</c:if>
 		<h:form>
-		<h:commandButton type="Submit" value="Créer un enfant"
-			action="${DetailSimMB.toCreateChild()}" />
+			<h:commandButton type="Submit" value="Créer un enfant"
+				action="${DetailSimMB.toCreateChild()}" />
+		</h:form>
+		<h:form>
+			<h:commandButton type="Submit" value="Compléter la personnalité"
+				action="${DetailSimMB.toUpdateTraits()}" />
 		</h:form>
 	</div>
 </h:body>

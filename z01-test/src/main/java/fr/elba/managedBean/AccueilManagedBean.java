@@ -12,11 +12,13 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import fr.elba.model.Compte;
+import fr.elba.model.LiaisonCOFA;
 import fr.elba.model.Pret;
 import fr.elba.model.Sim;
 import fr.elba.model.Terrain;
 import fr.elba.model.Tour;
 import fr.elba.service.ICompteService;
+import fr.elba.service.ILiaisonCOFAService;
 import fr.elba.service.IPretService;
 import fr.elba.service.ISimService;
 import fr.elba.service.ITerrainService;
@@ -41,9 +43,12 @@ public class AccueilManagedBean {
 
 	@ManagedProperty("#{CompteService}")
 	private ICompteService coSer;
-	
+
 	@ManagedProperty("#{SimService}")
 	private ISimService siSer;
+
+	@ManagedProperty("#{LiaisonCOFAService}")
+	private ILiaisonCOFAService lcofaSer;
 
 	public void setCoSer(ICompteService coSer) {
 		this.coSer = coSer;
@@ -65,16 +70,22 @@ public class AccueilManagedBean {
 		this.toSer = toSer;
 	}
 
+	public void setLcofaSer(ILiaisonCOFAService lcofaSer) {
+		this.lcofaSer = lcofaSer;
+	}
+
 	// +++++++++++++++++++
 	// ---- Variables ----
 	// +++++++++++++++++++
 
 	private Tour enCours;
+	private boolean sansFamille;
 	private Terrain residence;
 	private List<Terrain> proprietes;
 	private List<Compte> lComptes;
 	private List<Pret> lPrets;
 	private List<Sim> lSims;
+	private List<LiaisonCOFA> lLCOFA;
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -82,20 +93,27 @@ public class AccueilManagedBean {
 
 	public AccueilManagedBean() {
 		super();
+		this.sansFamille = false;
 	}
 
 	@PostConstruct
 	public void init() {
 		this.enCours = tourEnCours();
-		if (this.enCours.getFamille() != null) {
-			this.residence = enCours.getFamille().getResidence();
-			this.proprietes = getTerrains();
-			this.lPrets = getPrets();
-			this.lComptes = getComptes();
-			this.lSims = getSims();
-			for (Sim sim:this.lSims){
-				System.out.println(sim.getPrenom());
+		if (this.enCours != null) {
+			if (this.enCours.getFamille() != null) {
+				this.residence = enCours.getFamille().getResidence();
+				this.proprietes = getTerrains();
+				this.lPrets = getPrets();
+				this.lComptes = getComptes();
+				this.lSims = getSims();
+				for (Sim sim : this.lSims) {
+					System.out.println(sim.getPrenom());
+				}
+				this.lLCOFA = getLCOFAByFamille();
+				
 			}
+		} else {
+			this.sansFamille = true;
 		}
 	}
 
@@ -142,7 +160,15 @@ public class AccueilManagedBean {
 	public void setlPrets(List<Pret> lPrets) {
 		this.lPrets = lPrets;
 	}
-	
+
+	public boolean isSansFamille() {
+		return sansFamille;
+	}
+
+	public void setSansFamille(boolean sansFamille) {
+		this.sansFamille = sansFamille;
+	}
+
 	public List<Sim> getlSims() {
 		return lSims;
 	}
@@ -150,7 +176,15 @@ public class AccueilManagedBean {
 	public void setlSims(List<Sim> lSims) {
 		this.lSims = lSims;
 	}
-	
+
+	public List<LiaisonCOFA> getlLCOFA() {
+		return lLCOFA;
+	}
+
+	public void setlLCOFA(List<LiaisonCOFA> lLCOFA) {
+		this.lLCOFA = lLCOFA;
+	}
+
 	// +++++++++++++++++
 	// ---- Méthode ----
 	// +++++++++++++++++
@@ -170,9 +204,13 @@ public class AccueilManagedBean {
 	public List<Compte> getComptes() {
 		return coSer.getByFamily(this.enCours.getFamille());
 	}
-	
-	public List<Sim> getSims(){
+
+	public List<Sim> getSims() {
 		return siSer.getByFamille(this.enCours.getFamille());
+	}
+
+	public List<LiaisonCOFA> getLCOFAByFamille(){
+		return lcofaSer.getByFamille(this.enCours.getFamille());
 	}
 
 	public void achatTerrain() throws IOException {
@@ -201,11 +239,18 @@ public class AccueilManagedBean {
 		sessionMap.put("familleEnCoursAchatTerrain", this.enCours.getFamille());
 		ec.redirect(ec.getRequestContextPath() + "/accueil/gererFinances.xhtml?faces-redirect=true");
 	}
-	
+
 	public void toDetailSim(int id) throws IOException {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		sessionMap.put("detailSim", siSer.getById(id));
 		ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
+	}
+	
+	public void toDetailLCOFA(int id) throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("detailLCOFA", lcofaSer.getById(id));
+		ec.redirect(ec.getRequestContextPath() + "/passage/detailLCOFA.xhtml?faces-redirect=true");
 	}
 }

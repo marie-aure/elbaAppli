@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import fr.elba.model.Famille;
+import fr.elba.model.Genre;
 import fr.elba.model.Sim;
 
 public interface ISimService {
@@ -14,7 +15,7 @@ public interface ISimService {
 	
 	public List<Sim> getListEnfants(Sim sim);
 	
-	public Map<String,Integer> getListParents(String sx);
+	public Map<String,Integer> getListParents(Genre genre);
 
 	public Sim getById(int id);
 

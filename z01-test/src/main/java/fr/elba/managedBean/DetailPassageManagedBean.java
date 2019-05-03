@@ -12,8 +12,6 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import fr.elba.dao.IClasseDao;
-import fr.elba.dao.IConditionDao;
 import fr.elba.model.Classe;
 import fr.elba.model.Compte;
 import fr.elba.model.Condition;

@@ -23,6 +23,7 @@
 			</ui:include>
 		</ui:insert>
 
+Droits :
 		<table>
 			<thead>
 				<th>Catégorie</th>
@@ -31,14 +32,14 @@
 				<th>Commentaire</th>
 				<th>Action</th>
 			</thead>
-			<c:forEach var="dro" items="${SyntheseDroitsMB.mDroits}">
+			<c:forEach var="dro" items="${SyntheseDroitsMB.lDroits}">
 				<tr>
-					<td>${dro.key.commentaire}</td>
-					<td>${dro.key.libelle}</td>
-					<td>${dro.key.precisions}</td>
-					<td>${dro.key.commentaire}</td>
-					<td><h:form><h:commandButton type="Submit" value="Créer"
-				action="${SyntheseDroitsMB.creerLiaisonDRCL(dro.key.id)}" /></h:form></td>
+					<td>${dro.categorie}</td>
+					<td>${dro.libelle}</td>
+					<td>${dro.precisions}</td>
+					<td>${dro.commentaire}</td>
+					<td><h:form><h:commandButton type="Submit" value="Détails"
+				action="${SyntheseDroitsMB.toDetailDroit(dro.id)}" /></h:form></td>
 				</tr>
 			</c:forEach>
 		</table>

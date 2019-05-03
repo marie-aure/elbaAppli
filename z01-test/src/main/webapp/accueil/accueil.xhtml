@@ -22,125 +22,161 @@
 				<ui:param name="titre" value="test" />
 			</ui:include>
 		</ui:insert>
-		<div class="nomFamille">${AccueilMB.enCours.famille.nom}</div>
-		<table class="Informations">
-			<tr>
-				<td>
-					<table>
-						<tr>Génération : ${AccueilMB.enCours.famille.generation}
-						</tr>
-						<br />
-						<tr>Classe : ${AccueilMB.enCours.famille.classe.libelle}
-						</tr>
-					</table>
-				</td>
-				<td>
-					<table>
-						<tr>
-							<td>Chefs de famille :</td>
-							<td>${AccueilMB.enCours.famille.chef.prenom}
-								${AccueilMB.enCours.famille.chef.nom} <br>
-									${AccueilMB.enCours.famille.chef.couple.prenom}
-									(${AccueilMB.enCours.famille.chef.couple.nomOrigine})
-									${AccueilMB.enCours.famille.chef.nom}</br>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
+		<c:if test="${!AccueilMB.sansFamille}">
+			<div class="nomFamille">${AccueilMB.enCours.famille.nom}</div>
+			<table class="Informations">
+				<tr>
+					<td>
+						<table>
+							<tr>Génération : ${AccueilMB.enCours.famille.generation}
+							</tr>
+							<br />
+							<tr>Classe : ${AccueilMB.enCours.famille.classe.libelle}
+							</tr>
+						</table>
+					</td>
+					<td>
+						<table>
+							<tr>
+								<td>Chefs de famille :</td>
+								<td>${AccueilMB.enCours.famille.chef.prenom}
+									${AccueilMB.enCours.famille.chef.nom} <br>
+										${AccueilMB.enCours.famille.chef.couple.prenom}
+										(${AccueilMB.enCours.famille.chef.couple.nomOrigine})
+										${AccueilMB.enCours.famille.chef.nom}</br>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
 		Famille :
 		<table>
-			<thead>
-				<th>Nom</th>
-				<th>Prénom</th>
-				<th> </th>
-			</thead>
-		<c:forEach var="sim" items="${AccueilMB.lSims}">
-		<tr>
-		<td>${sim.nom}</td>
-		<td>${sim.prenom}</td>
-		<td><h:form>
-			<h:commandButton type="Submit" value="Détails"
-				action="${AccueilMB.toDetailSim(sim.id)}" />
-		</h:form>		</td>
-		</tr>
-		</c:forEach>			
-		</table>
+				<thead>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th></th>
+				</thead>
+				<c:forEach var="sim" items="${AccueilMB.lSims}">
+					<tr>
+						<td>${sim.nom}</td>
+						<td>${sim.prenom}</td>
+						<td><h:form>
+								<h:commandButton type="Submit" value="Détails"
+									action="${AccueilMB.toDetailSim(sim.id)}" />
+							</h:form></td>
+					</tr>
+				</c:forEach>
+			</table>
 		
 		
 		Argent "In Game" : ${AccueilMB.enCours.famille.argentIG}
-		<br/>
+		<br />
 		Terrains
 		<table>
-			<thead>
-				<th>Nom</th>
-				<th>Type</th>
-			</thead>
-			<tr>
-				<td>R - ${AccueilMB.enCours.famille.residence.libelle}</td>
-				<td>${AccueilMB.enCours.famille.residence.type}</td>
-			</tr>
-			<ui:repeat var="ter" value="${AccueilMB.proprietes}">
+				<thead>
+					<th>Nom</th>
+					<th>Type</th>
+				</thead>
 				<tr>
-					<td>${ter.libelle}</td>
-					<td>${ter.type}</td>
+					<td>R - ${AccueilMB.enCours.famille.residence.libelle}</td>
+					<td>${AccueilMB.enCours.famille.residence.type}</td>
 				</tr>
-			</ui:repeat>
-		</table>
+				<ui:repeat var="ter" value="${AccueilMB.proprietes}">
+					<tr>
+						<td>${ter.libelle}</td>
+						<td>${ter.type}</td>
+					</tr>
+				</ui:repeat>
+			</table>
 		Finances Prêts
 		<table>
-			<thead>
-				<th>Somme</th>
-				<th>Remboursé</th>
-				<th>Taux</th>
-				<th>Intérêts</th>
-				<th>Restant à rembourser</th>
-			</thead>
-			<ui:repeat var="pre" value="${AccueilMB.lPrets}">
-				<tr>
-					<td>${pre.somme}</td>
-					<td>${pre.rembourse}</td>
-					<td>${pre.taux}</td>
-					<td>${pre.interet}</td>
-					<td>${pre.restant}</td>
-				</tr>
-			</ui:repeat>
-		</table>
+				<thead>
+					<th>Somme</th>
+					<th>Remboursé</th>
+					<th>Taux</th>
+					<th>Intérêts</th>
+					<th>Restant à rembourser</th>
+				</thead>
+				<ui:repeat var="pre" value="${AccueilMB.lPrets}">
+					<tr>
+						<td>${pre.somme}</td>
+						<td>${pre.rembourse}</td>
+						<td>${pre.taux}</td>
+						<td>${pre.interet}</td>
+						<td>${pre.restant}</td>
+					</tr>
+				</ui:repeat>
+			</table>
+			
 		Comptes
 		<table>
-			<thead>
-				<th>Montant</th>
-				<th>Taux</th>
-				<th>Dépôt</th>
-				<th>Retrait</th>
-			</thead>
-			<ui:repeat var="com" value="${AccueilMB.lComptes}">
-				<tr>
-					<td>${com.montant}</td>
-					<td>${com.taux}</td>
-					<td>${com.depot}</td>
-					<td>${com.retrait}</td>
-				</tr>
-			</ui:repeat>
-		</table>
+				<thead>
+					<th>Montant</th>
+					<th>Taux</th>
+					<th>Dépôt</th>
+					<th>Retrait</th>
+				</thead>
+				<ui:repeat var="com" value="${AccueilMB.lComptes}">
+					<tr>
+						<td>${com.montant}</td>
+						<td>${com.taux}</td>
+						<td>${com.depot}</td>
+						<td>${com.retrait}</td>
+					</tr>
+				</ui:repeat>
+			</table>
+			
+			Conditions de passage
+		<table>
+				<thead>
+					<th>Catégorie</th>
+					<th>Libellé</th>
+					<th>Valeur Min</th>
+					<th>valeur Max</th>
+					<th>Progression</th>
+					<th>valeur</th>
+					<th>Commentaire</th>
+					<th>Validé</th>
+					<th>Condition de passage</th>
+				</thead>
+				<c:forEach var="lcofa" items="${AccueilMB.lLCOFA}">
+					<tr>
+						<td>${lcofa.condition.passage.categorie}</td>
+						<td>${lcofa.condition.passage.libelle}</td>
+						<td>${lcofa.condition.valeurMin}</td>
+						<td>${lcofa.condition.valeurMax}</td>
+						<td>${lcofa.progression}</td>
+						<td>${lcofa.valeur}</td>
+						<td>${lcofa.commentaire}</td>
+						<td>${lcofa.valide}</td>
+						<td><h:form>
+								<h:commandButton type="Submit" value="Modifier"
+									action="${AccueilMB.toDetailLCOFA(lcofa.id)}" />
+							</h:form></td>
+					</tr>
+				</c:forEach>
+			</table>
+			
 		Actions
 		<h:form>
-			<h:commandButton type="Submit" value="Acheter un terrain"
-				action="${AccueilMB.achatTerrain()}" />
-		</h:form>
-		<h:form>
-			<h:commandButton type="Submit" value="Tour suivant"
-				action="${AccueilMB.tourSuivant()}" />
-		</h:form>		
-		<h:form>
-			<h:commandButton type="Submit" value="Choisir résidence"
-				action="${AccueilMB.choixResidence()}" />
-		</h:form>
-		<h:form>
-			<h:commandButton type="Submit" value="Gérer finances"
-				action="${AccueilMB.toGererFinance()}" />
-		</h:form>
+				<h:commandButton type="Submit" value="Acheter un terrain"
+					action="${AccueilMB.achatTerrain()}" />
+			</h:form>
+			<h:form>
+				<h:commandButton type="Submit" value="Tour suivant"
+					action="${AccueilMB.tourSuivant()}" />
+			</h:form>
+			<h:form>
+				<h:commandButton type="Submit" value="Choisir résidence"
+					action="${AccueilMB.choixResidence()}" />
+			</h:form>
+			<h:form>
+				<h:commandButton type="Submit" value="Gérer finances"
+					action="${AccueilMB.toGererFinance()}" />
+			</h:form>
+		</c:if>
+		<c:if test="${AccueilMB.sansFamille}">C'est vide</c:if>
 	</div>
 
 

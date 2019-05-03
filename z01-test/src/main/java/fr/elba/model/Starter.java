@@ -34,7 +34,7 @@ public class Starter extends Sim {
 		super();
 	}
 
-	public Starter(String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
+	public Starter(String prenom, String nom, Genre sexe, Espece espece, Orientation orientation, boolean marie,
 			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
 			Sim parent2, int peau, int poids, int muscle, int cheveux, int visage, int couleurYeux, int yeux, int nez,
 			int bouche, int poitrine, int plat, int musique, int couleur, int signe, int groupe, String nomOrigine) {
@@ -58,7 +58,7 @@ public class Starter extends Sim {
 		this.nomOrigine = nomOrigine;
 	}
 
-	public Starter(int id, String prenom, String nom, String sexe, String espece, String orientation, boolean marie,
+	public Starter(int id, String prenom, String nom, Genre sexe, Espece espece, Orientation orientation, boolean marie,
 			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
 			Sim parent2, int peau, int poids, int muscle, int cheveux, int visage, int couleurYeux, int yeux, int nez,
 			int bouche, int poitrine, int plat, int musique, int couleur, int signe, int groupe, String nomOrigine) {

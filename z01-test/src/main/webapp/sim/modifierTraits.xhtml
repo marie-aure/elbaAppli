@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:uj="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Modifier la personnalité</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Modifier la personnalité" />
+			</ui:include>
+		</ui:insert>
+		<h:form>
+			<table>
+				<col width="50%" />
+				<col width="50%" />
+				<tr>
+					<td>
+						<table>
+							<tr>
+								<td>#{ModifierTraitsMB.lSITRParent1.trait1.libelle}</td>
+								<td>#{ModifierTraitsMB.lSITRParent1.trait1.type}</td>
+							</tr>
+							<tr>
+								<td>#{ModifierTraitsMB.lSITRParent1.trait2.libelle}</td>
+								<td>#{ModifierTraitsMB.lSITRParent1.trait2.type}</td>
+							</tr>
+							<tr>
+								<td>#{ModifierTraitsMB.lSITRParent1.trait3.libelle}</td>
+								<td>#{ModifierTraitsMB.lSITRParent1.trait3.type}</td>
+							</tr>
+							<tr>
+								<td>#{ModifierTraitsMB.lSITRParent1.trait4.libelle}</td>
+								<td>#{ModifierTraitsMB.lSITRParent1.trait4.type}</td>
+							</tr>
+							<tr>
+								<td>#{ModifierTraitsMB.lSITRParent1.trait5.libelle}</td>
+								<td>#{ModifierTraitsMB.lSITRParent1.trait5.type}</td>
+							</tr>
+						</table>
+					</td>
+					<td>
+						<table>
+							<tr>
+								<td>#{ModifierTraitsMB.lSITRParent2.trait1.libelle}</td>
+								<td>#{ModifierTraitsMB.lSITRParent2.trait1.type}</td>
+							</tr>
+							<tr>
+								<td>#{ModifierTraitsMB.lSITRParent2.trait2.libelle}</td>
+								<td>#{ModifierTraitsMB.lSITRParent2.trait2.type}</td>
+							</tr>
+							<tr>
+								<td>#{ModifierTraitsMB.lSITRParent2.trait3.libelle}</td>
+								<td>#{ModifierTraitsMB.lSITRParent2.trait3.type}</td>
+							</tr>
+							<tr>
+								<td>#{ModifierTraitsMB.lSITRParent2.trait4.libelle}</td>
+								<td>#{ModifierTraitsMB.lSITRParent2.trait4.type}</td>
+							</tr>
+							<tr>
+								<td>#{ModifierTraitsMB.lSITRParent2.trait5.libelle}</td>
+								<td>#{ModifierTraitsMB.lSITRParent2.trait5.type}</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+			<div>
+				Trait 1 :
+				<h:selectOneMenu value="#{ModifierTraitsMB.trait1}">
+					<c:if test="${ModifierTraitsMB.trait1 == null}">
+						<f:selectItem itemLabel="Aucun trait" itemValue="" />
+					</c:if>
+					<c:otherwise>
+						<f:selectItem itemLabel="${ModifierTraitsMB.trait1}" itemValue="" />
+					</c:otherwise>
+					<f:selectItems value="#{ModifierTraitsMB.lTraits}" var="t"
+						itemLabel="#{t.libelle} - #{t.type}" itemValue="#{t.libelle}" />
+				</h:selectOneMenu>
+			</div>
+			<div>
+				Trait 2 :
+				<h:selectOneMenu value="#{ModifierTraitsMB.trait2}">
+					<c:if test="${ModifierTraitsMB.trait2 == null}">
+						<f:selectItem itemLabel="Aucun trait" itemValue="" />
+					</c:if>
+					<c:otherwise>
+						<f:selectItem itemLabel="${ModifierTraitsMB.trait2}" itemValue="" />
+					</c:otherwise>
+					<f:selectItems value="#{ModifierTraitsMB.lTraits}" var="t"
+						itemLabel="#{t.libelle} - #{t.type}" itemValue="#{t.libelle}" />
+				</h:selectOneMenu>
+			</div>
+
+			<div>
+				Trait 3 :
+				<h:selectOneMenu value="#{ModifierTraitsMB.trait3}">
+					<c:if test="${ModifierTraitsMB.trait3 == null}">
+						<f:selectItem itemLabel="Aucun trait" itemValue="" />
+					</c:if>
+					<c:otherwise>
+						<f:selectItem itemLabel="${ModifierTraitsMB.trait3}" itemValue="" />
+					</c:otherwise>
+					<f:selectItems value="#{ModifierTraitsMB.lTraits}" var="t"
+						itemLabel="#{t.libelle} - #{t.type}" itemValue="#{t.libelle}" />
+				</h:selectOneMenu>
+			</div>
+			<div>
+				Trait 4 :
+				<h:selectOneMenu value="#{ModifierTraitsMB.trait4}">
+					<c:if test="${ModifierTraitsMB.trait4 == null}">
+						<f:selectItem itemLabel="Aucun trait" itemValue="" />
+					</c:if>
+					<c:otherwise>
+						<f:selectItem itemLabel="${ModifierTraitsMB.trait4}" itemValue="" />
+					</c:otherwise>
+					<f:selectItems value="#{ModifierTraitsMB.lTraits}" var="t"
+						itemLabel="#{t.libelle} - #{t.type}" itemValue="#{t.libelle}" />
+				</h:selectOneMenu>
+			</div>
+			<div>
+				Trait 5 :
+				<h:selectOneMenu value="#{ModifierTraitsMB.trait5}">
+					<c:if test="${ModifierTraitsMB.trait5 == null}">
+						<f:selectItem itemLabel="Aucun trait" itemValue="" />
+					</c:if>
+					<c:otherwise>
+						<f:selectItem itemLabel="${ModifierTraitsMB.trait5}" itemValue="" />
+					</c:otherwise>
+					<f:selectItems value="#{ModifierTraitsMB.lTraits}" var="t"
+						itemLabel="#{t.libelle} - #{t.type}" itemValue="#{t.libelle}" />
+				</h:selectOneMenu>
+			</div>
+
+			<div>
+				Souhait à long terme :
+				<h:selectOneMenu value="#{ModifierTraitsMB.souhait}">
+					<c:if test="${ModifierTraitsMB.souhait == null}">
+						<f:selectItem itemLabel="Aucun souhait" itemValue="" />
+					</c:if>
+					<c:otherwise>
+						<f:selectItem itemLabel="${ModifierTraitsMB.souhait}" itemValue="" />
+					</c:otherwise>
+					<f:selectItems value="#{ModifierTraitsMB.lSouhaits}" var="s"
+						itemLabel="#{s.libelle}" itemValue="#{s.libelle}" />
+				</h:selectOneMenu>
+			</div>
+
+			<h:commandButton value="Modifier" class="formButton2" type="submit"
+				action="${ModifierTraitsMB.modifier()}" />
+
+		</h:form>
+	</div>
+</h:body>
+</html>
