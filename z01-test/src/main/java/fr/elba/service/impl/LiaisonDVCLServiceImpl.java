@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.elba.dao.ILiaisonDVCLDao;
+import fr.elba.model.Devoir;
 import fr.elba.model.LiaisonDVCL;
 import fr.elba.service.ILiaisonDVCLService;
 
@@ -22,6 +23,11 @@ public class LiaisonDVCLServiceImpl implements ILiaisonDVCLService {
 	@Override
 	public List<LiaisonDVCL> getAll() {
 		return ldvclDao.getAll();
+	}
+	
+	@Override
+	public List<LiaisonDVCL> getByDevoir(Devoir devoir){
+		return ldvclDao.getByDevoir(devoir);
 	}
 
 	@Override

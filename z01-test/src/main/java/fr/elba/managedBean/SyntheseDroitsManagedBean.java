@@ -125,7 +125,7 @@ public class SyntheseDroitsManagedBean {
 			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 			Map<String, Object> sessionMap = ec.getSessionMap();
 			sessionMap.put("droitCreationLDRCl",droitCreation);
-			ec.redirect(ec.getRequestContextPath() + "/droits/creerLiaisonDRCL.xhtml?faces-redirect=true");
+			ec.redirect(ec.getRequestContextPath() + "/droit/creerLiaisonDRCL.xhtml?faces-redirect=true");
 		}
 	}
 

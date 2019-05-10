@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Liste des devoirs</title>
+	<link
+		href="${facesContext.externalContext.requestContextPath}/css/main.css"
+		rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Liste des devoirs" />
+			</ui:include>
+		</ui:insert>
+
+		<table>
+			<thead>
+				<th>Catégorie</th>
+				<th>Libellé</th>
+				<th>Précisions</th>
+				<th>Commentaire</th>
+				<th>Action</th>
+			</thead>
+			<c:forEach var="dev" items="${SyntheseDevoirsMB.mDevoirs}">
+				<tr>
+					<td>${dev.key.categorie}</td>
+					<td>${dev.key.libelle}</td>
+					<td>${dev.key.precisions}</td>
+					<td>${dev.key.commentaire}</td>
+					<td><h:form>
+							<h:commandButton type="Submit" value="Créer"
+								action="${SyntheseDevoirsMB.creerLiaisonDVCL(dev.key.id)}" />
+						</h:form></td>
+				</tr>
+			</c:forEach>
+		</table>
+
+		<h:form>
+			Catégorie : <h:inputText value="${SyntheseDevoirsMB.devoir.categorie}" />
+			Libellé : <h:inputText value="${SyntheseDevoirsMB.devoir.libelle}" />
+			Précisions : <h:inputText
+				value="${SyntheseDevoirsMB.devoir.precisions}" />
+			Commentaire : <h:inputText
+				value="${SyntheseDevoirsMB.devoir.commentaire}" />
+			<h:commandButton type="Submit" value="Créer"
+				action="${SyntheseDevoirsMB.creerDevoir()}" />
+		</h:form>
+
+		${SyntheseDevoirsMB.message}
+
+	</div>
+</h:body>
+</html>
