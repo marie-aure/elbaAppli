@@ -67,7 +67,6 @@ fr\elba\dao\IPretDao.class
 fr\elba\managedBean\CreerLDRCLManagedBean.class
 fr\elba\service\IStarterService.class
 fr\elba\dao\impl\CommunautaireDaoImpl.class
-fr\elba\managedBean\CreerLDVCLManagedBean.class
 fr\elba\service\ILiaisonDRCLService.class
 fr\elba\managedBean\AccueilManagedBean.class
 fr\elba\managedBean\QuartierManagedBean.class
