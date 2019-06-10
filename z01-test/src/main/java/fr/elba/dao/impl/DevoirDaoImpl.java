@@ -26,7 +26,7 @@ public class DevoirDaoImpl implements IDevoirDao {
 	@Override
 	public List<Devoir> getAll() {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Devoir";
+		String req = "FROM Devoir ORDER BY categorie ASC, id ASC";
 		Query query = s.createQuery(req);
 		return (List<Devoir>) query.list();
 	}

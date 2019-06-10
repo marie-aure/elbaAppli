@@ -1,6 +1,7 @@
 package fr.elba.managedBean;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,7 +45,7 @@ public class SyntheseDevoirsManagedBean {
 	// ---- Variables ----
 	// +++++++++++++++++++
 
-	private Map<Devoir, List<LiaisonDVCL>> mDevoirs;
+	private List<Devoir> lDevoirs;
 	private Devoir devoir;
 	private String message;
 
@@ -54,7 +55,7 @@ public class SyntheseDevoirsManagedBean {
 
 	public SyntheseDevoirsManagedBean() {
 		super();
-		this.mDevoirs = new HashMap<>();
+		this.lDevoirs = new ArrayList();
 		this.devoir = new Devoir();
 		this.message = "";
 	}
@@ -68,12 +69,12 @@ public class SyntheseDevoirsManagedBean {
 	// ---- Getter/Setter ----
 	// +++++++++++++++++++++++
 
-	public Map<Devoir, List<LiaisonDVCL>> getmDevoirs() {
-		return mDevoirs;
+	public List<Devoir> getlDevoirs() {
+		return lDevoirs;
 	}
 
-	public void setmDevoirs(Map<Devoir, List<LiaisonDVCL>> mDevoirs) {
-		this.mDevoirs = mDevoirs;
+	public void setlDevoirs(List<Devoir> lDevoirs) {
+		this.lDevoirs = lDevoirs;
 	}
 
 	public Devoir getDevoir() {
@@ -96,37 +97,31 @@ public class SyntheseDevoirsManagedBean {
 	// +++++++++++++++++
 
 	public void getAllDevoirs() {
-		this.mDevoirs = new HashMap<>();
-		List<Devoir> lDevoirs = dvSer.getAll();
-		if (lDevoirs.size() > 0) {
-			for (Devoir devoir : lDevoirs) {
-				List<LiaisonDVCL> lLDVCLs = ldvclSer.getByDevoir(devoir);
-				mDevoirs.put(devoir, lLDVCLs);
-			}
-		}
+		this.lDevoirs = new ArrayList<>();
+		this.lDevoirs = dvSer.getAll();
 	}
 
-	public void creerDevoir() throws IOException {
+	public void toDetailDevoir(int id) throws IOException {
+		this.devoir = dvSer.getById(id);
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("detailDevoir", this.devoir);
+		ec.redirect(ec.getRequestContextPath() + "/devoir/detailDevoir.xhtml?faces-redirect=true");
+	}
+
+	public void creerDroit() throws IOException {
 		if (!this.devoir.getCategorie().equals("") && !this.devoir.getLibelle().equals("")
 				&& !this.devoir.getPrecisions().equals("") && !this.devoir.getCommentaire().equals("")) {
 			dvSer.create(this.devoir);
 			this.message = "";
-			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-			ec.redirect(ec.getRequestContextPath() + "/devoir/syntheseDevoirs.xhtml?faces-redirect=true");
 		} else {
 			this.message = "Tous les champs doivent être remplis";
 		}
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext(); 
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("detailDevoir", this.devoir);
+		ec.redirect(ec.getRequestContextPath() + "/devoir/detailDevoir.xhtml?faces-redirect=true");
+
 	}
-
-	public void creerLiaisonDVCL(int id) throws IOException {
-		Devoir devoirCreation = dvSer.getById(id);
-
-		if (devoirCreation != null) {
-			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-			Map<String, Object> sessionMap = ec.getSessionMap();
-			sessionMap.put("devoirCreationLDVCL",devoirCreation);
-			ec.redirect(ec.getRequestContextPath() + "/devoir/creerLiaisonDVCL.xhtml?faces-redirect=true");
-		}
-	}
-
+	
 }

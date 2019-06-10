@@ -22,7 +22,7 @@
 				<ui:param name="titre" value="Liste des devoirs" />
 			</ui:include>
 		</ui:insert>
-
+Devoirs :
 		<table>
 			<thead>
 				<th>Catégorie</th>
@@ -31,15 +31,15 @@
 				<th>Commentaire</th>
 				<th>Action</th>
 			</thead>
-			<c:forEach var="dev" items="${SyntheseDevoirsMB.mDevoirs}">
+			<c:forEach var="dev" items="${SyntheseDevoirsMB.lDevoirs}">
 				<tr>
-					<td>${dev.key.categorie}</td>
-					<td>${dev.key.libelle}</td>
-					<td>${dev.key.precisions}</td>
-					<td>${dev.key.commentaire}</td>
+					<td>${dev.categorie}</td>
+					<td>${dev.libelle}</td>
+					<td>${dev.precisions}</td>
+					<td>${dev.commentaire}</td>
 					<td><h:form>
-							<h:commandButton type="Submit" value="Créer"
-								action="${SyntheseDevoirsMB.creerLiaisonDVCL(dev.key.id)}" />
+							<h:commandButton type="Submit" value="Détails"
+								action="${SyntheseDevoirsMB.toDetailDevoir(dev.id)}" />
 						</h:form></td>
 				</tr>
 			</c:forEach>
