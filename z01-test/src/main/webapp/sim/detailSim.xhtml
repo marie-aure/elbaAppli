@@ -57,6 +57,15 @@
 						<c:otherwise>Célibataire</c:otherwise>
 					</c:choose></td>
 			</tr>
+			<tr>
+				<td>Age :</td>
+				<c:if test="#{DetailSimMB.lsitr.sim.adulte}">
+					<td>Adulte</td>
+				</c:if>
+				<c:if test="#{!DetailSimMB.lsitr.sim.adulte}">
+					<td>Enfant</td>
+				</c:if>
+			</tr>
 			<c:if
 				test="#{DetailSimMB.lsitr.sim.getClass().getSimpleName() == 'Starter'}">
 				<tr>

@@ -268,8 +268,7 @@ public class StarterServiceImpl implements IStarterService {
 		// créer des groupes
 
 		// récupérer dernier groupe créé
-		List<Integer> dernierGroupe = stDao.getDernierGroupe();
-		int _dernierGroupe = dernierGroupe.get(0);
+		int _dernierGroupe = stDao.getDernierGroupe();
 		Random rnd = new Random();
 		
 		// remplir les groupes
@@ -331,6 +330,8 @@ public class StarterServiceImpl implements IStarterService {
 			starter.setOrientation(Orientation.values()[enumOrientation[rnd.nextInt(4)]]);
 			starter.setMarie(false);
 			starter.setRealise(false);
+			starter.setMort(false);
+			starter.setAdulte(false);
 
 			starter.setPeau(rnd.nextInt(10) + 1);
 			starter.setPoids(rnd.nextInt(10) + 1);

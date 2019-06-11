@@ -18,6 +18,6 @@ public interface IStarterDao {
 	
 	public List<Integer> getDistinctGroups();
 
-	public List<Integer> getDernierGroupe();
+	public int getDernierGroupe();
 	
 }
