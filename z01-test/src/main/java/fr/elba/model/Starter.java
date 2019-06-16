@@ -35,10 +35,10 @@ public class Starter extends Sim {
 	}
 
 	public Starter(String prenom, String nom, Genre sexe, Espece espece, Orientation orientation, boolean marie,
-			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
+			boolean mort, boolean adulte, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
 			Sim parent2, int peau, int poids, int muscle, int cheveux, int visage, int couleurYeux, int yeux, int nez,
 			int bouche, int poitrine, int plat, int musique, int couleur, int signe, int groupe, String nomOrigine) {
-		super(prenom, nom, sexe, espece, orientation, marie, mort, realise, famille, familleOrigine, couple, parent1,
+		super(prenom, nom, sexe, espece, orientation, marie, mort, adulte, realise, famille, familleOrigine, couple, parent1,
 				parent2);
 		this.peau = peau;
 		this.poids = poids;
@@ -59,10 +59,10 @@ public class Starter extends Sim {
 	}
 
 	public Starter(int id, String prenom, String nom, Genre sexe, Espece espece, Orientation orientation, boolean marie,
-			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
+			boolean mort, boolean adulte, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
 			Sim parent2, int peau, int poids, int muscle, int cheveux, int visage, int couleurYeux, int yeux, int nez,
 			int bouche, int poitrine, int plat, int musique, int couleur, int signe, int groupe, String nomOrigine) {
-		super(id, prenom, nom, sexe, espece, orientation, marie, mort, realise, famille, familleOrigine, couple,
+		super(id, prenom, nom, sexe, espece, orientation, marie, mort, adulte, realise, famille, familleOrigine, couple,
 				parent1, parent2);
 		this.peau = peau;
 		this.poids = poids;

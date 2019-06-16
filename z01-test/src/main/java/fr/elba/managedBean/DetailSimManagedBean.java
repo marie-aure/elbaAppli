@@ -143,4 +143,12 @@ public class DetailSimManagedBean {
 
 	}
 	
+	public void passageAdulte() throws IOException {
+		this.sim.setAdulte(true);
+		siSer.update(this.sim);
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
+
+	}
 }

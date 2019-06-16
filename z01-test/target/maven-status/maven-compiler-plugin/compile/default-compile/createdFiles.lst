@@ -100,6 +100,7 @@ fr\elba\dao\impl\LiaisonSITRDaoImpl.class
 fr\elba\service\impl\CommunautaireServiceImpl.class
 fr\elba\managedBean\StarterManagedBean.class
 fr\elba\managedBean\TerrainManagedBean.class
+fr\elba\managedBean\SyntheseDevoirsManagedBean.class
 fr\elba\service\ILiaisonSITRService.class
 fr\elba\dao\IStarterDao.class
 fr\elba\model\Communautaire.class
@@ -128,6 +129,7 @@ fr\elba\managedBean\SimManagedBean.class
 fr\elba\service\IPretService.class
 fr\elba\dao\impl\StarterDaoImpl.class
 fr\elba\managedBean\DevoirManagedBean.class
+fr\elba\managedBean\ModifierTraitsManagedBean.class
 fr\elba\model\Espece.class
 fr\elba\model\Souhait.class
 fr\elba\service\impl\ConditionServiceImpl.class

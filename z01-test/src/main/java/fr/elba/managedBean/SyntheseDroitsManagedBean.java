@@ -115,7 +115,7 @@ public class SyntheseDroitsManagedBean {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext(); 
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		sessionMap.put("detailDroit", this.droit);
-		ec.redirect(ec.getRequestContextPath() + "/droits/detailDroit.xhtml?faces-redirect=true");
+		ec.redirect(ec.getRequestContextPath() + "/droit/detailDroit.xhtml?faces-redirect=true");
 
 	}
 

@@ -40,6 +40,7 @@ C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\IRabbitHoleDao.
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\ILiaisonCOFADao.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\impl\TourDaoImpl.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Famille.java
+C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\managedBean\ModifierTraitsManagedBean.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Terrain.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\IPriveDao.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Compte.java
@@ -76,6 +77,7 @@ C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\managedBean\DetailL
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\IPretService.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\impl\CompteDaoImpl.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\managedBean\ClasseManagedBean.java
+C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\managedBean\SyntheseDevoirsManagedBean.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\ILiaisonDVCLService.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Pret.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\impl\LiaisonDVCLDaoImpl.java

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.elba.dao.ILiaisonDVCLDao;
+import fr.elba.model.Devoir;
 import fr.elba.model.LiaisonDVCL;
 
 @Repository
@@ -28,6 +29,15 @@ public class LiaisonDVCLDaoImpl implements ILiaisonDVCLDao {
 		Session s = sf.getCurrentSession();
 		String req = "From LiaisonDVCL";
 		Query query = s.createQuery(req);
+		return (List<LiaisonDVCL>) query.list();
+	}
+	
+	@Override
+	public List<LiaisonDVCL> getByDevoir(Devoir devoir) {
+		Session s = sf.getCurrentSession();
+		String req = "From LiaisonDVCL where devoir = :devoir order by classe";  
+		Query query = s.createQuery(req);
+		query.setParameter("devoir", devoir);
 		return (List<LiaisonDVCL>) query.list();
 	}
 
