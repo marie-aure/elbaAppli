@@ -73,14 +73,12 @@ public class StarterDaoImpl implements IStarterDao {
 		return liste;
 	}
 
-	public List<Integer> getDernierGroupe() {
+	public int getDernierGroupe() {
 		Session s = sf.getCurrentSession();
 		String req = "call get_dernierGroupe()";
 		Query query = s.createSQLQuery(req);
-		Object[] res = (Object[]) query.uniqueResult();
-		List<Integer> liste = new ArrayList<>();
-		liste.add((int) res[0]);
-		return liste;
+		Object[] res = (Object[]) query.uniqueResult();		
+		return (int) res[0];
 	}
 
 }

@@ -28,6 +28,8 @@ public class Sim {
 	private boolean mort;
 	private boolean legitime;
 	private boolean heritier;
+	private boolean adulte;
+	
 	// liaisons
 	@ManyToOne
 	private Famille famille;
@@ -55,7 +57,7 @@ public class Sim {
 	}
 
 	public Sim(String prenom, String nom, Genre sexe, Espece espece, Orientation orientation, boolean marie,
-			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
+			boolean mort, boolean adulte, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
 			Sim parent2) {
 		super();
 		this.prenom = prenom;
@@ -65,6 +67,7 @@ public class Sim {
 		this.orientation = orientation;
 		this.marie = marie;
 		this.mort = mort;
+		this.adulte = adulte;
 		this.realise = realise;
 		this.famille = famille;
 		this.familleOrigine = familleOrigine;
@@ -74,7 +77,7 @@ public class Sim {
 	}
 
 	public Sim(int id, String prenom, String nom, Genre sexe, Espece espece, Orientation orientation, boolean marie,
-			boolean mort, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
+			boolean mort, boolean adulte, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
 			Sim parent2) {
 		super();
 		this.id = id;
@@ -85,6 +88,7 @@ public class Sim {
 		this.orientation = orientation;
 		this.marie = marie;
 		this.mort = mort;
+		this.adulte = adulte;
 		this.realise = realise;
 		this.famille = famille;
 		this.familleOrigine = familleOrigine;
@@ -235,6 +239,14 @@ public class Sim {
 
 	public void setSouhait(Souhait souhait) {
 		this.souhait = souhait;
+	}
+
+	public boolean isAdulte() {
+		return adulte;
+	}
+
+	public void setAdulte(boolean adulte) {
+		this.adulte = adulte;
 	}
 
 }
