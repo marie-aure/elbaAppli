@@ -110,18 +110,18 @@ public class DetailSimManagedBean {
 	private List<Sim> getListEnfants() {
 		return siSer.getListEnfants(this.sim);
 	}
-	
+
 	public void toDetailSim(int id) throws IOException {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		sessionMap.put("detailSim", siSer.getById(id));
 		ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
 	}
-	
+
 	public void marierSim() throws IOException {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = ec.getSessionMap();
-		if (this.sim.getCouple() != null){
+		if (this.sim.getCouple() != null) {
 			this.sim.setMarie(true);
 			Sim epoux = this.sim.getCouple();
 			siSer.update(this.sim);
@@ -136,13 +136,13 @@ public class DetailSimManagedBean {
 		sessionMap.put("CreerEnfant", this.sim);
 		ec.redirect(ec.getRequestContextPath() + "/sim/creerEnfant.xhtml?faces-redirect=true");
 	}
-	
+
 	public void toUpdateTraits() throws IOException {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		ec.redirect(ec.getRequestContextPath() + "/sim/modifierTraits.xhtml?faces-redirect=true");
 
 	}
-	
+
 	public void passageAdulte() throws IOException {
 		this.sim.setAdulte(true);
 		siSer.update(this.sim);
@@ -150,5 +150,23 @@ public class DetailSimManagedBean {
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
 
+	}
+
+	public void mortSim() throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+
+		this.sim.setMort(true);
+		if (this.sim.getCouple() != null && !this.sim.isMarie()) {
+			this.sim.setCouple(null);
+			this.sim.getCouple().setCouple(null);
+			siSer.update(this.sim.getCouple());
+			siSer.update(this.sim);
+		}
+		if (this.sim.isHeritier()) {
+			ec.redirect(ec.getRequestContextPath() + "/sim/selectionHeritier.xhtml?faces-redirect=true");
+		} else {
+			ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
+		}
 	}
 }

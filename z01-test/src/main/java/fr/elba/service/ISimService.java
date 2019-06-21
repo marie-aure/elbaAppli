@@ -13,6 +13,8 @@ public interface ISimService {
 
 	public List<Sim> getByFamille(Famille famille);
 	
+	public List<Sim> getHeritierPossibleByFamille(Famille famille);
+	
 	public List<Sim> getListEnfants(Sim sim);
 	
 	public Map<String,Integer> getListParents(Genre genre);

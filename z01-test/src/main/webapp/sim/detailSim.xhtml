@@ -63,8 +63,10 @@
 					<td>Adulte</td>
 				</c:if>
 				<c:if test="#{!DetailSimMB.lsitr.sim.adulte}">
-					<td>Enfant <h:form> <h:commandButton type="Submit" value="Devenir adulte"
-					action="${DetailSimMB.passageAdulte()}" /></h:form></td>
+					<td>Enfant <h:form>
+							<h:commandButton type="Submit" value="Devenir adulte"
+								action="${DetailSimMB.passageAdulte()}" />
+						</h:form></td>
 				</c:if>
 			</tr>
 			<c:if
@@ -197,6 +199,10 @@
 		<h:form>
 			<h:commandButton type="Submit" value="Compléter la personnalité"
 				action="${DetailSimMB.toUpdateTraits()}" />
+		</h:form>
+		<h:form>
+			<h:commandButton type="Submit" value="Déclarer le décès"
+				action="${DetailSimMB.mortSim()}" />
 		</h:form>
 	</div>
 </h:body>
