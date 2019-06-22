@@ -90,7 +90,7 @@ public class SelectionHeritierManagedBean {
 	// ---- Méthode ----
 	// +++++++++++++++++
 
-	private void selectionner(int id) throws IOException {
+	public void selectionner(Integer id) throws IOException {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = ec.getSessionMap();
 

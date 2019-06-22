@@ -36,26 +36,28 @@
 					<th>Situation</th>
 					<th></th>
 				</thead>
-				<ui:repeat var="her" value="${SelectionHeritierMB.famille}">
+				<c:forEach var="her" items="${SelectionHeritierMB.famille}">
 					<tr>
 						<td>${her.nom}</td>
 						<td>${her.prenom}</td>
 						<td>${her.sexe.genre}</td>
 						<td>${her.orientation.orientation}</td>
 						<td>${her.espece.espece}</td>
-						<td><c:if test="#{her.adulte}">Adulte</c:if> 
-							<c:if test="#{!her.adulte}">Enfant</c:if>
+						<td>
+							<c:if test="${her.adulte}">Adulte</c:if>
+							<c:if test="${!her.adulte}">Enfant</c:if>
 						</td>
-						<td><c:if test="#{her.couple == null}">Célibataire</c:if> 
-							<c:if test="#{her.couple != null and !her.marie}">Fiancé à ${her.couple.prenom} ${her.couple.nom}</c:if>
+						<td><c:if test="#{her.couple == null}">Célibataire</c:if> <c:if
+								test="#{her.couple != null and !her.marie}">Fiancé à ${her.couple.prenom} ${her.couple.nom}</c:if>
 							<c:if test="#{her.couple != null and her.marie}">Marié à ${her.couple.prenom} ${her.couple.nom}</c:if>
 						</td>
 						<td><h:form>
 								<h:commandButton type="Submit" value="Sélectionner"
 									action="${SelectionHeritierMB.selectionner(her.id)}" />
 							</h:form></td>
+
 					</tr>
-				</ui:repeat>
+				</c:forEach>
 			</table>
 		</c:if>
 
