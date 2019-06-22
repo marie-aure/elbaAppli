@@ -43,6 +43,16 @@ public class SimDaoImpl implements ISimDao {
 	}
 	
 	@Override
+	public List<Sim> getHeritierPossibleByFamille(Famille famille) {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Sim WHERE famille=:famille and familleOrigine=:famille and heritier=:heritier and mort=:mort";
+		Query query = s.createQuery(req);
+		query.setParameter("famille", famille);
+		query.setParameter("heritier", false);
+		query.setParameter("mort", false);
+		return (List<Sim>) query.list();
+	}
+	@Override
 	public List<Sim> getListEnfants(Sim sim) {
 		Session s = sf.getCurrentSession();
 		String req = "FROM Sim WHERE parent1=:sim OR parent2=:sim";
