@@ -124,6 +124,7 @@ fr\elba\dao\impl\DroitDaoImpl.class
 fr\elba\dao\ITraitDao.class
 fr\elba\model\LiaisonDVCL.class
 fr\elba\managedBean\SyntheseDroitsManagedBean.class
+fr\elba\managedBean\SelectionHeritierManagedBean.class
 fr\elba\dao\ITourDao.class
 fr\elba\managedBean\SimManagedBean.class
 fr\elba\service\IPretService.class
