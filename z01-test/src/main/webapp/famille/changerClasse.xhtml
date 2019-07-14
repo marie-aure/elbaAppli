@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:uj="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Changer de classe</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Changer de classe" />
+			</ui:include>
+		</ui:insert>
+
+		Conditions de passage
+		<table>
+			<thead>
+				<th>Catégorie</th>
+				<th>Libellé</th>
+				<th>Valeur Min</th>
+				<th>valeur Max</th>
+				<th>Progression</th>
+				<th>valeur</th>
+				<th>Commentaire</th>
+				<th>Validé</th>
+				<th>Condition de passage</th>
+			</thead>
+			<c:forEach var="lcofa" items="${ChangerClasseMB.lLCOFA}">
+				<tr>
+					<td>${lcofa.condition.passage.categorie}</td>
+					<td>${lcofa.condition.passage.libelle}</td>
+					<td>${lcofa.condition.valeurMin}</td>
+					<td>${lcofa.condition.valeurMax}</td>
+					<td>${lcofa.progression}</td>
+					<td>${lcofa.valeur}</td>
+					<td>${lcofa.commentaire}</td>
+					<td>${lcofa.valide}</td>
+					<td><h:form>
+							<h:commandButton type="Submit" value="Modifier"
+								action="${ChangerClasseMB.toDetailLCOFA(lcofa.id)}" />
+						</h:form></td>
+				</tr>
+			</c:forEach>
+		</table>
+
+		<h:form>
+			<h:commandButton disabled="${ChangerClasseMB.valide}" type="Submit" value="Valider"
+				action="${ChangerClasseMB.valider()}" />
+		</h:form>
+
+
+	</div>
+</h:body>
+</html>

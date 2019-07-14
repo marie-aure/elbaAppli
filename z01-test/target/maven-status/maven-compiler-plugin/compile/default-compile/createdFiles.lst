@@ -135,6 +135,7 @@ fr\elba\model\Espece.class
 fr\elba\managedBean\ChangerGenerationManagedBean.class
 fr\elba\model\Souhait.class
 fr\elba\service\impl\ConditionServiceImpl.class
+fr\elba\managedBean\ChangerClasseManagedBean.class
 fr\elba\managedBean\ChoixResidenceManagedBean.class
 fr\elba\model\Classe.class
 fr\elba\service\impl\LiaisonDRCLServiceImpl.class

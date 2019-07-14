@@ -179,6 +179,10 @@
 				<h:commandButton type="Submit" value="Changer de génération"
 					action="${AccueilMB.toChangerGeneration()}" />
 			</h:form>
+			<h:form>
+				<h:commandButton type="Submit" value="Changer de classe"
+					action="${AccueilMB.changerClasse()}" disabled="true"/>
+			</h:form>
 		</c:if>
 		<c:if test="${AccueilMB.sansFamille}">C'est vide</c:if>
 	</div>
