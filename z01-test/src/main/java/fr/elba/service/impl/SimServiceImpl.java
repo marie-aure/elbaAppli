@@ -37,7 +37,12 @@ public class SimServiceImpl implements ISimService {
 	public List<Sim> getHeritierPossibleByFamille(Famille famille) {
 		return siDao.getHeritierPossibleByFamille(famille);
 	}
-
+	
+	@Override
+	public List<Sim> getHeritierByFamille(Famille famille) {
+		return siDao.	getHeritierByFamille(famille);
+	}
+	
 	@Override
 	public List<Sim> getListEnfants(Sim sim) {
 		return siDao.getListEnfants(sim);

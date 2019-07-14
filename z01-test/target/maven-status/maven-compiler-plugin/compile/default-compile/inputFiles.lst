@@ -14,10 +14,12 @@ C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\ITerrainSer
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\IPriveService.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\impl\FamilleServiceImpl.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\IStarterDao.java
+C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\managedBean\ChangerGenerationManagedBean.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Classe.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\ITerrainDao.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\service\IRabbitHoleService.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\impl\SimDaoImpl.java
+C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\managedBean\SelectionHeritierManagedBean.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Devoir.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\dao\impl\LiaisonDRCLDaoImpl.java
 C:\Users\marie\git\elbaAppli4\z01-test\src\main\java\fr\elba\model\Espece.java
