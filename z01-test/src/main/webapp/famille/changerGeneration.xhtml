@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:uj="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Sélection du chef de famille</title>
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+</h:head>
+<h:body>
+
+	<ui:insert>
+		<ui:include src="/template/headerTemplate.xhtml"></ui:include>
+	</ui:insert>
+	<div class="main">
+		<ui:insert>
+			<ui:include src="/template/titreTemplate.xhtml">
+				<ui:param name="titre" value="Sélection du chef de famille" />
+			</ui:include>
+		</ui:insert>
+
+		Héritiers possibles
+		<c:if test="#{ChangerGenerationMB.lHeritiers.size() != 0}">
+			<table>
+				<thead>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Âge</th>
+					<th>Situation</th>
+					<th></th>
+				</thead>
+				<c:forEach var="her" items="${ChangerGenerationMB.lHeritiers}">
+					<tr>
+						<td>${her.nom}</td>
+						<td>${her.prenom}</td>
+						<td>
+							<c:if test="${her.adulte}">Adulte</c:if>
+							<c:if test="${!her.adulte}">Enfant</c:if>
+						</td>
+						<td><c:if test="#{her.couple == null}">Célibataire</c:if> <c:if
+								test="#{her.couple != null and !her.marie}">Fiancé à ${her.couple.prenom} ${her.couple.nom}</c:if>
+							<c:if test="#{her.couple != null and her.marie}">Marié à ${her.couple.prenom} ${her.couple.nom}</c:if>
+						</td>
+						<td><h:form>
+								<h:commandButton type="Submit" value="Sélectionner"
+									action="${ChangerGenerationMB.selectionner(her.id)}" />
+							</h:form></td>
+
+					</tr>
+				</c:forEach>
+			</table>
+		</c:if>
+
+	</div>
+</h:body>
+</html>

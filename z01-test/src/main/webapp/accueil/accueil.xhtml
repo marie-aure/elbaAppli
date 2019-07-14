@@ -175,6 +175,10 @@
 				<h:commandButton type="Submit" value="Gérer finances"
 					action="${AccueilMB.toGererFinance()}" />
 			</h:form>
+			<h:form>
+				<h:commandButton type="Submit" value="Changer de génération"
+					action="${AccueilMB.toChangerGeneration()}" />
+			</h:form>
 		</c:if>
 		<c:if test="${AccueilMB.sansFamille}">C'est vide</c:if>
 	</div>
