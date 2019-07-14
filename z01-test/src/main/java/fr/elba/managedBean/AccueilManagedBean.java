@@ -110,7 +110,7 @@ public class AccueilManagedBean {
 					System.out.println(sim.getPrenom());
 				}
 				this.lLCOFA = getLCOFAByFamille();
-				
+
 			}
 		} else {
 			this.sansFamille = true;
@@ -209,7 +209,7 @@ public class AccueilManagedBean {
 		return siSer.getByFamille(this.enCours.getFamille());
 	}
 
-	public List<LiaisonCOFA> getLCOFAByFamille(){
+	public List<LiaisonCOFA> getLCOFAByFamille() {
 		return lcofaSer.getByFamille(this.enCours.getFamille());
 	}
 
@@ -246,11 +246,28 @@ public class AccueilManagedBean {
 		sessionMap.put("detailSim", siSer.getById(id));
 		ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
 	}
-	
+
 	public void toDetailLCOFA(int id) throws IOException {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		sessionMap.put("detailLCOFA", lcofaSer.getById(id));
+		sessionMap.put("pagePrecedente", "/accueil/accueil.xhtml?faces-redirect=true");
 		ec.redirect(ec.getRequestContextPath() + "/passage/detailLCOFA.xhtml?faces-redirect=true");
+	}
+
+	public void toChangerGeneration() throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("familleChangerGeneration", this.enCours.getFamille());
+		ec.redirect(ec.getRequestContextPath() + "/famille/changerGeneration.xhtml?faces-redirect=true");
+
+	}
+
+	public void toChangerClasse() throws IOException {
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("familleChangerClasse", this.enCours.getFamille());
+		ec.redirect(ec.getRequestContextPath() + "/famille/changerClasse.xhtml?faces-redirect=true");
+
 	}
 }

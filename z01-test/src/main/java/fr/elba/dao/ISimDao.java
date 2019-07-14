@@ -12,6 +12,10 @@ public interface ISimDao {
 	
 	public List<Sim> getByFamille(Famille famille);
 	
+	public List<Sim> getHeritierPossibleByFamille(Famille famille);
+	
+	public List<Sim> getHeritierByFamille(Famille famille);
+	
 	public List<Sim> getListEnfants(Sim sim);
 	
 	public List<Sim> getListParents(Genre genre);

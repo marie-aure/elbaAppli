@@ -27,29 +27,39 @@ public class SimServiceImpl implements ISimService {
 	public List<Sim> getAll() {
 		return siDao.getAll();
 	}
-	
+
 	@Override
 	public List<Sim> getByFamille(Famille famille) {
 		return siDao.getByFamille(famille);
 	}
 
 	@Override
-	public List<Sim> getListEnfants(Sim sim) {
-		return siDao.getListEnfants(sim);
+	public List<Sim> getHeritierPossibleByFamille(Famille famille) {
+		return siDao.getHeritierPossibleByFamille(famille);
 	}
 	
 	@Override
-	public Map<String, Integer> getListParents(Genre genre){
+	public List<Sim> getHeritierByFamille(Famille famille) {
+		return siDao.	getHeritierByFamille(famille);
+	}
+	
+	@Override
+	public List<Sim> getListEnfants(Sim sim) {
+		return siDao.getListEnfants(sim);
+	}
+
+	@Override
+	public Map<String, Integer> getListParents(Genre genre) {
 		List<Sim> liste = siDao.getListParents(genre);
 		Map<String, Integer> map = new HashMap<>();
-		if(liste.size() > 0) {
+		if (liste.size() > 0) {
 			for (Sim sim : liste) {
 				map.put(sim.getPrenom() + " " + sim.getNom(), sim.getId());
 			}
 		}
-		return map; 
+		return map;
 	}
-	
+
 	@Override
 	public Sim getById(int id) {
 		return siDao.getById(id);
