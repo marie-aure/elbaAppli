@@ -262,8 +262,24 @@ public class AccueilManagedBean {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		sessionMap.put("detailLCOFA", lcofaSer.getById(id));
+		sessionMap.put("pagePrecedente", "/accueil/accueil.xhtml?faces-redirect=true");
 		ec.redirect(ec.getRequestContextPath() + "/passage/detailLCOFA.xhtml?faces-redirect=true");
 	}
 	
+	public void toChangerGeneration() throws IOException{
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("familleChangerGeneration", this.enCours.getFamille());
+		ec.redirect(ec.getRequestContextPath() + "/famille/changerGeneration.xhtml?faces-redirect=true");
+
+	}
 	
+	
+	public void toChangerClasse() throws IOException{
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		sessionMap.put("familleChangerClasse", this.enCours.getFamille());
+		ec.redirect(ec.getRequestContextPath() + "/famille/changerClasse.xhtml?faces-redirect=true");
+
+	}
 }

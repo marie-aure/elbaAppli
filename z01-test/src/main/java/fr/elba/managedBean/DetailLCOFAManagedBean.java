@@ -90,7 +90,8 @@ public class DetailLCOFAManagedBean {
 	public void updateLCOFA() throws IOException{
 		lCOFASer.update(this.lCOFA);
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-		ec.redirect(ec.getRequestContextPath() + "/accueil/accueil.xhtml?faces-redirect=true");
+		System.out.println(ec.getSessionMap().get("pagePrecedente"));
+		ec.redirect(ec.getRequestContextPath() + ec.getSessionMap().get("pagePrecedente"));
 	}
 	
 }
