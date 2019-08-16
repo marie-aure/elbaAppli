@@ -86,6 +86,7 @@ public class TourServiceImpl implements ITourService {
 		}
 
 		suivant.setEnCours(true);
+		suivant.setSemaine(1);
 		toDao.update(suivant);
 	}
 

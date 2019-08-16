@@ -26,6 +26,7 @@ public class Tour {
 	
 	private Boolean enCours;
 	private int nb;
+	private int semaine;
 	
 	// liaisons
 	@OneToOne
@@ -38,19 +39,21 @@ public class Tour {
 		super();
 	}
 
-	public Tour(Boolean enCours, int nb, Famille famille, Classe classe) {
+	public Tour(Boolean enCours, int nb, int semaine, Famille famille, Classe classe) {
 		super();
 		this.enCours = enCours;
 		this.nb = nb;
+		this.semaine = semaine;
 		this.famille = famille;
 		this.classe = classe;
 	}
 
-	public Tour(int id, Boolean enCours, int nb, Famille famille, Classe classe) {
+	public Tour(int id, Boolean enCours, int nb, int semaine, Famille famille, Classe classe) {
 		super();
 		this.id = id;
 		this.enCours = enCours;
 		this.nb = nb;
+		this.semaine = semaine;
 		this.famille = famille;
 		this.classe = classe;
 	}
@@ -79,6 +82,14 @@ public class Tour {
 		this.nb = nb;
 	}
 
+	public int getSemaine() {
+		return semaine;
+	}
+
+	public void setSemaine(int semaine) {
+		this.semaine = semaine;
+	}
+
 	public Famille getFamille() {
 		return famille;
 	}
@@ -97,10 +108,8 @@ public class Tour {
 
 	@Override
 	public String toString() {
-		return "Tour [id=" + id + ", enCours=" + enCours + ", nb=" + nb + ", famille=" + famille + ", classe=" + classe
-				+ "]";
+		return "Tour [id=" + id + ", enCours=" + enCours + ", nb=" + nb + ", semaine=" + semaine + ", famille="
+				+ famille + ", classe=" + classe + "]";
 	}
-	
-	
 
 }

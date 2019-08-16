@@ -270,4 +270,11 @@ public class AccueilManagedBean {
 		ec.redirect(ec.getRequestContextPath() + "/famille/changerClasse.xhtml?faces-redirect=true");
 
 	}
+	
+	public void updateSemaine() throws IOException {
+		toSer.update(this.enCours);
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = ec.getSessionMap();
+		ec.redirect(ec.getRequestContextPath() + "/accueil/accueil.xhtml?faces-redirect=true");
+	}
 }

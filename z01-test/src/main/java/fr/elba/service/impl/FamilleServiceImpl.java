@@ -119,7 +119,7 @@ public class FamilleServiceImpl implements IFamilleService {
 
 			// Récupère nb de tour
 			int nb = toSer.nombreTour(pauvre);
-			Tour tour = new Tour(false, nb, famille, pauvre);
+			Tour tour = new Tour(false, nb, 1, famille, pauvre);
 			create(famille);
 			starter1.setFamille(famille);
 			starter2.setFamille(famille);

@@ -180,6 +180,7 @@ public class TourSuivantManagedBean {
 			faSer.update(this.enCours.getFamille());
 		}
 		this.enCours.setNb(this.enCours.getNb() + 1);
+		this.enCours.setSemaine(0);
 		this.enCours.setEnCours(false);
 		toSer.update(this.enCours);
 		if (this.enCours.getFamille() != null) {

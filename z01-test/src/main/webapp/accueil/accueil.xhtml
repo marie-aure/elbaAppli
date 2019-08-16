@@ -71,7 +71,16 @@
 		
 		
 		Argent "In Game" : ${AccueilMB.enCours.famille.argentIG}
-		<br />
+		<h:form> 
+			Semaine en cours : 
+			<h:selectOneMenu value="#{AccueilMB.enCours.semaine}">
+					<f:selectItem itemLabel="1" itemValue="1" />
+					<f:selectItem itemLabel="2" itemValue="2" />
+				</h:selectOneMenu>
+				<h:commandButton type="Submit" value="Modifier"
+					action="${AccueilMB.updateSemaine()}" />
+			</h:form>
+			<br />
 		Terrains
 		<table>
 				<thead>
@@ -181,7 +190,7 @@
 			</h:form>
 			<h:form>
 				<h:commandButton type="Submit" value="Changer de classe"
-					action="${AccueilMB.changerClasse()}" disabled="true"/>
+					action="${AccueilMB.changerClasse()}" disabled="true" />
 			</h:form>
 		</c:if>
 		<c:if test="${AccueilMB.sansFamille}">C'est vide</c:if>
