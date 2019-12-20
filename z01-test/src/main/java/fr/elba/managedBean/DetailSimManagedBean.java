@@ -2,6 +2,7 @@ package fr.elba.managedBean;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,11 +16,14 @@ import javax.faces.context.FacesContext;
 
 import fr.elba.model.Communautaire;
 import fr.elba.model.Famille;
+import fr.elba.model.Genre;
 import fr.elba.model.LiaisonSITR;
 import fr.elba.model.Prive;
+import fr.elba.model.Profession;
 import fr.elba.model.Sim;
 import fr.elba.model.Terrain;
 import fr.elba.service.ILiaisonSITRService;
+import fr.elba.service.IProfessionService;
 import fr.elba.service.ISimService;
 import fr.elba.service.ITerrainService;
 
@@ -37,8 +41,15 @@ public class DetailSimManagedBean {
 	@ManagedProperty("#{LiaisonSITRService}")
 	private ILiaisonSITRService lsitrSer;
 
+	@ManagedProperty("#{ProfessionService}")
+	private IProfessionService prSer;
+
 	public void setLsitrSer(ILiaisonSITRService lsitrSer) {
 		this.lsitrSer = lsitrSer;
+	}
+
+	public void setPrSer(IProfessionService prSer) {
+		this.prSer = prSer;
 	}
 
 	public void setSiSer(ISimService siSer) {
@@ -52,6 +63,8 @@ public class DetailSimManagedBean {
 	private Sim sim;
 	private LiaisonSITR lsitr;
 	private List<Sim> enfants;
+	private Integer professionId;
+	private Map<String, Integer> lProfessions;
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -72,6 +85,7 @@ public class DetailSimManagedBean {
 			this.lsitr = lsitrSer.getBySim(this.sim);
 			this.enfants = getListEnfants();
 		}
+		this.lProfessions = getListProfession();
 
 	}
 
@@ -93,6 +107,22 @@ public class DetailSimManagedBean {
 
 	public void setLsitr(LiaisonSITR lsitr) {
 		this.lsitr = lsitr;
+	}
+
+	public Integer getProfessionId() {
+		return professionId;
+	}
+
+	public void setProfessionId(Integer professionId) {
+		this.professionId = professionId;
+	}
+
+	public Map<String, Integer> getlProfessions() {
+		return lProfessions;
+	}
+
+	public void setlProfessions(Map<String, Integer> lProfessions) {
+		this.lProfessions = lProfessions;
 	}
 
 	public List<Sim> getEnfants() {
@@ -168,5 +198,18 @@ public class DetailSimManagedBean {
 		} else {
 			ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
 		}
+	}
+
+	public Map<String, Integer> getListProfession() {
+		return prSer.getListProfession();
+	}
+	
+	public void modifierProfession() {
+		if (this.professionId != null) {
+			this.sim.setProfession(prSer.getById(this.professionId));
+		} else {
+			this.sim.setProfession(null);
+		}
+		siSer.update(sim);
 	}
 }
