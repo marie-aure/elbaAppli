@@ -210,7 +210,7 @@ public class FinanceManagedBean {
 	public void fermerPret(int id) {
 		Pret pret = prSer.getById(id);
 		
-		if (pret.getRestant()>0){
+		if (pret.getRestant()>0 && (pret.getRestant() - pret.getRembourse())>0 ){
 			this.message = "Impossible de fermer le pret : non remboursé";
 		} else {
 			this.message = "";
