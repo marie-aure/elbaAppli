@@ -27,6 +27,10 @@ public class Profession {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Sim> lSims;
 
+	@OneToMany(mappedBy = "profession"/* , cascade = CascadeType.ALL */)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<LiaisonPRCL> lLiaisonPRCLs;
+
 	public Profession() {
 		super();
 	}
@@ -58,6 +62,14 @@ public class Profession {
 
 	public void setlSims(List<Sim> lSims) {
 		this.lSims = lSims;
+	}
+
+	public List<LiaisonPRCL> getlLiaisonPRCLs() {
+		return lLiaisonPRCLs;
+	}
+
+	public void setlLiaisonPRCLs(List<LiaisonPRCL> lLiaisonPRCLs) {
+		this.lLiaisonPRCLs = lLiaisonPRCLs;
 	}
 
 	@Override

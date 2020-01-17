@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.elba.dao.IProfessionDao;
+import fr.elba.model.Classe;
 import fr.elba.model.Profession;
 
 @Repository
@@ -28,6 +29,16 @@ public class ProfessionDaoImpl implements IProfessionDao {
 		Session s = sf.getCurrentSession();
 		String req = "FROM Profession";
 		Query query = s.createQuery(req);
+		return (List<Profession>) query.list();
+	}
+	
+	@Override
+	public List<Profession> getByClasse(Classe classe) {
+		Session s = sf.getCurrentSession();
+		String req = "Select pro FROM Profession as pro right outer join pro.lLiaisonPRCLs as lPrcl WITH lPrcl.classe.id = :classe";
+		Query query = s.createQuery(req);
+		// workaround bug hibernate : utiliser l'id de l'objet du with au lieu de l'objet lui-même
+		query.setParameter("classe", classe.getId());
 		return (List<Profession>) query.list();
 	}
 

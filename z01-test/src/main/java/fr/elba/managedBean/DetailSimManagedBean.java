@@ -201,7 +201,7 @@ public class DetailSimManagedBean {
 	}
 
 	public Map<String, Integer> getListProfession() {
-		return prSer.getListProfession();
+		return prSer.getListProfession(this.sim.getFamille().getClasse());
 	}
 	
 	public void modifierProfession() {
