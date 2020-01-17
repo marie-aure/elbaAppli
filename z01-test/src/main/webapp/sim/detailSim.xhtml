@@ -69,6 +69,24 @@
 						</h:form></td>
 				</c:if>
 			</tr>
+			<c:if test="#{DetailSimMB.lsitr.sim.adulte}">
+				<tr>
+					<td>Profession :</td>
+					<td> <h:form>
+							<h:selectOneMenu value="#{DetailSimMB.professionId}">
+								<c:if test="#{DetailSimMB.lsitr.sim.profession != null}">
+									<f:selectItem
+										itemValue="#{DetailSimMB.lsitr.sim.profession.id}"
+										itemLabel="#{DetailSimMB.lsitr.sim.profession.libelle}" />
+								</c:if>
+									<f:selectItem itemValue="" itemLabel="Aucune" />
+								<f:selectItems value="#{DetailSimMB.lProfessions}" />
+							</h:selectOneMenu>
+							<h:commandButton type="Submit" value="Modifier"
+								action="${DetailSimMB.modifierProfession()}" />
+						</h:form></td>
+				</tr>
+			</c:if>
 			<c:if
 				test="#{DetailSimMB.lsitr.sim.getClass().getSimpleName() == 'Starter'}">
 				<tr>

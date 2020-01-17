@@ -29,7 +29,7 @@ public class Sim {
 	private boolean legitime;
 	private boolean heritier;
 	private boolean adulte;
-	
+
 	// liaisons
 	@ManyToOne
 	private Famille famille;
@@ -52,13 +52,16 @@ public class Sim {
 	@ManyToOne
 	private Souhait souhait;
 
+	@ManyToOne
+	private Profession profession;
+
 	public Sim() {
 		super();
 	}
 
 	public Sim(String prenom, String nom, Genre sexe, Espece espece, Orientation orientation, boolean marie,
-			boolean mort, boolean adulte, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
-			Sim parent2) {
+			boolean mort, boolean adulte, boolean realise, Famille famille, Famille familleOrigine, Sim couple,
+			Sim parent1, Sim parent2) {
 		super();
 		this.prenom = prenom;
 		this.nom = nom;
@@ -77,8 +80,8 @@ public class Sim {
 	}
 
 	public Sim(int id, String prenom, String nom, Genre sexe, Espece espece, Orientation orientation, boolean marie,
-			boolean mort, boolean adulte, boolean realise, Famille famille, Famille familleOrigine, Sim couple, Sim parent1,
-			Sim parent2) {
+			boolean mort, boolean adulte, boolean realise, Famille famille, Famille familleOrigine, Sim couple,
+			Sim parent1, Sim parent2) {
 		super();
 		this.id = id;
 		this.prenom = prenom;
@@ -239,6 +242,14 @@ public class Sim {
 
 	public void setSouhait(Souhait souhait) {
 		this.souhait = souhait;
+	}
+
+	public Profession getProfession() {
+		return profession;
+	}
+
+	public void setProfession(Profession profession) {
+		this.profession = profession;
 	}
 
 	public boolean isAdulte() {
