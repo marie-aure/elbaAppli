@@ -122,11 +122,14 @@ public class DetailSimManagedBean {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = ec.getSessionMap();
 		if (this.sim.getCouple() != null) {
-			this.sim.setMarie(true);
 			Sim epoux = this.sim.getCouple();
-			siSer.update(this.sim);
-			siSer.update(epoux);
-			ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
+			if (epoux.getCouple().getId() == this.sim.getId()) {
+				this.sim.setMarie(true);
+				epoux.setMarie(true);
+				siSer.update(this.sim);
+				siSer.update(epoux);
+				ec.redirect(ec.getRequestContextPath() + "/sim/detailSim.xhtml?faces-redirect=true");
+			}
 		}
 	}
 
