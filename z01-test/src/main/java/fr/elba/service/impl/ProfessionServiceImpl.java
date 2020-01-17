@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.elba.dao.IProfessionDao;
+import fr.elba.model.Classe;
 import fr.elba.model.Profession;
 import fr.elba.service.IProfessionService;
 
@@ -47,12 +48,12 @@ public class ProfessionServiceImpl implements IProfessionService {
 	}
 
 	@Override
-	public Map<String, Integer> getListProfession() {
-		List<Profession> liste = prDao.getAll();
+	public Map<String, Integer> getListProfession(Classe classe) {
+		List<Profession> liste = prDao.getByClasse(classe);
 		Map<String, Integer> map = new HashMap();
 		if (liste.size() > 0) {
 			for (Profession profession : liste) {
-				map.put(profession.getLibelle(), profession.getId());
+				if(profession != null) map.put(profession.getLibelle(), profession.getId());
 			}
 		}
 		return map;

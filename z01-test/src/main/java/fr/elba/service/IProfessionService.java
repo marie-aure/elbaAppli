@@ -3,6 +3,7 @@ package fr.elba.service;
 import java.util.List;
 import java.util.Map;
 
+import fr.elba.model.Classe;
 import fr.elba.model.Profession;
 
 public interface IProfessionService {
@@ -17,6 +18,6 @@ public interface IProfessionService {
 	
 	public void delete(int id);
 	
-	public Map<String,Integer> getListProfession();
+	public Map<String,Integer> getListProfession(Classe classe);
 	
 }

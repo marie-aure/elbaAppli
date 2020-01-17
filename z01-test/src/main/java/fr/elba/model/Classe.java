@@ -58,6 +58,10 @@ public class Classe {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<LiaisonDRCL> lLiaisonDRCLs;
 	
+	@OneToMany(mappedBy="classe"/*, cascade=CascadeType.ALL*/)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<LiaisonPRCL> lLiaisonPRCLs;
+	
 	public Classe() {
 		super();
 	}
@@ -170,6 +174,14 @@ public class Classe {
 
 	public void setlLiaisonDRCLs(List<LiaisonDRCL> lLiaisonDRCLs) {
 		this.lLiaisonDRCLs = lLiaisonDRCLs;
+	}
+
+	public List<LiaisonPRCL> getlLiaisonPRCLs() {
+		return lLiaisonPRCLs;
+	}
+
+	public void setlLiaisonPRCLs(List<LiaisonPRCL> lLiaisonPRCLs) {
+		this.lLiaisonPRCLs = lLiaisonPRCLs;
 	}
 
 	@Override
