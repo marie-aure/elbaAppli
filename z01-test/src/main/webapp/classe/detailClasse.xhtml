@@ -47,11 +47,13 @@
 		<table>
 			<thead>
 				<th>Nom</th>
+				<th>Chef de famille</th>				
 				<th> </th>
 			</thead>
 			<c:forEach var="fam" items="${DetailClasseMB.lFamilles}">
 				<tr>
 					<td>${fam.nom}</td>
+					<td>${fam.chef.prenom} ${fam.chef.nom}</td>
 					<td><h:form>
 							<h:commandButton type="Submit" value="Détails"
 								action="${DetailClasseMB.toDetailFamille(fam.id)}" />
