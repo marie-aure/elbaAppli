@@ -19,7 +19,7 @@ public interface ISimDao {
 	public List<Sim> getListEnfants(Sim sim);
 	
 	public List<Sim> getListParents(Genre genre);
-	
+
 	public Sim getById(int id);
 	
 	public void create(Sim sim);

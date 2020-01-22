@@ -32,7 +32,7 @@ public class SimDaoImpl implements ISimDao {
 		Query query = s.createQuery(req);
 		return (List<Sim>) query.list();
 	}
-	
+
 	@Override
 	public List<Sim> getByFamille(Famille famille) {
 		Session s = sf.getCurrentSession();
@@ -41,7 +41,7 @@ public class SimDaoImpl implements ISimDao {
 		query.setParameter("famille", famille);
 		return (List<Sim>) query.list();
 	}
-	
+
 	@Override
 	public List<Sim> getHeritierPossibleByFamille(Famille famille) {
 		Session s = sf.getCurrentSession();
@@ -52,7 +52,7 @@ public class SimDaoImpl implements ISimDao {
 		query.setParameter("mort", false);
 		return (List<Sim>) query.list();
 	}
-	
+
 	@Override
 	public List<Sim> getHeritierByFamille(Famille famille) {
 		Session s = sf.getCurrentSession();
@@ -63,7 +63,7 @@ public class SimDaoImpl implements ISimDao {
 		query.setParameter("mort", false);
 		return (List<Sim>) query.list();
 	}
-	
+
 	@Override
 	public List<Sim> getListEnfants(Sim sim) {
 		Session s = sf.getCurrentSession();
@@ -72,7 +72,7 @@ public class SimDaoImpl implements ISimDao {
 		query.setParameter("sim", sim);
 		return (List<Sim>) query.list();
 	}
-	
+
 	@Override
 	public List<Sim> getListParents(Genre genre) {
 		Session s = sf.getCurrentSession();
@@ -81,7 +81,7 @@ public class SimDaoImpl implements ISimDao {
 		query.setParameter("genre", genre);
 		return (List<Sim>) query.list();
 	}
-	
+
 	@Override
 	public Sim getById(int id) {
 		Session s = sf.getCurrentSession();

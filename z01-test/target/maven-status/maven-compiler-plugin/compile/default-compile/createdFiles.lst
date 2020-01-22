@@ -14,9 +14,11 @@ fr\elba\service\IQuartierService.class
 fr\elba\service\IRabbitHoleService.class
 fr\elba\service\ISimService.class
 fr\elba\model\LiaisonCOFA.class
+fr\elba\managedBean\CouplePlannerManagedBean.class
 fr\elba\service\impl\CompteServiceImpl.class
 fr\elba\model\LiaisonDRCL.class
 fr\elba\model\Passage.class
+fr\elba\service\impl\ProfessionServiceImpl.class
 fr\elba\service\impl\PassageServiceImpl.class
 fr\elba\model\Genre.class
 fr\elba\service\IConditionService.class
@@ -25,6 +27,7 @@ fr\elba\service\ITourService.class
 fr\elba\dao\ICommunautaireDao.class
 fr\elba\dao\impl\QuartierDaoImpl.class
 fr\elba\dao\impl\ConditionDaoImpl.class
+fr\elba\model\LiaisonPRCL.class
 fr\elba\managedBean\DetailPassageManagedBean.class
 fr\elba\managedBean\FinanceManagedBean.class
 fr\elba\dao\impl\RabbitHoleDaoImpl.class
@@ -41,12 +44,14 @@ fr\elba\managedBean\DetailLCOFAManagedBean.class
 fr\elba\service\ILiaisonDVCLService.class
 fr\elba\service\impl\TerrainServiceImpl.class
 fr\elba\model\Prive.class
+fr\elba\model\Profession.class
 fr\elba\service\IClasseService.class
 fr\elba\model\Pret.class
 fr\elba\managedBean\CommunautaireManagedBean.class
 fr\elba\model\RabbitHole.class
 fr\elba\managedBean\AchatTerrainManagedBean.class
 fr\elba\managedBean\FamilleManagedBean.class
+fr\elba\managedBean\DetailFamilleManagedBean.class
 fr\elba\model\Orientation.class
 fr\elba\dao\ISouhaitDao.class
 fr\elba\service\impl\DevoirServiceImpl.class
@@ -61,6 +66,7 @@ fr\elba\service\impl\LiaisonCOFAServiceImpl.class
 fr\elba\managedBean\RabbitHoleManagedBean.class
 fr\elba\dao\ILiaisonDRCLDao.class
 fr\elba\service\impl\RabbitHoleServiceImpl.class
+fr\elba\dao\impl\ProfessionDaoImpl.class
 fr\elba\dao\impl\TourDaoImpl.class
 fr\elba\model\Devoir.class
 fr\elba\dao\IPretDao.class
@@ -89,11 +95,13 @@ fr\elba\dao\IDevoirDao.class
 fr\elba\service\impl\LiaisonSITRServiceImpl.class
 fr\elba\dao\IPassageDao.class
 fr\elba\managedBean\PassageManagedBean.class
+fr\elba\service\impl\CoupleServiceImpl.class
 fr\elba\dao\impl\TerrainDaoImpl.class
 fr\elba\service\ITraitService.class
 fr\elba\dao\impl\SouhaitDaoImpl.class
 fr\elba\service\impl\DroitServiceImpl.class
 fr\elba\service\IFamilleService.class
+fr\elba\dao\IProfessionDao.class
 fr\elba\service\impl\FamilleServiceImpl.class
 fr\elba\service\impl\TraitServiceImpl.class
 fr\elba\dao\impl\LiaisonSITRDaoImpl.class
@@ -124,6 +132,7 @@ fr\elba\dao\impl\DroitDaoImpl.class
 fr\elba\dao\ITraitDao.class
 fr\elba\model\LiaisonDVCL.class
 fr\elba\managedBean\SyntheseDroitsManagedBean.class
+fr\elba\service\IProfessionService.class
 fr\elba\managedBean\SelectionHeritierManagedBean.class
 fr\elba\dao\ITourDao.class
 fr\elba\managedBean\SimManagedBean.class
@@ -142,6 +151,7 @@ fr\elba\service\impl\LiaisonDRCLServiceImpl.class
 fr\elba\dao\IQuartierDao.class
 fr\elba\model\Couple.class
 fr\elba\dao\ITerrainDao.class
+fr\elba\service\ICoupleService.class
 fr\elba\dao\IPriveDao.class
 fr\elba\service\ITerrainService.class
 fr\elba\model\Sim.class

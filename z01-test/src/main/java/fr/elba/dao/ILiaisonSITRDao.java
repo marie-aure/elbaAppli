@@ -13,6 +13,8 @@ public interface ILiaisonSITRDao {
 	
 	public LiaisonSITR getBySim(Sim sim);
 
+	public List<LiaisonSITR> getAllFiance();
+	
 	public void create(LiaisonSITR liaisonSITR);
 	
 	public void update(LiaisonSITR liaisonSITR);

@@ -37,7 +37,7 @@ public class LiaisonSITRDaoImpl implements ILiaisonSITRDao {
 		Session s = sf.getCurrentSession();
 		return (LiaisonSITR) s.get(LiaisonSITR.class, id);
 	}
-	
+
 	@Override
 	public LiaisonSITR getBySim(Sim sim) {
 		Session s = sf.getCurrentSession();
@@ -45,6 +45,14 @@ public class LiaisonSITRDaoImpl implements ILiaisonSITRDao {
 		Query query = s.createQuery(req);
 		query.setParameter("sim", sim);
 		return (LiaisonSITR) query.uniqueResult();
+	}
+
+	@Override
+	public List<LiaisonSITR> getAllFiance() {
+		Session s = sf.getCurrentSession();
+		String req = "From LiaisonSITR as lsitr LEFT JOIN lsitr.sim as sim WHERE sim.couple is not null and sim.marrie = false";
+		Query query = s.createQuery(req);
+		return (List<LiaisonSITR>) query.list();
 	}
 
 	@Override
@@ -65,15 +73,15 @@ public class LiaisonSITRDaoImpl implements ILiaisonSITRDao {
 		LiaisonSITR liaisonSITR = (LiaisonSITR) s.get(LiaisonSITR.class, id);
 		s.delete(liaisonSITR);
 	}
-	
+
 	@Override
-	public List<LiaisonSITR> getByGroup(int groupe){		
-	 Session s = sf.getCurrentSession();	 
-	 String req = "call get_groupe(:groupe)";
+	public List<LiaisonSITR> getByGroup(int groupe) {
+		Session s = sf.getCurrentSession();
+		String req = "call get_groupe(:groupe)";
 		Query query = s.createSQLQuery(req).addEntity(LiaisonSITR.class);
 		query.setParameter("groupe", groupe);
 		return (List<LiaisonSITR>) query.list();
-	
+
 	}
 
 }
