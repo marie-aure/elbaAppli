@@ -37,23 +37,23 @@ public class Famille {
 	private Sim chef;
 
 	@OneToMany(mappedBy = "proprietaire"/* ,cascade=CascadeType.ALL */)
-	@LazyCollection(LazyCollectionOption.FALSE)
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Terrain> lTerrains;
 
 	@OneToMany(mappedBy = "famille"/* ,cascade=CascadeType.ALL */)
-	@LazyCollection(LazyCollectionOption.FALSE)
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Pret> lPrets;
 
 	@OneToMany(mappedBy = "famille"/* ,cascade=CascadeType.ALL */)
-	@LazyCollection(LazyCollectionOption.FALSE)
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Compte> lComptes;
 
 	@OneToMany(mappedBy = "famille")
-	@LazyCollection(LazyCollectionOption.FALSE)
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Sim> lSims;
 
 	@OneToMany(mappedBy = "familleOrigine")
-	@LazyCollection(LazyCollectionOption.FALSE)
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Sim> lSimOrigines;
 
 //	@OneToMany(mappedBy = "famille"/* , cascade=CascadeType.ALL */)

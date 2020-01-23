@@ -47,13 +47,13 @@ public class LiaisonSITRDaoImpl implements ILiaisonSITRDao {
 		return (LiaisonSITR) query.uniqueResult();
 	}
 
-	@Override
-	public List<LiaisonSITR> getAllFiance() {
-		Session s = sf.getCurrentSession();
-		String req = "From LiaisonSITR as lsitr LEFT JOIN lsitr.sim as sim WHERE sim.couple is not null and sim.marrie = false";
-		Query query = s.createQuery(req);
-		return (List<LiaisonSITR>) query.list();
-	}
+//	@Override
+//	public List<LiaisonSITR> getAllFiance() {
+//		Session s = sf.getCurrentSession();
+//		String req = "From LiaisonSITR as lsitr LEFT JOIN lsitr.sim as sim WHERE sim.couple is not null and sim.marie = false";
+//		Query query = s.createQuery(req);
+//		return (List<LiaisonSITR>) query.list();
+//	}
 
 	@Override
 	public void create(LiaisonSITR liaisonSITR) {

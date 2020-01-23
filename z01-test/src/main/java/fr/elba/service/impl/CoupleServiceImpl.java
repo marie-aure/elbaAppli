@@ -1,5 +1,6 @@
 package fr.elba.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,26 @@ import fr.elba.service.ILiaisonSITRService;
 public class CoupleServiceImpl implements ICoupleService {
 
 	@Autowired
-	private ILiaisonSITRDao lSitrDao;
+	private ISimDao siDao;
 
 	@Override
-	public List<Couple> getAllFiance() {
-		List<LiaisonSITR> liste = lSitrDao.getAllFiance();
-		return null;
+	public List<List<Sim>> getAllFiance() {
+		List<List<Sim>> lCouples = new ArrayList<List<Sim>>();
+		List<Sim> liste = siDao.getAllFiance();
+		if (liste.size() > 0) {
+			for (Sim sim : liste) {
+				if (sim.getCouple() != null) {
+					List<Sim> couple = new ArrayList<Sim>();
+					couple.add(sim);
+					couple.add(sim.getCouple());
+//					liste.remove(sim.getCouple());
+					lCouples.add(couple);
+				}
+			}
+			return lCouples;
+		} else {
+			return null;
+		}
+
 	}
-
-
 }

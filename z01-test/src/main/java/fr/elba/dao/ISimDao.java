@@ -19,6 +19,8 @@ public interface ISimDao {
 	public List<Sim> getListEnfants(Sim sim);
 	
 	public List<Sim> getListParents(Genre genre);
+	
+	public List<Sim> getAllFiance();
 
 	public Sim getById(int id);
 	

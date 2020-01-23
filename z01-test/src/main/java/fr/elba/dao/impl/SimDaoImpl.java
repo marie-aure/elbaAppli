@@ -83,6 +83,14 @@ public class SimDaoImpl implements ISimDao {
 	}
 
 	@Override
+	public List<Sim> getAllFiance() {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Sim sim WHERE marie = false and mort is false and couple is not null and sim.class = Sim";
+		Query query = s.createQuery(req);
+		return (List<Sim>) query.list();
+	}
+
+	@Override
 	public Sim getById(int id) {
 		Session s = sf.getCurrentSession();
 		return (Sim) s.get(Sim.class, id);

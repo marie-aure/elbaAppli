@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
 	<title>Planner</title>
 	<link
@@ -22,7 +23,55 @@
 			</ui:include>
 		</ui:insert>
 
+		Couples actuels :
+		<table>
+			<thead>
+				<th>Sim 1</th>
+				<th>Sim 2</th>
+			</thead>
+			<tr>
+				<td>
+					<table>
+						<thead>
+							<th>Nom</th>
+							<th>Classe</th>
+							<th>Famille</th>
+							<th>Famille d'origine</th>
+						</thead>
+						<c:forEach var="couple"
+							items="${CouplePlannerMB.lCoupleExistants}">
+							<tr>
+								<td>${couple[1].prenom} ${couple[1].nom}</td>
+								<td>${couple[1].famille.classe.libelle}</td>
+								<td>${couple[1].famille.nom}</td>
+								<td>${couple[1].familleOrigine.nom}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</td>
+				<td>
+					<table>
+						<thead>
+							<th>Nom</th>
+							<th>Classe</th>
+							<th>Famille</th>
+							<th>Famille d'origine</th>
+						</thead>
+						<c:forEach var="couple"
+							items="${CouplePlannerMB.lCoupleExistants}">
+							<tr>
+								<td>${couple[2].prenom} ${couple[1].nom}</td>
+								<td>${couple[2].famille.classe.libelle}</td>
+								<td>${couple[2].famille.nom}</td>
+								<td>${couple[2].familleOrigine.nom}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</td>
+			</tr>
 
+
+		</table>
 
 	</div>
 </h:body>

@@ -46,7 +46,7 @@ public class CouplePlannerManagedBean {
 	// ---- Variables ----
 	// +++++++++++++++++++
 
-	private List<Couple> lCoupleExistants;
+	private List<List<Sim>> lCoupleExistants;
 
 	// ++++++++++++++++++++++
 	// ---- Constructeur ----
@@ -54,23 +54,23 @@ public class CouplePlannerManagedBean {
 
 	public CouplePlannerManagedBean() {
 		super();
-		this.lCoupleExistants = new ArrayList<Couple>();
+		this.lCoupleExistants = new ArrayList<List<Sim>>();
 	}
 
 	@PostConstruct
 	public void init() {
-
+		chargerCoupleExistant();
 	}
 
 	// +++++++++++++++++++++++
 	// ---- Getter/Setter ----
 	// +++++++++++++++++++++++
 
-	public List<Couple> getlCoupleExistants() {
+	public List<List<Sim>> getlCoupleExistants() {
 		return lCoupleExistants;
 	}
 
-	public void setlCoupleExistants(List<Couple> lCoupleExistants) {
+	public void setlCoupleExistants(List<List<Sim>> lCoupleExistants) {
 		this.lCoupleExistants = lCoupleExistants;
 	}
 
@@ -79,7 +79,7 @@ public class CouplePlannerManagedBean {
 	// +++++++++++++++++
 
 	public void chargerCoupleExistant() {
-		coSer.getAllFiance();
+		this.lCoupleExistants = coSer.getAllFiance();
 	}
 
 }
